@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class PersonalInfo extends Model
+{
+    use HasFactory;
+
+    protected $table = 'personal_info';
+
+    protected $fillable = [
+        'brand_name',
+        'logo_url',
+        'facebook_url',
+        'instagram_url',
+        'github_url',
+        'email',
+        'phone_number',
+        'location',
+        'description',
+        'about_me',
+        'profile_photo',
+        'about_description',
+        'years_experience',
+        'completed_projects',
+        'happy_clients',
+    ];
+}
