@@ -1,672 +1,431 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Primary Meta Tags -->
-    <title>Nabaraj Acharya | Web Developer in Nepal | Chapagaun-10, Lalitpur</title>
-    <meta name="description" content="Professional web developer and content writer based in Kathmandu, Nepal. Specializing in responsive websites, UI/UX design, and engaging content creation for Nepali businesses.">
-    <meta name="keywords" content="Nabaraj Acharya, Nabu, Nabraj Acharya, web developer Nepal, content writer Nepal, UI/UX design Kathmandu, freelance developer Nepal, WordPress developer Kathmandu, responsive website design Nepal, PHP developer Bagmati, website developer Ratnanagar, Laravel Developer">
-    <meta name="author" content="Nabaraj Acharya">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="English">
-    <meta name="revisit-after" content="7 days">
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://nabrajacharya.com.np" />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nabrajacharya.com.np">
-    <meta property="og:title" content="Nabaraj Acharya | Web Developer in Nepal">
-    <meta property="og:description" content="Professional web developer in Nepal with expertise in creating stunning, functional websites and engaging content for local businesses.">
-    <meta property="og:image" content="https://nabrajacharya.com.np/3.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="Nabaraj Acharya Portfolio">
-    <meta property="og:locale" content="en_US">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://nabrajacharya.com.np">
-    <meta property="twitter:title" content="Nabaraj Acharya | Web Developer & Content Writer in Nepal">
-    <meta property="twitter:description" content="Professional web developer and content writer in Nepal with expertise in creating stunning, functional websites and engaging content for local businesses.">
-    <meta property="twitter:image" content="https://nabrajacharya.com.np/1.png">
-
-    <!-- Geo Meta Tags -->
-    <meta name="geo.region" content="NP-BA" />
-    <meta name="geo.placename" content="Kathmandu" />
-    <meta name="geo.position" content="27.7172;85.3240" />
-    <meta name="ICBM" content="27.7172, 85.3240" />
-
-    <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="3.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="3.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="3.png">
-    <link rel="manifest" href="/site.webmanifest">
-
-    <!-- Preload important resources -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-
-    <!-- Tailwind CSS -->
+    <title>Advanced Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        primary: '#5e17eb',
-                        secondary: '#8e59ff',
-                        dark: {
-                            bg: '#121212',
-                            card: '#1e1e1e',
-                            text: '#e0e0e0',
-                            heading: '#ffffff'
-                        },
-                        light: {
-                            bg: '#f5f5f7',
-                            card: '#ffffff',
-                            text: '#333',
-                            heading: '#222'
+                        primary: '#3B82F6',
+                        secondary: '#8B5CF6',
+                        accent: '#06D6A0',
+                        dark: '#0A0E1A',
+                        darker: '#050814',
+                        light: '#F8FAFC',
+                        gray: {
+                            850: '#1E293B',
+                            750: '#334155'
                         }
                     },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
                     animation: {
-                        'float': 'float 3s ease-in-out infinite',
-                        'pulse-glow': 'pulse-glow 2s infinite',
-                        'slide-up': 'slideUp 0.8s forwards',
-                        'fade-in': 'fadeIn 0.8s forwards',
-                        'railway-move': 'railwayMove 20s linear infinite',
-                        'railway-fade': 'railwayFade 8s linear infinite'
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'typing': 'typing 3.5s steps(40, end)',
+                        'blink': 'blink-caret .75s step-end infinite',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                        'code-scroll': 'codeScroll 20s linear infinite',
+                        'matrix': 'matrix 20s linear infinite',
                     },
                     keyframes: {
                         float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' }
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
                         },
-                        'pulse-glow': {
-                            '0%': {
-                                transform: 'scale(1)',
-                                boxShadow: '0 0 0 0 rgba(94, 23, 235, 0.4)'
-                            },
-                            '70%': {
-                                transform: 'scale(1.05)',
-                                boxShadow: '0 0 0 10px rgba(94, 23, 235, 0)'
-                            },
-                            '100%': {
-                                transform: 'scale(1)',
-                                boxShadow: '0 0 0 0 rgba(94, 23, 235, 0)'
-                            }
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.5)' },
+                            '100%': { boxShadow: '0 0 40px rgba(139, 92, 246, 0.8)' },
+                        },
+                        typing: {
+                            '0%': { width: '0' },
+                            '100%': { width: '100%' },
+                        },
+                        'blink-caret': {
+                            'from, to': { borderColor: 'transparent' },
+                            '50%': { borderColor: '#3B82F6' },
                         },
                         slideUp: {
-                            'from': {
-                                transform: 'translateY(50px)',
-                                opacity: '0'
-                            },
-                            'to': {
-                                transform: 'translateY(0)',
-                                opacity: '1'
-                            }
+                            '0%': { transform: 'translateY(100px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
                         },
                         fadeIn: {
-                            'from': {
-                                opacity: '0',
-                                transform: 'translateY(20px)'
-                            },
-                            'to': {
-                                opacity: '1',
-                                transform: 'translateY(0)'
-                            }
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
                         },
-                        railwayMove: {
-                            '0%': { transform: 'translateX(100%)' },
-                            '100%': { transform: 'translateX(-100%)' }
+                        codeScroll: {
+                            '0%': { transform: 'translateY(0)' },
+                            '100%': { transform: 'translateY(-50%)' },
                         },
-                        railwayFade: {
-                            '0%, 20%': { opacity: '1' },
-                            '25%, 95%': { opacity: '0' },
-                            '100%': { opacity: '1' }
-                        }
-                    }
+                        matrix: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(100vh)' },
+                        },
+                    },
                 }
             }
         }
     </script>
-
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Nabaraj Acharya",
-      "alternateName": ["Nabu", "Nabraj Acharya"],
-      "url": "https://nabrajacharya.com.np",
-      "image": "https://nabrajacharya.com.np/100.png",
-      "sameAs": [
-        "https://github.com/nabaraj999",
-        "https://x.com/Nabaraj72925913"
-      ],
-      "jobTitle": "Web Developer & Content Writer",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Freelance Web Services Nepal"
-      },
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "Jana Bhawana Campus, Tribhuvan University"
-      },
-      "description": "Web Developer and Content Writer based in Kathmandu, Nepal with expertise in UI/UX Design and WordPress development for local businesses.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Chapagaun-10",
-        "addressLocality": "Lalitpur",
-        "addressRegion": "Bagmati Province",
-        "postalCode": "44700",
-        "addressCountry": "Nepal"
-      },
-      "nationality": "Nepali"
-    }
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/emailjs-com/3.2.0/email.min.js"></script>
-
     <style>
-        /* Railway text effect */
-        .railway-container {
-            position: relative;
-            width: 100%;
+        body {
+            background: radial-gradient(ellipse at center, #1E293B 0%, #0A0E1A 50%, #050814 100%);
+        }
+
+        .hero-grid {
+            background-image:
+                linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: grid-move 20s linear infinite;
+        }
+
+        @keyframes grid-move {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 50px; }
+        }
+
+        .typing-cursor::after {
+            content: '|';
+            animation: blink-caret 0.75s step-end infinite;
+        }
+
+        .code-bg {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            line-height: 1.5;
+            color: rgba(139, 92, 246, 0.3);
             overflow: hidden;
-            height: 40px;
-            background: linear-gradient(90deg, rgba(94,23,235,0.1) 0%, rgba(142,89,255,0.2) 50%, rgba(94,23,235,0.1) 100%);
-            margin: 2rem 0;
-            border-top: 2px solid #5e17eb;
-            border-bottom: 2px solid #5e17eb;
         }
 
-        .railway-track {
+        .floating-element {
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 100%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
             height: 2px;
-            background: repeating-linear-gradient(
-                90deg,
-                transparent,
-                transparent 5px,
-                #5e17eb 5px,
-                #5e17eb 7px
-            );
-        }
-
-        .railway-text {
-            position: absolute;
-            white-space: nowrap;
-            animation: railwayMove 20s linear infinite;
-            color: #5e17eb;
-            font-weight: bold;
-            font-size: 1.2rem;
-            text-shadow: 0 0 10px rgba(94, 23, 235, 0.5);
-            padding: 0 10px;
-        }
-
-        .railway-station {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: #8e59ff;
+            background: linear-gradient(45deg, #3B82F6, #8B5CF6);
             border-radius: 50%;
-            top: 50%;
-            transform: translateY(-50%);
-            box-shadow: 0 0 10px #8e59ff;
-            z-index: 2;
+            animation: matrix 10s linear infinite;
         }
 
-        .railway-station:nth-child(1) {
-            left: 10%;
+        .glass-morphism {
+            backdrop-filter: blur(10px);
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(59, 130, 246, 0.2);
         }
 
-        .railway-station:nth-child(2) {
-            left: 30%;
+        .code-window {
+            background: linear-gradient(145deg, #1E293B, #334155);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            box-shadow:
+                0 20px 25px -5px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
-        .railway-station:nth-child(3) {
-            left: 50%;
+        .tech-stack-item {
+            transition: all 0.3s ease;
         }
 
-        .railway-station:nth-child(4) {
-            left: 70%;
+        .tech-stack-item:hover {
+            transform: translateY(-5px) scale(1.1);
+            filter: brightness(1.2);
         }
 
-        .railway-station:nth-child(5) {
-            left: 90%;
+        .gradient-text {
+            background: linear-gradient(135deg, #3B82F6, #8B5CF6, #06D6A0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
         }
 
-        .railway-train {
+        .status-indicator {
+            position: relative;
+        }
+
+        .status-indicator::before {
+            content: '';
             position: absolute;
-            width: 30px;
-            height: 15px;
-            background: #5e17eb;
-            border-radius: 5px;
             top: 50%;
+            left: -15px;
             transform: translateY(-50%);
-            animation: railwayFade 8s linear infinite;
-            box-shadow: 0 0 15px #5e17eb;
-            z-index: 3;
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
             width: 8px;
+            height: 8px;
+            background: #06D6A0;
+            border-radius: 50%;
+            animation: glow 2s ease-in-out infinite alternate;
         }
 
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        .dark ::-webkit-scrollbar-track {
-            background: #1a1a1a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #5e17eb;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #8e59ff;
+        @media (max-width: 768px) {
+            .hero-grid {
+                background-size: 30px 30px;
+            }
         }
     </style>
 </head>
 
-<body class="bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text transition-colors duration-300">
-    <!-- Railway Text Effect -->
-    <div class="railway-container">
-        <div class="railway-track"></div>
-        <div class="railway-text">Full Stack Developer • UI/UX Designer • Content Writer • WordPress Expert • PHP Developer • Cybersecurity Enthusiast</div>
-        <div class="railway-station"></div>
-        <div class="railway-station"></div>
-        <div class="railway-station"></div>
-        <div class="railway-station"></div>
-        <div class="railway-station"></div>
-        <div class="railway-train"></div>
+<body class="font-sans text-white overflow-x-hidden">
+    <!-- Animated Background Particles -->
+    <div class="fixed inset-0 pointer-events-none">
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 40%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 50%; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+        <div class="particle" style="left: 70%; animation-delay: 2.5s;"></div>
+        <div class="particle" style="left: 80%; animation-delay: 4.5s;"></div>
+        <div class="particle" style="left: 90%; animation-delay: 1.5s;"></div>
     </div>
 
     <!-- Header -->
-    <header id="header" class="fixed top-0 left-0 w-full z-50 py-5 bg-light-bg dark:bg-dark-bg shadow-md transition-all duration-300">
-        <div class="container mx-auto px-4">
+    <header class="fixed w-full bg-dark/90 backdrop-blur-md border-b border-primary/20 z-50">
+        <nav class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <img src="./Logo-design-3.png" class="w-16 h-auto rounded-lg" alt="Logo">
-
-                <div class="menu-btn md:hidden text-xl cursor-pointer">
-                    <i class="fas fa-bars"></i>
+                <div class="text-xl font-bold font-mono">
+                    <span class="text-primary">&lt;</span>
+                    <span class="gradient-text">DevPortfolio</span>
+                    <span class="text-primary">/&gt;</span>
                 </div>
 
-                <ul class="nav-links hidden md:flex items-center space-x-8">
-                    <li><a href="#home" class="font-semibold text-light-text dark:text-dark-text relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full active:after:w-full">Home</a></li>
-                    <li><a href="#about" class="font-semibold text-light-text dark:text-dark-text relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">About</a></li>
-                    <li><a href="#services" class="font-semibold text-light-text dark:text-dark-text relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Services</a></li>
-                    <li><a href="#portfolio" class="font-semibold text-light-text dark:text-dark-text relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Portfolio</a></li>
-                    <li><a href="#skills" class="font-semibold text-light-text dark:text-dark-text relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Skills</a></li>
-                    <li><a href="#contact" class="font-semibold text-light-text dark:text-dark-text relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Contact</a></li>
-
-                    <div class="theme-toggle flex items-center ml-8 cursor-pointer">
-                        <i class="fas fa-sun mr-2"></i>
-                        <span>Light Mode</span>
-                    </div>
-                </ul>
-
-                <!-- Mobile menu (hidden by default) -->
-                <div class="nav-links-mobile fixed top-0 right-[-100%] w-3/4 h-screen bg-light-card dark:bg-dark-card flex flex-col justify-center items-center space-y-8 p-12 shadow-2xl transition-all duration-500 z-50 md:hidden">
-                    <div class="close-btn absolute top-5 right-5 text-xl cursor-pointer">
-                        <i class="fas fa-times"></i>
-                    </div>
-
-                    <a href="#home" class="font-semibold text-2xl text-light-text dark:text-dark-text">Home</a>
-                    <a href="#about" class="font-semibold text-2xl text-light-text dark:text-dark-text">About</a>
-                    <a href="#services" class="font-semibold text-2xl text-light-text dark:text-dark-text">Services</a>
-                    <a href="#portfolio" class="font-semibold text-2xl text-light-text dark:text-dark-text">Portfolio</a>
-                    <a href="#skills" class="font-semibold text-2xl text-light-text dark:text-dark-text">Skills</a>
-                    <a href="#contact" class="font-semibold text-2xl text-light-text dark:text-dark-text">Contact</a>
-
-                    <div class="theme-toggle flex items-center mt-8 cursor-pointer">
-                        <i class="fas fa-sun mr-2"></i>
-                        <span>Light Mode</span>
-                    </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-primary transition-colors duration-300 font-medium">Home</a>
+                    <a href="#about" class="hover:text-primary transition-colors duration-300 font-medium">About</a>
+                    <a href="#projects" class="hover:text-primary transition-colors duration-300 font-medium">Projects</a>
+                    <a href="#contact" class="hover:text-primary transition-colors duration-300 font-medium">Contact</a>
                 </div>
+
+                <button class="md:hidden text-white hover:text-primary transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
-        </div>
+        </nav>
     </header>
 
-    <!-- Home Section -->
-    <section id="home" class="pt-40 pb-20 md:pt-48 md:pb-24 relative overflow-hidden">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center justify-between">
-                <div class="home-text md:w-1/2 mb-12 md:mb-0 md:pr-8 animate-fade-in">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Hi, I'm <span class="text-primary">Nabaraj Acharya</span></h1>
-                    <h3 class="text-xl md:text-2xl text-primary mb-6">Full Stack Web Developer</h3>
-                    <p class="text-lg mb-8">I create stunning, functional websites to help businesses thrive in the digital landscape.</p>
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen relative overflow-hidden hero-grid">
+        <div class="container mx-auto px-6 pt-24 pb-16 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-6rem)]">
 
-                    <div class="flex flex-wrap gap-4 mb-8">
-                        <a href="#contact" class="px-6 py-3 bg-primary text-white rounded-full font-semibold border-2 border-primary transition-all duration-300 hover:bg-transparent hover:text-primary">Hire Me</a>
-                        <a href="#portfolio" class="px-6 py-3 bg-transparent text-primary rounded-full font-semibold border-2 border-primary transition-all duration-300 hover:bg-primary hover:text-white">View My Work</a>
+                <!-- Left Column: Content -->
+                <div class="space-y-8 animate-slide-up">
+                    <!-- Status Badge -->
+                    <div class="inline-flex items-center px-4 py-2 rounded-full glass-morphism status-indicator">
+                        <span class="text-sm font-medium">Available for projects</span>
                     </div>
 
-                    <div class="flex gap-4">
-                        <a href="https://github.com/nabaraj999" class="w-10 h-10 flex items-center justify-center bg-light-card dark:bg-dark-card rounded-full text-primary text-lg shadow-md transition-all duration-300 hover:bg-primary hover:text-white hover:-translate-y-1"><i class="fab fa-github"></i></a>
-                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-light-card dark:bg-dark-card rounded-full text-primary text-lg shadow-md transition-all duration-300 hover:bg-primary hover:text-white hover:-translate-y-1"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-light-card dark:bg-dark-card rounded-full text-primary text-lg shadow-md transition-all duration-300 hover:bg-primary hover:text-white hover:-translate-y-1"><i class="fab fa-facebook-f"></i></a>
-                    </div>
-                </div>
-
-                <div class="home-image md:w-1/2 flex justify-center animate-fade-in animation-delay-300">
-                    <img src="Test.jpg" alt="Nabaraj Acharya" class="w-4/5 rounded-2xl shadow-xl animate-float bg-transparent object-cover">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-light-card dark:bg-dark-card">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold inline-block relative after:content-[''] after:absolute after:left-1/4 after:-bottom-3 after:w-1/2 after:h-1 after:bg-primary after:rounded">About Me</h2>
-            </div>
-
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="about-image md:w-1/2 relative animate-fade-in">
-                    <img src="3.png" alt="About Nabaraj" class="w-full rounded-2xl shadow-xl">
-                    <div class="absolute inset-0 border-4 border-primary rounded-2xl -top-5 -left-5 -z-10"></div>
-                </div>
-
-                <div class="about-text md:w-1/2 animate-fade-in animation-delay-200">
-                    <h3 class="text-2xl md:text-3xl font-bold mb-4">Who I Am</h3>
-                    <p class="mb-4">I am Nabaraj Acharya, a passionate Web Developer currently pursuing my BCA (6th Semester) at Tribhuvan University, Jana Bhawana Campus.</p>
-                    <p class="mb-8">With over 2 years of experience in Web Development and 1+ year in Graphic Design, I blend technical expertise with creative design to deliver exceptional digital solutions. My background in cybersecurity allows me to build not only beautiful but also secure web applications.</p>
-
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="stat-item bg-light-bg dark:bg-dark-bg p-5 rounded-lg shadow-md text-center transition-all duration-300 hover:-translate-y-2 animate-fade-in animation-delay-300">
-                            <div class="stat-number text-3xl font-bold text-primary mb-2">2+</div>
-                            <div class="stat-text">Years Experience<br>Web Development</div>
-                        </div>
-
-                        <div class="stat-item bg-light-bg dark:bg-dark-bg p-5 rounded-lg shadow-md text-center transition-all duration-300 hover:-translate-y-2 animate-fade-in animation-delay-300">
-                            <div class="stat-number text-3xl font-bold text-primary mb-2">1+</div>
-                            <div class="stat-text">Years Experience<br>Graphic Design</div>
-                        </div>
-
-                        <div class="stat-item bg-light-bg dark:bg-dark-bg p-5 rounded-lg shadow-md text-center transition-all duration-300 hover:-translate-y-2 animate-fade-in animation-delay-500">
-                            <div class="stat-number text-3xl font-bold text-primary mb-2">15+</div>
-                            <div class="stat-text">Projects<br>Completed</div>
-                        </div>
-
-                        <div class="stat-item bg-light-bg dark:bg-dark-bg p-5 rounded-lg shadow-md text-center transition-all duration-300 hover:-translate-y-2 animate-fade-in animation-delay-500">
-                            <div class="stat-number text-3xl font-bold text-primary mb-2">10+</div>
-                            <div class="stat-text">Happy<br>Clients</div>
+                    <!-- Main Heading with Typing Effect -->
+                    <div>
+                        <h1 class="text-5xl lg:text-7xl font-bold mb-4 leading-tight">
+                            <span class="block text-gray-300">Hello, I'm</span>
+                            <span class="gradient-text typing-cursor">Alex Johnson</span>
+                        </h1>
+                        <div class="text-2xl lg:text-3xl text-gray-400 font-mono mb-6">
+                            <span class="text-primary">&gt;</span> Full-Stack Developer
                         </div>
                     </div>
+
+                    <!-- Description -->
+                    <p class="text-lg text-gray-300 leading-relaxed max-w-lg">
+                        I craft exceptional digital experiences with modern technologies.
+                        Passionate about clean code, innovative solutions, and turning ideas into reality.
+                    </p>
+
+                    <!-- Tech Stack -->
+                    <div class="space-y-3">
+                        <p class="text-sm text-gray-400 font-mono">// Current tech stack</p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="tech-stack-item px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-mono border border-primary/30">React</span>
+                            <span class="tech-stack-item px-3 py-1 bg-secondary/20 text-secondary rounded-full text-sm font-mono border border-secondary/30">Node.js</span>
+                            <span class="tech-stack-item px-3 py-1 bg-accent/20 text-accent rounded-full text-sm font-mono border border-accent/30">TypeScript</span>
+                            <span class="tech-stack-item px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-mono border border-primary/30">Python</span>
+                            <span class="tech-stack-item px-3 py-1 bg-secondary/20 text-secondary rounded-full text-sm font-mono border border-secondary/30">Docker</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="#projects" class="group px-6 py-3 bg-gradient-to-r from-primary to-secondary rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25">
+                            <span class="flex items-center gap-2">
+                                View My Work
+                                <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </span>
+                        </a>
+                        <a href="#contact" class="px-6 py-3 border-2 border-primary text-primary rounded-lg font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:scale-105">
+                            Get In Touch
+                        </a>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="flex gap-4 pt-4">
+                        <a href="#" class="w-10 h-10 rounded-full glass-morphism flex items-center justify-center hover:bg-primary/20 transition-colors group">
+                            <svg class="w-5 h-5 group-hover:text-primary transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0C5.374 0 0 5.373 0 12s5.374 12 12 12 12-5.373 12-12S18.626 0 12 0zm5.568 8.16c-.001.058-.003.116-.005.174-.056 1.703-.292 3.383-.703 5.004-.358 1.416-.848 2.785-1.473 4.074-.344.71-.726 1.39-1.145 2.028-.376.574-.788 1.118-1.235 1.619-.282.315-.584.608-.903.875-.159.133-.322.26-.49.38-.168.12-.34.233-.516.339-.352.212-.718.403-1.097.572-.19.085-.382.165-.577.239-.195.074-.393.143-.594.206-.402.126-.812.234-1.229.324-.208.045-.419.084-.631.118-.212.034-.426.063-.641.086-.43.046-.867.071-1.31.071s-.88-.025-1.31-.071c-.215-.023-.429-.052-.641-.086-.212-.034-.423-.073-.631-.118-.417-.09-.827-.198-1.229-.324-.201-.063-.399-.132-.594-.206-.195-.074-.387-.154-.577-.239-.379-.169-.745-.36-1.097-.572-.176-.106-.348-.219-.516-.339-.168-.12-.331-.247-.49-.38-.319-.267-.621-.56-.903-.875-.447-.501-.859-1.045-1.235-1.619-.419-.638-.801-1.318-1.145-2.028-.625-1.289-1.115-2.658-1.473-4.074-.411-1.621-.647-3.301-.703-5.004-.002-.058-.004-.116-.005-.174-.001-.058-.001-.116-.001-.174s0-.116.001-.174c.001-.058.003-.116.005-.174.056-1.703.292-3.383.703-5.004.358-1.416.848-2.785 1.473-4.074.344-.71.726-1.39 1.145-2.028.376-.574.788-1.118 1.235-1.619.282-.315.584-.608.903-.875.159-.133.322-.26.49-.38.168-.12.34-.233.516-.339.352-.212.718-.403 1.097-.572.19-.085.382-.165.577-.239.195-.074.393-.143.594-.206.402-.126.812-.234 1.229-.324.208-.045.419-.084.631-.118.212-.034.426-.063.641-.086.43-.046.867-.071 1.31-.071s.88.025 1.31.071c.215.023.429.052.641.086.212.034.423.073.631.118.417.09.827.198 1.229.324.201.063.399.132.594.206.195.074.387.154.577.239.379.169.745.36 1.097.572.176.106.348.219.516.339.168.12.331.247.49.38.319.267.621.56.903.875.447.501.859 1.045 1.235 1.619.419.638.801 1.318 1.145 2.028.625 1.289 1.115 2.658 1.473 4.074.411 1.621.647 3.301.703 5.004.002.058.004.116.005.174.001.058.001.116.001.174s0 .116-.001.174z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full glass-morphism flex items-center justify-center hover:bg-primary/20 transition-colors group">
+                            <svg class="w-5 h-5 group-hover:text-primary transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full glass-morphism flex items-center justify-center hover:bg-primary/20 transition-colors group">
+                            <svg class="w-5 h-5 group-hover:text-primary transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
+
+                <!-- Right Column: Interactive Code Window -->
+                <div class="relative animate-fade-in">
+                    <!-- Floating Elements -->
+                    <div class="floating-element top-10 right-10 w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-lg opacity-20" style="animation-delay: 0s;"></div>
+                    <div class="floating-element top-32 right-32 w-12 h-12 bg-gradient-to-br from-accent to-primary rounded-full opacity-30" style="animation-delay: 2s;"></div>
+                    <div class="floating-element top-64 right-8 w-8 h-8 bg-gradient-to-br from-secondary to-accent rounded-lg opacity-25" style="animation-delay: 4s;"></div>
+
+                    <!-- Code Window -->
+                    <div class="code-window rounded-2xl p-6 max-w-lg mx-auto">
+                        <!-- Window Controls -->
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <div class="ml-4 text-xs text-gray-400 font-mono">developer.js</div>
+                        </div>
+
+                        <!-- Code Content -->
+                        <div class="code-bg space-y-2">
+                            <div class="text-gray-500">// Welcome to my portfolio</div>
+                            <div><span class="text-purple-400">const</span> <span class="text-blue-400">developer</span> = {</div>
+                            <div class="ml-4"><span class="text-green-400">name</span>: <span class="text-yellow-300">'Alex Johnson'</span>,</div>
+                            <div class="ml-4"><span class="text-green-400">skills</span>: [</div>
+                            <div class="ml-8"><span class="text-yellow-300">'JavaScript'</span>,</div>
+                            <div class="ml-8"><span class="text-yellow-300">'React'</span>,</div>
+                            <div class="ml-8"><span class="text-yellow-300">'Node.js'</span>,</div>
+                            <div class="ml-8"><span class="text-yellow-300">'Python'</span></div>
+                            <div class="ml-4">],</div>
+                            <div class="ml-4"><span class="text-green-400">passion</span>: <span class="text-yellow-300">'Creating amazing UX'</span>,</div>
+                            <div class="ml-4"><span class="text-green-400">currentStatus</span>: <span class="text-yellow-300">'Available'</span></div>
+                            <div>};</div>
+                            <div class="mt-4">
+                                <span class="text-purple-400">function</span> <span class="text-blue-400">buildAmazingThings</span>() {
+                            </div>
+                            <div class="ml-4"><span class="text-purple-400">return</span> <span class="text-yellow-300">'Let\'s work together!'</span>;</div>
+                            <div>}</div>
+                            <div class="mt-4 flex items-center">
+                                <span class="text-green-400">console</span>.<span class="text-blue-400">log</span>(<span class="text-blue-400">buildAmazingThings</span>());
+                                <span class="ml-2 w-2 h-4 bg-primary animate-pulse"></span>
+                            </div>
+                        </div>
+
+                        <!-- Terminal Output -->
+                        <div class="mt-6 p-4 bg-darker rounded-lg border border-primary/20">
+                            <div class="text-green-400 font-mono text-sm">
+                                <span class="text-gray-500">$</span> npm start
+                            </div>
+                            <div class="text-accent font-mono text-sm mt-1">
+                                > Let's work together!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div class="w-6 h-10 border-2 border-primary rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse"></div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-20">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold inline-block relative after:content-[''] after:absolute after:left-1/4 after:-bottom-3 after:w-1/2 after:h-1 after:bg-primary after:rounded">My Services</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="service-card bg-light-card dark:bg-dark-card p-8 rounded-lg shadow-md text-center relative overflow-hidden transition-all duration-300 hover:-translate-y-2 animate-slide-up" style="animation-delay: 0.1s">
-                    <div class="service-icon w-16 h-16 bg-light-bg dark:bg-dark-bg rounded-full flex items-center justify-center text-2xl text-primary mb-5 mx-auto animate-pulse-glow">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Web Development</h3>
-                    <p>Custom, responsive, and user-friendly websites built using modern technologies and best practices to achieve your business goals.</p>
-                </div>
-
-                <div class="service-card bg-light-card dark:bg-dark-card p-8 rounded-lg shadow-md text-center relative overflow-hidden transition-all duration-300 hover:-translate-y-2 animate-slide-up" style="animation-delay: 0.3s">
-                    <div class="service-icon w-16 h-16 bg-light-bg dark:bg-dark-bg rounded-full flex items-center justify-center text-2xl text-primary mb-5 mx-auto animate-pulse-glow">
-                        <i class="fas fa-desktop"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">UI/UX Design</h3>
-                    <p>Creative and intuitive user interfaces with seamless user experiences that engage visitors and optimize conversions.</p>
-                </div>
-
-                <div class="service-card bg-light-card dark:bg-dark-card p-8 rounded-lg shadow-md text-center relative overflow-hidden transition-all duration-300 hover:-translate-y-2 animate-slide-up" style="animation-delay: 0.5s">
-                    <div class="service-icon w-16 h-16 bg-light-bg dark:bg-dark-bg rounded-full flex items-center justify-center text-2xl text-primary mb-5 mx-auto animate-pulse-glow">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Cybersecurity</h3>
-                    <p>Comprehensive security audits and solutions to protect your digital assets and ensure your websites are safe from threats.</p>
-                </div>
-
-                <div class="service-card bg-light-card dark:bg-dark-card p-8 rounded-lg shadow-md text-center relative overflow-hidden transition-all duration-300 hover:-translate-y-2 animate-slide-up" style="animation-delay: 0.7s">
-                    <div class="service-icon w-16 h-16 bg-light-bg dark:bg-dark-bg rounded-full flex items-center justify-center text-2xl text-primary mb-5 mx-auto animate-pulse-glow">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Content Writing</h3>
-                    <p>Engaging and well-crafted content that tells your brand's story, boosts your online presence, and connects with your audience across platforms.</p>
-                </div>
-
-                <div class="service-card bg-light-card dark:bg-dark-card p-8 rounded-lg shadow-md text-center relative overflow-hidden transition-all duration-300 hover:-translate-y-2 animate-slide-up" style="animation-delay: 0.9s">
-                    <div class="service-icon w-16 h-16 bg-light-bg dark:bg-dark-bg rounded-full flex items-center justify-center text-2xl text-primary mb-5 mx-auto animate-pulse-glow">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">SEO Optimization</h3>
-                    <p>Strategic optimization to improve your website's visibility in search engines and drive organic traffic to your business.</p>
-                </div>
-
-                <div class="service-card bg-light-card dark:bg-dark-card p-8 rounded-lg shadow-md text-center relative overflow-hidden transition-all duration-300 hover:-translate-y-2 animate-slide-up" style="animation-delay: 1.1s">
-                    <div class="service-icon w-16 h-16 bg-light-bg dark:bg-dark-bg rounded-full flex items-center justify-center text-2xl text-primary mb-5 mx-auto animate-pulse-glow">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Custom Web Solutions</h3>
-                    <p>Tailor-made web applications and solutions designed specifically to address your unique business challenges.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="py-20 bg-light-card dark:bg-dark-card">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold inline-block relative after:content-[''] after:absolute after:left-1/4 after:-bottom-3 after:w-1/2 after:h-1 after:bg-primary after:rounded">My Portfolio</h2>
-            </div>
-
-            <div class="flex flex-wrap justify-center gap-4 mb-12">
-                <div class="filter-btn px-5 py-2 bg-light-bg dark:bg-dark-bg rounded-full font-semibold cursor-pointer transition-all duration-300 active:bg-primary active:text-white hover:bg-primary hover:text-white">All</div>
-                <div class="filter-btn px-5 py-2 bg-light-bg dark:bg-dark-bg rounded-full font-semibold cursor-pointer transition-all duration-300 hover:bg-primary hover:text-white">Web Development</div>
-                <div class="filter-btn px-5 py-2 bg-light-bg dark:bg-dark-bg rounded-full font-semibold cursor-pointer transition-all duration-300 hover:bg-primary hover:text-white">UI/UX Design</div>
-                <div class="filter-btn px-5 py-2 bg-light-bg dark:bg-dark-bg rounded-full font-semibold cursor-pointer transition-all duration-300 hover:bg-primary hover:text-white">Cybersecurity</div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Portfolio items would go here -->
-                <!-- I've kept the structure but removed content for brevity -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-20">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold inline-block relative after:content-[''] after:absolute after:left-1/4 after:-bottom-3 after:w-1/2 after:h-1 after:bg-primary after:rounded">My Skills</h2>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-                <!-- Skills content would go here -->
-                <!-- I've kept the structure but removed content for brevity -->
-            </div>
-
-            <div class="flex flex-wrap justify-center gap-6">
-                <!-- Skill icons would go here -->
-                <!-- I've kept the structure but removed content for brevity -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-light-card dark:bg-dark-card">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold inline-block relative after:content-[''] after:absolute after:left-1/4 after:-bottom-3 after:w-1/2 after:h-1 after:bg-primary after:rounded">Contact Me</h2>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div class="contact-info flex flex-col gap-8">
-                    <!-- Contact info items would go here -->
-                    <!-- I've kept the structure but removed content for brevity -->
-                </div>
-
-                <form class="contact-form bg-light-bg dark:bg-dark-bg p-8 rounded-lg shadow-md animate-fade-in animation-delay-300">
-                    <!-- Form fields would go here -->
-                    <!-- I've kept the structure but removed content for brevity -->
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-8 bg-light-card dark:bg-dark-card">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col items-center gap-6">
-                <div class="footer-logo text-3xl font-bold text-primary">Nabaraj Acharya</div>
-
-                <div class="flex gap-4">
-                    <a href="https://github.com/nabaraj999" class="w-9 h-9 flex items-center justify-center bg-light-bg dark:bg-dark-bg rounded-full text-primary transition-all duration-300 hover:bg-primary hover:text-white"><i class="fab fa-github"></i></a>
-                    <a href="#" class="w-9 h-9 flex items-center justify-center bg-light-bg dark:bg-dark-bg rounded-full text-primary transition-all duration-300 hover:bg-primary hover:text-white"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.facebook.com/profile.php?id=100094049822806" class="w-9 h-9 flex items-center justify-center bg-light-bg dark:bg-dark-bg rounded-full text-primary transition-all duration-300 hover:bg-primary hover:text-white"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://x.com/Nabaraj72925913" class="w-9 h-9 flex items-center justify-center bg-light-bg dark:bg-dark-bg rounded-full text-primary transition-all duration-300 hover:bg-primary hover:text-white"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/nabaraj.acharya567/" class="w-9 h-9 flex items-center justify-center bg-light-bg dark:bg-dark-bg rounded-full text-primary transition-all duration-300 hover:bg-primary hover:text-white"><i class="fab fa-instagram"></i></a>
-                </div>
-
-                <div class="copyright text-sm mt-4">
-                    &copy; 2025 Nabaraj Acharya. All Rights Reserved.
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript would go here -->
     <script>
-       // Menu Toggle
-const menuBtn = document.querySelector('.menu-btn');
-const closeBtn = document.querySelector('.close-btn');
-const navMobile = document.querySelector('.nav-links-mobile');
-const navLinks = document.querySelectorAll('.nav-links a, .nav-links-mobile a');
+        // Typing animation for the name
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            element.classList.add('typing-cursor');
 
-menuBtn.addEventListener('click', () => {
-    navMobile.style.right = '0';
-});
-
-closeBtn.addEventListener('click', () => {
-    navMobile.style.right = '-100%';
-});
-
-// Close mobile menu on link click
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navMobile.style.right = '-100%';
-    });
-});
-
-// Theme Toggle
-const themeToggle = document.querySelectorAll('.theme-toggle');
-const body = document.body;
-const sunIcon = '<i class="fas fa-sun mr-2"></i>';
-const moonIcon = '<i class="fas fa-moon mr-2"></i>';
-
-function toggleTheme() {
-    body.classList.toggle('dark');
-    const isDark = body.classList.contains('dark');
-    themeToggle.forEach(toggle => {
-        toggle.innerHTML = isDark ? `${moonIcon}Dark Mode` : `${sunIcon}Light Mode`;
-    });
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-}
-
-themeToggle.forEach(toggle => {
-    toggle.addEventListener('click', toggleTheme);
-});
-
-// Load saved theme
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme === 'dark') {
-    body.classList.add('dark');
-    themeToggle.forEach(toggle => {
-        toggle.innerHTML = `${moonIcon}Dark Mode`;
-    });
-} else {
-    themeToggle.forEach(toggle => {
-        toggle.innerHTML = `${sunIcon}Light Mode`;
-    });
-}
-
-// Smooth Scrolling
-navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        targetElement.scrollIntoView({ behavior: 'smooth' });
-    });
-});
-
-// Portfolio Filters
-const filterBtns = document.querySelectorAll('.filter-btn');
-const portfolioItems = document.querySelectorAll('.grid > div'); // Assuming portfolio items have data-category attribute
-
-filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active', 'bg-primary', 'text-white'));
-        btn.classList.add('active', 'bg-primary', 'text-white');
-
-        const category = btn.textContent.toLowerCase();
-        portfolioItems.forEach(item => {
-            if (category === 'all' || item.dataset.category === category) {
-                item.style.display = 'block';
-            } else {
-                item.style.display = 'none';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    element.classList.remove('typing-cursor');
+                }
             }
-        });
-    });
-});
+            type();
+        }
 
-// Contact Form with EmailJS (assuming form fields exist)
-emailjs.init('YOUR_USER_ID'); // Replace with your EmailJS user ID
+        // Initialize typing animation
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                const nameElement = document.querySelector('.gradient-text');
+                if (nameElement) {
+                    typeWriter(nameElement, 'Alex Johnson', 150);
+                }
+            }, 1000);
 
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+            // Animate tech stack items
+            const techItems = document.querySelectorAll('.tech-stack-item');
+            techItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                    item.style.transition = 'all 0.5s ease';
 
-        emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', contactForm)
-            .then(() => {
-                alert('Message sent successfully!');
-                contactForm.reset();
-            }, (error) => {
-                alert('Failed to send message. Please try again.');
-                console.error(error);
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 200 + 2000);
             });
-    });
-}
+        });
 
-// AOS Initialization (if AOS script is loaded separately)
-if (typeof AOS !== 'undefined') {
-    AOS.init({
-        duration: 800,
-        once: true,
-        offset: 100
-    });
-}
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add interactive cursor effect
+        document.addEventListener('mousemove', (e) => {
+            const cursor = document.querySelector('.cursor-follower');
+            if (!cursor) {
+                const newCursor = document.createElement('div');
+                newCursor.className = 'cursor-follower fixed w-4 h-4 bg-primary rounded-full pointer-events-none mix-blend-difference z-50 transition-transform duration-200';
+                document.body.appendChild(newCursor);
+            }
+
+            const cursorElement = document.querySelector('.cursor-follower');
+            cursorElement.style.left = e.clientX - 8 + 'px';
+            cursorElement.style.top = e.clientY - 8 + 'px';
+        });
     </script>
 </body>
 </html>

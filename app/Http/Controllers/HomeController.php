@@ -18,7 +18,7 @@ class HomeController extends Controller
         $data = [
             'personal' => Personal::first(), // Single record
           'projects' => Project::where('status', 'completed')->take(6)->get(), // Fetch completed projects, limit to 6
-            'education' => Education::take(5)->get(),     // Limit to 5 for compactness
+            'education' => Education::orderBy('id','desc')->get(),     // Limit to 5 for compactness
             'services' => Service::where('is_active', true)->get(), // Fetch only active services
             'skills' => Skill::orderBy('proficiency', 'desc')->get(), // Order skills by proficiency
         ];

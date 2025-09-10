@@ -7,6 +7,9 @@
     <title>Developer Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;900&display=swap" rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
@@ -161,15 +164,16 @@
         html {
             scroll-behavior: smooth;
         }
-         .education-image {
-        width: 58px;
-        height: 48px;
-        max-width: 48px;
-        max-height: 48px;
-        object-fit: cover;
-        border-radius: 8px;
-        margin-right: 1rem;
-         }
+
+        .education-image {
+            width: 48px;
+            height: 48px;
+            max-width: 48px;
+            max-height: 48px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 1rem;
+        }
     </style>
 </head>
 
@@ -179,8 +183,9 @@
         <nav class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <a href="#"
-                    class="text-2xl font-bold bg-gradient-to-r from-deepBlue to-richRed bg-clip-text text-transparent">DevPortfolio</a>
-
+                    class="text-3xl font-extrabold bg-gradient-to-r from-blue-600 via-purple-600 to-red-500 bg-clip-text text-transparent font-[Raleway] tracking-wide">
+                    TechNabu
+                </a>
                 <div class="hidden md:flex space-x-8">
                     <a href="#home" class="hover:text-deepBlue transition-colors duration-300">Home</a>
                     <a href="#about" class="hover:text-deepBlue transition-colors duration-300">About</a>
@@ -243,35 +248,40 @@
     <!-- About Section -->
     <section id="about" class="py-20 bg-lightBg section-hidden">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">About Me</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-raleway">About Me</h2>
 
-            <div class="flex flex-col md:flex-row items-center">
+            <div class="flex flex-col md:flex-row items-center gap-10">
                 <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
                     <div class="relative w-56 h-56 md:w-72 md:h-72 rounded-2xl overflow-hidden shadow-xl">
-                        <!-- Placeholder for developer second photo (about) -->
-                        <div class="w-full h-full flex items-center justify-center text-white text-lg"
-                            style="background-image: url('{{ Storage::url($data['personal']->logo_url) }}'); background-size: cover; background-position: center;">
-                        </div>
+                        @if ($data['personal'] && $data['personal']->logo_url)
+                            <img src="{{ Storage::url($data['personal']->logo_url) }}" alt="About Me Photo"
+                                class="w-full h-full object-cover">
+                        @else
+                            <div class="w-full h-full flex items-center justify-center bg-gray-300 text-white text-lg">
+                                No photo available
+                            </div>
+                        @endif
                     </div>
                 </div>
 
-                <div class="md:w-2/3 md:pl-12">
-                    <p class="text-lg mb-6 pb-4">{!! $data['personal']->about_description ?? 'No description available.' !!}</p>
+                <div class="md:w-2/3 md:pl-10">
+                    <p class="text-lg mb-12 leading-relaxed pb-4">{!! $data['personal']->about_description ?? 'No description available.' !!}</p>
 
-
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                        <div
+                            class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow duration-300">
                             <div class="text-3xl font-bold text-deepBlue mb-2">
                                 {{ $data['personal']->years_experience ?? 0 }}+</div>
                             <div class="text-gray-600">Years Experience</div>
                         </div>
-                        <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                        <div
+                            class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow duration-300">
                             <div class="text-3xl font-bold text-richRed mb-2">
                                 {{ $data['personal']->completed_projects ?? 0 }}+</div>
                             <div class="text-gray-600">Projects Completed</div>
                         </div>
-                        <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                        <div
+                            class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow duration-300">
                             <div
                                 class="text-3xl font-bold bg-gradient-to-r from-deepBlue to-richRed bg-clip-text text-transparent mb-2">
                                 {{ $data['personal']->happy_clients ?? 0 }}+</div>
@@ -287,125 +297,138 @@
     <div class="deepseek-railway"></div>
 
     <!-- Services Section -->
-   <section id="services" class="py-20 bg-white section-hidden">
-    <div class="container mx-auto px-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">My Services</h2>
-        <p class="text-center text-gray-600 mb-16 max-w-2xl mx-auto">I offer a range of services to help bring your digital ideas to life with quality and precision.</p>
+    <section id="services" class="py-20 bg-white section-hidden">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-Raleway">My Services</h2>
+            <p class="text-center text-gray-600 mb-16 max-w-2xl mx-auto">I offer a range of services to help bring your
+                digital ideas to life with quality and precision.</p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            @foreach ($data['services'] as $service)
-                <div class="service-card bg-lightBg p-8 rounded-xl relative group">
-                    <div class="w-full h-48 rounded-lg overflow-hidden mb-6">
-                        <div class="w-full h-full bg-blue-100 flex items-center justify-center"
-                             style="background-image: url('{{ $service->photo ? asset('storage/' . $service->photo) : '' }}'); background-size: cover; background-position: center;">
-                            @if(!$service->photo)
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-deepBlue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                                </svg>
-                            @endif
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                @foreach ($data['services'] as $service)
+                    <div class="service-card bg-lightBg p-8 rounded-xl relative group">
+                        <div class="w-full h-48 rounded-lg overflow-hidden mb-6">
+                            <div class="w-full h-full bg-blue-100 flex items-center justify-center"
+                                style="background-image: url('{{ $service->photo ? asset('storage/' . $service->photo) : '' }}'); background-size: cover; background-position: center;">
+                                @if (!$service->photo)
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-deepBlue"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                    </svg>
+                                @endif
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">{{ $service->service_name }}</h3>
+                        <div
+                            class="absolute inset-0 bg-blue-900 bg-opacity-0 group-hover:bg-opacity-90 text-white p-6 rounded-xl flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <p class="text-center">{!! $service->description !!}</p>
                         </div>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4">{!! $service->service_name !!}</h3>
-                    <div class="absolute inset-0 bg-blue-900 bg-opacity-0 group-hover:bg-opacity-90 text-white p-6 rounded-xl flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p class="text-center">{{ $service->description }}</p>
-                    </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- DeepSeek Railway Separator -->
     <div class="deepseek-railway"></div>
 
     <!-- Projects Section -->
-   <section id="projects" class="py-20 bg-darkBg text-white section-hidden">
-    <div class="container mx-auto px-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">My Projects</h2>
-        <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">Here are some of the projects I've worked on that demonstrate my skills and expertise.</p>
+    <section id="projects" class="py-20 bg-darkBg text-white section-hidden">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">My Projects</h2>
+            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">Here are some of the projects I've worked on
+                that demonstrate my skills and expertise.</p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            @foreach ($data['projects'] as $project)
-                <div class="project-card rounded-xl overflow-hidden shadow-lg relative group">
-                    <div class="h-56 bg-gradient-to-br from-deepBlue to-richRed flex items-center justify-center"
-                         style="background-image: url('{{ $project->image_url ? asset('storage/' . $project->image_url) : '' }}'); background-size: cover; background-position: center;">
-                        @if(!$project->image_url)
-                            <span class="text-white text-lg">Project Image</span>
-                        @endif
-                    </div>
-                    <div class="project-overlay absolute inset-0 bg-gradient-to-t from-darkBg to-transparent p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between">
-                        <div class="flex justify-end">
-                            @if($project->project_url)
-                                <a href="{{ $project->project_url }}" target="_blank" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-200">View Live</a>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                @foreach ($data['projects'] as $project)
+                    <div class="project-card rounded-xl overflow-hidden shadow-lg relative group">
+                        <div class="h-56 bg-gradient-to-br from-deepBlue to-richRed flex items-center justify-center"
+                            style="background-image: url('{{ $project->image_url ? asset('storage/' . $project->image_url) : '' }}'); background-size: cover; background-position: center;">
+                            @if (!$project->image_url)
+                                <span class="text-white text-lg">Project Image</span>
                             @endif
                         </div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">{{ $project->title }}</h3>
-                            <p class="text-gray-300 mb-4">{!! $project->description !!}</p>
+                        <div
+                            class="project-overlay absolute inset-0 bg-gradient-to-t from-darkBg to-transparent p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between">
+                            <div class="flex justify-end">
+                                @if ($project->project_url)
+                                    <a href="{{ $project->project_url }}" target="_blank"
+                                        class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-200">View
+                                        Live</a>
+                                @endif
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">{{ $project->title }}</h3>
+                                <p class="text-gray-300 mb-4">{!! $project->description !!}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- DeepSeek Railway Separator -->
     <div class="deepseek-railway"></div>
 
     <!-- Education Section -->
-  <section id="education" class="py-20 bg-lightBg section-hidden">
-    <div class="container mx-auto px-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Education & Experience</h2>
+    <section id="education" class="py-20 bg-lightBg section-hidden">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Education & Experience</h2>
 
-        <div class="max-w-3xl mx-auto relative">
-            @foreach($data['education'] as $education)
-                <div class="timeline-item pl-8 relative mb-12">
-                    <div class="timeline-dot"></div>
-                    <div class="bg-white p-6 rounded-xl shadow-md flex items-start">
-                        @if($education->image_url)
-                            <img src="{{ Storage::url($education->image_url) }}" alt="{{ $education->degree }} image" class="education-image">
-                        @endif
-                        <div class="flex-1">
-                            <div class="text-sm bg-gradient-to-r from-deepBlue to-richRed bg-clip-text text-transparent font-semibold mb-2">
-                                {{ $education->start_year }} - {{ $education->end_year ?? ($education->status === 'in_progress' ? 'Present' : '') }}
-                            </div>
-                            <h3 class="text-xl font-bold mb-2">{{ $education->degree }}</h3>
-                            <p class="text-gray-600 font-semibold mb-4">{{ $education->institution }}</p>
-                            @if($education->description)
-                                <p class="text-gray-600">{{ $education->description }}</p>
+            <div class="max-w-3xl mx-auto relative">
+                @foreach ($data['education'] as $education)
+                    <div class="timeline-item pl-8 relative mb-12">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-white p-6 rounded-xl shadow-md flex items-start">
+                            @if ($education->image_url)
+                                <img src="{{ Storage::url($education->image_url) }}"
+                                    alt="{{ $education->degree }} image" class="education-image">
                             @endif
+                            <div class="flex-1">
+                                <div
+                                    class="text-sm bg-gradient-to-r from-deepBlue to-richRed bg-clip-text text-transparent font-semibold mb-2">
+                                    {{ $education->start_year }} -
+                                    {{ $education->end_year ?? ($education->status === 'in_progress' ? 'Present' : '') }}
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">{{ $education->degree }}</h3>
+                                <p class="text-gray-600 font-semibold mb-4">{{ $education->institution }}</p>
+                                @if ($education->description)
+                                    <p class="text-gray-600">{{ $education->description }}</p>
+                                @endif
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- DeepSeek Railway Separator -->
     <div class="deepseek-railway"></div>
 
     <!-- Skills Section -->
     <section id="skills" class="py-20 bg-white section-hidden">
-    <div class="container mx-auto px-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">My Skills</h2>
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">My Skills</h2>
 
-        <div class="max-w-3xl mx-auto">
-            @foreach($data['skills'] as $skill)
-                <div class="mb-8">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold">{{ $skill->skill_name }}</span>
-                        <span class="text-deepBlue font-semibold">{{ $skill->proficiency }}%</span>
+            <div class="max-w-3xl mx-auto">
+                @foreach ($data['skills'] as $skill)
+                    <div class="mb-8">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold">{{ $skill->skill_name }}</span>
+                            <span class="text-deepBlue font-semibold">{{ $skill->proficiency }}%</span>
+                        </div>
+                        <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                            <div class="skill-bar h-full bg-gradient-to-r from-deepBlue to-richRed"
+                                style="--width: {{ $skill->proficiency }}%" data-width="{{ $skill->proficiency }}%">
+                            </div>
+                        </div>
                     </div>
-                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
-                        <div class="skill-bar h-full bg-gradient-to-r from-deepBlue to-richRed" style="--width: {{ $skill->proficiency }}%" data-width="{{ $skill->proficiency }}%"></div>
-                    </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- DeepSeek Railway Separator -->
     <div class="deepseek-railway"></div>
@@ -449,32 +472,59 @@
 
     <!-- Footer -->
     <footer class="py-10 bg-darkBg text-white border-t border-gray-800">
-        <div class="container mx-auto px-6 text-center">
-            <p>© 2023 Developer Portfolio. All rights reserved.</p>
-            <div class="flex justify-center space-x-6 mt-4">
-                <a href="#" class="text-gray-400 hover:text-deepBlue transition-colors duration-300">
-                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd"
-                            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </a>
-                <a href="#" class="text-gray-400 hover:text-richRed transition-colors duration-300">
-                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path
-                            d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                    </svg>
-                </a>
-                <a href="#" class="text-gray-400 hover:text-deepBlue transition-colors duration-300">
-                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd"
-                            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </a>
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+            <!-- User Info (Left Side) -->
+            <div class="text-left">
+                @if($data['personal'])
+                    <p class="mb-2"><strong>Email:</strong> {{ $data['personal']->email ?? 'Not provided' }}</p>
+                    <p class="mb-2"><strong>Phone:</strong> {{ $data['personal']->phone_number ?? 'Not provided' }}</p>
+                    <p class="mb-2"><strong>Location:</strong> {{ $data['personal']->location ?? 'Not provided' }}</p>
+                    @if($data['personal']->description)
+                        <p class="mb-2">{{ $data['personal']->description }}</p>
+                    @endif
+                @else
+                    <p>No user information available.</p>
+                @endif
+            </div>
+
+            <!-- Copyright (Center) -->
+            <div class="text-center">
+                <p>© {{ date('Y') }} Developer Portfolio. All rights reserved.</p>
+            </div>
+
+            <!-- Social Media Links (Right Side) -->
+            <div class="flex justify-center md:justify-end space-x-6 mt-4 md:mt-0">
+                @if($data['personal'] && $data['personal']->facebook_url)
+                    <a href="{{ $data['personal']->facebook_url }}" target="_blank" class="text-gray-400 hover:text-deepBlue transition-colors duration-300">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                @endif
+                @if($data['personal'] && $data['personal']->instagram_url)
+                    <a href="{{ $data['personal']->instagram_url }}" target="_blank" class="text-gray-400 hover:text-richRed transition-colors duration-300">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                        </svg>
+                    </a>
+                @endif
+                @if($data['personal'] && $data['personal']->github_url)
+                    <a href="{{ $data['personal']->github_url }}" target="_blank" class="text-gray-400 hover:text-deepBlue transition-colors duration-300">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                @endif
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
     <script>
         // Intersection Observer for scroll animations
