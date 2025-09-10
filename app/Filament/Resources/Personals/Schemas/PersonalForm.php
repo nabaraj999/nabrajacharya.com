@@ -60,8 +60,19 @@ class PersonalForm
                 Textarea::make('about_me')
                     ->default(null)
                     ->columnSpanFull(),
-                TextInput::make('profile_photo')
-                    ->default(null),
+                FileUpload::make('profile_photo')
+                    ->label('Profile Photo')
+                    ->image()
+                    ->directory('profile-photos')
+                    ->disk('public')
+                    ->maxSize(2048)
+                    ->imageEditor()
+                    ->imageCropAspectRatio('1:1')
+                    ->previewable(true)
+                    ->extraAttributes(['class' => 'bg-white rounded-lg shadow-sm'])
+                    ->nullable()
+                    ->hint('Upload a professional headshot (max 2MB).')
+                    ->dehydrated(true),
                 RichEditor::make('about_description')
                     ->label('About Description')
                     ->nullable()
@@ -71,15 +82,15 @@ class PersonalForm
                     ->extraAttributes(['style' => 'min-height: 200px;']),
                 TextInput::make('years_experience')
                     ->numeric()
-                    ->min(0)
+                    ->minValue(0) // Changed from min(0) to minValue(0)
                     ->default(null),
                 TextInput::make('completed_projects')
                     ->numeric()
-                    ->min(0)
+                    ->minValue(0) // Changed from min(0) to minValue(0)
                     ->default(null),
                 TextInput::make('happy_clients')
                     ->numeric()
-                    ->min(0)
+                    ->minValue(0) // Changed from min(0) to minValue(0)
                     ->default(null),
             ]);
     }
