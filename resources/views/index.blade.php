@@ -310,60 +310,36 @@
     <div class="deepseek-railway"></div>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-darkBg text-white section-hidden">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">My Projects</h2>
-            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">Here are some of the projects I've worked on
-                that demonstrate my skills and expertise.</p>
+   <section id="projects" class="py-20 bg-darkBg text-white section-hidden">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">My Projects</h2>
+        <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">Here are some of the projects I've worked on that demonstrate my skills and expertise.</p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="project-card rounded-xl overflow-hidden shadow-lg relative">
-                    <div class="h-56 bg-gradient-to-br from-deepBlue to-richRed flex items-center justify-center">
-                        <span class="text-white text-lg">Project Image</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach ($data['projects'] as $project)
+                <div class="project-card rounded-xl overflow-hidden shadow-lg relative group">
+                    <div class="h-56 bg-gradient-to-br from-deepBlue to-richRed flex items-center justify-center"
+                         style="background-image: url('{{ $project->image_url ? asset('storage/' . $project->image_url) : '' }}'); background-size: cover; background-position: center;">
+                        @if(!$project->image_url)
+                            <span class="text-white text-lg">Project Image</span>
+                        @endif
                     </div>
-                    <div
-                        class="project-overlay absolute inset-0 bg-gradient-to-t from-darkBg to-transparent flex items-end p-6">
+                    <div class="project-overlay absolute inset-0 bg-gradient-to-t from-darkBg to-transparent p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between">
+                        <div class="flex justify-end">
+                            @if($project->project_url)
+                                <a href="{{ $project->project_url }}" target="_blank" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-200">View Live</a>
+                            @endif
+                        </div>
                         <div>
-                            <h3 class="text-xl font-bold mb-2">E-Commerce Platform</h3>
-                            <p class="text-gray-300">A full-featured online store with payment integration and
-                                inventory management.</p>
+                            <h3 class="text-xl font-bold mb-2">{{ $project->title }}</h3>
+                            <p class="text-gray-300 mb-4">{!! $project->description !!}</p>
                         </div>
                     </div>
                 </div>
-
-                <!-- Project 2 -->
-                <div class="project-card rounded-xl overflow-hidden shadow-lg relative">
-                    <div class="h-56 bg-gradient-to-bl from-richRed to-deepBlue flex items-center justify-center">
-                        <span class="text-white text-lg">Project Image</span>
-                    </div>
-                    <div
-                        class="project-overlay absolute inset-0 bg-gradient-to-t from-darkBg to-transparent flex items-end p-6">
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">Task Management App</h3>
-                            <p class="text-gray-300">A productivity application with team collaboration features and
-                                time tracking.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card rounded-xl overflow-hidden shadow-lg relative">
-                    <div class="h-56 bg-gradient-to-tr from-deepBlue to-richRed flex items-center justify-center">
-                        <span class="text-white text-lg">Project Image</span>
-                    </div>
-                    <div
-                        class="project-overlay absolute inset-0 bg-gradient-to-t from-darkBg to-transparent flex items-end p-6">
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">Fitness Tracker</h3>
-                            <p class="text-gray-300">A health and wellness application with workout planning and
-                                progress analytics.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- DeepSeek Railway Separator -->
     <div class="deepseek-railway"></div>
