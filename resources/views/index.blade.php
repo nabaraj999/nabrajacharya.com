@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deepBlue: '#1e90ff',
+                        richRed: '#ff4d4f',
+                        darkBg: '#0f1724',
+                        lightBg: '#f5f5f5',
+                    },
+                    fontFamily: {
+                        primary: ['Raleway', 'Helvetica', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.7s ease-out',
+                        'fill-bar': 'fillBar 1.5s ease-in-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': {
+                                opacity: '0'
+                            },
+                            '100%': {
+                                opacity: '1'
+                            },
+                        },
+                        slideUp: {
+                            '0%': {
+                                transform: 'translateY(50px)',
+                                opacity: '0'
+                            },
+                            '100%': {
+                                transform: 'translateY(0)',
+                                opacity: '1'
+                            },
+                        },
+                        fillBar: {
+                            '0%': {
+                                width: '0%'
+                            },
+                            '100%': {
+                                width: 'var(--width, 90%)'
+                            },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+        /* Custom styles for animations and effects */
+        .section-hidden {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.7s ease-out;
+        }
+
+        .section-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .skill-bar {
+            --width: 0%;
+            width: var(--width);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, #1e90ff, #ff4d4f);
+        }
+
+        .timeline-item:first-child::before {
+            top: 20px;
+        }
+
+        .timeline-item:last-child::before {
+            height: 20px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -26px;
+            top: 20px;
+            height: 12px;
+            width: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1e90ff, #ff4d4f);
+            z-index: 10;
+        }
+
+        .project-card {
+            transition: all 0.3s ease;
+        }
+
+        .project-overlay {
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .service-card {
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .deepseek-railway {
+            height: 4px;
+            background: linear-gradient(90deg, #1e90ff 0%, #ff4d4f 100%);
+            position: relative;
+            margin: 80px 0;
+        }
+
+        .deepseek-railway::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: 0;
+            right: 0;
+            height: 12px;
+            background: repeating-linear-gradient(90deg,
+                    transparent,
+                    transparent 15px,
+                    #0f1724 15px,
+                    #0f1724 20px);
+        }
+
+        /* Focus states */
+        input:focus,
+        textarea:focus {
+            box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.3);
+        }
+
+        button:focus {
+            box-shadow: 0 0 0 3px rgba(255, 77, 79, 0.3);
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body class="font-primary bg-lightBg text-darkBg">
+    <!-- Header with sticky navigation -->
+    <header class="fixed w-full bg-darkBg text-white z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#"
+                    class="text-2xl font-bold bg-gradient-to-r from-deepBlue to-richRed bg-clip-text text-transparent">DevPortfolio</a>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-deepBlue transition-colors duration-300">Home</a>
+                    <a href="#about" class="hover:text-deepBlue transition-colors duration-300">About</a>
+                    <a href="#services" class="hover:text-deepBlue transition-colors duration-300">Services</a>
+                    <a href="#projects" class="hover:text-deepBlue transition-colors duration-300">Projects</a>
+                    <a href="#education" class="hover:text-deepBlue transition-colors duration-300">Education</a>
+                    <a href="#skills" class="hover:text-deepBlue transition-colors duration-300">Skills</a>
+                    <a href="#contact" class="hover:text-deepBlue transition-colors duration-300">Contact</a>
+                </div>
+
+                <button class="md:hidden text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20 pb-16 bg-darkBg text-white">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 mb-10 md:mb-0 animate-slide-up">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Hi, I'm <span
+                        class="bg-gradient-to-r from-deepBlue to-richRed bg-clip-text text-transparent">{{ $data['personal']->brand_name }}</span>
+                </h1>
+                <h2 class="text-2xl md:text-3xl mb-6">Full-Stack Developer</h2>
+                <p class="text-lg mb-8 text-gray-300">{{ $data['personal']->description }}</p>
+                <div class="flex space-x-4">
+                    <a href="#projects"
+                        class="px-6 py-3 bg-gradient-to-r from-deepBlue to-richRed text-white rounded-lg font-semibold transform hover:scale-105 transition-transform duration-300">View
+                        Work</a>
+                    <a href="#contact"
+                        class="px-6 py-3 border-2 border-deepBlue text-deepBlue rounded-lg font-semibold transform hover:scale-105 transition-transform duration-300">Contact
+                        Me</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center animate-fade-in">
+                @if ($data['personal'] && $data['personal']->profile_photo)
+                    <div class="relative w-64 h-64 rounded-full overflow-hidden border-4 border-deepBlue shadow-lg">
+                        <img src="{{ Storage::url($data['personal']->profile_photo) }}" alt="Profile Photo"
+                            class="w-full h-full object-cover">
+                    </div>
+                @else
+                    <div
+                        class="relative w-64 h-64 rounded-full overflow-hidden border-4 border-deepBlue shadow-lg bg-gradient-to-br from-deepBlue to-richRed flex items-center justify-center">
+                        <span class="text-white text-lg">No Photo Available</span>
+                    </div>
+                @endif
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- DeepSeek Railway Separator -->
+    <div class="deepseek-railway"></div>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-lightBg section-hidden">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">About Me</h2>
+
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
+                    <div class="relative w-56 h-56 md:w-72 md:h-72 rounded-2xl overflow-hidden shadow-xl">
+                        <!-- Placeholder for developer second photo (about) -->
+                        <div class="w-full h-full flex items-center justify-center text-white text-lg"
+                            style="background-image: url('{{ Storage::url($data['personal']->logo_url) }}'); background-size: cover; background-position: center;">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:w-2/3 md:pl-12">
+                    <p class="text-lg mb-6 pb-4">{!! $data['personal']->about_description ?? 'No description available.' !!}</p>
+
+
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                            <div class="text-3xl font-bold text-deepBlue mb-2">
+                                {{ $data['personal']->years_experience ?? 0 }}+</div>
+                            <div class="text-gray-600">Years Experience</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                            <div class="text-3xl font-bold text-richRed mb-2">
+                                {{ $data['personal']->completed_projects ?? 0 }}+</div>
+                            <div class="text-gray-600">Projects Completed</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                            <div
+                                class="text-3xl font-bold bg-gradient-to-r from-deepBlue to-richRed bg-clip-text text-transparent mb-2">
+                                {{ $data['personal']->happy_clients ?? 0 }}+</div>
+                            <div class="text-gray-600">Happy Clients</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DeepSeek Railway Separator -->
+    <div class="deepseek-railway"></div>
+
+    <!-- Services Section -->
+   <section id="services" class="py-20 bg-white section-hidden">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">My Services</h2>
+        <p class="text-center text-gray-600 mb-16 max-w-2xl mx-auto">I offer a range of services to help bring your digital ideas to life with quality and precision.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach ($data['services'] as $service)
+                <div class="service-card bg-lightBg p-8 rounded-xl relative group">
+                    <div class="w-full h-48 rounded-lg overflow-hidden mb-6">
+                        <div class="w-full h-full bg-blue-100 flex items-center justify-center"
+                             style="background-image: url('{{ $service->photo ? asset('storage/' . $service->photo) : '' }}'); background-size: cover; background-position: center;">
+                            @if(!$service->photo)
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-deepBlue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                </svg>
+                            @endif
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">{!! $service->service_name !!}</h3>
+                    <div class="absolute inset-0 bg-blue-900 bg-opacity-0 group-hover:bg-opacity-90 text-white p-6 rounded-xl flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p class="text-center">{{ $service->description }}</p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+    <!-- DeepSeek Railway Separator -->
+    <div class="deepseek-railway"></div>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-darkBg text-white section-hidden">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">My Projects</h2>
+            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">Here are some of the projects I've worked on
+                that demonstrate my skills and expertise.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card rounded-xl overflow-hidden shadow-lg relative">
+                    <div class="h-56 bg-gradient-to-br from-deepBlue to-richRed flex items-center justify-center">
+                        <span class="text-white text-lg">Project Image</span>
+                    </div>
+                    <div
+                        class="project-overlay absolute inset-0 bg-gradient-to-t from-darkBg to-transparent flex items-end p-6">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">E-Commerce Platform</h3>
+                            <p class="text-gray-300">A full-featured online store with payment integration and
+                                inventory management.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card rounded-xl overflow-hidden shadow-lg relative">
+                    <div class="h-56 bg-gradient-to-bl from-richRed to-deepBlue flex items-center justify-center">
+                        <span class="text-white text-lg">Project Image</span>
+                    </div>
+                    <div
+                        class="project-overlay absolute inset-0 bg-gradient-to-t from-darkBg to-transparent flex items-end p-6">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Task Management App</h3>
+                            <p class="text-gray-300">A productivity application with team collaboration features and
+                                time tracking.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card rounded-xl overflow-hidden shadow-lg relative">
+                    <div class="h-56 bg-gradient-to-tr from-deepBlue to-richRed flex items-center justify-center">
+                        <span class="text-white text-lg">Project Image</span>
+                    </div>
+                    <div
+                        class="project-overlay absolute inset-0 bg-gradient-to-t from-darkBg to-transparent flex items-end p-6">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Fitness Tracker</h3>
+                            <p class="text-gray-300">A health and wellness application with workout planning and
+                                progress analytics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DeepSeek Railway Separator -->
+    <div class="deepseek-railway"></div>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-lightBg section-hidden">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Education & Experience</h2>
+
+            <div class="max-w-3xl mx-auto relative">
+                <!-- Timeline item 1 -->
+                <div class="timeline-item pl-8 relative mb-12">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="text-sm text-deepBlue font-semibold mb-2">2018 - 2020</div>
+                        <h3 class="text-xl font-bold mb-2">Master's in Computer Science</h3>
+                        <p class="text-gray-600 font-semibold mb-4">Stanford University</p>
+                        <p class="text-gray-600">Specialized in Human-Computer Interaction and Web Technologies.
+                            Completed thesis on optimizing web performance metrics.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline item 2 -->
+                <div class="timeline-item pl-8 relative mb-12">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="text-sm text-richRed font-semibold mb-2">2020 - 2021</div>
+                        <h3 class="text-xl font-bold mb-2">Frontend Developer</h3>
+                        <p class="text-gray-600 font-semibold mb-4">TechInnovate Inc.</p>
+                        <p class="text-gray-600">Developed responsive web applications using React and implemented
+                            design systems for consistency across products.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline item 3 -->
+                <div class="timeline-item pl-8 relative">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div
+                            class="text-sm bg-gradient-to-r from-deepBlue to-richRed bg-clip-text text-transparent font-semibold mb-2">
+                            2021 - Present</div>
+                        <h3 class="text-xl font-bold mb-2">Full-Stack Developer</h3>
+                        <p class="text-gray-600 font-semibold mb-4">Digital Solutions LLC</p>
+                        <p class="text-gray-600">Leading development of full-stack applications using modern
+                            technologies including React, Node.js, and cloud infrastructure.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DeepSeek Railway Separator -->
+    <div class="deepseek-railway"></div>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white section-hidden">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">My Skills</h2>
+
+            <div class="max-w-3xl mx-auto">
+                <!-- Skill 1 -->
+                <div class="mb-8">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">JavaScript/TypeScript</span>
+                        <span class="text-deepBlue font-semibold">95%</span>
+                    </div>
+                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <div class="skill-bar h-full bg-gradient-to-r from-deepBlue to-richRed" style="--width: 95%">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="mb-8">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">React & Next.js</span>
+                        <span class="text-deepBlue font-semibold">90%</span>
+                    </div>
+                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <div class="skill-bar h-full bg-gradient-to-r from-deepBlue to-richRed" style="--width: 90%">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="mb-8">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">Node.js & Express</span>
+                        <span class="text-deepBlue font-semibold">88%</span>
+                    </div>
+                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <div class="skill-bar h-full bg-gradient-to-r from-deepBlue to-richRed" style="--width: 88%">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="mb-8">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">UI/UX Design</span>
+                        <span class="text-richRed font-semibold">85%</span>
+                    </div>
+                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <div class="skill-bar h-full bg-gradient-to-r from-deepBlue to-richRed" style="--width: 85%">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill 5 -->
+                <div class="mb-8">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">Cloud Services (AWS)</span>
+                        <span class="text-deepBlue font-semibold">82%</span>
+                    </div>
+                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <div class="skill-bar h-full bg-gradient-to-r from-deepBlue to-richRed" style="--width: 82%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DeepSeek Railway Separator -->
+    <div class="deepseek-railway"></div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-darkBg text-white section-hidden">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Get In Touch</h2>
+            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">Have a project in mind or want to discuss
+                potential opportunities? Feel free to reach out!</p>
+
+            <div class="max-w-2xl mx-auto">
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block mb-2">Your Name</label>
+                            <input type="text" id="name"
+                                class="w-full px-4 py-3 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-deepBlue transition-all"
+                                placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-2">Your Email</label>
+                            <input type="email" id="email"
+                                class="w-full px-4 py-3 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-deepBlue transition-all"
+                                placeholder="john@example.com">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="message" class="block mb-2">Your Message</label>
+                        <textarea id="message" rows="5"
+                            class="w-full px-4 py-3 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-deepBlue transition-all"
+                            placeholder="Hello, I would like to..."></textarea>
+                    </div>
+                    <button type="submit"
+                        class="w-full py-3 bg-gradient-to-r from-deepBlue to-richRed text-white font-semibold rounded-lg transform hover:scale-105 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-richRed">Send
+                        Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 bg-darkBg text-white border-t border-gray-800">
+        <div class="container mx-auto px-6 text-center">
+            <p>© 2023 Developer Portfolio. All rights reserved.</p>
+            <div class="flex justify-center space-x-6 mt-4">
+                <a href="#" class="text-gray-400 hover:text-deepBlue transition-colors duration-300">
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-richRed transition-colors duration-300">
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-deepBlue transition-colors duration-300">
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const sections = document.querySelectorAll('.section-hidden');
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('section-visible');
+                    sectionObserver.unobserve(entry.target);
+
+                    // Animate skill bars when skills section is in view
+                    if (entry.target.id === 'skills') {
+                        const skillBars = document.querySelectorAll('.skill-bar');
+                        skillBars.forEach(bar => {
+                            bar.style.animation = 'fill-bar 1.5s ease-in-out forwards';
+                        });
+                    }
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+
+        // Mobile menu toggle (minimal implementation)
+        document.querySelector('button.md\\:hidden').addEventListener('click', function() {
+            const nav = document.querySelector('.hidden.md\\:flex');
+            nav.classList.toggle('hidden');
+            nav.classList.toggle('flex');
+            nav.classList.toggle('flex-col');
+            nav.classList.toggle('absolute');
+            nav.classList.toggle('top-full');
+            nav.classList.toggle('left-0');
+            nav.classList.toggle('right-0');
+            nav.classList.toggle('bg-darkBg');
+            nav.classList.toggle('p-6');
+            nav.classList.toggle('space-y-4');
+        });
+    </script>
+</body>
+
+</html>

@@ -29,3 +29,4 @@ class Personal extends Model
         'happy_clients',
     ];
 }
+
