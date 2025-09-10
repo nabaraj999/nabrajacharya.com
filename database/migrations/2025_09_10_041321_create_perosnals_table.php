@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('personal_infos', function (Blueprint $table) {
-            $table->id();
+        Schema::create('perosnals', function (Blueprint $table) {
+           $table->id();
             $table->string('brand_name', 100);
             $table->string('logo_url', 255)->nullable();
             $table->string('facebook_url', 255)->nullable();
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('personal_infos');
+        Schema::dropIfExists('perosnals');
     }
 };
