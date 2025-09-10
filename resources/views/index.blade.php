@@ -179,6 +179,7 @@
 
 <body class="font-primary bg-lightBg text-darkBg">
     <!-- Header with sticky navigation -->
+
     <header class="fixed w-full bg-darkBg text-white z-50 shadow-md">
         <nav class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
@@ -434,41 +435,57 @@
     <div class="deepseek-railway"></div>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-darkBg text-white section-hidden">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Get In Touch</h2>
-            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">Have a project in mind or want to discuss
-                potential opportunities? Feel free to reach out!</p>
+   <section id="contact" class="py-20 bg-darkBg text-white section-hidden">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Get In Touch</h2>
+        <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">Have a project in mind or want to discuss
+            potential opportunities? Feel free to reach out!</p>
 
-            <div class="max-w-2xl mx-auto">
-                <form class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="name" class="block mb-2">Your Name</label>
-                            <input type="text" id="name"
-                                class="w-full px-4 py-3 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-deepBlue transition-all"
-                                placeholder="John Doe">
-                        </div>
-                        <div>
-                            <label for="email" class="block mb-2">Your Email</label>
-                            <input type="email" id="email"
-                                class="w-full px-4 py-3 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-deepBlue transition-all"
-                                placeholder="john@example.com">
-                        </div>
+        <div class="max-w-2xl mx-auto">
+            @if (session('success'))
+                <div class="bg-green-600 text-white p-4 rounded-lg mb-6 text-center">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            <form action="{{ route('contact.store') }}" method="POST" class="space-y-6">
+                @csrf
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="name" class="block mb-2">Your Name</label>
+                        <input type="text" id="name" name="name"
+                            class="w-full px-4 py-3 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-deepBlue transition-all"
+                            placeholder="John Doe" value="{{ old('name') }}">
+                        @error('name')
+                            <p class="text-red-400 text-sm mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div>
-                        <label for="message" class="block mb-2">Your Message</label>
-                        <textarea id="message" rows="5"
+                        <label for="email" class="block mb-2">Your Email</label>
+                        <input type="email" id="email" name="email"
                             class="w-full px-4 py-3 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-deepBlue transition-all"
-                            placeholder="Hello, I would like to..."></textarea>
+                            placeholder="john@example.com" value="{{ old('email') }}">
+                        @error('email')
+                            <p class="text-red-400 text-sm mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
-                    <button type="submit"
-                        class="w-full py-3 bg-gradient-to-r from-deepBlue to-richRed text-white font-semibold rounded-lg transform hover:scale-105 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-richRed">Send
-                        Message</button>
-                </form>
-            </div>
+                </div>
+                <div>
+                    <label for="message" class="block mb-2">Your Message</label>
+                    <textarea id="message" name="message" rows="5"
+                        class="w-full px-4 py-3 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-deepBlue transition-all"
+                        placeholder="Hello, I would like to...">{{ old('message') }}</textarea>
+                    @error('message')
+                        <p class="text-red-400 text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+                <button type="submit"
+                    class="w-full py-3 bg-gradient-to-r from-deepBlue to-richRed text-white font-semibold rounded-lg transform hover:scale-105 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-richRed">Send
+                    Message</button>
+            </form>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer class="py-10 bg-darkBg text-white border-t border-gray-800">
