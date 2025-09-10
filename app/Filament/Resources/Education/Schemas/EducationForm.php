@@ -27,11 +27,10 @@ class EducationForm
                     ->image()
                     ->directory('education-images')
                     ->disk('public')
-                    ->maxSize(2048)
+                    ->maxSize(4048)
                     ->imageEditor()
-                    ->imageCropAspectRatio('1:1')
                     ->nullable()
-                    ->hint('Upload a degree certificate or institution logo (max 2MB).'),
+                    ->hint('Upload a degree certificate or institution logo (max 4MB).'),
                 TextInput::make('start_year')
                     ->label('Start Year')
                     ->numeric()

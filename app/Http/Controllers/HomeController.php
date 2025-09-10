@@ -20,7 +20,7 @@ class HomeController extends Controller
           'projects' => Project::where('status', 'completed')->take(6)->get(), // Fetch completed projects, limit to 6
             'education' => Education::take(5)->get(),     // Limit to 5 for compactness
             'services' => Service::where('is_active', true)->get(), // Fetch only active services
-            // 'skills' => Skill::pluck('name')              // Pluck skill names
+            'skills' => Skill::orderBy('proficiency', 'desc')->get(), // Order skills by proficiency
         ];
 
         return view('index', compact('data'));

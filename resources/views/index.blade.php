@@ -161,6 +161,15 @@
         html {
             scroll-behavior: smooth;
         }
+         .education-image {
+        width: 58px;
+        height: 48px;
+        max-width: 48px;
+        max-height: 48px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-right: 1rem;
+         }
     </style>
 </head>
 
@@ -345,123 +354,58 @@
     <div class="deepseek-railway"></div>
 
     <!-- Education Section -->
-    <section id="education" class="py-20 bg-lightBg section-hidden">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Education & Experience</h2>
+  <section id="education" class="py-20 bg-lightBg section-hidden">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Education & Experience</h2>
 
-            <div class="max-w-3xl mx-auto relative">
-                <!-- Timeline item 1 -->
+        <div class="max-w-3xl mx-auto relative">
+            @foreach($data['education'] as $education)
                 <div class="timeline-item pl-8 relative mb-12">
                     <div class="timeline-dot"></div>
-                    <div class="bg-white p-6 rounded-xl shadow-md">
-                        <div class="text-sm text-deepBlue font-semibold mb-2">2018 - 2020</div>
-                        <h3 class="text-xl font-bold mb-2">Master's in Computer Science</h3>
-                        <p class="text-gray-600 font-semibold mb-4">Stanford University</p>
-                        <p class="text-gray-600">Specialized in Human-Computer Interaction and Web Technologies.
-                            Completed thesis on optimizing web performance metrics.</p>
+                    <div class="bg-white p-6 rounded-xl shadow-md flex items-start">
+                        @if($education->image_url)
+                            <img src="{{ Storage::url($education->image_url) }}" alt="{{ $education->degree }} image" class="education-image">
+                        @endif
+                        <div class="flex-1">
+                            <div class="text-sm bg-gradient-to-r from-deepBlue to-richRed bg-clip-text text-transparent font-semibold mb-2">
+                                {{ $education->start_year }} - {{ $education->end_year ?? ($education->status === 'in_progress' ? 'Present' : '') }}
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">{{ $education->degree }}</h3>
+                            <p class="text-gray-600 font-semibold mb-4">{{ $education->institution }}</p>
+                            @if($education->description)
+                                <p class="text-gray-600">{{ $education->description }}</p>
+                            @endif
+                        </div>
                     </div>
                 </div>
-
-                <!-- Timeline item 2 -->
-                <div class="timeline-item pl-8 relative mb-12">
-                    <div class="timeline-dot"></div>
-                    <div class="bg-white p-6 rounded-xl shadow-md">
-                        <div class="text-sm text-richRed font-semibold mb-2">2020 - 2021</div>
-                        <h3 class="text-xl font-bold mb-2">Frontend Developer</h3>
-                        <p class="text-gray-600 font-semibold mb-4">TechInnovate Inc.</p>
-                        <p class="text-gray-600">Developed responsive web applications using React and implemented
-                            design systems for consistency across products.</p>
-                    </div>
-                </div>
-
-                <!-- Timeline item 3 -->
-                <div class="timeline-item pl-8 relative">
-                    <div class="timeline-dot"></div>
-                    <div class="bg-white p-6 rounded-xl shadow-md">
-                        <div
-                            class="text-sm bg-gradient-to-r from-deepBlue to-richRed bg-clip-text text-transparent font-semibold mb-2">
-                            2021 - Present</div>
-                        <h3 class="text-xl font-bold mb-2">Full-Stack Developer</h3>
-                        <p class="text-gray-600 font-semibold mb-4">Digital Solutions LLC</p>
-                        <p class="text-gray-600">Leading development of full-stack applications using modern
-                            technologies including React, Node.js, and cloud infrastructure.</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- DeepSeek Railway Separator -->
     <div class="deepseek-railway"></div>
 
     <!-- Skills Section -->
     <section id="skills" class="py-20 bg-white section-hidden">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">My Skills</h2>
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">My Skills</h2>
 
-            <div class="max-w-3xl mx-auto">
-                <!-- Skill 1 -->
+        <div class="max-w-3xl mx-auto">
+            @foreach($data['skills'] as $skill)
                 <div class="mb-8">
                     <div class="flex justify-between mb-2">
-                        <span class="font-semibold">JavaScript/TypeScript</span>
-                        <span class="text-deepBlue font-semibold">95%</span>
+                        <span class="font-semibold">{{ $skill->skill_name }}</span>
+                        <span class="text-deepBlue font-semibold">{{ $skill->proficiency }}%</span>
                     </div>
                     <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
-                        <div class="skill-bar h-full bg-gradient-to-r from-deepBlue to-richRed" style="--width: 95%">
-                        </div>
+                        <div class="skill-bar h-full bg-gradient-to-r from-deepBlue to-richRed" style="--width: {{ $skill->proficiency }}%" data-width="{{ $skill->proficiency }}%"></div>
                     </div>
                 </div>
-
-                <!-- Skill 2 -->
-                <div class="mb-8">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold">React & Next.js</span>
-                        <span class="text-deepBlue font-semibold">90%</span>
-                    </div>
-                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
-                        <div class="skill-bar h-full bg-gradient-to-r from-deepBlue to-richRed" style="--width: 90%">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Skill 3 -->
-                <div class="mb-8">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold">Node.js & Express</span>
-                        <span class="text-deepBlue font-semibold">88%</span>
-                    </div>
-                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
-                        <div class="skill-bar h-full bg-gradient-to-r from-deepBlue to-richRed" style="--width: 88%">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Skill 4 -->
-                <div class="mb-8">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold">UI/UX Design</span>
-                        <span class="text-richRed font-semibold">85%</span>
-                    </div>
-                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
-                        <div class="skill-bar h-full bg-gradient-to-r from-deepBlue to-richRed" style="--width: 85%">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Skill 5 -->
-                <div class="mb-8">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold">Cloud Services (AWS)</span>
-                        <span class="text-deepBlue font-semibold">82%</span>
-                    </div>
-                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
-                        <div class="skill-bar h-full bg-gradient-to-r from-deepBlue to-richRed" style="--width: 82%">
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- DeepSeek Railway Separator -->
     <div class="deepseek-railway"></div>
