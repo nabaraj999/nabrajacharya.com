@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Personal extends Model
 {
-     use HasFactory;
+    use HasFactory;
 
-    protected $table = 'personal_info';
+    protected $table = 'personals';
 
     protected $fillable = [
         'brand_name',

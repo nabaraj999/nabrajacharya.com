@@ -18,9 +18,9 @@ class PersonalResource extends Resource
 {
     protected static ?string $model = Personal::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::UserCircle;
 
-    protected static ?string $recordTitleAttribute = 'personal';
+    protected static ?string $recordTitleAttribute = 'Personal';
 
     public static function form(Schema $schema): Schema
     {
