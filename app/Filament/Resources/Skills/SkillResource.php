@@ -17,7 +17,10 @@ use Filament\Tables\Table;
 class SkillResource extends Resource
 {
     protected static ?string $model = Skill::class;
-
+  public static function getNavigationBadge(): ?string
+{
+    return static::getModel()::count();
+}
     protected static string|BackedEnum|null $navigationIcon = Heroicon::AdjustmentsHorizontal;
 
     protected static ?string $recordTitleAttribute = 'Skill';

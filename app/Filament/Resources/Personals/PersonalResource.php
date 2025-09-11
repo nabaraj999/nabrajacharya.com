@@ -20,7 +20,7 @@ class PersonalResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::UserCircle;
 
-    protected static ?string $recordTitleAttribute = 'Personal';
+    protected static ?string $recordTitleAttribute = 'Personal Details';
 
     public static function form(Schema $schema): Schema
     {
@@ -31,7 +31,10 @@ class PersonalResource extends Resource
     {
         return PersonalsTable::configure($table);
     }
-
+  public static function getNavigationBadge(): ?string
+{
+    return static::getModel()::count();
+}
     public static function getRelations(): array
     {
         return [

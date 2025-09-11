@@ -19,7 +19,10 @@ class SeoResource extends Resource
     protected static ?string $model = Seo::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::GlobeAlt;
-
+  public static function getNavigationBadge(): ?string
+{
+    return static::getModel()::count();
+}
     protected static ?string $recordTitleAttribute = 'Seo';
 
     public static function form(Schema $schema): Schema

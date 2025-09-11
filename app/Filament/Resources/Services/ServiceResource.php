@@ -20,7 +20,10 @@ class ServiceResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::DocumentCurrencyDollar;
 
-
+  public static function getNavigationBadge(): ?string
+{
+    return static::getModel()::count();
+}
 
     protected static ?string $recordTitleAttribute = 'Service';
 

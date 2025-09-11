@@ -21,6 +21,10 @@ class ContactResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Phone;
 
     protected static ?string $recordTitleAttribute = 'Contact';
+      public static function getNavigationBadge(): ?string
+{
+    return static::getModel()::count();
+}
 
     public static function form(Schema $schema): Schema
     {
