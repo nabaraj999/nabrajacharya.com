@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="{{ $data['personal']->profile_photo }}">
+   <link rel="icon" type="image/png" href="{{ asset('storage/icon/favicon.png') }}">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
@@ -14,12 +14,11 @@
     <meta name="description" content="{{ $data['seos']->meta_description }}">
     <meta name="keywords" content="{{ $data['seos']->meta_keywords }}">
     <meta name="author" content="{{ $data['personal']->brand_name ?? 'Developer Portfolio' }}">
-      <meta name="robots" content="{{ $data['seos']->robots_directives ?? 'index, follow' }}">
+    <meta name="robots" content="{{ $data['seos']->robots_directives ?? 'index, follow' }}">
     <meta name="language" content="English">
     <meta name="revisit-after" content="7 days">
 
-
-     <!-- Canonical URL -->
+    <!-- Canonical URL -->
     <link rel="canonical" href="{{ $data['seos']->canonical_url ?? 'https://nabrajacharya.com.np' }}" />
 
     <!-- Open Graph / Facebook -->
@@ -28,18 +27,16 @@
     <meta property="og:title" content="{{ $data['seos']->og_title ?? 'Nabaraj Acharya Portfolio' }}">
     <meta property="og:description" content="{{ $data['seos']->og_description ?? 'Professional web developer in Nepal with expertise in creating stunning, functional websites and engaging content for local businesses.' }}">
     <meta property="og:image" content="{{ $data['seos']->og_image ?? 'https://nabrajacharya.com.np/3.png' }}">
-    <meta property="og:image:width" content="{{ $data['seos']->og_image_width ?? 1200 }}">
-    <meta property="og:image:height" content="{{ $data['seos']->og_image_height ?? 630 }}">
+    <meta property="og:image:width" content="{{ $data['seos']->og_image ?? 1200 }}">
+    <meta property="og:image:height" content="{{ $data['seos']->og_image ?? 630 }}">
     <meta property="og:site_name" content="{{ $data['seos']->og_site_name ?? 'Nabaraj Acharya Portfolio' }}">
     <meta property="og:locale" content="en_US">
-
 
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://nabrajacharya.com.np">
     <meta property="twitter:title" content="{{ $data['seos']->twitter_title ?? 'Nabaraj Acharya | Web Developer & Content Writer in Nepal' }}">
     <meta property="twitter:description" content="{{ $data['seos']->twitter_description ?? 'Professional web developer and content writer in Nepal with expertise in creating stunning, functional websites and engaging content for local businesses.' }}">
     <meta property="twitter:image" content="{{ $data['seos']->twitter_image }}">
-
 
     <meta name="geo.region" content="NP-BA" />
     <meta name="geo.placename" content="Kathmandu" />
@@ -60,7 +57,6 @@
             "@type": "Organization",
             "name": "TechNabu"
         }
-
     }' }}</script>
     <script>
         tailwind.config = {
@@ -79,33 +75,24 @@
                         'fade-in': 'fadeIn 0.5s ease-in-out',
                         'slide-up': 'slideUp 0.7s ease-out',
                         'fill-bar': 'fillBar 1.5s ease-in-out forwards',
+                        'menu-slide': 'menuSlide 0.3s ease-in-out',
                     },
                     keyframes: {
                         fadeIn: {
-                            '0%': {
-                                opacity: '0'
-                            },
-                            '100%': {
-                                opacity: '1'
-                            },
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
                         },
                         slideUp: {
-                            '0%': {
-                                transform: 'translateY(50px)',
-                                opacity: '0'
-                            },
-                            '100%': {
-                                transform: 'translateY(0)',
-                                opacity: '1'
-                            },
+                            '0%': { transform: 'translateY(50px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
                         },
                         fillBar: {
-                            '0%': {
-                                width: '0%'
-                            },
-                            '100%': {
-                                width: 'var(--width, 90%)'
-                            },
+                            '0%': { width: '0%' },
+                            '100%': { width: 'var(--width, 90%)' },
+                        },
+                        menuSlide: {
+                            '0%': { transform: 'translateY(-100%)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
                         },
                     },
                 }
@@ -177,7 +164,7 @@
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px0);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
@@ -226,12 +213,28 @@
             border-radius: 8px;
             margin-right: 1rem;
         }
+
+        /* Mobile menu styles */
+        .mobile-menu {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .mobile-menu-hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .mobile-menu-visible {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 
 <body class="font-primary bg-lightBg text-darkBg">
     <!-- Header with sticky navigation -->
-
     <header class="fixed w-full bg-darkBg text-white z-50 shadow-md">
         <nav class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
@@ -248,14 +251,26 @@
                     <a href="#skills" class="hover:text-deepBlue transition-colors duration-300">Skills</a>
                     <a href="#contact" class="hover:text-deepBlue transition-colors duration-300">Contact</a>
                 </div>
-
-                <button class="md:hidden text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
+                <button id="mobile-menu-toggle" class="md:hidden text-white focus:outline-none">
+                    <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu mobile-menu-hidden md:hidden absolute top-full left-0 right-0 bg-darkBg shadow-lg">
+                <div class="flex flex-col items-center space-y-4 py-6">
+                    <a href="#home" class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Home</a>
+                    <a href="#about" class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">About</a>
+                    <a href="#services" class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Services</a>
+                    <a href="#projects" class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Projects</a>
+                    <a href="#education" class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Education</a>
+                    <a href="#skills" class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Skills</a>
+                    <a href="#contact" class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Contact</a>
+                </div>
             </div>
         </nav>
     </header>
@@ -291,7 +306,6 @@
                     </div>
                 @endif
             </div>
-        </div>
         </div>
     </section>
 
@@ -627,19 +641,28 @@
             sectionObserver.observe(section);
         });
 
-        // Mobile menu toggle (minimal implementation)
-        document.querySelector('button.md\\:hidden').addEventListener('click', function() {
-            const nav = document.querySelector('.hidden.md\\:flex');
-            nav.classList.toggle('hidden');
-            nav.classList.toggle('flex');
-            nav.classList.toggle('flex-col');
-            nav.classList.toggle('absolute');
-            nav.classList.toggle('top-full');
-            nav.classList.toggle('left-0');
-            nav.classList.toggle('right-0');
-            nav.classList.toggle('bg-darkBg');
-            nav.classList.toggle('p-6');
-            nav.classList.toggle('space-y-4');
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('mobile-menu-hidden');
+            mobileMenu.classList.toggle('mobile-menu-visible');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+
+            // Close menu when a link is clicked
+            const menuLinks = mobileMenu.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('mobile-menu-hidden');
+                    mobileMenu.classList.remove('mobile-menu-visible');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                });
+            });
         });
     </script>
 </body>
