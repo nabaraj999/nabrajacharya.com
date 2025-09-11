@@ -9,6 +9,7 @@ use App\Filament\Resources\Seos\Schemas\SeoForm;
 use App\Filament\Resources\Seos\Tables\SeosTable;
 use App\Models\Seo;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -19,11 +20,12 @@ class SeoResource extends Resource
     protected static ?string $model = Seo::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::GlobeAlt;
-  public static function getNavigationBadge(): ?string
-{
-    return static::getModel()::count();
-}
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
     protected static ?string $recordTitleAttribute = 'Seo';
+    protected static string | UnitEnum | null $navigationGroup = 'Settings';
 
     public static function form(Schema $schema): Schema
     {

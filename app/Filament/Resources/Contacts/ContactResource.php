@@ -9,6 +9,7 @@ use App\Filament\Resources\Contacts\Schemas\ContactForm;
 use App\Filament\Resources\Contacts\Tables\ContactsTable;
 use App\Models\Contact;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -21,6 +22,7 @@ class ContactResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Phone;
 
     protected static ?string $recordTitleAttribute = 'Contact';
+    protected static string | UnitEnum | null $navigationGroup = 'Personal Info';
       public static function getNavigationBadge(): ?string
 {
     return static::getModel()::count();

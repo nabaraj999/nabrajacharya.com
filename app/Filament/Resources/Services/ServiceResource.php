@@ -9,6 +9,7 @@ use App\Filament\Resources\Services\Schemas\ServiceForm;
 use App\Filament\Resources\Services\Tables\ServicesTable;
 use App\Models\Service;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -24,7 +25,7 @@ class ServiceResource extends Resource
 {
     return static::getModel()::count();
 }
-
+  protected static string | UnitEnum | null $navigationGroup = 'Personal Info';
     protected static ?string $recordTitleAttribute = 'Service';
 
     public static function form(Schema $schema): Schema

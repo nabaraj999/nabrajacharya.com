@@ -9,6 +9,7 @@ use App\Filament\Resources\Education\Schemas\EducationForm;
 use App\Filament\Resources\Education\Tables\EducationTable;
 use App\Models\Education;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -25,7 +26,7 @@ class EducationResource extends Resource
 {
     return static::getModel()::count();
 }
-
+  protected static string | UnitEnum | null $navigationGroup = 'Personal Info';
     public static function form(Schema $schema): Schema
     {
         return EducationForm::configure($schema);

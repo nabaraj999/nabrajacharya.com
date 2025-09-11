@@ -9,6 +9,7 @@ use App\Filament\Resources\Skills\Schemas\SkillForm;
 use App\Filament\Resources\Skills\Tables\SkillsTable;
 use App\Models\Skill;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -22,7 +23,7 @@ class SkillResource extends Resource
     return static::getModel()::count();
 }
     protected static string|BackedEnum|null $navigationIcon = Heroicon::AdjustmentsHorizontal;
-
+  protected static string | UnitEnum | null $navigationGroup = 'Personal Info';
     protected static ?string $recordTitleAttribute = 'Skill';
 
     public static function form(Schema $schema): Schema

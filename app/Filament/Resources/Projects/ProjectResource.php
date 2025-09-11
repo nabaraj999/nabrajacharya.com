@@ -9,6 +9,7 @@ use App\Filament\Resources\Projects\Schemas\ProjectForm;
 use App\Filament\Resources\Projects\Tables\ProjectsTable;
 use App\Models\Project;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -22,7 +23,7 @@ class ProjectResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::ClipboardDocumentList;
 
-
+  protected static string | UnitEnum | null $navigationGroup = 'Personal Info';
     protected static ?string $recordTitleAttribute = 'Project';
 
     public static function form(Schema $schema): Schema
