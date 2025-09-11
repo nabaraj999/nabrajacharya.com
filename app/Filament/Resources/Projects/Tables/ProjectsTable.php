@@ -3,10 +3,12 @@
 namespace App\Filament\Resources\Projects\Tables;
 
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreBulkAction;
+use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
@@ -23,7 +25,7 @@ class ProjectsTable
 
                 TextColumn::make('project_url')
                     ->searchable(),
-            
+
                 TextColumn::make('completion_date')
                     ->date()
                     ->sortable(),
@@ -46,7 +48,9 @@ class ProjectsTable
                 TrashedFilter::make(),
             ])
             ->recordActions([
+                  ViewAction::make(),
                 EditAction::make(),
+                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

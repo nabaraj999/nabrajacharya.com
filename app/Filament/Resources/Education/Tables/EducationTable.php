@@ -3,8 +3,10 @@
 namespace App\Filament\Resources\Education\Tables;
 
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -19,7 +21,7 @@ class EducationTable
                     ->searchable(),
                 TextColumn::make('institution')
                     ->searchable(),
-            
+
                 TextColumn::make('start_year'),
                 TextColumn::make('end_year'),
                 TextColumn::make('status')
@@ -41,7 +43,9 @@ class EducationTable
                 //
             ])
             ->recordActions([
+                ViewAction::make(),
                 EditAction::make(),
+                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
