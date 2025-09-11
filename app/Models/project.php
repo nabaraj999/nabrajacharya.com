@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Project extends Model
 {
-    use SoftDeletes;
+    protected $table = 'projects';
+     use SoftDeletes, HasFactory;
 
     protected $fillable = [
-        'personal_id',
         'title',
         'description',
         'image_url',
@@ -26,5 +27,5 @@ class Project extends Model
         'status' => 'string',
     ];
 
-    
+
 }
