@@ -18,7 +18,7 @@ class SeoResource extends Resource
 {
     protected static ?string $model = Seo::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::GlobeAlt;
 
     protected static ?string $recordTitleAttribute = 'Seo';
 
