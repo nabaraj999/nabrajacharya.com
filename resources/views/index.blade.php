@@ -10,54 +10,56 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;900&display=swap" rel="stylesheet">
 
-    <title>{{ $data['seos']->meta_title }}</title>
-    <meta name="description" content="{{ $data['seos']->meta_description }}">
-    <meta name="keywords" content="{{ $data['seos']->meta_keywords }}">
-    <meta name="author" content="{{ $data['personal']->brand_name ?? 'Developer Portfolio' }}">
-    <meta name="robots" content="{{ $data['seos']->robots_directives ?? 'index, follow' }}">
+    <title>{{ $seo->meta_title ?? 'Nabaraj Acharya - Full-Stack Developer' }}</title>
+    <meta name="description" content="{{ $seo->meta_description ?? 'Professional web developer in Nepal with expertise in creating stunning, functional websites and engaging content for local businesses.' }}">
+    <meta name="keywords" content="{{ $seo->meta_keywords ?? 'web developer, full-stack, Laravel, Nepal, portfolio' }}">
+    <meta name="author" content="{{ $personal->brand_name ?? 'Nabaraj Acharya' }}">
+    <meta name="robots" content="{{ $seo->robots_directives ?? 'index, follow' }}">
     <meta name="language" content="English">
     <meta name="revisit-after" content="7 days">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="{{ $data['seos']->canonical_url ?? 'https://nabrajacharya.com.np' }}" />
+    <link rel="canonical" href="{{ $seo->canonical_url ?? 'https://nabrajacharya.com.np' }}" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nabrajacharya.com.np">
-    <meta property="og:title" content="{{ $data['seos']->og_title ?? 'Nabaraj Acharya Portfolio' }}">
-    <meta property="og:description" content="{{ $data['seos']->og_description ?? 'Professional web developer in Nepal with expertise in creating stunning, functional websites and engaging content for local businesses.' }}">
-    <meta property="og:image" content="{{ $data['seos']->og_image ?? 'https://nabrajacharya.com.np/3.png' }}">
-    <meta property="og:image:width" content="{{ $data['seos']->og_image ?? 1200 }}">
-    <meta property="og:image:height" content="{{ $data['seos']->og_image ?? 630 }}">
-    <meta property="og:site_name" content="{{ $data['seos']->og_site_name ?? 'Nabaraj Acharya Portfolio' }}">
+    <meta property="og:title" content="{{ $seo->og_title ?? 'Nabaraj Acharya Portfolio' }}">
+    <meta property="og:description" content="{{ $seo->og_description ?? 'Professional web developer in Nepal with expertise in creating stunning, functional websites and engaging content for local businesses.' }}">
+    <meta property="og:image" content="{{ Storage::url($personal->logo_url) }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="{{ $seo->og_site_name ?? 'Nabaraj Acharya Portfolio' }}">
     <meta property="og:locale" content="en_US">
 
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://nabrajacharya.com.np">
-    <meta property="twitter:title" content="{{ $data['seos']->twitter_title ?? 'Nabaraj Acharya | Web Developer & Content Writer in Nepal' }}">
-    <meta property="twitter:description" content="{{ $data['seos']->twitter_description ?? 'Professional web developer and content writer in Nepal with expertise in creating stunning, functional websites and engaging content for local businesses.' }}">
-    <meta property="twitter:image" content="{{ $data['seos']->twitter_image }}">
+    <meta property="twitter:title" content="{{ $seo->twitter_title ?? 'Nabaraj Acharya | Web Developer & Content Writer in Nepal' }}">
+    <meta property="twitter:description" content="{{ $seo->twitter_description ?? 'Professional web developer and content writer in Nepal with expertise in creating stunning, functional websites and engaging content for local businesses.' }}">
+    <meta property="twitter:image" content="{{ $seo->twitter_image ?? 'https://nabrajacharya.com.np/3.png' }}">
 
     <meta name="geo.region" content="NP-BA" />
     <meta name="geo.placename" content="Kathmandu" />
     <meta name="geo.position" content="27.7172;85.3240" />
     <meta name="ICBM" content="27.7172, 85.3240" />
-    <script type="application/ld+json">{{ $data['seos']->structured_data_json ?? '{
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Nabaraj Acharya",
-        "url": "https://nabrajacharya.com.np",
-        "sameAs": [
-            "https://www.facebook.com/nabaraj.acharya.7",
-            "https://www.linkedin.com/in/nabarajacharya/",
-            "https://twitter.com/nabarajacharya"
-        ],
-        "jobTitle": "Full-Stack Developer",
-        "worksFor": {
-            "@type": "Organization",
-            "name": "TechNabu"
-        }
-    }' }}</script>
+    <script type="application/ld+json">
+        {!! $seo->structured_data_json ?? '{
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Nabaraj Acharya",
+            "url": "https://nabrajacharya.com.np",
+            "sameAs": [
+                "https://www.facebook.com/nabaraj.acharya.7",
+                "https://www.linkedin.com/in/nabarajacharya/",
+                "https://twitter.com/nabarajacharya"
+            ],
+            "jobTitle": "Full-Stack Developer",
+            "worksFor": {
+                "@type": "Organization",
+                "name": "TechNabu"
+            }
+        }' !!}
+    </script>
     <script>
         tailwind.config = {
             theme: {
@@ -280,10 +282,10 @@
         <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
             <div class="md:w-1/2 mb-10 md:mb-0 animate-slide-up">
                 <h1 class="text-4xl md:text-5xl font-bold mb-4">Hi, I'm <span
-                        class="bg-gradient-to-r from-deepBlue to-richRed bg-clip-text text-transparent">{{ $data['personal']->brand_name }}</span>
+                        class="bg-gradient-to-r from-deepBlue to-richRed bg-clip-text text-transparent">{{ $personal->brand_name ?? 'Nabaraj Acharya' }}</span>
                 </h1>
                 <h2 class="text-2xl md:text-3xl mb-6">Full-Stack Developer</h2>
-                <p class="text-lg mb-8 text-gray-300">{{ $data['personal']->description }}</p>
+                <p class="text-lg mb-8 text-gray-300">{{ $personal->description ?? 'I create stunning, functional websites to help businesses thrive in the digital landscape.' }}</p>
                 <div class="flex space-x-4">
                     <a href="#projects"
                         class="px-6 py-3 bg-gradient-to-r from-deepBlue to-richRed text-white rounded-lg font-semibold transform hover:scale-105 transition-transform duration-300">View
@@ -294,9 +296,9 @@
                 </div>
             </div>
             <div class="md:w-1/2 flex justify-center animate-fade-in">
-                @if ($data['personal'] && $data['personal']->profile_photo)
+                @if ($personal && $personal->profile_photo)
                     <div class="relative w-64 h-64 rounded-full overflow-hidden border-4 border-deepBlue shadow-lg">
-                        <img src="{{ Storage::url($data['personal']->profile_photo) }}" alt="Profile Photo"
+                        <img src="{{ Storage::url($personal->profile_photo) }}" alt="Profile Photo"
                             class="w-full h-full object-cover">
                     </div>
                 @else
@@ -320,8 +322,8 @@
             <div class="flex flex-col md:flex-row items-center gap-10">
                 <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
                     <div class="relative w-56 h-56 md:w-72 md:h-72 rounded-2xl overflow-hidden shadow-xl">
-                        @if ($data['personal'] && $data['personal']->logo_url)
-                            <img src="{{ Storage::url($data['personal']->logo_url) }}" alt="About Me Photo"
+                        @if ($personal && $personal->logo_url)
+                            <img src="{{ Storage::url($personal->logo_url) }}" alt="About Me Photo"
                                 class="w-full h-full object-cover">
                         @else
                             <div class="w-full h-full flex items-center justify-center bg-gray-300 text-white text-lg">
@@ -332,26 +334,26 @@
                 </div>
 
                 <div class="md:w-2/3 md:pl-10">
-                    <p class="text-lg mb-12 leading-relaxed pb-4">{!! $data['personal']->about_description ?? 'No description available.' !!}</p>
+                    <p class="text-lg mb-12 leading-relaxed pb-4">{!! $personal->about_description ?? 'No description available.' !!}</p>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
                         <div
                             class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow duration-300">
                             <div class="text-3xl font-bold text-deepBlue mb-2">
-                                {{ $data['personal']->years_experience ?? 0 }}+</div>
+                                {{ $personal->years_experience ?? 0 }}+</div>
                             <div class="text-gray-600">Years Experience</div>
                         </div>
                         <div
                             class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow duration-300">
                             <div class="text-3xl font-bold text-richRed mb-2">
-                                {{ $data['personal']->completed_projects ?? 0 }}+</div>
+                                {{ $personal->completed_projects ?? 0 }}+</div>
                             <div class="text-gray-600">Projects Completed</div>
                         </div>
                         <div
                             class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow duration-300">
                             <div
                                 class="text-3xl font-bold bg-gradient-to-r from-deepBlue to-richRed bg-clip-text text-transparent mb-2">
-                                {{ $data['personal']->happy_clients ?? 0 }}+</div>
+                                {{ $personal->happy_clients ?? 0 }}+</div>
                             <div class="text-gray-600">Happy Clients</div>
                         </div>
                     </div>
@@ -370,29 +372,33 @@
             <p class="text-center text-gray-600 mb-16 max-w-2xl mx-auto">I offer a range of services to help bring your
                 digital ideas to life with quality and precision.</p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @foreach ($data['services'] as $service)
-                    <div class="service-card bg-lightBg p-8 rounded-xl relative group">
-                        <div class="w-full h-48 rounded-lg overflow-hidden mb-6">
-                            <div class="w-full h-full bg-blue-100 flex items-center justify-center"
-                                style="background-image: url('{{ $service->photo ? asset('storage/' . $service->photo) : '' }}'); background-size: cover; background-position: center;">
-                                @if (!$service->photo)
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-deepBlue"
-                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                                    </svg>
-                                @endif
+            @if ($services->isEmpty())
+                <p class="text-center text-gray-600">No services available at the moment.</p>
+            @else
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    @foreach ($services as $service)
+                        <div class="service-card bg-lightBg p-8 rounded-xl relative group">
+                            <div class="w-full h-48 rounded-lg overflow-hidden mb-6">
+                                <div class="w-full h-full bg-blue-100 flex items-center justify-center"
+                                    style="background-image: url('{{ $service->photo ? asset('storage/' . $service->photo) : '' }}'); background-size: cover; background-position: center;">
+                                    @if (!$service->photo)
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-deepBlue"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                        </svg>
+                                    @endif
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4">{{ $service->service_name }}</h3>
+                            <div
+                                class="absolute inset-0 bg-blue-900 bg-opacity-0 group-hover:bg-opacity-90 text-white p-6 rounded-xl flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <p class="text-center">{!! $service->description !!}</p>
                             </div>
                         </div>
-                        <h3 class="text-xl font-semibold mb-4">{{ $service->service_name }}</h3>
-                        <div
-                            class="absolute inset-0 bg-blue-900 bg-opacity-0 group-hover:bg-opacity-90 text-white p-6 rounded-xl flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <p class="text-center">{!! $service->description !!}</p>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </section>
 
@@ -403,35 +409,36 @@
     <section id="projects" class="py-20 bg-darkBg text-white section-hidden">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">My Projects</h2>
-            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">Here are some of the projects I've worked on
-                that demonstrate my skills and expertise.</p>
+            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">Here are some of the projects I've worked on that demonstrate my skills and expertise.</p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @foreach ($data['projects'] as $project)
-                    <div class="project-card rounded-xl overflow-hidden shadow-lg relative group">
-                        <div class="h-56 bg-gradient-to-br from-deepBlue to-richRed flex items-center justify-center"
-                            style="background-image: url('{{ $project->image_url ? asset('storage/' . $project->image_url) : '' }}'); background-size: cover; background-position: center;">
-                            @if (!$project->image_url)
-                                <span class="text-white text-lg">Project Image</span>
-                            @endif
-                        </div>
-                        <div
-                            class="project-overlay absolute inset-0 bg-gradient-to-t from-darkBg to-transparent p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between">
-                            <div class="flex justify-end">
-                                @if ($project->project_url)
-                                    <a href="{{ $project->project_url }}" target="_blank"
-                                        class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-200">View
-                                        Live</a>
+            @if ($projects->isEmpty())
+                <p class="text-center text-gray-400">No projects available at the moment.</p>
+            @else
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    @foreach ($projects as $project)
+                        <div class="project-card rounded-xl overflow-hidden shadow-lg relative group">
+                            <div class="h-56 bg-gradient-to-br from-deepBlue to-richRed flex items-center justify-center"
+                                 style="background-image: url('{{ $project->image_url ? asset('storage/' . $project->image_url) : '' }}'); background-size: cover; background-position: center;">
+                                @if (!$project->image_url)
+                                    <span class="text-white text-lg">No Image Available</span>
                                 @endif
                             </div>
-                            <div>
-                                <h3 class="text-xl font-bold mb-2">{{ $project->title }}</h3>
-                                <p class="text-gray-300 mb-4">{!! $project->description !!}</p>
+                            <div class="project-overlay absolute inset-0 bg-gradient-to-t from-darkBg to-transparent p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between">
+                                <div class="flex justify-end">
+                                    @if ($project->project_url)
+                                        <a href="{{ $project->project_url }}" target="_blank"
+                                           class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-200">View Live</a>
+                                    @endif
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-2">{{ $project->title }}</h3>
+                                    <p class="text-gray-300 mb-4">{!! $project->description !!}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
-            </div>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </section>
 
@@ -443,31 +450,35 @@
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Education & Experience</h2>
 
-            <div class="max-w-3xl mx-auto relative">
-                @foreach ($data['education'] as $education)
-                    <div class="timeline-item pl-8 relative mb-12">
-                        <div class="timeline-dot"></div>
-                        <div class="bg-white p-6 rounded-xl shadow-md flex items-start">
-                            @if ($education->image_url)
-                                <img src="{{ Storage::url($education->image_url) }}"
-                                    alt="{{ $education->degree }} image" class="education-image">
-                            @endif
-                            <div class="flex-1">
-                                <div
-                                    class="text-sm bg-gradient-to-r from-deepBlue to-richRed bg-clip-text text-transparent font-semibold mb-2">
-                                    {{ $education->start_year }} -
-                                    {{ $education->end_year ?? ($education->status === 'in_progress' ? 'Present' : '') }}
-                                </div>
-                                <h3 class="text-xl font-bold mb-2">{{ $education->degree }}</h3>
-                                <p class="text-gray-600 font-semibold mb-4">{{ $education->institution }}</p>
-                                @if ($education->description)
-                                    <p class="text-gray-600">{{ $education->description }}</p>
+            @if ($education->isEmpty())
+                <p class="text-center text-gray-600">No education records available.</p>
+            @else
+                <div class="max-w-3xl mx-auto relative">
+                    @foreach ($education as $edu)
+                        <div class="timeline-item pl-8 relative mb-12">
+                            <div class="timeline-dot"></div>
+                            <div class="bg-white p-6 rounded-xl shadow-md flex items-start">
+                                @if ($edu->image_url)
+                                    <img src="{{ Storage::url($edu->image_url) }}"
+                                        alt="{{ $edu->degree }} image" class="education-image">
                                 @endif
+                                <div class="flex-1">
+                                    <div
+                                        class="text-sm bg-gradient-to-r from-deepBlue to-richRed bg-clip-text text-transparent font-semibold mb-2">
+                                        {{ $edu->start_year }} -
+                                        {{ $edu->end_year ?? ($edu->status === 'in_progress' ? 'Present' : '') }}
+                                    </div>
+                                    <h3 class="text-xl font-bold mb-2">{{ $edu->degree }}</h3>
+                                    <p class="text-gray-600 font-semibold mb-4">{{ $edu->institution }}</p>
+                                    @if ($edu->description)
+                                        <p class="text-gray-600">{{ $edu->description }}</p>
+                                    @endif
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
-            </div>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </section>
 
@@ -479,21 +490,25 @@
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">My Skills</h2>
 
-            <div class="max-w-3xl mx-auto">
-                @foreach ($data['skills'] as $skill)
-                    <div class="mb-8">
-                        <div class="flex justify-between mb-2">
-                            <span class="font-semibold">{{ $skill->skill_name }}</span>
-                            <span class="text-deepBlue font-semibold">{{ $skill->proficiency }}%</span>
-                        </div>
-                        <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
-                            <div class="skill-bar h-full bg-gradient-to-r from-deepBlue to-richRed"
-                                style="--width: {{ $skill->proficiency }}%" data-width="{{ $skill->proficiency }}%">
+            @if ($skills->isEmpty())
+                <p class="text-center text-gray-600">No skills listed yet.</p>
+            @else
+                <div class="max-w-3xl mx-auto">
+                    @foreach ($skills as $skill)
+                        <div class="mb-8">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">{{ $skill->skill_name }}</span>
+                                <span class="text-deepBlue font-semibold">{{ $skill->proficiency }}%</span>
+                            </div>
+                            <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full bg-gradient-to-r from-deepBlue to-richRed"
+                                    style="--width: {{ $skill->proficiency }}%" data-width="{{ $skill->proficiency }}%">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
-            </div>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </section>
 
@@ -559,14 +574,14 @@
             <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                 <!-- User Info (Left Side) -->
                 <div class="text-left">
-                    @if ($data['personal'])
-                        <p class="mb-2"><strong>Email:</strong> {{ $data['personal']->email ?? 'Not provided' }}</p>
+                    @if ($personal)
+                        <p class="mb-2"><strong>Email:</strong> {{ $personal->email ?? 'Not provided' }}</p>
                         <p class="mb-2"><strong>Phone:</strong>
-                            {{ $data['personal']->phone_number ?? 'Not provided' }}</p>
+                            {{ $personal->phone_number ?? 'Not provided' }}</p>
                         <p class="mb-2"><strong>Location:</strong>
-                            {{ $data['personal']->location ?? 'Not provided' }}</p>
-                        @if ($data['personal']->description)
-                            <p class="mb-2">{{ $data['personal']->description }}</p>
+                            {{ $personal->location ?? 'Not provided' }}</p>
+                        @if ($personal->description)
+                            <p class="mb-2">{{ $personal->description }}</p>
                         @endif
                     @else
                         <p>No user information available.</p>
@@ -575,13 +590,13 @@
 
                 <!-- Copyright (Center) -->
                 <div class="text-center">
-                    <p>© {{ date('Y') }} Developer Portfolio. All rights reserved.</p>
+                    <p>© {{ date('Y') }} {{ $personal->brand_name ?? 'Developer Portfolio' }}. All rights reserved.</p>
                 </div>
 
                 <!-- Social Media Links (Right Side) -->
                 <div class="flex justify-center md:justify-end space-x-6 mt-4 md:mt-0">
-                    @if ($data['personal'] && $data['personal']->facebook_url)
-                        <a href="{{ $data['personal']->facebook_url }}" target="_blank"
+                    @if ($personal && $personal->facebook_url)
+                        <a href="{{ $personal->facebook_url }}" target="_blank"
                             class="text-gray-400 hover:text-deepBlue transition-colors duration-300">
                             <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path fill-rule="evenodd"
@@ -590,8 +605,8 @@
                             </svg>
                         </a>
                     @endif
-                    @if ($data['personal'] && $data['personal']->instagram_url)
-                        <a href="{{ $data['personal']->instagram_url }}" target="_blank"
+                    @if ($personal && $personal->instagram_url)
+                        <a href="{{ $personal->instagram_url }}" target="_blank"
                             class="text-gray-400 hover:text-richRed transition-colors duration-300">
                             <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path
@@ -599,8 +614,8 @@
                             </svg>
                         </a>
                     @endif
-                    @if ($data['personal'] && $data['personal']->github_url)
-                        <a href="{{ $data['personal']->github_url }}" target="_blank"
+                    @if ($personal && $personal->github_url)
+                        <a href="{{ $personal->github_url }}" target="_blank"
                             class="text-gray-400 hover:text-deepBlue transition-colors duration-300">
                             <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path fill-rule="evenodd"
