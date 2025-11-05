@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="icon" type="image/png" href="{{ asset('storage/icon/favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('storage/icon/favicon.png') }}">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;900&display=swap" rel="stylesheet">
 
     <title>{{ $seo->meta_title ?? 'Nabaraj Acharya - Full-Stack Developer' }}</title>
-    <meta name="description" content="{{ $seo->meta_description ?? 'Professional web developer in Nepal with expertise in creating stunning, functional websites and engaging content for local businesses.' }}">
+    <meta name="description"
+        content="{{ $seo->meta_description ?? 'Professional web developer in Nepal with expertise in creating stunning, functional websites and engaging content for local businesses.' }}">
     <meta name="keywords" content="{{ $seo->meta_keywords ?? 'web developer, full-stack, Laravel, Nepal, portfolio' }}">
     <meta name="author" content="{{ $personal->brand_name ?? 'Nabaraj Acharya' }}">
     <meta name="robots" content="{{ $seo->robots_directives ?? 'index, follow' }}">
@@ -25,7 +26,8 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nabrajacharya.com.np">
     <meta property="og:title" content="{{ $seo->og_title ?? 'Nabaraj Acharya Portfolio' }}">
-    <meta property="og:description" content="{{ $seo->og_description ?? 'Professional web developer in Nepal with expertise in creating stunning, functional websites and engaging content for local businesses.' }}">
+    <meta property="og:description"
+        content="{{ $seo->og_description ?? 'Professional web developer in Nepal with expertise in creating stunning, functional websites and engaging content for local businesses.' }}">
     <meta property="og:image" content="{{ Storage::url($personal->logo_url) }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -34,8 +36,10 @@
 
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://nabrajacharya.com.np">
-    <meta property="twitter:title" content="{{ $seo->twitter_title ?? 'Nabaraj Acharya | Web Developer & Content Writer in Nepal' }}">
-    <meta property="twitter:description" content="{{ $seo->twitter_description ?? 'Professional web developer and content writer in Nepal with expertise in creating stunning, functional websites and engaging content for local businesses.' }}">
+    <meta property="twitter:title"
+        content="{{ $seo->twitter_title ?? 'Nabaraj Acharya | Web Developer & Content Writer in Nepal' }}">
+    <meta property="twitter:description"
+        content="{{ $seo->twitter_description ?? 'Professional web developer and content writer in Nepal with expertise in creating stunning, functional websites and engaging content for local businesses.' }}">
     <meta property="twitter:image" content="{{ $seo->twitter_image ?? 'https://nabrajacharya.com.np/3.png' }}">
 
     <meta name="geo.region" content="NP-BA" />
@@ -81,20 +85,40 @@
                     },
                     keyframes: {
                         fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
+                            '0%': {
+                                opacity: '0'
+                            },
+                            '100%': {
+                                opacity: '1'
+                            },
                         },
                         slideUp: {
-                            '0%': { transform: 'translateY(50px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                            '0%': {
+                                transform: 'translateY(50px)',
+                                opacity: '0'
+                            },
+                            '100%': {
+                                transform: 'translateY(0)',
+                                opacity: '1'
+                            },
                         },
                         fillBar: {
-                            '0%': { width: '0%' },
-                            '100%': { width: 'var(--width, 90%)' },
+                            '0%': {
+                                width: '0%'
+                            },
+                            '100%': {
+                                width: 'var(--width, 90%)'
+                            },
                         },
                         menuSlide: {
-                            '0%': { transform: 'translateY(-100%)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                            '0%': {
+                                transform: 'translateY(-100%)',
+                                opacity: '0'
+                            },
+                            '100%': {
+                                transform: 'translateY(0)',
+                                opacity: '1'
+                            },
                         },
                     },
                 }
@@ -254,24 +278,36 @@
                     <a href="#contact" class="hover:text-deepBlue transition-colors duration-300">Contact</a>
                 </div>
                 <button id="mobile-menu-toggle" class="md:hidden text-white focus:outline-none">
-                    <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
-                    <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="mobile-menu mobile-menu-hidden md:hidden absolute top-full left-0 right-0 bg-darkBg shadow-lg">
+            <div id="mobile-menu"
+                class="mobile-menu mobile-menu-hidden md:hidden absolute top-full left-0 right-0 bg-darkBg shadow-lg">
                 <div class="flex flex-col items-center space-y-4 py-6">
-                    <a href="#home" class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Home</a>
-                    <a href="#about" class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">About</a>
-                    <a href="#services" class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Services</a>
-                    <a href="#projects" class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Projects</a>
-                    <a href="#education" class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Education</a>
-                    <a href="#skills" class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Skills</a>
-                    <a href="#contact" class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Contact</a>
+                    <a href="#home"
+                        class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Home</a>
+                    <a href="#about"
+                        class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">About</a>
+                    <a href="#services"
+                        class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Services</a>
+                    <a href="#projects"
+                        class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Projects</a>
+                    <a href="#education"
+                        class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Education</a>
+                    <a href="#skills"
+                        class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Skills</a>
+                    <a href="#contact"
+                        class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Contact</a>
                 </div>
             </div>
         </nav>
@@ -285,7 +321,9 @@
                         class="bg-gradient-to-r from-deepBlue to-richRed bg-clip-text text-transparent">{{ $personal->brand_name ?? 'Nabaraj Acharya' }}</span>
                 </h1>
                 <h2 class="text-2xl md:text-3xl mb-6">Full-Stack Developer</h2>
-                <p class="text-lg mb-8 text-gray-300">{{ $personal->description ?? 'I create stunning, functional websites to help businesses thrive in the digital landscape.' }}</p>
+                <p class="text-lg mb-8 text-gray-300">
+                    {{ $personal->description ?? 'I create stunning, functional websites to help businesses thrive in the digital landscape.' }}
+                </p>
                 <div class="flex space-x-4">
                     <a href="#projects"
                         class="px-6 py-3 bg-gradient-to-r from-deepBlue to-richRed text-white rounded-lg font-semibold transform hover:scale-105 transition-transform duration-300">View
@@ -297,7 +335,7 @@
             </div>
             <div class="md:w-1/2 flex justify-center animate-fade-in">
                 @if ($personal && $personal->profile_photo)
-                    <div class="relative w-64 h-64 rounded-full overflow-hidden border-4 border-deepBlue shadow-lg">
+                    <div class="relative w-64 h-64  overflow-hidden border-4 border-deepBlue shadow-lg">
                         <img src="{{ Storage::url($personal->profile_photo) }}" alt="Profile Photo"
                             class="w-full h-full object-cover">
                     </div>
@@ -409,7 +447,8 @@
     <section id="projects" class="py-20 bg-darkBg text-white section-hidden">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">My Projects</h2>
-            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">Here are some of the projects I've worked on that demonstrate my skills and expertise.</p>
+            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">Here are some of the projects I've worked on
+                that demonstrate my skills and expertise.</p>
 
             @if ($projects->isEmpty())
                 <p class="text-center text-gray-400">No projects available at the moment.</p>
@@ -418,16 +457,18 @@
                     @foreach ($projects as $project)
                         <div class="project-card rounded-xl overflow-hidden shadow-lg relative group">
                             <div class="h-56 bg-gradient-to-br from-deepBlue to-richRed flex items-center justify-center"
-                                 style="background-image: url('{{ $project->image_url ? asset('storage/' . $project->image_url) : '' }}'); background-size: cover; background-position: center;">
+                                style="background-image: url('{{ $project->image_url ? asset('storage/' . $project->image_url) : '' }}'); background-size: cover; background-position: center;">
                                 @if (!$project->image_url)
                                     <span class="text-white text-lg">No Image Available</span>
                                 @endif
                             </div>
-                            <div class="project-overlay absolute inset-0 bg-gradient-to-t from-darkBg to-transparent p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between">
+                            <div
+                                class="project-overlay absolute inset-0 bg-gradient-to-t from-darkBg to-transparent p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between">
                                 <div class="flex justify-end">
                                     @if ($project->project_url)
                                         <a href="{{ $project->project_url }}" target="_blank"
-                                           class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-200">View Live</a>
+                                            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-200">View
+                                            Live</a>
                                     @endif
                                 </div>
                                 <div>
@@ -459,8 +500,8 @@
                             <div class="timeline-dot"></div>
                             <div class="bg-white p-6 rounded-xl shadow-md flex items-start">
                                 @if ($edu->image_url)
-                                    <img src="{{ Storage::url($edu->image_url) }}"
-                                        alt="{{ $edu->degree }} image" class="education-image">
+                                    <img src="{{ Storage::url($edu->image_url) }}" alt="{{ $edu->degree }} image"
+                                        class="education-image">
                                 @endif
                                 <div class="flex-1">
                                     <div
@@ -502,7 +543,8 @@
                             </div>
                             <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
                                 <div class="skill-bar h-full bg-gradient-to-r from-deepBlue to-richRed"
-                                    style="--width: {{ $skill->proficiency }}%" data-width="{{ $skill->proficiency }}%">
+                                    style="--width: {{ $skill->proficiency }}%"
+                                    data-width="{{ $skill->proficiency }}%">
                                 </div>
                             </div>
                         </div>
@@ -590,7 +632,8 @@
 
                 <!-- Copyright (Center) -->
                 <div class="text-center">
-                    <p>© {{ date('Y') }} {{ $personal->brand_name ?? 'Developer Portfolio' }}. All rights reserved.</p>
+                    <p>© {{ date('Y') }} {{ $personal->brand_name ?? 'Developer Portfolio' }}. All rights
+                        reserved.</p>
                 </div>
 
                 <!-- Social Media Links (Right Side) -->

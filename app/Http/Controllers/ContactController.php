@@ -22,6 +22,6 @@ class ContactController extends Controller
 
         Contact::create($validatedData);
 
-        return redirect()->route('index')->with('success', 'Thank you for your message! We will get back to you soon.');
+       return redirect('/')->with('success', 'Thank you for your message! We will get back to you soon.');
     }
 }
