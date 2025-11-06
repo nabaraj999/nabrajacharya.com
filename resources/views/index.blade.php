@@ -261,64 +261,57 @@
 
 <body class="font-primary bg-lightBg text-darkBg">
     <!-- Header with sticky navigation -->
-    <header class="fixed w-full bg-darkBg/95 backdrop-blur-sm text-white z-50 shadow-lg border-b border-white/10">
-    <nav class="container mx-auto px-6 py-4">
-        <div class="flex justify-between items-center">
-            <!-- Logo: Profile Image or Brand Name -->
-            <a href="#home" class="flex items-center space-x-3 group">
-                @if ($personal && $personal->profile_photo)
-                    <div class="w-10 h-10 rounded-full overflow-hidden ring-2 ring-deepBlue/50 transition-all group-hover:ring-deepBlue">
-                        <img src="{{ Storage::url($personal->profile_photo) }}"
-                             alt="Nabaraj Acharya - TechNabu"
-                             class="w-full h-full object-cover">
-                    </div>
-                @endif
-                <span class="text-2xl font-extrabold bg-gradient-to-r from-deepBlue via-purple-500 to-richRed bg-clip-text text-transparent font-[Raleway] tracking-wide transition-all duration-300 group-hover:scale-105">
-                  
-                </span>
-            </a>
-
-            <!-- Desktop Navigation -->
-            <div class="hidden md:flex items-center space-x-8">
-                @foreach (['home', 'about', 'services', 'projects', 'education', 'skills', 'contact'] as $section)
-                    <a href="#{{ $section }}"
-                       class="capitalize text-sm font-medium tracking-wide hover:text-deepBlue transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-deepBlue after:transition-all after:duration-300 hover:after:w-full">
-                        {{ ucfirst($section) }}
-                    </a>
-                @endforeach
+    <header class="fixed w-full bg-darkBg text-white z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#"
+                    class="text-3xl font-extrabold bg-gradient-to-r from-blue-600 via-purple-600 to-red-500 bg-clip-text text-transparent font-[Raleway] tracking-wide">
+                    TechNabu
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-deepBlue transition-colors duration-300">Home</a>
+                    <a href="#about" class="hover:text-deepBlue transition-colors duration-300">About</a>
+                    <a href="#services" class="hover:text-deepBlue transition-colors duration-300">Services</a>
+                    <a href="#projects" class="hover:text-deepBlue transition-colors duration-300">Projects</a>
+                    <a href="#education" class="hover:text-deepBlue transition-colors duration-300">Education</a>
+                    <a href="#skills" class="hover:text-deepBlue transition-colors duration-300">Skills</a>
+                    <a href="#contact" class="hover:text-deepBlue transition-colors duration-300">Contact</a>
+                </div>
+                <button id="mobile-menu-toggle" class="md:hidden text-white focus:outline-none">
+                    <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
             </div>
-
-            <!-- Mobile Menu Toggle -->
-            <button id="mobile-menu-toggle"
-                    class="md:hidden text-white focus:outline-none focus:ring-2 focus:ring-deepBlue/50 rounded-lg p-1 transition-all"
-                    aria-label="Toggle mobile menu">
-                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                     viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-                <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none"
-                     viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu"
-             class="mobile-menu mobile-menu-hidden md:hidden absolute top-full left-0 right-0 bg-darkBg/98 backdrop-blur-md shadow-2xl border-t border-white/10">
-            <div class="flex flex-col items-center space-y-5 py-8">
-                @foreach (['home', 'about', 'services', 'projects', 'education', 'skills', 'contact'] as $section)
-                    <a href="#{{ $section }}"
-                       class="capitalize text-lg font-medium text-white hover:text-deepBlue transition-colors duration-300">
-                        {{ ucfirst($section) }}
-                    </a>
-                @endforeach
+            <!-- Mobile Menu -->
+            <div id="mobile-menu"
+                class="mobile-menu mobile-menu-hidden md:hidden absolute top-full left-0 right-0 bg-darkBg shadow-lg">
+                <div class="flex flex-col items-center space-y-4 py-6">
+                    <a href="#home"
+                        class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Home</a>
+                    <a href="#about"
+                        class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">About</a>
+                    <a href="#services"
+                        class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Services</a>
+                    <a href="#projects"
+                        class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Projects</a>
+                    <a href="#education"
+                        class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Education</a>
+                    <a href="#skills"
+                        class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Skills</a>
+                    <a href="#contact"
+                        class="text-white hover:text-deepBlue transition-colors duration-300 text-lg">Contact</a>
+                </div>
             </div>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
 
     <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center pt-20 pb-16 bg-darkBg text-white">
