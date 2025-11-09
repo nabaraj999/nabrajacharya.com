@@ -356,52 +356,47 @@
     <div class="deepseek-railway"></div>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-lightBg section-hidden">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-raleway">About Me</h2>
+    <section id="about" class="py-10 bg-lightBg section-hidden">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 text-raleway">About Me</h2>
 
-            <div class="flex flex-col md:flex-row items-center gap-10">
-                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
-                    <div class="relative w-56 h-56 md:w-72 md:h-72 rounded-2xl overflow-hidden shadow-xl">
-                        @if ($personal && $personal->logo_url)
-                            <img src="{{ Storage::url($personal->logo_url) }}" alt="About Me Photo"
-                                class="w-full h-full object-cover">
-                        @else
-                            <div class="w-full h-full flex items-center justify-center bg-gray-300 text-white text-lg">
-                                No photo available
-                            </div>
-                        @endif
-                    </div>
+        <div class="flex flex-col md:flex-row items-center gap-6">
+            <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
+                <div class="relative w-48 h-48 md:w-64 md:h-64 rounded-xl overflow-hidden shadow-lg">
+                    @if ($personal && $personal->logo_url)
+                        <img src="{{ Storage::url($personal->logo_url) }}" alt="About Me Photo" class="w-full h-full object-cover">
+                    @else
+                        <div class="w-full h-full flex items-center justify-center bg-gray-300 text-white text-lg">
+                            No photo available
+                        </div>
+                    @endif
                 </div>
+            </div>
 
-                <div class="md:w-2/3 md:pl-10">
-                    <p class="text-lg mb-12 leading-relaxed pb-4">{!! $personal->about_description ?? 'No description available.' !!}</p>
+            <div class="md:w-2/3 md:pl-6">
+                <p class="text-base mb-6 leading-relaxed">{!! $personal->about_description ?? 'No description available.' !!}</p>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-                        <div
-                            class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow duration-300">
-                            <div class="text-3xl font-bold text-deepBlue mb-2">
-                                {{ $personal->years_experience ?? 0 }}+</div>
-                            <div class="text-gray-600">Years Experience</div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                    <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow duration-300">
+                        <div class="text-2xl font-bold text-deepBlue mb-1">{{ $personal->years_experience ?? 0 }}+</div>
+                        <div class="text-gray-600 text-sm">Years Experience</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow duration-300">
+                        <div class="text-2xl font-bold text-richRed mb-1">{{ $personal->completed_projects ?? 0 }}+</div>
+                        <div class="text-gray-600 text-sm">Projects Completed</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow duration-300">
+                        <div class="text-2xl font-bold bg-gradient-to-r from-deepBlue to-richRed bg-clip-text text-transparent mb-1">
+                            {{ $personal->happy_clients ?? 0 }}+
                         </div>
-                        <div
-                            class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow duration-300">
-                            <div class="text-3xl font-bold text-richRed mb-2">
-                                {{ $personal->completed_projects ?? 0 }}+</div>
-                            <div class="text-gray-600">Projects Completed</div>
-                        </div>
-                        <div
-                            class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow duration-300">
-                            <div
-                                class="text-3xl font-bold bg-gradient-to-r from-deepBlue to-richRed bg-clip-text text-transparent mb-2">
-                                {{ $personal->happy_clients ?? 0 }}+</div>
-                            <div class="text-gray-600">Happy Clients</div>
-                        </div>
+                        <div class="text-gray-600 text-sm">Happy Clients</div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- DeepSeek Railway Separator -->
     <div class="deepseek-railway"></div>
