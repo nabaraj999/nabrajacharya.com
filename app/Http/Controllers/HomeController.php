@@ -20,7 +20,7 @@ class HomeController extends Controller
         $services = Service::where('is_active', true)->get();
         $skills = Skill::orderBy('proficiency', 'desc')->get();
         $seo = Seo::first();
-        $projects = Project::where('status', 'completed')->take(6)->get();
+        $projects = Project::where('status', 'completed')->get();
 
         // Optional: Log for debugging (remove in production)
         Log::info('HomeController data loaded', [

@@ -21,9 +21,11 @@ class ProjectsTable
         return $table
             ->columns([
                 TextColumn::make('title')
+                ->limit(20)
                     ->searchable(),
 
                 TextColumn::make('project_url')
+                    ->limit(20)
                     ->searchable(),
 
                 TextColumn::make('completion_date')
