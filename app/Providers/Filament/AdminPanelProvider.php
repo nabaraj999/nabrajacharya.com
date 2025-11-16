@@ -28,6 +28,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->databaseNotifications()
             ->brandName("Nabraj Acharya")
             ->brandLogo('storage/icon/favicon.png') // 'https://nabrajacharya.com.np/storage/icon/favicon.png'
             ->sidebarCollapsibleOnDesktop()
