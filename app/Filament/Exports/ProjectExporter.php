@@ -21,7 +21,7 @@ class ProjectExporter extends Exporter
             ExportColumn::make('status'),
             ExportColumn::make('created_at'),
             ExportColumn::make('updated_at'),
-            ExportColumn::make('deleted_at'),
+            ExportColumn::make('deleted_at'), 
         ];
     }
 
