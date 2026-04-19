@@ -3,8 +3,13 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+<<<<<<< HEAD
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ServicesController;
+=======
+use App\Http\Controllers\Popupcontroller;
+use App\Http\Controllers\ProjectController;
+>>>>>>> 0cec08a04ddb36bb8ec51f5e821a5ed437bdf037
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\Popupcontroller;
 use Illuminate\Support\Facades\Route;
@@ -20,3 +25,7 @@ Route::post('/contact',  [ContactController::class, 'store'])->name('contact.sto
 Route::post('/tickets',  [TicketController::class, 'store'])->name('tickets.store');
 
 Route::get('/api/popup', [Popupcontroller::class, 'getActivePopup']);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0cec08a04ddb36bb8ec51f5e821a5ed437bdf037
