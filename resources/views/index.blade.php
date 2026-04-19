@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -260,6 +261,8 @@
 </head>
 
 <body class="font-primary bg-lightBg text-darkBg">
+
+
     <!-- Header with sticky navigation -->
     <header class="fixed w-full bg-darkBg text-white z-50 shadow-md">
         <nav class="container mx-auto px-6 py-4">
@@ -353,52 +356,47 @@
     <div class="deepseek-railway"></div>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-lightBg section-hidden">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-raleway">About Me</h2>
+    <section id="about" class="py-10 bg-lightBg section-hidden">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 text-raleway">About Me</h2>
 
-            <div class="flex flex-col md:flex-row items-center gap-10">
-                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
-                    <div class="relative w-56 h-56 md:w-72 md:h-72 rounded-2xl overflow-hidden shadow-xl">
-                        @if ($personal && $personal->logo_url)
-                            <img src="{{ Storage::url($personal->logo_url) }}" alt="About Me Photo"
-                                class="w-full h-full object-cover">
-                        @else
-                            <div class="w-full h-full flex items-center justify-center bg-gray-300 text-white text-lg">
-                                No photo available
-                            </div>
-                        @endif
-                    </div>
+        <div class="flex flex-col md:flex-row items-center gap-6">
+            <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
+                <div class="relative w-48 h-48 md:w-64 md:h-64 rounded-xl overflow-hidden shadow-lg">
+                    @if ($personal && $personal->logo_url)
+                        <img src="{{ Storage::url($personal->logo_url) }}" alt="About Me Photo" class="w-full h-full object-cover">
+                    @else
+                        <div class="w-full h-full flex items-center justify-center bg-gray-300 text-white text-lg">
+                            No photo available
+                        </div>
+                    @endif
                 </div>
+            </div>
 
-                <div class="md:w-2/3 md:pl-10">
-                    <p class="text-lg mb-12 leading-relaxed pb-4">{!! $personal->about_description ?? 'No description available.' !!}</p>
+            <div class="md:w-2/3 md:pl-6">
+                <p class="text-base mb-6 leading-relaxed">{!! $personal->about_description ?? 'No description available.' !!}</p>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-                        <div
-                            class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow duration-300">
-                            <div class="text-3xl font-bold text-deepBlue mb-2">
-                                {{ $personal->years_experience ?? 0 }}+</div>
-                            <div class="text-gray-600">Years Experience</div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                    <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow duration-300">
+                        <div class="text-2xl font-bold text-deepBlue mb-1">{{ $personal->years_experience ?? 0 }}+</div>
+                        <div class="text-gray-600 text-sm">Years Experience</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow duration-300">
+                        <div class="text-2xl font-bold text-richRed mb-1">{{ $personal->completed_projects ?? 0 }}+</div>
+                        <div class="text-gray-600 text-sm">Projects Completed</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow duration-300">
+                        <div class="text-2xl font-bold bg-gradient-to-r from-deepBlue to-richRed bg-clip-text text-transparent mb-1">
+                            {{ $personal->happy_clients ?? 0 }}+
                         </div>
-                        <div
-                            class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow duration-300">
-                            <div class="text-3xl font-bold text-richRed mb-2">
-                                {{ $personal->completed_projects ?? 0 }}+</div>
-                            <div class="text-gray-600">Projects Completed</div>
-                        </div>
-                        <div
-                            class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow duration-300">
-                            <div
-                                class="text-3xl font-bold bg-gradient-to-r from-deepBlue to-richRed bg-clip-text text-transparent mb-2">
-                                {{ $personal->happy_clients ?? 0 }}+</div>
-                            <div class="text-gray-600">Happy Clients</div>
-                        </div>
+                        <div class="text-gray-600 text-sm">Happy Clients</div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- DeepSeek Railway Separator -->
     <div class="deepseek-railway"></div>
@@ -671,6 +669,84 @@
             </div>
         </div>
     </footer>
+
+{{-- popup --}}
+<div id="popupModal" class="fixed inset-0 z-[9999] hidden items-center justify-center bg-black/60 backdrop-blur-md px-4">
+    <div class="relative w-full max-w-md transform animate-zoomIn overflow-hidden rounded-2xl bg-white shadow-2xl">
+
+        <!-- Close Button (Small & Clean) -->
+        <button onclick="document.getElementById('popupModal').classList.add('hidden')"
+                class="absolute top-3 right-3 z-50 flex h-9 w-9 items-center justify-center rounded-full bg-black/50 text-xl text-white transition-all hover:bg-red-600 hover:scale-110">
+            ×
+        </button>
+
+        <!-- Clickable Image -->
+        <a id="popupLink" href="#" target="_blank" class="block">
+            <img id="popupImage" src="" alt="Offer" class="w-full h-auto object-cover">
+        </a>
+
+        <!-- Compact Content -->
+        <div class="bg-gradient-to-r from-purple-600 to-pink-600 p-6 text-center">
+            <h3 id="popupTitle" class="mb-3 text-lg font-bold text-white md:text-xl">
+                Special Offer!
+            </h3>
+            <a id="popupButton" href="#" target="_blank"
+            class="inline-block rounded-full bg-white px-8 py-3 text-sm font-bold text-purple-600 shadow-lg transition-all hover:scale-105 hover:bg-gray-100">
+                Shop Now
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    @keyframes zoomIn {
+        from { transform: scale(0.8); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+    .animate-zoomIn { animation: zoomIn 0.5s ease-out forwards; }
+
+    /* Mobile First – Super Responsive */
+    @media (max-width: 480px) {
+        #popupModal { padding: 1rem; }
+        #popupTitle { font-size: 1.1rem !important; }
+        #popupButton { padding: 0.75rem 2rem; font-size: 0.875rem; }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('popupModal');
+        const img = document.getElementById('popupImage');
+        const link = document.getElementById('popupLink');
+        const button = document.getElementById('popupButton');
+        const title = document.getElementById('popupTitle');
+
+        // SHOW EVERY TIME – NO LIMIT
+        fetch('/api/popup')
+            .then(r => r.json())
+            .then(data => {
+                if (!data?.image) return;
+
+                img.src = data.image;
+                title.textContent = data.title || 'Special Deal!';
+                const url = data.url || '#';
+
+                link.href = button.href = url;
+                button.textContent = data.button_text || 'Claim Now';
+
+                // Show popup
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            });
+
+        // Close on outside click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.add('hidden');
+        });
+    });
+</script>
+
+
 
     <script>
         // Intersection Observer for scroll animations
