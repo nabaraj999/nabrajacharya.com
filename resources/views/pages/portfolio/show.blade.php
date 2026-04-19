@@ -24,8 +24,8 @@ if ($project->skills->isNotEmpty()) $projectSchema['keywords'] = $project->skill
 
 @section('content')
 
-<div class="pt-28 pb-6 page-hero">
-    <div class="max-w-4xl mx-auto px-6">
+<div class="pt-24 pb-6 md:pt-28 page-hero">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
         <a href="{{ route('portfolio') }}" class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-indigo-400 transition-colors mb-6">
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
             Back to Portfolio
@@ -45,7 +45,7 @@ if ($project->skills->isNotEmpty()) $projectSchema['keywords'] = $project->skill
     </div>
 </div>
 
-<article class="max-w-4xl mx-auto px-6 py-12">
+<article class="max-w-4xl mx-auto px-4 sm:px-6 py-8 md:py-12">
 
     {{-- Project image --}}
     @if($project->image_url)

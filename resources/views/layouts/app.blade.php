@@ -10,7 +10,7 @@
     {{-- Per-page SEO --}}
     <title>@yield('title', ($seo->meta_title ?? 'Nabaraj Acharya — Full Stack Developer Nepal | Laravel Developer Nepal'))</title>
     <meta name="description" content="@yield('description', ($seo->meta_description ?? 'Nabaraj Acharya is a Full Stack Developer in Nepal specializing in Laravel development, SEO, and modern web applications. Available for freelance and full-time projects.'))">
-    <meta name="keywords" content="@yield('keywords', ($seo->meta_keywords ?? 'full stack developer nepal, laravel developer nepal, web developer nepal, nabaraj acharya, technabu'))">
+    <meta name="keywords" content="@yield('keywords', ($seo->meta_keywords ?? 'full stack developer nepal, laravel developer nepal, seo expert nepal, web developer nepal, nabaraj acharya, technabu'))">
     <meta name="author" content="{{ $personal->brand_name ?? 'Nabaraj Acharya' }}">
     <meta name="robots" content="{{ $seo->robots_directives ?? 'index, follow' }}">
     <meta name="language" content="English">
@@ -44,7 +44,7 @@
         'name'     => 'Nabaraj Acharya',
         'url'      => 'https://nabrajacharya.com.np',
         'jobTitle' => $personal->current_role ?? 'Full Stack Developer Nepal',
-        'description' => 'Full Stack Developer Nepal specializing in Laravel development and SEO',
+        'description' => 'Full Stack Developer Nepal & SEO Expert Nepal — specializing in Laravel development, PHP, and technical SEO for businesses in Nepal and Australia.',
         'address'  => ['@type' => 'PostalAddress', 'addressCountry' => 'NP', 'addressLocality' => 'Kathmandu'],
         'sameAs'   => array_filter([
             $personal->facebook_url ?? '',
@@ -246,7 +246,7 @@
 
 {{-- NAVIGATION --}}
 <header class="fixed w-full glass-nav z-50">
-    <nav class="max-w-6xl mx-auto px-6 py-4 relative z-10">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 py-4 relative z-10">
         <div class="flex justify-between items-center">
             <a href="{{ route('home') }}" class="text-xl font-display font-bold gradient-text">TechNabu</a>
 
@@ -295,8 +295,8 @@
 </main>
 
 {{-- FOOTER --}}
-<footer class="relative z-10 pt-16 pb-10 border-t border-slate-800/60">
-    <div class="max-w-6xl mx-auto px-6">
+<footer class="relative z-10 pt-10 pb-8 md:pt-16 md:pb-10 border-t border-slate-800/60">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="flex flex-col md:flex-row justify-between items-start gap-10">
             <div class="max-w-xs">
                 <a href="{{ route('home') }}" class="text-xl font-display font-bold gradient-text block mb-3">TechNabu</a>
@@ -357,7 +357,7 @@
 
         <div class="mt-10 pt-6 border-t border-slate-800/60 flex flex-col md:flex-row justify-between items-center gap-3">
             <p class="text-slate-600 text-sm">© {{ date('Y') }} {{ $personal->brand_name ?? 'Nabaraj Acharya' }}. All rights reserved.</p>
-            <p class="text-slate-700 text-xs">Full Stack Developer Nepal | Laravel Developer Nepal</p>
+            <p class="text-slate-700 text-xs">Full Stack Developer Nepal | Laravel Developer Nepal | SEO Expert Nepal</p>
         </div>
     </div>
 </footer>

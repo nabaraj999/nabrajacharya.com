@@ -25,8 +25,8 @@
     {{-- Grid overlay --}}
     <div class="absolute inset-0 hero-grid"></div>
 
-    <div class="relative z-10 max-w-6xl mx-auto px-6 pt-28 pb-16 w-full">
-        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pt-24 pb-10 md:pt-28 md:pb-16 w-full">
+        <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-20">
 
             {{-- ── Left: Text ── --}}
             <div class="flex-1 text-center lg:text-left">
@@ -140,13 +140,13 @@
 {{-- ═══════════════════════════════════════════════════════════ --}}
 {{--  DUAL EXPERTISE                                             --}}
 {{-- ═══════════════════════════════════════════════════════════ --}}
-<section class="py-28 reveal">
-    <div class="max-w-6xl mx-auto px-6">
+<section class="py-14 md:py-24 reveal">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="section-tag">Expertise</div>
         <h2 class="text-center font-display text-3xl md:text-5xl font-bold mb-4">
             What I <span class="gradient-text">Bring to the Table</span>
         </h2>
-        <p class="text-center text-slate-400 mb-16 max-w-2xl mx-auto">
+        <p class="text-center text-slate-400 mb-10 md:mb-16 max-w-2xl mx-auto">
             A rare combination of full-stack engineering and SEO strategy — I build sites that work beautifully and rank on Google.
         </p>
 
@@ -198,8 +198,8 @@
 {{--  CURRENT EMPLOYMENT                                         --}}
 {{-- ═══════════════════════════════════════════════════════════ --}}
 @if($personal && $personal->current_company)
-<section class="py-10 reveal">
-    <div class="max-w-6xl mx-auto px-6">
+<section class="py-8 md:py-10 reveal">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="employment-card">
             <div class="employment-left">
                 <div class="flex items-center gap-3 mb-4">
@@ -266,13 +266,13 @@
 {{--  EXPERIENCE TIMELINE                                        --}}
 {{-- ═══════════════════════════════════════════════════════════ --}}
 @if($experiences->isNotEmpty())
-<section class="py-24 reveal">
-    <div class="max-w-6xl mx-auto px-6">
+<section class="py-12 md:py-20 reveal">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="section-tag">Career</div>
         <h2 class="font-display text-3xl md:text-4xl font-bold text-center mb-4">
             Work <span class="gradient-text">Experience</span>
         </h2>
-        <p class="text-center text-slate-400 mb-16 max-w-xl mx-auto">
+        <p class="text-center text-slate-400 mb-10 md:mb-16 max-w-xl mx-auto">
             My professional journey — building products and driving growth across Nepal and Australia.
         </p>
 
@@ -342,42 +342,34 @@
 {{--  PARTNERS                                                    --}}
 {{-- ═══════════════════════════════════════════════════════════ --}}
 @if($partners->isNotEmpty())
-<section class="py-16 reveal">
-    <div class="max-w-6xl mx-auto px-6">
-        <p class="text-center text-xs font-bold uppercase tracking-widest text-slate-500 mb-8">Trusted Partners & Clients</p>
-        <div class="partners-track-wrap">
-            <div class="partners-track">
-                @foreach($partners as $partner)
-                <div class="partner-item">
-                    @if($partner->website_url)
-                    <a href="{{ $partner->website_url }}" target="_blank" rel="noopener noreferrer" class="partner-link" title="{{ $partner->name }}">
-                    @else
-                    <div class="partner-link" title="{{ $partner->name }}">
-                    @endif
+<section class="py-12 md:py-20 reveal overflow-hidden border-y border-white/5 bg-slate-900/20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+            {{-- Left: Text --}}
+            <div class="lg:w-1/3 text-center lg:text-left">
+                <div class="section-tag mb-4">Network</div>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6">
+                    Trusted <span class="gradient-text">Partners</span> & Clients
+                </h2>
+                <p class="text-slate-400 text-base leading-relaxed">
+                    Collaborating with industry leaders and innovative businesses in Nepal and Australia to deliver exceptional digital experiences.
+                </p>
+            </div>
+
+            {{-- Right: Static Grid --}}
+            <div class="lg:w-2/3 w-full">
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                    @foreach($partners as $partner)
+                    <div class="partner-card group bg-white border border-slate-100 hover:border-indigo-500/30 rounded-xl p-6 flex items-center justify-center transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/5">
                         @if($partner->logo)
-                        <img src="{{ asset('storage/'.$partner->logo) }}" alt="{{ $partner->name }}" class="partner-logo">
+                            <img src="{{ asset('storage/'.$partner->logo) }}" alt="{{ $partner->name }}" 
+                                 class="w-full h-12 object-contain filter grayscale-0 opacity-100 group-hover:scale-110 transition-all duration-500">
                         @else
-                        <span class="partner-name-text">{{ $partner->name }}</span>
-                        @endif
-                    @if($partner->website_url)
-                    </a>
-                    @else
-                    </div>
-                    @endif
-                </div>
-                @endforeach
-                {{-- Duplicate for seamless scroll --}}
-                @foreach($partners as $partner)
-                <div class="partner-item" aria-hidden="true">
-                    <div class="partner-link" title="{{ $partner->name }}">
-                        @if($partner->logo)
-                        <img src="{{ asset('storage/'.$partner->logo) }}" alt="{{ $partner->name }}" class="partner-logo">
-                        @else
-                        <span class="partner-name-text">{{ $partner->name }}</span>
+                            <span class="text-slate-600 group-hover:text-indigo-600 font-bold text-sm transition-colors">{{ $partner->name }}</span>
                         @endif
                     </div>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
         </div>
     </div>
@@ -389,10 +381,10 @@
 {{--  FEATURED PROJECTS                                          --}}
 {{-- ═══════════════════════════════════════════════════════════ --}}
 @if($featured->isNotEmpty())
-<section class="py-28 reveal">
-    <div class="max-w-6xl mx-auto px-6">
+<section class="py-14 md:py-24 reveal">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="section-tag">Portfolio</div>
-        <div class="flex flex-col md:flex-row justify-between items-end mb-14">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-10 md:mb-14">
             <div>
                 <h2 class="font-display text-3xl md:text-5xl font-bold">
                     Featured <span class="gradient-text">Projects</span>
@@ -434,8 +426,7 @@
                     </div>
                     @endif
                     <div class="proj-arrow">
-                        <span class="text-xs text-slate-500 group-hover:text-indigo-400 transition-colors">View Case Study</span>
-                        <svg class="w-4 h-4 text-slate-600 group-hover:text-indigo-400 transition-all duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                        <svg class="w-5 h-5 text-slate-600 group-hover:text-indigo-400 transition-all duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
                     </div>
                 </div>
             </a>
@@ -450,10 +441,10 @@
 {{--  SKILLS                                                     --}}
 {{-- ═══════════════════════════════════════════════════════════ --}}
 @if($skills->isNotEmpty())
-<section class="py-24 reveal">
-    <div class="max-w-6xl mx-auto px-6">
+<section class="py-12 md:py-20 reveal">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="section-tag">Tech Stack</div>
-        <h2 class="font-display text-3xl md:text-4xl font-bold text-center mb-14">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-center mb-10 md:mb-14">
             Skills & <span class="gradient-text">Technologies</span>
         </h2>
 
@@ -463,28 +454,34 @@
             $seoGroup = collect(['Technical SEO','On-Page SEO','Keyword Research','Content Strategy','Local SEO','Analytics','Core Web Vitals','Link Building']);
         @endphp
 
-        <div class="space-y-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             @foreach($grouped as $category => $catSkills)
-            <div class="skill-group">
-                <h4 class="skill-cat-label">{{ $category }}</h4>
-                <div class="flex flex-wrap gap-3">
+            <div class="skill-group-card p-6 rounded-2xl bg-slate-900/40 border border-white/5 hover:border-indigo-500/20 transition-all">
+                <h4 class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-5 flex items-center gap-3">
+                    {{ str($category)->headline() }}
+                    <span class="h-px flex-1 bg-slate-800"></span>
+                </h4>
+                <div class="flex flex-wrap gap-2">
                     @foreach($catSkills as $skill)
-                    <div class="skill-pill" style="--pct: {{ $skill->proficiency }}%">
-                        <span class="skill-pill-name">{{ $skill->skill_name }}</span>
-                        <span class="skill-pill-pct">{{ $skill->proficiency }}%</span>
+                    <div class="px-3 py-1.5 rounded-lg bg-slate-800/50 border border-slate-700/50 flex items-center gap-2">
+                        <span class="text-xs font-medium text-slate-300">{{ $skill->skill_name }}</span>
+                        <span class="text-[9px] text-indigo-400 font-bold">{{ $skill->proficiency }}%</span>
                     </div>
                     @endforeach
                 </div>
             </div>
             @endforeach
 
-            {{-- SEO skills always shown --}}
-            <div class="skill-group">
-                <h4 class="skill-cat-label seo-cat">SEO & Digital Marketing</h4>
-                <div class="flex flex-wrap gap-3">
+            {{-- SEO skills --}}
+            <div class="skill-group-card p-6 rounded-2xl bg-indigo-500/5 border border-indigo-500/10 hover:border-indigo-500/30 transition-all">
+                <h4 class="text-[10px] font-bold uppercase tracking-widest text-indigo-400 mb-5 flex items-center gap-3">
+                    SEO & Digital Marketing
+                    <span class="h-px flex-1 bg-indigo-500/10"></span>
+                </h4>
+                <div class="flex flex-wrap gap-2">
                     @foreach($seoGroup as $s)
-                    <div class="skill-pill seo-pill">
-                        <span class="skill-pill-name">{{ $s }}</span>
+                    <div class="px-3 py-1.5 rounded-lg bg-indigo-500/10 border border-indigo-500/20">
+                        <span class="text-xs font-medium text-indigo-300">{{ $s }}</span>
                     </div>
                     @endforeach
                 </div>
@@ -499,10 +496,10 @@
 {{--  SERVICES                                                   --}}
 {{-- ═══════════════════════════════════════════════════════════ --}}
 @if($services->isNotEmpty())
-<section class="py-24 reveal">
-    <div class="max-w-6xl mx-auto px-6">
+<section class="py-12 md:py-20 reveal">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="section-tag">Services</div>
-        <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-12">
             <h2 class="font-display text-3xl md:text-4xl font-bold">
                 What I <span class="gradient-text">Offer</span>
             </h2>
@@ -512,18 +509,30 @@
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
             </a>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
             @foreach($services as $i => $service)
-            <div class="svc-card" style="animation-delay: {{ $i * 0.08 }}s">
+            <div class="group relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/40 transition-all duration-300 hover:border-indigo-500/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/10" style="animation-delay: {{ $i * 0.08 }}s">
                 @if($service->photo)
-                <div class="svc-icon-img"><img src="{{ asset('storage/'.$service->photo) }}" alt="{{ $service->service_name }}" class="w-full h-full object-cover"></div>
+                <div class="h-40 md:h-48 overflow-hidden">
+                    <img src="{{ asset('storage/'.$service->photo) }}" alt="{{ $service->service_name }}"
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
                 @else
-                <div class="svc-icon-default">
-                    <svg class="w-5 h-5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                <div class="h-40 md:h-48 bg-gradient-to-br from-indigo-600/10 to-purple-600/10 flex items-center justify-center">
+                    <svg class="w-12 h-12 text-indigo-500/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                    </svg>
                 </div>
                 @endif
-                <h3 class="svc-title">{{ $service->service_name }}</h3>
-                <p class="svc-desc">{{ Str::limit(strip_tags($service->description), 100) }}</p>
+
+                <div class="p-5 md:p-6">
+                    <h3 class="font-display text-lg font-bold text-white mb-2 md:mb-3 group-hover:text-indigo-300 transition-colors">
+                        {{ $service->service_name }}
+                    </h3>
+                    <div class="text-slate-400 text-sm leading-relaxed">
+                        {{ Str::limit(strip_tags($service->description), 120) }}
+                    </div>
+                </div>
             </div>
             @endforeach
         </div>
@@ -535,8 +544,8 @@
 {{-- ═══════════════════════════════════════════════════════════ --}}
 {{--  CTA                                                        --}}
 {{-- ═══════════════════════════════════════════════════════════ --}}
-<section class="py-28 reveal">
-    <div class="max-w-6xl mx-auto px-6">
+<section class="py-14 md:py-24 reveal">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="cta-banner">
             <div class="cta-glow-1"></div>
             <div class="cta-glow-2"></div>
@@ -661,20 +670,20 @@
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .hero-sub {
-    color: #94a3b8; font-size: 1.05rem; line-height: 1.75;
-    max-width: 520px; margin-bottom: 36px;
+    color: #94a3b8; font-size: 1rem; line-height: 1.75;
+    max-width: 520px; margin-bottom: 24px;
     animation: heroIn .6s ease forwards; opacity: 0;
     margin-left: auto; margin-right: auto;
 }
-@media (min-width: 1024px) { .hero-sub { margin-left: 0; } }
+@media (min-width: 1024px) { .hero-sub { margin-left: 0; font-size: 1.05rem; margin-bottom: 36px; } }
 
 /* ── CTAs ── */
 .hero-ctas {
-    display: flex; flex-wrap: wrap; gap: 14px;
-    justify-content: center; margin-bottom: 40px;
+    display: flex; flex-wrap: wrap; gap: 12px;
+    justify-content: center; margin-bottom: 28px;
     animation: heroIn .6s ease forwards; opacity: 0;
 }
-@media (min-width: 1024px) { .hero-ctas { justify-content: flex-start; } }
+@media (min-width: 1024px) { .hero-ctas { justify-content: flex-start; gap: 14px; margin-bottom: 40px; } }
 .cta-primary {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 14px 28px; border-radius: 12px; font-weight: 700; font-size: .9rem;
@@ -699,23 +708,33 @@
 
 /* ── Stats ── */
 .hero-stats {
-    display: flex; align-items: center; gap: 0;
+    display: flex; align-items: center; gap: 0; flex-wrap: nowrap;
     animation: heroIn .6s ease forwards; opacity: 0;
     background: rgba(13,17,23,.8); border: 1px solid rgba(99,102,241,.12);
-    border-radius: 16px; padding: 20px 28px; width: fit-content;
+    border-radius: 16px; padding: 12px 10px; width: fit-content;
     margin: 0 auto;
+    backdrop-filter: blur(8px);
 }
-@media (min-width: 1024px) { .hero-stats { margin: 0; } }
-.stat-item { text-align: center; padding: 0 24px; }
+@media (min-width: 1024px) { .hero-stats { margin: 0; padding: 20px 28px; } }
+.stat-item { text-align: center; padding: 4px 12px; min-width: 100px; }
+@media (min-width: 1024px) { .stat-item { padding: 0 24px; min-width: 140px; } }
 .stat-num {
-    display: block; font-family: 'Space Grotesk', sans-serif;
-    font-size: 2rem; font-weight: 800; line-height: 1;
+    display: inline-block; font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.8rem; font-weight: 800; line-height: 1;
     background: linear-gradient(135deg, #6366f1, #06b6d4);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
-.stat-plus { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 800; color: #6366f1; }
-.stat-label { display: block; font-size: .7rem; color: #64748b; margin-top: 4px; text-transform: uppercase; letter-spacing: .08em; font-weight: 600; }
-.stat-divider { width: 1px; height: 48px; background: rgba(99,102,241,.2); flex-shrink: 0; }
+@media (min-width: 1024px) { .stat-num { font-size: 2.5rem; } }
+.stat-plus { font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 800; color: #6366f1; }
+@media (min-width: 1024px) { .stat-plus { font-size: 1.5rem; } }
+.stat-label { 
+    display: block; font-size: 0.6rem; color: #64748b; margin-top: 4px; 
+    text-transform: uppercase; letter-spacing: .05em; font-weight: 600;
+    white-space: nowrap;
+}
+@media (min-width: 1024px) { .stat-label { font-size: .7rem; letter-spacing: .08em; } }
+.stat-divider { width: 1px; height: 32px; background: rgba(99,102,241,.2); flex-shrink: 0; }
+@media (min-width: 1024px) { .stat-divider { height: 48px; } }
 
 /* ── Photo wrapper ── */
 .photo-wrapper { position: relative; display: inline-block; }
@@ -725,16 +744,19 @@
     background: conic-gradient(#6366f1, #06b6d4, #a855f7, #f59e0b, #6366f1);
 }
 .photo-img {
-    width: 280px; height: 280px; border-radius: 50%;
+    width: 220px; height: 220px; border-radius: 50%;
     object-fit: cover; display: block;
     border: 4px solid #050816; position: relative; z-index: 1;
 }
 .photo-placeholder {
-    width: 280px; height: 280px; border-radius: 50%;
+    width: 220px; height: 220px; border-radius: 50%;
     background: linear-gradient(135deg, #4f46e5, #a855f7, #06b6d4);
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Space Grotesk', sans-serif; font-size: 3.5rem; font-weight: 800; color: white;
+    font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 800; color: white;
     border: 4px solid #050816;
+}
+@media (min-width: 480px) {
+    .photo-img, .photo-placeholder { width: 260px; height: 260px; }
 }
 @media (min-width: 1024px) {
     .photo-img, .photo-placeholder { width: 340px; height: 340px; }
@@ -746,9 +768,14 @@
     padding: 6px 12px; border-radius: 100px; font-size: .7rem; font-weight: 700;
     backdrop-filter: blur(12px); animation: chipFloat 6s ease-in-out infinite;
 }
-.chip-laravel { top: 10%; right: -20px; background: rgba(239,68,68,.15); border: 1px solid rgba(239,68,68,.3); color: #fca5a5; animation-delay: 0s; }
-.chip-seo     { bottom: 20%; right: -30px; background: rgba(245,158,11,.15); border: 1px solid rgba(245,158,11,.3); color: #fde68a; animation-delay: 1.5s; }
-.chip-php     { top: 30%; left: -25px; background: rgba(139,92,246,.15); border: 1px solid rgba(139,92,246,.3); color: #c4b5fd; animation-delay: 3s; }
+.chip-laravel { top: 10%; right: -10px; background: rgba(239,68,68,.15); border: 1px solid rgba(239,68,68,.3); color: #fca5a5; animation-delay: 0s; }
+.chip-seo     { bottom: 20%; right: -15px; background: rgba(245,158,11,.15); border: 1px solid rgba(245,158,11,.3); color: #fde68a; animation-delay: 1.5s; }
+.chip-php     { top: 30%; left: -10px; background: rgba(139,92,246,.15); border: 1px solid rgba(139,92,246,.3); color: #c4b5fd; animation-delay: 3s; }
+@media (min-width: 1024px) {
+    .chip-laravel { right: -20px; }
+    .chip-seo     { right: -30px; }
+    .chip-php     { left: -25px; }
+}
 @keyframes chipFloat {
     0%,100% { transform: translateY(0) rotate(-2deg); }
     50%      { transform: translateY(-12px) rotate(2deg); }
@@ -769,11 +796,12 @@
 
 /* ── Expertise cards ── */
 .expertise-card {
-    padding: 36px; border-radius: 20px; position: relative;
+    padding: 24px; border-radius: 16px; position: relative;
     border: 1px solid rgba(99,102,241,.12);
     background: rgba(13,17,23,.9);
     transition: all .4s ease; overflow: hidden;
 }
+@media (min-width: 768px) { .expertise-card { padding: 36px; border-radius: 20px; } }
 .expertise-card::before {
     content:''; position: absolute; inset: 0; opacity: 0; transition: opacity .4s;
     border-radius: 20px;
@@ -803,8 +831,8 @@
 .employment-card {
     background: linear-gradient(135deg, rgba(13,17,23,.95), rgba(16,21,35,.95));
     border: 1px solid rgba(99,102,241,.2);
-    border-radius: 24px; padding: 40px;
-    display: flex; flex-direction: column; gap: 32px;
+    border-radius: 20px; padding: 24px;
+    display: flex; flex-direction: column; gap: 24px;
     position: relative; overflow: hidden;
 }
 .employment-card::before {
@@ -818,7 +846,7 @@
     pointer-events: none;
 }
 @media (min-width: 768px) {
-    .employment-card { flex-direction: row; align-items: flex-start; gap: 48px; padding: 48px 56px; }
+    .employment-card { flex-direction: row; align-items: flex-start; gap: 40px; padding: 40px 48px; border-radius: 24px; }
 }
 .employment-left { flex: 1; }
 .employment-right {
@@ -936,10 +964,11 @@
 .exp-line { flex: 1; width: 2px; background: rgba(99,102,241,.1); margin: 6px 0; min-height: 24px; }
 .exp-item:last-child .exp-line { display: none; }
 .exp-card {
-    flex: 1; padding: 22px 26px; border-radius: 16px; margin-bottom: 20px;
+    flex: 1; padding: 16px 18px; border-radius: 14px; margin-bottom: 16px;
     background: rgba(13,17,23,.8); border: 1px solid rgba(255,255,255,.06);
     transition: all .3s ease;
 }
+@media (min-width: 768px) { .exp-card { padding: 22px 26px; border-radius: 16px; margin-bottom: 20px; } }
 .exp-card:hover { border-color: rgba(99,102,241,.25); background: rgba(13,17,23,.95); }
 .exp-card-current {
     border-color: rgba(16,185,129,.2);
@@ -988,10 +1017,11 @@
 /* ── CTA banner ── */
 .cta-banner {
     position: relative; overflow: hidden;
-    border-radius: 28px; padding: 72px 40px;
+    border-radius: 20px; padding: 48px 24px;
     background: rgba(13,17,23,.95);
     border: 1px solid rgba(99,102,241,.15);
 }
+@media (min-width: 768px) { .cta-banner { border-radius: 28px; padding: 72px 40px; } }
 .cta-glow-1 {
     position: absolute; width: 500px; height: 500px; border-radius: 50%;
     background: radial-gradient(circle, rgba(99,102,241,.12), transparent 60%);

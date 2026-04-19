@@ -25,6 +25,7 @@ class Personal extends Model
         'about_me',
         'profile_photo',
         'about_description',
+        'about_photo',
         'years_experience',
         'completed_projects',
         'happy_clients',

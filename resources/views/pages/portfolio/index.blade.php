@@ -11,8 +11,8 @@
 
 @section('content')
 
-<section class="page-hero pt-32 pb-16">
-    <div class="max-w-6xl mx-auto px-6 text-center">
+<section class="page-hero pt-24 pb-10 md:pt-32 md:pb-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
         <div class="section-tag">Portfolio</div>
         <h1 class="font-display text-4xl md:text-5xl font-bold mt-2 mb-4">
             Projects by a <span class="gradient-text">Full Stack Developer Nepal</span>
@@ -26,7 +26,7 @@
 
 {{-- Filter by skill --}}
 @if($skills->isNotEmpty())
-<div class="max-w-6xl mx-auto px-6 py-8">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 py-6 md:py-8">
     <div class="flex flex-wrap gap-2 justify-center" id="skill-filters">
         <button data-filter="all"
                 class="filter-btn active skill-badge text-sm px-4 py-2 cursor-pointer">All</button>
@@ -39,8 +39,8 @@
 @endif
 
 
-<section class="py-10 pb-24 reveal">
-    <div class="max-w-6xl mx-auto px-6">
+<section class="py-8 pb-16 md:pb-24 reveal">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
         @if($projects->isEmpty())
             <p class="text-center text-slate-500 py-20">No projects available yet.</p>
         @else

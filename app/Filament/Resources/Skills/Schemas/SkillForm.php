@@ -28,6 +28,8 @@ class SkillForm
                     ->label('Category')
                     ->options([
                         'programming' => 'Programming',
+                        'framework' => 'Framework',
+                        'tools' => 'Tools',
                         'design' => 'Design',
                         'soft_skills' => 'Soft Skills',
                         'other' => 'Other',

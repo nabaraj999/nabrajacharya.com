@@ -6,8 +6,8 @@
 
 @section('content')
 
-<section class="page-hero pt-32 pb-16">
-    <div class="max-w-6xl mx-auto px-6 text-center">
+<section class="page-hero pt-24 pb-10 md:pt-32 md:pb-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
         <div class="section-tag">Contact</div>
         <h1 class="font-display text-4xl md:text-5xl font-bold mt-2 mb-4">
             Hire a <span class="gradient-text">Full Stack Developer Nepal</span>
@@ -18,8 +18,8 @@
     </div>
 </section>
 
-<section class="py-16 pb-24 reveal">
-    <div class="max-w-6xl mx-auto px-6">
+<section class="py-10 md:py-16 pb-16 md:pb-24 reveal">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="grid grid-cols-1 md:grid-cols-5 gap-10">
 
             {{-- Contact info --}}
@@ -77,6 +77,18 @@
                         <div>
                             <p class="text-xs text-emerald-500/70 mb-0.5">Current Role</p>
                             <p class="text-sm font-medium text-emerald-300">{{ $personal->current_role }} @ {{ $personal->current_company }}</p>
+                        </div>
+                    </div>
+                    @endif
+
+                    @if($personal->linkedin_url)
+                    <div class="flex items-center gap-3 p-4 rounded-xl bg-blue-500/8 border border-blue-500/20">
+                        <div class="w-9 h-9 rounded-lg bg-blue-500/15 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </div>
+                        <div>
+                            <p class="text-xs text-blue-500/70 mb-0.5">LinkedIn</p>
+                            <a href="{{ $personal->linkedin_url }}" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-blue-300 hover:text-blue-200 transition-colors">Connect on LinkedIn</a>
                         </div>
                     </div>
                     @endif

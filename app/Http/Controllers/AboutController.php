@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Certification;
 use App\Models\Education;
 use App\Models\Experience;
 use App\Models\Personal;
@@ -16,8 +17,9 @@ class AboutController extends Controller
         $seo         = Seo::where('page_name', 'about')->first();
         $education   = Education::orderBy('start_year', 'desc')->get();
         $skills      = Skill::orderBy('proficiency', 'desc')->get();
-        $experiences = Experience::where('is_active', true)->orderBy('sort_order')->orderByDesc('start_date')->get();
+        $experiences    = Experience::where('is_active', true)->orderBy('sort_order')->orderByDesc('start_date')->get();
+        $certifications = Certification::where('is_active', true)->orderBy('sort_order')->orderByDesc('issue_date')->get();
 
-        return view('pages.about', compact('personal', 'seo', 'education', 'skills', 'experiences'));
+        return view('pages.about', compact('personal', 'seo', 'education', 'skills', 'experiences', 'certifications'));
     }
 }

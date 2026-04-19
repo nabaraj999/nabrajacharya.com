@@ -1,346 +1,296 @@
 <div id="support-widget">
-    <!-- Floating Button -->
+    {{-- Floating Button --}}
     <button id="support-button"
-        class="fixed bottom-6 right-6 w-16 h-16 rounded-full bg-primary shadow-2xl flex items-center justify-center text-white text-2xl animate-float z-50">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
+        class="fixed bottom-6 right-6 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-white z-[60] transition-all hover:scale-110"
+        style="background: linear-gradient(135deg, #6366f1, #a855f7); box-shadow: 0 8px 32px rgba(99,102,241,0.45);"
+        title="Support & Tickets">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
         </svg>
     </button>
 
-    <!-- Modal Overlay -->
-    <div id="modal-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden transition-opacity duration-300">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <!-- Modal Content -->
-            <div
-                class="bg-white rounded-2xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-hidden flex flex-col animate-fade-in">
-                <!-- Close Button -->
-                <button id="close-modal"
-                    class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 bg-white rounded-full p-1 shadow-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12" />
+    {{-- Modal Overlay --}}
+    <div id="support-modal-overlay" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[70] hidden items-center justify-center p-4">
+        {{-- Modal Content --}}
+        <div id="support-modal-content" class="relative w-full max-w-md max-h-[90vh] overflow-hidden flex flex-col rounded-2xl border border-indigo-500/20 shadow-2xl animate-zoomIn"
+             style="background: rgba(10,13,26,0.97); backdrop-filter: blur(20px);">
+
+            {{-- Header --}}
+            <div class="flex items-center justify-between p-5 border-b border-white/8">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center text-base"
+                         style="background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(168,85,247,0.2)); border: 1px solid rgba(99,102,241,0.3);">
+                        💬
+                    </div>
+                    <div>
+                        <h3 class="text-white font-display font-bold text-sm">Support Center</h3>
+                        <p class="text-slate-500 text-xs">Chat or raise a ticket</p>
+                    </div>
+                </div>
+                <button id="close-support-modal"
+                    class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-all">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
                 </button>
+            </div>
 
-                <!-- Tabs -->
-                <div class="flex border-b">
-                    <button id="chat-tab"
-                        class="flex-1 py-4 px-6 text-center font-semibold text-primary border-b-2 border-primary bg-light">
-                        💬 Chat with AI
-                    </button>
-                    <button id="ticket-tab" class="flex-1 py-4 px-6 text-center font-semibold text-gray-500">
-                        🎫 Generate Ticket
-                    </button>
+            {{-- Tabs --}}
+            <div class="flex border-b border-white/8">
+                <button id="chat-tab"
+                    class="support-tab flex-1 py-3 px-4 text-center text-sm font-semibold transition-all border-b-2 border-indigo-500 text-indigo-400">
+                    💬 Chat with AI
+                </button>
+                <button id="ticket-tab"
+                    class="support-tab flex-1 py-3 px-4 text-center text-sm font-semibold transition-all border-b-2 border-transparent text-slate-500 hover:text-slate-300">
+                    🎫 Raise Ticket
+                </button>
+            </div>
+
+            {{-- Tab Content --}}
+            <div class="flex-1 overflow-y-auto">
+
+                {{-- Chat Tab --}}
+                <div id="chat-content" class="p-4 flex flex-col h-full" style="min-height: 340px;">
+                    {{-- Messages --}}
+                    <div id="chat-messages" class="flex-1 space-y-3 mb-4 overflow-y-auto pr-1" style="max-height: 260px;">
+                        <div class="flex items-start gap-2">
+                            <div class="w-7 h-7 rounded-full flex items-center justify-center text-sm flex-shrink-0"
+                                 style="background: linear-gradient(135deg, #6366f1, #a855f7);">🤖</div>
+                            <div class="rounded-xl p-3 max-w-xs text-sm text-slate-200"
+                                 style="background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.2);">
+                                Hi! I'm your AI assistant. Ask me about my services, skills, or how I can help your project. 👋
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Input --}}
+                    <div class="flex gap-2 mt-auto">
+                        <textarea id="message-input"
+                            class="flex-1 rounded-xl p-3 text-sm text-slate-200 placeholder-slate-600 resize-none transition-all outline-none"
+                            style="background: rgba(22,27,39,0.9); border: 1px solid rgba(99,102,241,0.2);"
+                            placeholder="Type your question…" rows="2"
+                            onfocus="this.style.borderColor='rgba(99,102,241,0.5)'"
+                            onblur="this.style.borderColor='rgba(99,102,241,0.2)'"></textarea>
+                        <button id="send-message"
+                            class="px-4 py-2 rounded-xl text-white text-sm font-semibold self-end transition-all hover:opacity-90"
+                            style="background: linear-gradient(135deg, #6366f1, #a855f7);">
+                            <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
 
-                <!-- Tab Content -->
-                <div class="flex-1 overflow-y-auto">
-                    <!-- Chat with AI Tab -->
-                    <div id="chat-content" class="p-4">
-                        <h3 class="text-xl font-bold text-center mb-4">AI Support Assistant 🤖</h3>
-
-                        <!-- Chat Messages -->
-                        <div id="chat-messages" class="space-y-4 mb-4 max-h-80 overflow-y-auto p-2">
-                            <!-- AI Message -->
-                            <div class="flex items-start space-x-2">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white">
-                                    🤖</div>
-                                <div class="bg-primary text-white rounded-lg p-3 max-w-xs">
-                                    <p>Hello! I'm your AI assistant. How can I help you with your course today?</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Input Area -->
-                        <div class="border-t pt-4">
-                            <div class="flex space-x-2">
-                                <textarea id="message-input" class="flex-1 border rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-primary"
-                                    placeholder="Type your question…" rows="2"></textarea>
-                                <button id="send-message"
-                                    class="bg-primary hover:bg-secondary text-white px-4 py-2 rounded-lg flex items-center gap-2 self-end">
-                                    <span>Send</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                        fill="currentColor">
-                                        <path fill-rule="evenodd"
-                                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
+                {{-- Ticket Tab --}}
+                <div id="ticket-content" class="p-5 hidden">
+                    <div class="mb-5 p-4 rounded-xl" style="background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.15);">
+                        <p class="text-sm text-slate-300 font-medium mb-1">🎫 Create a Support Ticket</p>
+                        <p class="text-xs text-slate-500">Fill in the form below and I'll get back to you within 24 hours.</p>
                     </div>
 
-                    <!-- Generate Ticket Tab -->
-                    <div id="ticket-content" class="p-4 hidden">
-                        <h3 class="text-xl font-bold text-center mb-6">Create Support Ticket 🎫</h3>
+                    <form id="ticket-form" class="space-y-4">
+                        @csrf
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider">Full Name *</label>
+                            <input type="text" name="name"
+                                class="w-full rounded-xl p-3 text-sm text-slate-200 placeholder-slate-600 outline-none transition-all"
+                                style="background: rgba(22,27,39,0.9); border: 1px solid rgba(99,102,241,0.2);"
+                                placeholder="Your name" required
+                                onfocus="this.style.borderColor='rgba(99,102,241,0.5)'"
+                                onblur="this.style.borderColor='rgba(99,102,241,0.2)'">
+                        </div>
 
-                        <!-- Ticket Form -->
-                        <form id="ticket-form" action="{{ route('tickets.store') }}" method="POST" class="space-y-4">
-                            @csrf
-                            <div class="grid grid-cols-1 gap-4">
-                                <!-- Full Name -->
-                                <div class="relative">
-                                    <div
-                                        class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                                        <i class="fas fa-user"></i>
-                                    </div>
-                                    <input type="text" name="name"
-                                        class="pl-10 w-full border rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-primary shadow-sm"
-                                        placeholder="Full Name" required>
-                                </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider">Email Address *</label>
+                            <input type="email" name="email"
+                                class="w-full rounded-xl p-3 text-sm text-slate-200 placeholder-slate-600 outline-none transition-all"
+                                style="background: rgba(22,27,39,0.9); border: 1px solid rgba(99,102,241,0.2);"
+                                placeholder="your@email.com" required
+                                onfocus="this.style.borderColor='rgba(99,102,241,0.5)'"
+                                onblur="this.style.borderColor='rgba(99,102,241,0.2)'">
+                        </div>
 
-                                <!-- Email Address -->
-                                <div class="relative">
-                                    <div
-                                        class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                                        <i class="fas fa-envelope"></i>
-                                    </div>
-                                    <input type="email" name="email"
-                                        class="pl-10 w-full border rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-primary shadow-sm"
-                                        placeholder="Email Address" required>
-                                </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider">Phone</label>
+                            <input type="tel" name="phone"
+                                class="w-full rounded-xl p-3 text-sm text-slate-200 placeholder-slate-600 outline-none transition-all"
+                                style="background: rgba(22,27,39,0.9); border: 1px solid rgba(99,102,241,0.2);"
+                                placeholder="+977 000 000 000"
+                                onfocus="this.style.borderColor='rgba(99,102,241,0.5)'"
+                                onblur="this.style.borderColor='rgba(99,102,241,0.2)'">
+                        </div>
 
-                                <!-- Phone Number -->
-                                <div class="relative">
-                                    <div
-                                        class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                                        <i class="fas fa-phone"></i>
-                                    </div>
-                                    <input type="tel" name="phone"
-                                        class="pl-10 w-full border rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-primary shadow-sm"
-                                        placeholder="Phone Number">
-                                </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider">Describe your issue *</label>
+                            <textarea name="issue" rows="4"
+                                class="w-full rounded-xl p-3 text-sm text-slate-200 placeholder-slate-600 resize-none outline-none transition-all"
+                                style="background: rgba(22,27,39,0.9); border: 1px solid rgba(99,102,241,0.2);"
+                                placeholder="Describe the problem or project you need help with…" required
+                                onfocus="this.style.borderColor='rgba(99,102,241,0.5)'"
+                                onblur="this.style.borderColor='rgba(99,102,241,0.2)'"></textarea>
+                        </div>
 
-                                <!-- Problem/Issue -->
-                                <div class="relative">
-                                    <div class="absolute top-3 left-3 text-gray-400 pointer-events-none">
-                                        <i class="fas fa-comment-dots"></i>
-                                    </div>
-                                    <textarea name="issue" rows="4"
-                                        class="pl-10 w-full border rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-primary shadow-sm"
-                                        placeholder="Describe your problem/issue" required></textarea>
-                                </div>
-                            </div>
-
-                            <!-- Submit Button -->
-                            <button type="submit"
-                                class="w-full bg-secondary text-white font-bold px-6 py-3 rounded-xl shadow-md hover:scale-105 hover:bg-opacity-90 transition transform duration-200 flex items-center justify-center gap-2">
-                                <i class="fas fa-paper-plane"></i> Submit Ticket
-                            </button>
-                        </form>
-
-                    </div>
+                        <button type="submit" id="ticket-submit-btn"
+                            class="w-full py-3 rounded-xl text-white font-bold text-sm transition-all hover:opacity-90 flex items-center justify-center gap-2"
+                            style="background: linear-gradient(135deg, #6366f1, #a855f7);">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                            </svg>
+                            Submit Ticket
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
-{{-- Tailwind config is defined in the layout --}}
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get DOM elements
-        const supportButton = document.getElementById('support-button');
-        const modalOverlay = document.getElementById('modal-overlay');
-        const closeModal = document.getElementById('close-modal');
-        const chatTab = document.getElementById('chat-tab');
-        const ticketTab = document.getElementById('ticket-tab');
-        const chatContent = document.getElementById('chat-content');
-        const ticketContent = document.getElementById('ticket-content');
-        const messageInput = document.getElementById('message-input');
-        const sendMessage = document.getElementById('send-message');
-        const ticketForm = document.getElementById('ticket-form');
-        const chatMessages = document.getElementById('chat-messages');
+document.addEventListener('DOMContentLoaded', function() {
+    const supportButton   = document.getElementById('support-button');
+    const modalOverlay    = document.getElementById('support-modal-overlay');
+    const closeBtn        = document.getElementById('close-support-modal');
+    const chatTab         = document.getElementById('chat-tab');
+    const ticketTab       = document.getElementById('ticket-tab');
+    const chatContent     = document.getElementById('chat-content');
+    const ticketContent   = document.getElementById('ticket-content');
+    const messageInput    = document.getElementById('message-input');
+    const sendMessageBtn  = document.getElementById('send-message');
+    const ticketForm      = document.getElementById('ticket-form');
+    const chatMessages    = document.getElementById('chat-messages');
 
-        // Open modal when support button is clicked
-        supportButton.addEventListener('click', function() {
-            modalOverlay.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        });
+    function openModal() {
+        modalOverlay.classList.remove('hidden');
+        modalOverlay.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+    }
 
-        // Close modal when close button is clicked
-        closeModal.addEventListener('click', function() {
-            modalOverlay.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        });
+    function closeModal() {
+        modalOverlay.classList.add('hidden');
+        modalOverlay.classList.remove('flex');
+        document.body.style.overflow = '';
+    }
 
-        // Close modal when clicking outside of modal content
-        modalOverlay.addEventListener('click', function(e) {
-            if (e.target === modalOverlay) {
-                modalOverlay.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            }
-        });
+    supportButton.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', function(e) {
+        if (e.target === modalOverlay) closeModal();
+    });
 
-        // Switch to chat tab
-        chatTab.addEventListener('click', function() {
-            chatTab.classList.add('text-primary', 'border-primary', 'bg-light');
-            chatTab.classList.remove('text-gray-500');
-            ticketTab.classList.remove('text-primary', 'border-primary', 'bg-light');
-            ticketTab.classList.add('text-gray-500');
-            chatContent.classList.remove('hidden');
-            ticketContent.classList.add('hidden');
-        });
+    function setActiveTab(activeTab, activeContent, inactiveTab, inactiveContent) {
+        activeTab.classList.remove('border-transparent', 'text-slate-500');
+        activeTab.classList.add('border-indigo-500', 'text-indigo-400');
+        inactiveTab.classList.remove('border-indigo-500', 'text-indigo-400');
+        inactiveTab.classList.add('border-transparent', 'text-slate-500');
+        activeContent.classList.remove('hidden');
+        inactiveContent.classList.add('hidden');
+    }
 
-        // Switch to ticket tab
-        ticketTab.addEventListener('click', function() {
-            ticketTab.classList.add('text-primary', 'border-primary', 'bg-light');
-            ticketTab.classList.remove('text-gray-500');
-            chatTab.classList.remove('text-primary', 'border-primary', 'bg-light');
-            chatTab.classList.add('text-gray-500');
-            ticketContent.classList.remove('hidden');
-            chatContent.classList.add('hidden');
-        });
+    chatTab.addEventListener('click', () => setActiveTab(chatTab, chatContent, ticketTab, ticketContent));
+    ticketTab.addEventListener('click', () => setActiveTab(ticketTab, ticketContent, chatTab, chatContent));
 
-        // Send message in chat
-        sendMessage.addEventListener('click', function() {
-            const message = messageInput.value.trim();
-            if (message) {
-                addMessage(message, 'user');
-                messageInput.value = '';
+    function addMessage(text, sender) {
+        const div = document.createElement('div');
+        div.className = 'flex items-start gap-2' + (sender === 'user' ? ' justify-end' : '');
 
-                setTimeout(() => {
-                    let response =
-                        "I'm sorry, I didn't understand that. Can you please provide more details?";
-
-                    if (message.toLowerCase().includes('access') || message.toLowerCase()
-                        .includes('material')) {
-                        response =
-                            "For access issues, please try clearing your browser cache or using a different browser. If the problem persists, contact technical support.";
-                    } else if (message.toLowerCase().includes('video') || message.toLowerCase()
-                        .includes('play')) {
-                        response =
-                            "Video playback issues are often related to internet connection. Try lowering the video quality or downloading the video for offline viewing.";
-                    } else if (message.toLowerCase().includes('certificate') || message
-                        .toLowerCase().includes('complete')) {
-                        response =
-                            "Certificates are automatically generated when you complete all course requirements. Please allow up to 24 hours for certificate generation after completion.";
-                    }
-
-                    addMessage(response, 'ai');
-                }, 1000);
-            }
-        });
-
-        // Allow sending message with Enter key
-        messageInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                sendMessage.click();
-            }
-        });
-
-        // Handle ticket form submission
-        ticketForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            const formData = new FormData(ticketForm);
-            const csrfToken = document.querySelector('meta[name="csrf-token"]');
-            if (!csrfToken) {
-                console.error('CSRF token not found.');
-                alert('CSRF token missing. Please refresh the page.');
-                return;
-            }
-
-            // Log form data for debugging
-            for (let pair of formData.entries()) {
-                console.log('Form data:', pair[0] + ': ' + pair[1]);
-            }
-
-            try {
-                const response = await fetch('{{ route('tickets.store') }}', {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': csrfToken.content,
-                        'Accept': 'application/json',
-                    },
-                    body: formData,
-                });
-
-                console.log('Server response:', response); // Log full response object
-
-                if (!response.ok) {
-                    const errorText = await response.text();
-                    let errorMessage = `HTTP error! status: ${response.status}`;
-                    if (response.status === 419) {
-                        errorMessage +=
-                            ' - Possible CSRF token mismatch. Refresh the page and try again.';
-                    } else if (response.status === 422) {
-                        errorMessage += ' - Validation error: ' + errorText;
-                    } else if (response.status === 500) {
-                        errorMessage += ' - Server error. Check logs.';
-                    } else {
-                        errorMessage += ' - ' + errorText;
-                    }
-                    throw new Error(errorMessage);
-                }
-
-                const data = await response.json();
-                // Show success notification instead of alert
-                showSuccessNotification(data.message);
-                ticketForm.reset();
-                chatTab.click();
-            } catch (error) {
-                console.error('Ticket submission error:', error);
-                alert(
-                    `Failed to submit ticket. Error: ${error.message}. Check the console for details.`
-                    );
-            }
-        });
-
-        // Helper function to add messages to chat
-        function addMessage(text, sender) {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('flex', 'items-start', 'space-x-2');
-
-            if (sender === 'user') {
-                messageDiv.classList.add('justify-end');
-                messageDiv.innerHTML = `
-                    <div class="bg-secondary text-white rounded-lg p-3 max-w-xs">
-                        <p>${text}</p>
-                    </div>
-                    <div class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center">👤</div>
-                `;
-            } else {
-                messageDiv.innerHTML = `
-                    <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white">🤖</div>
-                    <div class="bg-primary text-white rounded-lg p-3 max-w-xs">
-                        <p>${text}</p>
-                    </div>
-                `;
-            }
-
-            chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+        if (sender === 'user') {
+            div.innerHTML = `
+                <div class="rounded-xl p-3 max-w-xs text-sm text-white" style="background:linear-gradient(135deg,#6366f1,#a855f7);">${text}</div>
+                <div class="w-7 h-7 rounded-full bg-slate-700 flex items-center justify-center text-sm flex-shrink-0">👤</div>
+            `;
+        } else {
+            div.innerHTML = `
+                <div class="w-7 h-7 rounded-full flex items-center justify-center text-sm flex-shrink-0" style="background:linear-gradient(135deg,#6366f1,#a855f7);">🤖</div>
+                <div class="rounded-xl p-3 max-w-xs text-sm text-slate-200" style="background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.2);">${text}</div>
+            `;
         }
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
 
-        // Function to show success notification
-        function showSuccessNotification(message) {
-            const notification = document.createElement('div');
-            notification.classList.add('fixed', 'bottom-6', 'right-6', 'bg-green-500', 'text-white', 'px-4',
-                'py-2', 'rounded-lg', 'shadow-lg', 'transition-opacity', 'duration-300', 'z-50');
-            notification.textContent = message;
-            document.body.appendChild(notification);
+    function getAIResponse(message) {
+        const msg = message.toLowerCase();
+        if (msg.includes('laravel') || msg.includes('php') || msg.includes('backend'))
+            return "I specialize in Laravel development — from APIs to full web apps. Let's discuss your project! You can also raise a ticket using the 🎫 tab.";
+        if (msg.includes('seo') || msg.includes('rank') || msg.includes('google') || msg.includes('traffic'))
+            return "I'm an SEO expert helping businesses rank on Google. I offer technical SEO, on-page optimization, and content strategy. Want to discuss your SEO needs?";
+        if (msg.includes('price') || msg.includes('cost') || msg.includes('quote') || msg.includes('rate'))
+            return "Project pricing depends on scope and requirements. Please raise a ticket or contact me directly at the Contact page for a custom quote!";
+        if (msg.includes('hire') || msg.includes('available') || msg.includes('freelance'))
+            return "I'm available for freelance and consulting projects! Head to the Contact page or raise a support ticket with your requirements.";
+        if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey'))
+            return "Hello! Great to hear from you. How can I help you today? I'm a Full Stack Developer & SEO Expert based in Nepal. 🇳🇵";
+        return "Thanks for your message! For detailed inquiries, please use the 🎫 Raise Ticket tab or visit the Contact page. I'll get back to you within 24 hours.";
+    }
 
-            // Auto-remove after 3 seconds
-            setTimeout(() => {
-                notification.classList.add('opacity-0');
-                setTimeout(() => {
-                    notification.remove();
-                }, 300); // Match transition duration
-            }, 3000);
+    function handleSend() {
+        const text = messageInput.value.trim();
+        if (!text) return;
+        addMessage(text, 'user');
+        messageInput.value = '';
+
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'flex items-start gap-2';
+        typingDiv.innerHTML = `
+            <div class="w-7 h-7 rounded-full flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#6366f1,#a855f7);">🤖</div>
+            <div class="rounded-xl p-3 text-sm text-slate-400" style="background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.15);">typing…</div>
+        `;
+        chatMessages.appendChild(typingDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        setTimeout(() => {
+            typingDiv.remove();
+            addMessage(getAIResponse(text), 'ai');
+        }, 800);
+    }
+
+    sendMessageBtn.addEventListener('click', handleSend);
+    messageInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); }
+    });
+
+    ticketForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('ticket-submit-btn');
+        btn.disabled = true;
+        btn.innerHTML = '<svg class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg> Submitting…';
+
+        const csrfMeta = document.querySelector('meta[name="csrf-token"]');
+        const formData = new FormData(ticketForm);
+
+        try {
+            const res = await fetch('{{ route('tickets.store') }}', {
+                method: 'POST',
+                headers: { 'X-CSRF-TOKEN': csrfMeta ? csrfMeta.content : '', 'Accept': 'application/json' },
+                body: formData,
+            });
+
+            if (!res.ok) {
+                const err = await res.json().catch(() => ({}));
+                throw new Error(err.message || `Server error ${res.status}`);
+            }
+
+            ticketForm.reset();
+            showToast('✅ Ticket submitted! I\'ll reply within 24 hours.', 'success');
+            setActiveTab(chatTab, chatContent, ticketTab, ticketContent);
+            addMessage("Your ticket has been received! I'll get back to you within 24 hours. 🎉", 'ai');
+        } catch (err) {
+            showToast('❌ ' + err.message, 'error');
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = '<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg> Submit Ticket';
         }
     });
-</script>
 
-<style>
-    #support-widget .t-primary { background-color: #6366f1; }
-    #support-widget .t-secondary { background-color: #f59e0b; }
-    #support-widget .t-border-primary { border-color: #6366f1; }
-    #support-widget .t-text-primary { color: #6366f1; }
-</style>
+    function showToast(message, type) {
+        const toast = document.createElement('div');
+        const bg = type === 'success' ? 'rgba(16,185,129,0.9)' : 'rgba(239,68,68,0.9)';
+        toast.style.cssText = `position:fixed;bottom:90px;right:24px;padding:12px 18px;border-radius:12px;background:${bg};color:white;font-size:.85rem;font-weight:600;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,.3);backdrop-filter:blur(10px);transition:opacity .3s;max-width:280px;`;
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); }, 4000);
+    }
+});
+</script>

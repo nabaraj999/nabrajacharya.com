@@ -22,7 +22,7 @@ class ExperiencesTable
                 TextColumn::make('position')->searchable(),
                 TextColumn::make('employment_type')->badge(),
                 TextColumn::make('start_date')->date('M Y')->sortable(),
-                TextColumn::make('end_date')->date('M Y')->default('Present'),
+                TextColumn::make('end_date')->date('M Y')->placeholder('Present'),
                 IconColumn::make('is_current')->boolean()->label('Current'),
                 IconColumn::make('is_active')->boolean(),
                 TextColumn::make('sort_order')->sortable(),

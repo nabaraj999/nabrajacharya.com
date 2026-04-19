@@ -6,8 +6,8 @@
 
 @section('content')
 
-<section class="page-hero pt-32 pb-16">
-    <div class="max-w-6xl mx-auto px-6 text-center">
+<section class="page-hero pt-24 pb-10 md:pt-32 md:pb-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
         <div class="section-tag">Services</div>
         <h1 class="font-display text-4xl md:text-5xl font-bold mt-2 mb-4">
             Web Development <span class="gradient-text">Services in Nepal</span>
@@ -18,8 +18,8 @@
     </div>
 </section>
 
-<section class="py-20 reveal">
-    <div class="max-w-6xl mx-auto px-6">
+<section class="py-10 md:py-16 reveal">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
         @if($services->isEmpty())
             <p class="text-center text-slate-500 py-20">No services available at the moment.</p>
         @else
@@ -55,8 +55,8 @@
 </section>
 
 {{-- CTA --}}
-<section class="py-16 reveal">
-    <div class="max-w-6xl mx-auto px-6">
+<section class="py-10 md:py-16 reveal">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="rounded-2xl bg-gradient-to-br from-indigo-600/15 to-cyan-600/10 border border-indigo-500/20 p-10 text-center">
             <h2 class="font-display text-2xl md:text-3xl font-bold mb-3">
                 Need a <span class="gradient-text">Laravel Developer in Nepal</span>?
