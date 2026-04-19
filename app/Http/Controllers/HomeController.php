@@ -2,36 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Education;
+use App\Models\Experience;
+use App\Models\Partner;
 use App\Models\Personal;
 use App\Models\Project;
 use App\Models\Seo;
 use App\Models\Service;
 use App\Models\Skill;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $personal = Personal::first();  // Changed to singular $personal
-        $education = Education::orderBy('id', 'desc')->get();
-        $services = Service::where('is_active', true)->get();
-        $skills = Skill::orderBy('proficiency', 'desc')->get();
-        $seo = Seo::first();
-        $projects = Project::where('status', 'completed')->get();
+        $personal    = Personal::first();
+        $seo         = Seo::where('page_name', 'home')->first();
+        $featured    = Project::where('status', 'completed')->with('skills')->latest()->take(6)->get();
+        $services    = Service::where('is_active', true)->take(6)->get();
+        $skills      = Skill::orderBy('proficiency', 'desc')->get();
+        $experiences = Experience::where('is_active', true)->orderBy('sort_order')->orderByDesc('start_date')->get();
+        $partners    = Partner::where('is_active', true)->orderBy('sort_order')->get();
 
-        // Optional: Log for debugging (remove in production)
-        Log::info('HomeController data loaded', [
-            'personal_exists' => $personal ? true : false,  // Now uses $personal
-            'education_count' => $education->count(),
-            'services_count' => $services->count(),
-            'skills_count' => $skills->count(),
-            'seo_exists' => $seo ? true : false,
-            'projects_count' => $projects->count()
-        ]);
-
-        return view('index', compact('personal', 'education', 'services', 'skills', 'seo', 'projects'));
+        return view('pages.home', compact('personal', 'seo', 'featured', 'services', 'skills', 'experiences', 'partners'));
     }
 }

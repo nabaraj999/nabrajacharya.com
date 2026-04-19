@@ -17,6 +17,7 @@ class Personal extends Model
         'facebook_url',
         'instagram_url',
         'github_url',
+        'linkedin_url',
         'email',
         'phone_number',
         'location',
@@ -27,6 +28,10 @@ class Personal extends Model
         'years_experience',
         'completed_projects',
         'happy_clients',
+        'current_company',
+        'current_company_url',
+        'current_role',
+        'current_role_start',
     ];
 }
 

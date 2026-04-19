@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Projects\Schemas;
 
+use App\Models\Skill;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
@@ -45,13 +46,22 @@ class ProjectForm
                     ->default('in_progress')
                     ->required(),
 
-                     RichEditor::make('description')
-                    ->label(' Description')
+                RichEditor::make('description')
+                    ->label('Description')
                     ->nullable()
                     ->columnSpanFull()
-                    ->placeholder('Describe yourself')
-                    ->helperText('Provide a detailed overview of yourself')
+                    ->placeholder('Describe the project')
+                    ->helperText('Provide a detailed overview of the project')
                     ->extraAttributes(['style' => 'min-height: 200px;']),
+
+                Select::make('skills')
+                    ->label('Technologies / Skills Used')
+                    ->relationship('skills', 'skill_name')
+                    ->multiple()
+                    ->preload()
+                    ->searchable()
+                    ->columnSpanFull()
+                    ->helperText('Select all technologies used to build this project'),
             ]);
     }
 }

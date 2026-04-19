@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Personals\Schemas;
 
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
@@ -90,7 +91,29 @@ class PersonalForm
                     ->default(null),
                 TextInput::make('happy_clients')
                     ->numeric()
-                    ->minValue(0) // Changed from min(0) to minValue(0)
+                    ->minValue(0)
+                    ->default(null),
+
+                TextInput::make('current_company')
+                    ->label('Current Company')
+                    ->maxLength(150)
+                    ->default(null),
+                TextInput::make('current_company_url')
+                    ->label('Current Company URL')
+                    ->url()
+                    ->maxLength(255)
+                    ->default(null),
+                TextInput::make('current_role')
+                    ->label('Current Job Title')
+                    ->maxLength(150)
+                    ->default(null),
+                DatePicker::make('current_role_start')
+                    ->label('Role Start Date')
+                    ->default(null),
+                TextInput::make('linkedin_url')
+                    ->label('LinkedIn URL')
+                    ->url()
+                    ->maxLength(255)
                     ->default(null),
             ]);
     }

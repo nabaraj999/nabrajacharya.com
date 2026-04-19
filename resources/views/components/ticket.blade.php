@@ -141,44 +141,7 @@
 </div>
 
 
-<script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    primary: '#1E3A8A',
-                    secondary: '#F59E0B',
-                    light: '#F8FAFC'
-                },
-                fontFamily: {
-                    raleway: ['Raleway', 'sans-serif']
-                },
-                animation: {
-                    'float': 'float 6s ease-in-out infinite',
-                    'fade-in': 'fadeIn 1.5s ease-in-out'
-                },
-                keyframes: {
-                    float: {
-                        '0%, 100%': {
-                            transform: 'translateY(0)'
-                        },
-                        '50%': {
-                            transform: 'translateY(-20px)'
-                        }
-                    },
-                    fadeIn: {
-                        '0%': {
-                            opacity: '0'
-                        },
-                        '100%': {
-                            opacity: '1'
-                        }
-                    }
-                }
-            }
-        }
-    }
-</script>
+{{-- Tailwind config is defined in the layout --}}
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Get DOM elements
@@ -375,27 +338,9 @@
     });
 </script>
 
-<style type="text/tailwindcss">
-    @layer utilities {
-        .animation-delay-2000 {
-            animation-delay: 2s;
-        }
-
-        .animation-delay-4000 {
-            animation-delay: 4s;
-        }
-
-        /* ✅ Navbar hover effect */
-        .nav-link {
-            @apply text-gray-700 border-b-2 border-transparent transition duration-300;
-        }
-
-        .nav-link:hover {
-            @apply text-secondary border-secondary font-semibold;
-        }
-
-        .nav-link-active {
-            @apply text-primary font-semibold border-b-2 border-secondary;
-        }
-    }
+<style>
+    #support-widget .t-primary { background-color: #6366f1; }
+    #support-widget .t-secondary { background-color: #f59e0b; }
+    #support-widget .t-border-primary { border-color: #6366f1; }
+    #support-widget .t-text-primary { color: #6366f1; }
 </style>

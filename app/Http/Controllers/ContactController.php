@@ -3,25 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\Personal;
+use App\Models\Seo;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
     public function index()
     {
-        return view('contact');
+        $personal = Personal::first();
+        $seo      = Seo::where('page_name', 'contact')->first();
+
+        return view('pages.contact', compact('personal', 'seo'));
     }
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
+        $validated = $request->validate([
+            'name'    => 'required|string|max:255',
+            'email'   => 'required|email|max:255',
             'message' => 'required|string',
         ]);
 
-        Contact::create($validatedData);
+        Contact::create($validated);
 
-       return redirect('/')->with('success', 'Thank you for your message! We will get back to you soon.');
+        return redirect()->route('contact')->with('success', 'Thank you! I\'ll get back to you soon.');
     }
 }
