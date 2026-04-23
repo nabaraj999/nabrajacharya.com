@@ -55,6 +55,13 @@
                         <p class="text-xs uppercase tracking-widest text-slate-500 mb-3">
                             {{ $post->published_at ? $post->published_at->format('M d, Y') : 'Draft' }}
                         </p>
+                        @if($post->focus_keyword)
+                        <p class="mb-3">
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-[11px] font-semibold uppercase tracking-wider bg-indigo-500/15 border border-indigo-500/30 text-indigo-300">
+                                {{ $post->focus_keyword }}
+                            </span>
+                        </p>
+                        @endif
                         <a href="{{ route('blog.show', $post->slug) }}">
                             <h2 class="font-display text-xl font-bold text-white mb-3 leading-tight group-hover:text-indigo-300 transition-colors">
                                 {{ $post->title }}

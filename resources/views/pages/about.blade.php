@@ -76,8 +76,8 @@ $aboutSchema = [
                             <img src="{{ Storage::url($personal->about_photo) }}"
                                  alt="{{ $personal->brand_name ?? 'Nabaraj Acharya' }} — Full Stack Developer & SEO Expert Nepal"
                                  class="w-full h-full object-cover">
-                        @elseif($personal && $personal->profile_photo)
-                            <img src="{{ Storage::url($personal->profile_photo) }}"
+                        @elseif($personal && $personal->logo_url)
+                            <img src="{{ Storage::url($personal->logo_url) }}"
                                  alt="{{ $personal->brand_name ?? 'Nabaraj Acharya' }} — Full Stack Developer & SEO Expert Nepal"
                                  class="w-full h-full object-cover">
                         @else

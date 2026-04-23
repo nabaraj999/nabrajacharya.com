@@ -11,6 +11,7 @@ use App\Models\Project;
 use App\Models\Seo;
 use App\Models\Service;
 use App\Models\Skill;
+use App\Models\Testimonial;
 
 class HomeController extends Controller
 {
@@ -25,7 +26,8 @@ class HomeController extends Controller
         $partners    = Partner::where('is_active', true)->orderBy('sort_order')->get();
         $blogs       = Blog::where('is_active', true)->orderBy('sort_order')->orderByDesc('published_at')->orderByDesc('created_at')->take(3)->get();
         $galleryItems = Gallery::where('is_active', true)->orderBy('sort_order')->orderByDesc('created_at')->take(8)->get();
+        $testimonials = Testimonial::where('is_approved', true)->orderByDesc('approved_at')->orderByDesc('created_at')->take(3)->get();
 
-        return view('pages.home', compact('personal', 'seo', 'featured', 'services', 'skills', 'experiences', 'partners', 'blogs', 'galleryItems'));
+        return view('pages.home', compact('personal', 'seo', 'featured', 'services', 'skills', 'experiences', 'partners', 'blogs', 'galleryItems', 'testimonials'));
     }
 }

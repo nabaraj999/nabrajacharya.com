@@ -75,7 +75,7 @@ class PersonalForm
                     ->hint('Upload a professional headshot for the Hero section.')
                     ->dehydrated(true),
                 FileUpload::make('about_photo')
-                    ->label('About Page Photo')
+                    ->label('About Page Second Photo')
                     ->image()
                     ->directory('profile-photos')
                     ->disk('public')
@@ -85,7 +85,7 @@ class PersonalForm
                     ->previewable(true)
                     ->extraAttributes(['class' => 'bg-white rounded-lg shadow-sm'])
                     ->nullable()
-                    ->hint('Upload a professional photo for the About section.')
+                    ->hint('Upload a different photo for About page (separate from Hero photo).')
                     ->dehydrated(true),
                 RichEditor::make('about_description')
                     ->label('About Description')

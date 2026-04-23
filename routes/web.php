@@ -10,6 +10,7 @@ use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\Popupcontroller;
+use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',          [HomeController::class, 'index'])->name('home');
@@ -20,6 +21,8 @@ Route::get('/portfolio/{id}', [PortfolioController::class, 'show'])->name('portf
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
+Route::get('/submit-testimonial', [TestimonialController::class, 'create'])->name('testimonial.create');
+Route::post('/submit-testimonial', [TestimonialController::class, 'store'])->name('testimonial.store');
 Route::get('/contact',   [ContactController::class, 'index'])->name('contact');
 Route::post('/contact',  [ContactController::class, 'store'])->name('contact.store');
 

@@ -12,7 +12,7 @@
     <meta name="description" content="@yield('description', ($seo->meta_description ?? 'Nabaraj Acharya is a Full Stack Developer and SEO Specialist in Nepal, providing Laravel development and search growth services for clients in Nepal, Khotang, and Lalitpur.'))">
     <meta name="keywords" content="@yield('keywords', ($seo->meta_keywords ?? 'full stack developer nepal, laravel developer nepal, seo specialist in nepal, seo specialist in khotang, seo specialist in lalitpur, seo specalist in nepal, seo specalist in khotang, seo specalist in lalitpur, web developer nepal, nabaraj acharya, technabu'))">
     <meta name="author" content="{{ $personal->brand_name ?? 'Nabaraj Acharya' }}">
-    <meta name="robots" content="{{ $seo->robots_directives ?? 'index, follow' }}">
+    <meta name="robots" content="@yield('robots', ($seo->robots_directives ?? 'index, follow'))">
     <meta name="language" content="English">
     <meta name="geo.region" content="NP-BA" />
     <meta name="geo.placename" content="Kathmandu, Nepal" />
