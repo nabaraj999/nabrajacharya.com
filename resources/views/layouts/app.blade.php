@@ -9,8 +9,8 @@
 
     {{-- Per-page SEO --}}
     <title>@yield('title', ($seo->meta_title ?? 'Nabaraj Acharya — Full Stack Developer Nepal | Laravel Developer Nepal'))</title>
-    <meta name="description" content="@yield('description', ($seo->meta_description ?? 'Nabaraj Acharya is a Full Stack Developer in Nepal specializing in Laravel development, SEO, and modern web applications. Available for freelance and full-time projects.'))">
-    <meta name="keywords" content="@yield('keywords', ($seo->meta_keywords ?? 'full stack developer nepal, laravel developer nepal, seo expert nepal, web developer nepal, nabaraj acharya, technabu'))">
+    <meta name="description" content="@yield('description', ($seo->meta_description ?? 'Nabaraj Acharya is a Full Stack Developer and SEO Specialist in Nepal, providing Laravel development and search growth services for clients in Nepal, Khotang, and Lalitpur.'))">
+    <meta name="keywords" content="@yield('keywords', ($seo->meta_keywords ?? 'full stack developer nepal, laravel developer nepal, seo specialist in nepal, seo specialist in khotang, seo specialist in lalitpur, seo specalist in nepal, seo specalist in khotang, seo specalist in lalitpur, web developer nepal, nabaraj acharya, technabu'))">
     <meta name="author" content="{{ $personal->brand_name ?? 'Nabaraj Acharya' }}">
     <meta name="robots" content="{{ $seo->robots_directives ?? 'index, follow' }}">
     <meta name="language" content="English">
@@ -26,7 +26,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="@yield('og_title', ($seo->og_title ?? 'Nabaraj Acharya — Full Stack Developer Nepal'))">
-    <meta property="og:description" content="@yield('og_description', ($seo->og_description ?? 'Full Stack Developer & Laravel Expert in Nepal.'))">
+    <meta property="og:description" content="@yield('og_description', ($seo->og_description ?? 'Full Stack Developer and SEO Specialist in Nepal, Khotang, and Lalitpur.'))">
     <meta property="og:image" content="{{ $personal && $personal->logo_url ? Storage::url($personal->logo_url) : '' }}">
     <meta property="og:site_name" content="TechNabu">
     <meta property="og:locale" content="en_US">
@@ -34,7 +34,7 @@
     {{-- Twitter --}}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="@yield('og_title', ($seo->twitter_title ?? 'Nabaraj Acharya — Full Stack Developer Nepal'))">
-    <meta name="twitter:description" content="@yield('og_description', ($seo->twitter_description ?? 'Full Stack Developer & Laravel Expert in Nepal.'))">
+    <meta name="twitter:description" content="@yield('og_description', ($seo->twitter_description ?? 'Full Stack Developer and SEO Specialist in Nepal, Khotang, and Lalitpur.'))">
 
     {{-- Structured Data --}}
     @php
@@ -44,7 +44,7 @@
         'name'     => 'Nabaraj Acharya',
         'url'      => 'https://nabrajacharya.com.np',
         'jobTitle' => $personal->current_role ?? 'Full Stack Developer Nepal',
-        'description' => 'Full Stack Developer Nepal & SEO Expert Nepal — specializing in Laravel development, PHP, and technical SEO for businesses in Nepal and Australia.',
+        'description' => 'Full Stack Developer and SEO Specialist in Nepal, Khotang, and Lalitpur, specializing in Laravel development, PHP, and technical SEO.',
         'address'  => ['@type' => 'PostalAddress', 'addressCountry' => 'NP', 'addressLocality' => 'Kathmandu'],
         'sameAs'   => array_filter([
             $personal->facebook_url ?? '',
@@ -259,6 +259,10 @@
                    class="nav-link {{ request()->routeIs('services') ? 'active' : '' }}">Services</a>
                 <a href="{{ route('portfolio') }}"
                    class="nav-link {{ request()->routeIs('portfolio*') ? 'active' : '' }}">Portfolio</a>
+                <a href="{{ route('blog.index') }}"
+                   class="nav-link {{ request()->routeIs('blog.*') ? 'active' : '' }}">Blog</a>
+                <a href="{{ route('gallery.index') }}"
+                   class="nav-link {{ request()->routeIs('gallery.*') ? 'active' : '' }}">Gallery</a>
                 <a href="{{ route('contact') }}"
                    class="px-5 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-semibold rounded-lg hover:shadow-lg hover:shadow-indigo-500/25 transition-all hover:-translate-y-0.5 {{ request()->routeIs('contact') ? 'ring-2 ring-indigo-400' : '' }}">
                     Contact
@@ -277,13 +281,25 @@
 
         <div id="mobile-menu" class="mobile-menu md:hidden">
             <div class="flex flex-col space-y-1 pt-4 pb-2">
-                @foreach(['home'=>'Home','about'=>'About','services'=>'Services','portfolio'=>'Portfolio','contact'=>'Contact'] as $route => $label)
+                @foreach(['home'=>'Home','about'=>'About','services'=>'Services','portfolio'=>'Portfolio'] as $route => $label)
                 <a href="{{ route($route) }}"
                    class="mobile-nav-link px-4 py-3 text-sm font-medium rounded-lg transition-all
                           {{ request()->routeIs($route.'*') ? 'text-white bg-indigo-500/15 border border-indigo-500/20' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
                     {{ $label }}
                 </a>
                 @endforeach
+                <a href="{{ route('blog.index') }}"
+                   class="mobile-nav-link px-4 py-3 text-sm font-medium rounded-lg transition-all {{ request()->routeIs('blog.*') ? 'text-white bg-indigo-500/15 border border-indigo-500/20' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
+                    Blog
+                </a>
+                <a href="{{ route('gallery.index') }}"
+                   class="mobile-nav-link px-4 py-3 text-sm font-medium rounded-lg transition-all {{ request()->routeIs('gallery.*') ? 'text-white bg-indigo-500/15 border border-indigo-500/20' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
+                    Gallery
+                </a>
+                <a href="{{ route('contact') }}"
+                   class="mobile-nav-link px-4 py-3 text-sm font-medium rounded-lg transition-all {{ request()->routeIs('contact') ? 'text-white bg-indigo-500/15 border border-indigo-500/20' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
+                    Contact
+                </a>
             </div>
         </div>
     </nav>
@@ -327,6 +343,8 @@
                     @foreach(['home'=>'Home','about'=>'About','services'=>'Services','portfolio'=>'Portfolio','contact'=>'Contact'] as $route => $label)
                     <a href="{{ route($route) }}" class="text-sm text-slate-500 hover:text-indigo-400 transition-colors">{{ $label }}</a>
                     @endforeach
+                    <a href="{{ route('blog.index') }}" class="text-sm text-slate-500 hover:text-indigo-400 transition-colors">Blog</a>
+                    <a href="{{ route('gallery.index') }}" class="text-sm text-slate-500 hover:text-indigo-400 transition-colors">Gallery</a>
                 </div>
             </div>
 

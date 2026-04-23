@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('title', $seo->meta_title ?? 'Hire a Full Stack Developer Nepal — Contact Nabaraj Acharya')
-@section('description', $seo->meta_description ?? 'Contact Nabaraj Acharya, Full Stack Developer in Nepal. Available for Laravel development, web projects, SEO consulting, and freelance work.')
-@section('keywords', $seo->meta_keywords ?? 'hire full stack developer nepal, contact laravel developer nepal, nabaraj acharya contact, web developer nepal freelance')
+@section('description', $seo->meta_description ?? 'Contact Nabaraj Acharya, Full Stack Developer and SEO Specialist in Nepal. Available for Laravel development and SEO consulting in Khotang and Lalitpur.')
+@section('keywords', $seo->meta_keywords ?? 'hire full stack developer nepal, contact laravel developer nepal, seo specialist in nepal, seo specialist in khotang, seo specialist in lalitpur, seo specalist in khotang, seo specalist in lalitpur')
 
 @section('content')
 
@@ -27,7 +27,7 @@
                 <div>
                     <h2 class="font-display text-xl font-bold text-white mb-2">Let's work together</h2>
                     <p class="text-slate-400 text-sm leading-relaxed">
-                        I'm a Full Stack Developer in Nepal available for freelance projects, consulting, and full-time opportunities. Laravel development, SEO, custom APIs — I've got you covered.
+                        I'm a Full Stack Developer and SEO Specialist in Nepal available for freelance projects, consulting, and full-time opportunities in Nepal, Khotang, and Lalitpur.
                     </p>
                 </div>
 

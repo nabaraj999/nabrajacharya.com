@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', $seo->meta_title ?? 'Nabaraj Acharya — Full Stack Developer & SEO Expert Nepal | Laravel Developer')
-@section('description', $seo->meta_description ?? 'Nabaraj Acharya is a Full Stack Developer & SEO Expert in Nepal — specializing in Laravel, PHP, and technical SEO. Currently at TechAble Australia.')
-@section('keywords', $seo->meta_keywords ?? 'full stack developer nepal, laravel developer nepal, seo expert nepal, nabaraj acharya, web developer nepal')
+@section('title', $seo->meta_title ?? 'Nabaraj Acharya — Full Stack Developer & SEO Specialist in Nepal | Laravel Developer')
+@section('description', $seo->meta_description ?? 'Nabaraj Acharya is a Full Stack Developer and SEO Specialist in Nepal, helping brands grow with Laravel and technical SEO across Nepal, Khotang, and Lalitpur.')
+@section('keywords', $seo->meta_keywords ?? 'full stack developer nepal, laravel developer nepal, seo specialist in nepal, seo specialist in khotang, seo specialist in lalitpur, seo specalist in khotang, seo specalist in lalitpur')
 
 @section('schema')
-@php $homeSchema = ['@context'=>'https://schema.org','@type'=>'WebSite','name'=>'Nabaraj Acharya — Full Stack Developer & SEO Expert Nepal','url'=>'https://nabrajacharya.com.np','description'=>'Portfolio of Nabaraj Acharya, Full Stack Developer & SEO Expert in Nepal']; @endphp
+@php $homeSchema = ['@context'=>'https://schema.org','@type'=>'WebSite','name'=>'Nabaraj Acharya — Full Stack Developer & SEO Specialist in Nepal','url'=>'https://nabrajacharya.com.np','description'=>'Portfolio of Nabaraj Acharya, Full Stack Developer and SEO Specialist in Nepal, Khotang, and Lalitpur']; @endphp
 <script type="application/ld+json">{!! json_encode($homeSchema) !!}</script>
 @endsection
 
@@ -70,7 +70,7 @@
 
                 {{-- Subtitle --}}
                 <p class="hero-sub" style="animation-delay:0.6s">
-                    {{ $personal->description ?? 'Building high-performance Laravel apps & driving organic growth — based in Nepal, working globally.' }}
+                    {{ $personal->description ?? 'SEO Specialist in Nepal focused on Khotang and Lalitpur markets, building high-performance Laravel apps and driving sustainable organic growth.' }}
                 </p>
 
                 {{-- CTAs --}}
@@ -430,6 +430,114 @@
                     </div>
                 </div>
             </a>
+            @endforeach
+        </div>
+    </div>
+</section>
+@endif
+
+
+{{-- ═══════════════════════════════════════════════════════════ --}}
+{{--  BLOG                                                       --}}
+{{-- ═══════════════════════════════════════════════════════════ --}}
+@if($blogs->isNotEmpty())
+<section id="blog" class="py-12 md:py-20 reveal">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="section-tag">Blog</div>
+        <div class="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-12">
+            <div>
+                <h2 class="font-display text-3xl md:text-4xl font-bold">
+                    Latest <span class="gradient-text">Articles</span>
+                </h2>
+                <p class="text-slate-400 mt-3 max-w-md text-base">
+                    Notes on Laravel development, SEO, and practical growth strategies.
+                </p>
+            </div>
+            <a href="{{ route('blog.index') }}"
+               class="mt-5 md:mt-0 inline-flex items-center gap-2 text-sm font-semibold text-slate-400 hover:text-white border border-slate-700 hover:border-slate-500 px-4 py-2 rounded-lg transition-all">
+                View All Blog
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            @foreach($blogs as $blog)
+            <article class="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/40 hover:border-indigo-500/40 transition-all duration-300 hover:-translate-y-1">
+                <a href="{{ route('blog.show', $blog->slug) }}" class="block">
+                @if($blog->featured_image)
+                <div class="h-48 overflow-hidden">
+                    <img src="{{ asset('storage/'.$blog->featured_image) }}" alt="{{ $blog->title }}"
+                         class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                </div>
+                @else
+                <div class="h-48 bg-gradient-to-br from-indigo-600/20 to-cyan-600/20 flex items-center justify-center">
+                    <span class="text-indigo-300 text-sm font-semibold uppercase tracking-[0.15em]">Blog</span>
+                </div>
+                @endif
+
+                <div class="p-6">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 mb-3">
+                        {{ $blog->published_at ? $blog->published_at->format('M d, Y') : 'Draft' }}
+                    </p>
+                    <h3 class="font-display text-xl font-bold text-white mb-3 leading-tight">
+                        {{ $blog->title }}
+                    </h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        {{ Str::limit($blog->excerpt ?: strip_tags($blog->content), 130) }}
+                    </p>
+                </div>
+                </a>
+            </article>
+            @endforeach
+        </div>
+    </div>
+</section>
+@endif
+
+
+{{-- ═══════════════════════════════════════════════════════════ --}}
+{{--  GALLERY                                                    --}}
+{{-- ═══════════════════════════════════════════════════════════ --}}
+@if($galleryItems->isNotEmpty())
+<section id="gallery" class="py-12 md:py-20 reveal">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="section-tag">Gallery</div>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-center mb-4">
+            Visual <span class="gradient-text">Gallery</span>
+        </h2>
+        <p class="text-center text-slate-400 mb-10 md:mb-14 max-w-2xl mx-auto">
+            Recent visuals from projects, branding, campaigns, and production work.
+        </p>
+        <div class="text-center mb-8 md:mb-10">
+            <a href="{{ route('gallery.index') }}"
+               class="inline-flex items-center gap-2 text-sm font-semibold text-slate-400 hover:text-white border border-slate-700 hover:border-slate-500 px-4 py-2 rounded-lg transition-all">
+                Open Full Gallery
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+            @foreach($galleryItems as $item)
+            @php $hasLink = !empty($item->external_url); @endphp
+            <div class="group relative overflow-hidden rounded-xl border border-slate-800 bg-slate-900/40">
+                @if($hasLink)
+                <a href="{{ $item->external_url }}" target="_blank" rel="noopener noreferrer" class="block">
+                @endif
+
+                    <img src="{{ asset('storage/'.$item->image_path) }}" alt="{{ $item->title }}"
+                         class="w-full h-44 sm:h-52 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90"></div>
+                    <div class="absolute left-3 right-3 bottom-3">
+                        <p class="text-white text-sm font-semibold leading-tight">{{ $item->title }}</p>
+                        @if($item->category)
+                        <p class="text-indigo-300 text-xs mt-1">{{ $item->category }}</p>
+                        @endif
+                    </div>
+
+                @if($hasLink)
+                </a>
+                @endif
+            </div>
             @endforeach
         </div>
     </div>

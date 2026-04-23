@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('title', $seo->meta_title ?? 'Web Development Services — Full Stack Developer Nepal | Nabaraj Acharya')
-@section('description', $seo->meta_description ?? 'Professional web development services by a Full Stack Developer in Nepal. Laravel development, SEO, REST APIs, custom web apps and more.')
-@section('keywords', $seo->meta_keywords ?? 'web development services nepal, laravel developer nepal, full stack developer nepal, seo services nepal')
+@section('description', $seo->meta_description ?? 'Professional web development and SEO services by a Full Stack Developer and SEO Specialist in Nepal, including Khotang and Lalitpur.')
+@section('keywords', $seo->meta_keywords ?? 'web development services nepal, laravel developer nepal, full stack developer nepal, seo specialist in nepal, seo specialist in khotang, seo specialist in lalitpur, seo specalist in khotang, seo specalist in lalitpur')
 
 @section('content')
 
@@ -13,7 +13,7 @@
             Web Development <span class="gradient-text">Services in Nepal</span>
         </h1>
         <p class="text-slate-400 text-lg max-w-2xl mx-auto">
-            End-to-end web development, Laravel applications, and SEO solutions — crafted by a Full Stack Developer in Nepal.
+            End-to-end web development, Laravel applications, and SEO solutions by an SEO Specialist in Nepal serving Khotang and Lalitpur.
         </p>
     </div>
 </section>
@@ -62,7 +62,7 @@
                 Need a <span class="gradient-text">Laravel Developer in Nepal</span>?
             </h2>
             <p class="text-slate-400 mb-7 max-w-lg mx-auto">
-                Let's talk about your project. I provide custom Laravel development, SEO strategy, and complete web solutions for businesses.
+                Let's talk about your project. I provide custom Laravel development and local SEO strategy as an SEO Specialist in Nepal, including campaigns for Khotang and Lalitpur.
             </p>
             <a href="{{ route('contact') }}" class="btn-primary">
                 <span>Start a Project</span>

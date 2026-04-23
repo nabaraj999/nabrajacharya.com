@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
-@section('title', $seo->meta_title ?? 'About Nabaraj Acharya — Full Stack Developer Nepal | Laravel Expert')
-@section('description', $seo->meta_description ?? 'Learn about Nabaraj Acharya, a Full Stack Developer & SEO Expert in Nepal. Currently working at TechAble Australia building Laravel applications and driving organic growth.')
-@section('keywords', $seo->meta_keywords ?? 'full stack developer nepal, laravel developer nepal, about nabaraj acharya, seo expert nepal')
+@section('title', $seo->meta_title ?? 'About Nabaraj Acharya — Full Stack Developer & SEO Specialist in Nepal')
+@section('description', $seo->meta_description ?? 'Learn about Nabaraj Acharya, a Full Stack Developer and SEO Specialist in Nepal, with service focus in Khotang and Lalitpur.')
+@section('keywords', $seo->meta_keywords ?? 'full stack developer nepal, laravel developer nepal, about nabaraj acharya, seo specialist in nepal, seo specialist in khotang, seo specialist in lalitpur, seo specalist in khotang, seo specalist in lalitpur')
 
 @section('schema')
 @php
 $aboutSchema = [
     '@context'    => 'https://schema.org',
     '@type'       => 'AboutPage',
-    'name'        => 'About Nabaraj Acharya — Full Stack Developer Nepal',
+    'name'        => 'About Nabaraj Acharya — Full Stack Developer and SEO Specialist in Nepal',
     'url'         => route('about'),
     'mainEntity'  => [
         '@type'    => 'Person',
@@ -54,7 +54,7 @@ $aboutSchema = [
     <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
         <div class="section-tag">About</div>
         <h1 class="font-display text-4xl md:text-5xl font-bold mt-2 mb-4">
-            Full Stack Developer & <span class="gradient-text">SEO Expert in Nepal</span>
+            Full Stack Developer & <span class="gradient-text">SEO Specialist in Nepal</span>
         </h1>
         <p class="text-slate-400 text-lg max-w-2xl mx-auto">
             Building high-performance Laravel applications and driving organic growth — based in Nepal, working globally.
