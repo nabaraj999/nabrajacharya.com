@@ -556,6 +556,50 @@
 {{--  TESTIMONIALS                                               --}}
 {{-- ═══════════════════════════════════════════════════════════ --}}
 @if($testimonials->isNotEmpty())
+<style>
+    .testimonial-marquee {
+        position: relative;
+        overflow: hidden;
+        mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+    }
+    .testimonial-marquee-track {
+        display: flex;
+        gap: 1rem;
+        width: max-content;
+        animation: testimonialScroll 36s linear infinite;
+    }
+    .testimonial-marquee:hover .testimonial-marquee-track {
+        animation-play-state: paused;
+    }
+    .testimonial-card {
+        width: min(84vw, 22rem);
+        flex-shrink: 0;
+    }
+    @media (min-width: 768px) {
+        .testimonial-marquee-track {
+            gap: 1.5rem;
+            animation-duration: 46s;
+        }
+        .testimonial-card {
+            width: 23rem;
+        }
+    }
+    @keyframes testimonialScroll {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .testimonial-marquee {
+            overflow-x: auto;
+            mask-image: none;
+            -webkit-mask-image: none;
+        }
+        .testimonial-marquee-track {
+            animation: none;
+        }
+    }
+</style>
 <section class="py-12 md:py-20 reveal">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="section-tag">Testimonials</div>
@@ -566,34 +610,64 @@
             Recent words from clients and partners after successful project collaboration.
         </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            @foreach($testimonials as $t)
-            <article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 hover:border-indigo-500/40 transition-all duration-300">
-                <div class="flex items-center gap-1 mb-4">
-                    @for($i = 0; $i < (int) $t->rating; $i++)
-                    <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.145 3.52a1 1 0 00.95.69h3.7c.969 0 1.371 1.24.588 1.81l-2.994 2.176a1 1 0 00-.364 1.118l1.144 3.52c.3.922-.755 1.688-1.539 1.118l-2.994-2.176a1 1 0 00-1.176 0l-2.994 2.176c-.784.57-1.838-.196-1.539-1.118l1.144-3.52a1 1 0 00-.364-1.118L2.666 8.947c-.783-.57-.38-1.81.588-1.81h3.7a1 1 0 00.95-.69l1.145-3.52z"/></svg>
-                    @endfor
-                </div>
-                <p class="text-slate-300 leading-relaxed mb-5">“{{ Str::limit($t->message, 220) }}”</p>
-                <div class="pt-4 border-t border-slate-800">
-                    <div class="flex items-center gap-3">
-                        @if($t->client_photo)
-                        <img src="{{ asset('storage/'.$t->client_photo) }}" alt="{{ $t->client_name }}" class="w-10 h-10 rounded-full object-cover border border-slate-700">
-                        @else
-                        <div class="w-10 h-10 rounded-full bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-300 text-xs font-bold">
-                            {{ Str::upper(Str::substr($t->client_name, 0, 2)) }}
-                        </div>
-                        @endif
-                        <div>
-                            <p class="font-semibold text-white">{{ $t->client_name }}</p>
-                            <p class="text-sm text-slate-500">
-                                {{ $t->client_role ?: 'Client' }}{{ $t->company_name ? ' · '.$t->company_name : '' }}
-                            </p>
+        <div class="testimonial-marquee">
+            <div class="testimonial-marquee-track">
+                @foreach($testimonials as $t)
+                <article class="testimonial-card rounded-2xl border border-slate-800 bg-slate-900/40 p-6 hover:border-indigo-500/40 transition-all duration-300">
+                    <div class="flex items-center gap-1 mb-4">
+                        @for($i = 0; $i < (int) $t->rating; $i++)
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.145 3.52a1 1 0 00.95.69h3.7c.969 0 1.371 1.24.588 1.81l-2.994 2.176a1 1 0 00-.364 1.118l1.144 3.52c.3.922-.755 1.688-1.539 1.118l-2.994-2.176a1 1 0 00-1.176 0l-2.994 2.176c-.784.57-1.838-.196-1.539-1.118l1.144-3.52a1 1 0 00-.364-1.118L2.666 8.947c-.783-.57-.38-1.81.588-1.81h3.7a1 1 0 00.95-.69l1.145-3.52z"/></svg>
+                        @endfor
+                    </div>
+                    <p class="text-slate-300 leading-relaxed mb-5">“{{ Str::limit($t->message, 220) }}”</p>
+                    <div class="pt-4 border-t border-slate-800">
+                        <div class="flex items-center gap-3">
+                            @if($t->client_photo)
+                            <img src="{{ asset('storage/'.$t->client_photo) }}" alt="{{ $t->client_name }}" class="w-10 h-10 rounded-full object-cover border border-slate-700">
+                            @else
+                            <div class="w-10 h-10 rounded-full bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-300 text-xs font-bold">
+                                {{ Str::upper(Str::substr($t->client_name, 0, 2)) }}
+                            </div>
+                            @endif
+                            <div>
+                                <p class="font-semibold text-white">{{ $t->client_name }}</p>
+                                <p class="text-sm text-slate-500">
+                                    {{ $t->client_role ?: 'Client' }}{{ $t->company_name ? ' · '.$t->company_name : '' }}
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </article>
-            @endforeach
+                </article>
+                @endforeach
+
+                @foreach($testimonials as $t)
+                <article class="testimonial-card rounded-2xl border border-slate-800 bg-slate-900/40 p-6 hover:border-indigo-500/40 transition-all duration-300" aria-hidden="true">
+                    <div class="flex items-center gap-1 mb-4">
+                        @for($i = 0; $i < (int) $t->rating; $i++)
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.145 3.52a1 1 0 00.95.69h3.7c.969 0 1.371 1.24.588 1.81l-2.994 2.176a1 1 0 00-.364 1.118l1.144 3.52c.3.922-.755 1.688-1.539 1.118l-2.994-2.176a1 1 0 00-1.176 0l-2.994 2.176c-.784.57-1.838-.196-1.539-1.118l1.144-3.52a1 1 0 00-.364-1.118L2.666 8.947c-.783-.57-.38-1.81.588-1.81h3.7a1 1 0 00.95-.69l1.145-3.52z"/></svg>
+                        @endfor
+                    </div>
+                    <p class="text-slate-300 leading-relaxed mb-5">“{{ Str::limit($t->message, 220) }}”</p>
+                    <div class="pt-4 border-t border-slate-800">
+                        <div class="flex items-center gap-3">
+                            @if($t->client_photo)
+                            <img src="{{ asset('storage/'.$t->client_photo) }}" alt="" class="w-10 h-10 rounded-full object-cover border border-slate-700">
+                            @else
+                            <div class="w-10 h-10 rounded-full bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-300 text-xs font-bold">
+                                {{ Str::upper(Str::substr($t->client_name, 0, 2)) }}
+                            </div>
+                            @endif
+                            <div>
+                                <p class="font-semibold text-white">{{ $t->client_name }}</p>
+                                <p class="text-sm text-slate-500">
+                                    {{ $t->client_role ?: 'Client' }}{{ $t->company_name ? ' · '.$t->company_name : '' }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                @endforeach
+            </div>
         </div>
     </div>
 </section>
