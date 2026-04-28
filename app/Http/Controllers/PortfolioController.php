@@ -19,10 +19,13 @@ class PortfolioController extends Controller
         return view('pages.portfolio.index', compact('personal', 'seo', 'projects', 'skills'));
     }
 
-    public function show(int $id)
+    public function show(string $slug)
     {
         $personal = Personal::first();
-        $project  = Project::with('skills')->findOrFail($id);
+        $project  = Project::with('skills')
+            ->where('slug', $slug)
+            ->orWhere('id', ctype_digit($slug) ? (int) $slug : 0)
+            ->firstOrFail();
         $seo      = Seo::where('page_name', 'portfolio')->first();
 
         return view('pages.portfolio.show', compact('personal', 'project', 'seo'));

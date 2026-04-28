@@ -402,7 +402,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($featured as $index => $project)
-            <a href="{{ route('portfolio.show', $project->id) }}" class="proj-card group">
+            <a href="{{ route('portfolio.show', $project) }}" class="proj-card group">
                 <div class="proj-img"
                      style="{{ $project->image_url ? 'background-image:url('.asset('storage/'.$project->image_url).');' : '' }}">
                     @if(!$project->image_url)

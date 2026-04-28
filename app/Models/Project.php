@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Project extends Model
 {
@@ -14,6 +15,7 @@ class Project extends Model
 
     protected $fillable = [
         'title',
+        'slug',
         'description',
         'image_url',
         'project_url',
@@ -31,5 +33,44 @@ class Project extends Model
     public function skills(): BelongsToMany
     {
         return $this->belongsToMany(Skill::class);
+    }
+
+    protected static function booted(): void
+    {
+        static::saving(function (Project $project): void {
+            if (blank($project->slug) || $project->isDirty('title')) {
+                $project->slug = static::generateUniqueSlug($project->title, $project->id);
+            }
+        });
+    }
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
+    public function getRouteKey(): string
+    {
+        return (string) ($this->slug ?: $this->id);
+    }
+
+    protected static function generateUniqueSlug(string $title, ?int $ignoreId = null): string
+    {
+        $baseSlug = Str::slug($title);
+        $slug = $baseSlug ?: 'project';
+        $originalSlug = $slug;
+        $counter = 2;
+
+        while (
+            static::withTrashed()
+                ->when($ignoreId, fn ($query) => $query->where('id', '!=', $ignoreId))
+                ->where('slug', $slug)
+                ->exists()
+        ) {
+            $slug = $originalSlug . '-' . $counter;
+            $counter++;
+        }
+
+        return $slug;
     }
 }

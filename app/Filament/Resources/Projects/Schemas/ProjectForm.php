@@ -10,6 +10,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Str;
 
 class ProjectForm
 {
@@ -19,7 +20,18 @@ class ProjectForm
             ->components([
                 TextInput::make('title')
                     ->required()
-                    ->maxLength(100),
+                    ->maxLength(100)
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(function ($state, callable $set, callable $get): void {
+                        if (blank($get('slug'))) {
+                            $set('slug', Str::slug((string) $state));
+                        }
+                    }),
+                TextInput::make('slug')
+                    ->required()
+                    ->maxLength(160)
+                    ->unique(ignoreRecord: true)
+                    ->helperText('Used in the portfolio detail URL.'),
                 FileUpload::make('image_url')
                     ->label('Project Image')
                     ->image()

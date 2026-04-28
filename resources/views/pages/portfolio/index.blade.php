@@ -48,7 +48,7 @@
                 @foreach($projects as $project)
                 <article class="project-item group block rounded-2xl overflow-hidden border border-slate-800 bg-surface transition-all duration-300 hover:border-indigo-500/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/10"
                          data-skills="{{ $project->skills->pluck('id')->join(',') }}">
-                    <a href="{{ route('portfolio.show', $project->id) }}">
+                    <a href="{{ route('portfolio.show', $project) }}">
                         <div class="h-52 overflow-hidden bg-slate-900 relative"
                              style="{{ $project->image_url ? 'background-image:url('.asset('storage/'.$project->image_url).');background-size:cover;background-position:center;' : '' }}">
                             @if(!$project->image_url)
@@ -60,7 +60,7 @@
                         </div>
                     </a>
                     <div class="p-5">
-                        <a href="{{ route('portfolio.show', $project->id) }}">
+                        <a href="{{ route('portfolio.show', $project) }}">
                             <h2 class="font-display font-semibold text-white mb-2 group-hover:text-indigo-300 transition-colors">
                                 {{ $project->title }}
                             </h2>
@@ -81,7 +81,7 @@
                         @endif
 
                         <div class="flex items-center justify-between pt-3 border-t border-slate-800">
-                            <a href="{{ route('portfolio.show', $project->id) }}"
+                            <a href="{{ route('portfolio.show', $project) }}"
                                class="text-sm font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-1.5 transition-colors">
                                 View Details
                                 <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>

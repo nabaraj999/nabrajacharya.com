@@ -30,6 +30,10 @@ class ProjectsTable
                 ->limit(20)
                     ->searchable(),
 
+                TextColumn::make('slug')
+                    ->limit(24)
+                    ->searchable(),
+
                 TextColumn::make('project_url')
                     ->limit(20)
                     ->searchable(),

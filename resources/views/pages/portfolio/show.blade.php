@@ -2,7 +2,7 @@
 
 @section('title', $project->title.' — Full Stack Developer Nepal | Nabaraj Acharya')
 @section('description', strip_tags($project->description ?? 'A web development project by Nabaraj Acharya, Full Stack Developer Nepal specializing in Laravel.'))
-@section('canonical', route('portfolio.show', $project->id))
+@section('canonical', route('portfolio.show', $project))
 @section('og_title', $project->title.' | Nabaraj Acharya — Full Stack Developer Nepal')
 @section('og_description', strip_tags($project->description ?? 'A web development project by Nabaraj Acharya, Full Stack Developer Nepal.'))
 
@@ -13,7 +13,7 @@ $projectSchema = [
     '@type'       => 'SoftwareApplication',
     'name'        => $project->title,
     'description' => strip_tags($project->description ?? ''),
-    'url'         => $project->project_url ?? route('portfolio.show', $project->id),
+    'url'         => $project->project_url ?? route('portfolio.show', $project),
     'author'      => ['@type'=>'Person','name'=>'Nabaraj Acharya','url'=>'https://nabrajacharya.com.np','jobTitle'=>'Full Stack Developer Nepal'],
 ];
 if ($project->completion_date) $projectSchema['datePublished'] = $project->completion_date->format('Y-m-d');
