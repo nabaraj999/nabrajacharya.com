@@ -24,7 +24,7 @@ class HomeController extends Controller
         $skills      = Skill::orderBy('proficiency', 'desc')->get();
         $experiences = Experience::where('is_active', true)->orderBy('sort_order')->orderByDesc('start_date')->get();
         $partners    = Partner::where('is_active', true)->orderBy('sort_order')->get();
-        $blogs       = Blog::where('is_active', true)->orderBy('sort_order')->orderByDesc('published_at')->orderByDesc('created_at')->take(3)->get();
+        $blogs       = Blog::published()->orderBy('sort_order')->orderByDesc('published_at')->take(3)->get();
         $galleryItems = Gallery::where('is_active', true)->orderBy('sort_order')->orderByDesc('created_at')->take(8)->get();
         $testimonials = Testimonial::where('is_approved', true)->orderByDesc('approved_at')->orderByDesc('created_at')->get();
 

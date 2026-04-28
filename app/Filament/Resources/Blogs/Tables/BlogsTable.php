@@ -22,6 +22,10 @@ class BlogsTable
                 TextColumn::make('slug')->searchable()->limit(35),
                 TextColumn::make('focus_keyword')->label('Focus Keyword')->searchable()->limit(28),
                 TextColumn::make('published_at')->dateTime()->sortable(),
+                TextColumn::make('comment_count')->label('Comments')->sortable(),
+                TextColumn::make('faqs')
+                    ->label('FAQs')
+                    ->formatStateUsing(fn ($state) => is_array($state) ? count($state) : 0),
                 IconColumn::make('is_active')->boolean(),
                 TextColumn::make('sort_order')->sortable(),
             ])

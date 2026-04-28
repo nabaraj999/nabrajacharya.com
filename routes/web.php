@@ -20,6 +20,8 @@ Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio
 Route::get('/portfolio/{id}', [PortfolioController::class, 'show'])->name('portfolio.show');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+Route::post('/blog/{slug}/comments', [BlogController::class, 'storeComment'])->name('blog.comments.store');
+Route::get('/sitemap.xml', [BlogController::class, 'sitemap'])->name('sitemap');
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
 Route::get('/submit-testimonial', [TestimonialController::class, 'create'])->name('testimonial.create');
 Route::post('/submit-testimonial', [TestimonialController::class, 'store'])->name('testimonial.store');

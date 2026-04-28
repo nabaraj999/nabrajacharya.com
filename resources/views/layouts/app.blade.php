@@ -13,7 +13,13 @@
     <meta name="keywords" content="@yield('keywords', ($seo->meta_keywords ?? 'full stack developer nepal, laravel developer nepal, seo specialist in nepal, seo specialist in khotang, seo specialist in lalitpur, seo specalist in nepal, seo specalist in khotang, seo specalist in lalitpur, web developer nepal, nabaraj acharya, technabu'))">
     <meta name="author" content="{{ $personal->brand_name ?? 'Nabaraj Acharya' }}">
     <meta name="robots" content="@yield('robots', ($seo->robots_directives ?? 'index, follow'))">
+    <meta name="googlebot" content="@yield('robots', ($seo->robots_directives ?? 'index, follow'))">
+    <meta name="bingbot" content="@yield('robots', ($seo->robots_directives ?? 'index, follow'))">
     <meta name="language" content="English">
+    <meta name="application-name" content="TechNabu">
+    <meta name="theme-color" content="#050816">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="geo.region" content="NP-BA" />
     <meta name="geo.placename" content="Kathmandu, Nepal" />
     <meta name="geo.position" content="27.7172;85.3240" />
@@ -23,18 +29,22 @@
     <link rel="canonical" href="@yield('canonical', (url()->current()))" />
 
     {{-- Open Graph --}}
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="@yield('og_type', 'website')">
+    <meta property="og:url" content="@yield('canonical', (url()->current()))">
     <meta property="og:title" content="@yield('og_title', ($seo->og_title ?? 'Nabaraj Acharya — Full Stack Developer Nepal'))">
     <meta property="og:description" content="@yield('og_description', ($seo->og_description ?? 'Full Stack Developer and SEO Specialist in Nepal, Khotang, and Lalitpur.'))">
-    <meta property="og:image" content="{{ $personal && $personal->logo_url ? Storage::url($personal->logo_url) : '' }}">
+    <meta property="og:image" content="@yield('og_image', ($personal && $personal->logo_url ? url(Storage::url($personal->logo_url)) : ''))">
+    <meta property="og:image:alt" content="@yield('og_image_alt', 'TechNabu featured image')">
     <meta property="og:site_name" content="TechNabu">
     <meta property="og:locale" content="en_US">
+    @yield('og_meta')
 
     {{-- Twitter --}}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="@yield('og_title', ($seo->twitter_title ?? 'Nabaraj Acharya — Full Stack Developer Nepal'))">
-    <meta name="twitter:description" content="@yield('og_description', ($seo->twitter_description ?? 'Full Stack Developer and SEO Specialist in Nepal, Khotang, and Lalitpur.'))">
+    <meta name="twitter:title" content="@yield('twitter_title', ($seo->twitter_title ?? 'Nabaraj Acharya — Full Stack Developer Nepal'))">
+    <meta name="twitter:description" content="@yield('twitter_description', ($seo->twitter_description ?? 'Full Stack Developer and SEO Specialist in Nepal, Khotang, and Lalitpur.'))">
+    <meta name="twitter:image" content="@yield('twitter_image', ($personal && $personal->logo_url ? url(Storage::url($personal->logo_url)) : ''))">
+    <meta name="twitter:image:alt" content="@yield('og_image_alt', 'TechNabu featured image')">
 
     {{-- Structured Data --}}
     @php

@@ -462,26 +462,35 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($blogs as $blog)
-            <article class="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/40 hover:border-indigo-500/40 transition-all duration-300 hover:-translate-y-1">
+            <article class="group overflow-hidden rounded-3xl border border-slate-800 bg-[linear-gradient(180deg,rgba(15,23,42,0.94),rgba(15,23,42,0.72))] hover:border-indigo-500/40 transition-all duration-300 hover:-translate-y-1">
                 <a href="{{ route('blog.show', $blog->slug) }}" class="block">
                 @if($blog->featured_image)
-                <div class="h-48 overflow-hidden">
+                <div class="relative h-48 overflow-hidden">
                     <img src="{{ asset('storage/'.$blog->featured_image) }}" alt="{{ $blog->title }}"
                          class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-x-0 bottom-0 p-4">
+                        <div class="flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-[0.18em]">
+                            <span class="rounded-full bg-slate-950/80 px-3 py-1 text-cyan-200">{{ $blog->published_at?->format('M d, Y') }}</span>
+                            <span class="rounded-full bg-slate-950/80 px-3 py-1 text-slate-200">{{ $blog->reading_time }} min read</span>
+                        </div>
+                    </div>
                 </div>
                 @else
-                <div class="h-48 bg-gradient-to-br from-indigo-600/20 to-cyan-600/20 flex items-center justify-center">
+                <div class="relative h-48 bg-gradient-to-br from-indigo-600/20 to-cyan-600/20 flex items-center justify-center">
                     <span class="text-indigo-300 text-sm font-semibold uppercase tracking-[0.15em]">Blog</span>
+                    <div class="absolute inset-x-0 bottom-0 p-4">
+                        <div class="flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-[0.18em]">
+                            <span class="rounded-full bg-slate-950/80 px-3 py-1 text-cyan-200">{{ $blog->published_at?->format('M d, Y') }}</span>
+                            <span class="rounded-full bg-slate-950/80 px-3 py-1 text-slate-200">{{ $blog->reading_time }} min read</span>
+                        </div>
+                    </div>
                 </div>
                 @endif
 
                 <div class="p-6">
-                    <p class="text-xs uppercase tracking-widest text-slate-500 mb-3">
-                        {{ $blog->published_at ? $blog->published_at->format('M d, Y') : 'Draft' }}
-                    </p>
                     @if($blog->focus_keyword)
                     <p class="mb-3">
-                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-[11px] font-semibold uppercase tracking-wider bg-indigo-500/15 border border-indigo-500/30 text-indigo-300">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-[0.18em] bg-indigo-500/15 border border-indigo-500/30 text-indigo-300">
                             {{ $blog->focus_keyword }}
                         </span>
                     </p>
@@ -489,9 +498,13 @@
                     <h3 class="font-display text-xl font-bold text-white mb-3 leading-tight">
                         {{ $blog->title }}
                     </h3>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                    <p class="text-slate-400 text-sm leading-7 mb-5">
                         {{ Str::limit($blog->excerpt ?: strip_tags($blog->content), 130) }}
                     </p>
+                    <div class="flex items-center justify-between gap-3 border-t border-slate-800 pt-4 text-xs uppercase tracking-[0.18em] text-slate-500">
+                        <span>{{ number_format($blog->comment_count) }} comments</span>
+                        <span class="text-indigo-300">Read article</span>
+                    </div>
                 </div>
                 </a>
             </article>
