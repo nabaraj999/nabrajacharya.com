@@ -3,6 +3,7 @@
 @section('title', $seo->meta_title ?? 'About Nabaraj Acharya — Full Stack Developer & SEO Specialist in Nepal')
 @section('description', $seo->meta_description ?? 'Learn about Nabaraj Acharya, a Full Stack Developer and SEO Specialist in Nepal, with service focus in Khotang and Lalitpur.')
 @section('keywords', $seo->meta_keywords ?? 'full stack developer nepal, laravel developer nepal, about nabaraj acharya, seo specialist in nepal, seo specialist in khotang, seo specialist in lalitpur, seo specalist in khotang, seo specalist in lalitpur')
+@section('canonical', route('about'))
 
 @section('schema')
 @php
@@ -19,8 +20,17 @@ $aboutSchema = [
         'worksFor' => ['@type' => 'Organization', 'name' => $personal->current_company ?? 'TechAble Australia'],
     ],
 ];
+$breadcrumbSchema = [
+    '@context' => 'https://schema.org',
+    '@type' => 'BreadcrumbList',
+    'itemListElement' => [
+        ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
+        ['@type' => 'ListItem', 'position' => 2, 'name' => 'About', 'item' => route('about')],
+    ],
+];
 @endphp
 <script type="application/ld+json">{!! json_encode($aboutSchema) !!}</script>
+<script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Existing scripts...

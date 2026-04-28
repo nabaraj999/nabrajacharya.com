@@ -3,6 +3,35 @@
 @section('title', $seo->meta_title ?? 'Hire a Full Stack Developer Nepal — Contact Nabaraj Acharya')
 @section('description', $seo->meta_description ?? 'Contact Nabaraj Acharya, Full Stack Developer and SEO Specialist in Nepal. Available for Laravel development and SEO consulting in Khotang and Lalitpur.')
 @section('keywords', $seo->meta_keywords ?? 'hire full stack developer nepal, contact laravel developer nepal, seo specialist in nepal, seo specialist in khotang, seo specialist in lalitpur, seo specalist in khotang, seo specalist in lalitpur')
+@section('canonical', route('contact'))
+
+@section('schema')
+@php
+    $contactSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'ContactPage',
+        'name' => 'Contact Nabaraj Acharya',
+        'url' => route('contact'),
+        'description' => $seo->meta_description ?? 'Contact Nabaraj Acharya for Laravel development and SEO consulting.',
+        'mainEntity' => [
+            '@type' => 'Person',
+            'name' => $personal->brand_name ?? 'Nabaraj Acharya',
+            'email' => $personal->email ?? null,
+            'telephone' => $personal->phone_number ?? null,
+        ],
+    ];
+    $breadcrumbSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => [
+            ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
+            ['@type' => 'ListItem', 'position' => 2, 'name' => 'Contact', 'item' => route('contact')],
+        ],
+    ];
+@endphp
+<script type="application/ld+json">{!! json_encode($contactSchema) !!}</script>
+<script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
+@endsection
 
 @section('content')
 

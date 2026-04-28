@@ -1,2 +1,4 @@
 User-agent: *
+Disallow: /admin
 Disallow: /submit-testimonial
+Sitemap: https://nabrajacharya.com.np/sitemap.xml

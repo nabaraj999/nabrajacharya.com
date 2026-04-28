@@ -50,4 +50,12 @@
         <priority>0.8</priority>
     </url>
     @endforeach
+    @foreach($projects as $project)
+    <url>
+        <loc>{{ route('portfolio.show', $project->slug) }}</loc>
+        <lastmod>{{ optional($project->updated_at ?? $project->completion_date)->toAtomString() }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    @endforeach
 </urlset>

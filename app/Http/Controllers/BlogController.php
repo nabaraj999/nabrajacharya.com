@@ -70,9 +70,14 @@ class BlogController extends Controller
         $blogs = Blog::published()
             ->orderByDesc('published_at')
             ->get(['slug', 'updated_at', 'published_at']);
+        $projects = \App\Models\Project::query()
+            ->where('status', 'completed')
+            ->whereNotNull('slug')
+            ->orderByDesc('updated_at')
+            ->get(['slug', 'updated_at', 'completion_date']);
 
         return response()
-            ->view('sitemap', compact('blogs'))
+            ->view('sitemap', compact('blogs', 'projects'))
             ->header('Content-Type', 'application/xml');
     }
 }

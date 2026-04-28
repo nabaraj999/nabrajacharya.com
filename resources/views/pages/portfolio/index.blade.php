@@ -3,10 +3,22 @@
 @section('title', $seo->meta_title ?? 'Portfolio — Full Stack Developer Nepal | Laravel Projects | Nabaraj Acharya')
 @section('description', $seo->meta_description ?? 'Explore the web development portfolio of Nabaraj Acharya — Full Stack Developer Nepal. Laravel applications, custom web apps, and SEO-optimised projects.')
 @section('keywords', $seo->meta_keywords ?? 'portfolio full stack developer nepal, laravel projects nepal, web development portfolio nepal, nabaraj acharya projects')
+@section('canonical', route('portfolio'))
 
 @section('schema')
-@php $portfolioSchema = ['@context'=>'https://schema.org','@type'=>'CollectionPage','name'=>'Portfolio — Full Stack Developer Nepal','description'=>'Web development projects by Nabaraj Acharya, Full Stack Developer in Nepal','url'=>route('portfolio')]; @endphp
+@php
+    $portfolioSchema = ['@context'=>'https://schema.org','@type'=>'CollectionPage','name'=>'Portfolio — Full Stack Developer Nepal','description'=>'Web development projects by Nabaraj Acharya, Full Stack Developer in Nepal','url'=>route('portfolio')];
+    $breadcrumbSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => [
+            ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
+            ['@type' => 'ListItem', 'position' => 2, 'name' => 'Portfolio', 'item' => route('portfolio')],
+        ],
+    ];
+@endphp
 <script type="application/ld+json">{!! json_encode($portfolioSchema) !!}</script>
+<script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
 @endsection
 
 @section('content')

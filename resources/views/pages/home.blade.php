@@ -3,10 +3,21 @@
 @section('title', $seo->meta_title ?? 'Nabaraj Acharya — Full Stack Developer & SEO Specialist in Nepal | Laravel Developer')
 @section('description', $seo->meta_description ?? 'Nabaraj Acharya is a Full Stack Developer and SEO Specialist in Nepal, helping brands grow with Laravel and technical SEO across Nepal, Khotang, and Lalitpur.')
 @section('keywords', $seo->meta_keywords ?? 'full stack developer nepal, laravel developer nepal, seo specialist in nepal, seo specialist in khotang, seo specialist in lalitpur, seo specalist in khotang, seo specalist in lalitpur')
+@section('canonical', route('home'))
 
 @section('schema')
-@php $homeSchema = ['@context'=>'https://schema.org','@type'=>'WebSite','name'=>'Nabaraj Acharya — Full Stack Developer & SEO Specialist in Nepal','url'=>'https://nabrajacharya.com.np','description'=>'Portfolio of Nabaraj Acharya, Full Stack Developer and SEO Specialist in Nepal, Khotang, and Lalitpur']; @endphp
+@php
+    $homeSchema = ['@context'=>'https://schema.org','@type'=>'WebSite','name'=>'Nabaraj Acharya — Full Stack Developer & SEO Specialist in Nepal','url'=>'https://nabrajacharya.com.np','description'=>'Portfolio of Nabaraj Acharya, Full Stack Developer and SEO Specialist in Nepal, Khotang, and Lalitpur'];
+    $breadcrumbSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => [
+            ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
+        ],
+    ];
+@endphp
 <script type="application/ld+json">{!! json_encode($homeSchema) !!}</script>
+<script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
 @endsection
 
 @section('content')

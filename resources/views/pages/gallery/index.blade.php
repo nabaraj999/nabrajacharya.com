@@ -3,6 +3,7 @@
 @section('title', $seo->meta_title ?? 'Gallery — Selected Works & Visual Snapshots | Nabaraj Acharya')
 @section('description', $seo->meta_description ?? 'Explore project visuals and creative snapshots by a Full Stack Developer and SEO Specialist in Nepal, serving Khotang and Lalitpur.')
 @section('keywords', $seo->meta_keywords ?? 'gallery web projects nepal, design gallery, project visuals, seo specialist in nepal, seo specialist in khotang, seo specialist in lalitpur, seo specalist in khotang, seo specalist in lalitpur')
+@section('canonical', route('gallery.index'))
 
 @section('schema')
 @php
@@ -13,8 +14,17 @@
         'description' => 'Selected visuals from web projects and digital work',
         'url' => route('gallery.index'),
     ];
+    $breadcrumbSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => [
+            ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
+            ['@type' => 'ListItem', 'position' => 2, 'name' => 'Gallery', 'item' => route('gallery.index')],
+        ],
+    ];
 @endphp
 <script type="application/ld+json">{!! json_encode($gallerySchema) !!}</script>
+<script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
 @endsection
 
 @section('content')

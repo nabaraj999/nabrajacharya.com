@@ -3,6 +3,38 @@
 @section('title', $seo->meta_title ?? 'Web Development Services — Full Stack Developer Nepal | Nabaraj Acharya')
 @section('description', $seo->meta_description ?? 'Professional web development and SEO services by a Full Stack Developer and SEO Specialist in Nepal, including Khotang and Lalitpur.')
 @section('keywords', $seo->meta_keywords ?? 'web development services nepal, laravel developer nepal, full stack developer nepal, seo specialist in nepal, seo specialist in khotang, seo specialist in lalitpur, seo specalist in khotang, seo specalist in lalitpur')
+@section('canonical', route('services'))
+
+@section('schema')
+@php
+    $servicesSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'Service',
+        'name' => 'Web Development and SEO Services',
+        'provider' => [
+            '@type' => 'Person',
+            'name' => $personal->brand_name ?? 'Nabaraj Acharya',
+            'url' => route('home'),
+        ],
+        'areaServed' => [
+            ['@type' => 'Country', 'name' => 'Nepal'],
+            ['@type' => 'City', 'name' => 'Kathmandu'],
+        ],
+        'url' => route('services'),
+        'description' => $seo->meta_description ?? 'Professional web development and SEO services in Nepal.',
+    ];
+    $breadcrumbSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => [
+            ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
+            ['@type' => 'ListItem', 'position' => 2, 'name' => 'Services', 'item' => route('services')],
+        ],
+    ];
+@endphp
+<script type="application/ld+json">{!! json_encode($servicesSchema) !!}</script>
+<script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
+@endsection
 
 @section('content')
 

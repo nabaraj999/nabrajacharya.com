@@ -18,8 +18,19 @@ $projectSchema = [
 ];
 if ($project->completion_date) $projectSchema['datePublished'] = $project->completion_date->format('Y-m-d');
 if ($project->skills->isNotEmpty()) $projectSchema['keywords'] = $project->skills->pluck('skill_name')->join(', ');
+
+$breadcrumbSchema = [
+    '@context' => 'https://schema.org',
+    '@type' => 'BreadcrumbList',
+    'itemListElement' => [
+        ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
+        ['@type' => 'ListItem', 'position' => 2, 'name' => 'Portfolio', 'item' => route('portfolio')],
+        ['@type' => 'ListItem', 'position' => 3, 'name' => $project->title, 'item' => route('portfolio.show', $project)],
+    ],
+];
 @endphp
 <script type="application/ld+json">{!! json_encode($projectSchema) !!}</script>
+<script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
 @endsection
 
 @section('content')
