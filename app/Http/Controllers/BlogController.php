@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
-use App\Models\BlogComment;
 use App\Models\Personal;
 use App\Models\Seo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 class BlogController extends Controller
 {
@@ -38,13 +38,18 @@ class BlogController extends Controller
             ->take(3)
             ->get();
 
-        $comments = $blog->approvedComments()->get();
+        $commentsEnabled = Schema::hasTable('blog_comments');
+        $comments = $commentsEnabled
+            ? $blog->approvedComments()->get()
+            : collect();
 
-        return view('pages.blog.show', compact('personal', 'seo', 'blog', 'latestBlogs', 'comments'));
+        return view('pages.blog.show', compact('personal', 'seo', 'blog', 'latestBlogs', 'comments', 'commentsEnabled'));
     }
 
     public function storeComment(Request $request, string $slug)
     {
+        abort_unless(Schema::hasTable('blog_comments'), 404);
+
         $blog = Blog::published()
             ->where('slug', $slug)
             ->firstOrFail();

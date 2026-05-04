@@ -204,83 +204,91 @@
             </div>
 
             <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 md:p-8">
-                <p class="text-xs uppercase tracking-[0.22em] text-indigo-300">Leave a Comment</p>
-                <h2 class="mt-2 font-display text-2xl font-bold text-white">Share Your Thoughts</h2>
-                <p class="mt-3 text-slate-400 leading-7">Comments are moderated before they appear publicly. Use a real email so I can verify genuine discussion.</p>
+                @if($commentsEnabled)
+                    <p class="text-xs uppercase tracking-[0.22em] text-indigo-300">Leave a Comment</p>
+                    <h2 class="mt-2 font-display text-2xl font-bold text-white">Share Your Thoughts</h2>
+                    <p class="mt-3 text-slate-400 leading-7">Comments are moderated before they appear publicly. Use a real email so I can verify genuine discussion.</p>
 
-                @if(session('comment_success'))
-                <div class="mt-6 rounded-2xl border border-emerald-500/25 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-200">
-                    {{ session('comment_success') }}
-                </div>
-                @endif
+                    @if(session('comment_success'))
+                    <div class="mt-6 rounded-2xl border border-emerald-500/25 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-200">
+                        {{ session('comment_success') }}
+                    </div>
+                    @endif
 
-                @if($errors->any())
-                <div class="mt-6 rounded-2xl border border-rose-500/25 bg-rose-500/10 px-4 py-3 text-sm text-rose-200">
-                    Please fix the highlighted comment form fields and try again.
-                </div>
-                @endif
+                    @if($errors->any())
+                    <div class="mt-6 rounded-2xl border border-rose-500/25 bg-rose-500/10 px-4 py-3 text-sm text-rose-200">
+                        Please fix the highlighted comment form fields and try again.
+                    </div>
+                    @endif
 
-                <form action="{{ route('blog.comments.store', $blog->slug) }}" method="POST" class="mt-6 space-y-4">
-                    @csrf
-                    <div class="grid gap-4 md:grid-cols-2">
+                    <form action="{{ route('blog.comments.store', $blog->slug) }}" method="POST" class="mt-6 space-y-4">
+                        @csrf
+                        <div class="grid gap-4 md:grid-cols-2">
+                            <div>
+                                <input
+                                    type="text"
+                                    name="author_name"
+                                    value="{{ old('author_name') }}"
+                                    placeholder="Your name"
+                                    class="form-input @error('author_name') border-rose-500/60 @enderror"
+                                    required
+                                >
+                                @error('author_name')
+                                <p class="mt-2 text-sm text-rose-300">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div>
+                                <input
+                                    type="email"
+                                    name="author_email"
+                                    value="{{ old('author_email') }}"
+                                    placeholder="Your email"
+                                    class="form-input @error('author_email') border-rose-500/60 @enderror"
+                                    required
+                                >
+                                @error('author_email')
+                                <p class="mt-2 text-sm text-rose-300">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div>
                             <input
-                                type="text"
-                                name="author_name"
-                                value="{{ old('author_name') }}"
-                                placeholder="Your name"
-                                class="form-input @error('author_name') border-rose-500/60 @enderror"
-                                required
+                                type="url"
+                                name="author_website"
+                                value="{{ old('author_website') }}"
+                                placeholder="Website (optional)"
+                                class="form-input @error('author_website') border-rose-500/60 @enderror"
                             >
-                            @error('author_name')
+                            @error('author_website')
                             <p class="mt-2 text-sm text-rose-300">{{ $message }}</p>
                             @enderror
                         </div>
+
                         <div>
-                            <input
-                                type="email"
-                                name="author_email"
-                                value="{{ old('author_email') }}"
-                                placeholder="Your email"
-                                class="form-input @error('author_email') border-rose-500/60 @enderror"
+                            <textarea
+                                name="comment"
+                                rows="7"
+                                placeholder="Write your comment here..."
+                                class="form-input min-h-[180px] @error('comment') border-rose-500/60 @enderror"
                                 required
-                            >
-                            @error('author_email')
+                            >{{ old('comment') }}</textarea>
+                            @error('comment')
                             <p class="mt-2 text-sm text-rose-300">{{ $message }}</p>
                             @enderror
                         </div>
-                    </div>
 
-                    <div>
-                        <input
-                            type="url"
-                            name="author_website"
-                            value="{{ old('author_website') }}"
-                            placeholder="Website (optional)"
-                            class="form-input @error('author_website') border-rose-500/60 @enderror"
-                        >
-                        @error('author_website')
-                        <p class="mt-2 text-sm text-rose-300">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div>
-                        <textarea
-                            name="comment"
-                            rows="7"
-                            placeholder="Write your comment here..."
-                            class="form-input min-h-[180px] @error('comment') border-rose-500/60 @enderror"
-                            required
-                        >{{ old('comment') }}</textarea>
-                        @error('comment')
-                        <p class="mt-2 text-sm text-rose-300">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <button type="submit" class="btn-primary">
-                        Submit Comment
-                    </button>
-                </form>
+                        <button type="submit" class="btn-primary">
+                            Submit Comment
+                        </button>
+                    </form>
+                @else
+                    <p class="text-xs uppercase tracking-[0.22em] text-indigo-300">Comments</p>
+                    <h2 class="mt-2 font-display text-2xl font-bold text-white">Comments Coming Soon</h2>
+                    <p class="mt-3 text-slate-400 leading-7">
+                        The article is available, but the comment system is not active on this server yet.
+                    </p>
+                @endif
             </div>
         </section>
 
