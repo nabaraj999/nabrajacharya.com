@@ -34,6 +34,16 @@ Route::get('/blog/top-10-it-companies-in-nepal', [BlogController::class, 'topItC
 Route::get('/blog/hire-laravel-developer-in-nepal', [BlogController::class, 'hireLaravelDeveloper'])->name('blog.hire-laravel-developer-in-nepal');
 Route::get('/blog/website-cost-in-nepal-2026', [BlogController::class, 'websiteCostInNepal'])->name('blog.website-cost-in-nepal-2026');
 Route::get('/blog/seo-pricing-packages-in-nepal', [BlogController::class, 'seoPricingPackages'])->name('blog.seo-pricing-packages-in-nepal');
+Route::get('/blog/laravel-performance-mistakes-nepal', [BlogController::class, 'laravelPerformanceMistakes'])->name('blog.laravel-performance-mistakes-nepal');
+Route::get('/blog/wordpress-vs-laravel-nepal', [BlogController::class, 'wordpressVsLaravel'])->name('blog.wordpress-vs-laravel-nepal');
+Route::get('/blog/local-seo-small-business-nepal', [BlogController::class, 'localSeoSmallBusiness'])->name('blog.local-seo-small-business-nepal');
+Route::get('/blog/google-search-console-beginners-guide', [BlogController::class, 'googleSearchConsoleGuide'])->name('blog.google-search-console-beginners-guide');
+Route::get('/blog/website-redesign-vs-rebuild', [BlogController::class, 'websiteRedesignVsRebuild'])->name('blog.website-redesign-vs-rebuild');
+Route::get('/blog/www-vs-non-www-website', [BlogController::class, 'wwwVsNonWww'])->name('blog.www-vs-non-www-website');
+Route::get('/blog/laravel-livewire-tutorial-beginners', [BlogController::class, 'laravelLivewireTutorial'])->name('blog.laravel-livewire-tutorial-beginners');
+Route::get('/blog/git-ignoring-gitignore-file-fix', [BlogController::class, 'gitIgnoringGitignoreFix'])->name('blog.git-ignoring-gitignore-file-fix');
+Route::get('/blog/google-analytics-4-setup-guide-nepal', [BlogController::class, 'googleAnalytics4Setup'])->name('blog.google-analytics-4-setup-guide-nepal');
+Route::get('/blog/php-developer-career-nepal', [BlogController::class, 'phpDeveloperCareer'])->name('blog.php-developer-career-nepal');
 Route::get('/sitemap.xml', [BlogController::class, 'sitemap'])->name('sitemap');
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
 Route::get('/submit-testimonial', [TestimonialController::class, 'create'])->name('testimonial.create');

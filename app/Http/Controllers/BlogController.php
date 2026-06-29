@@ -41,6 +41,86 @@ class BlogController extends Controller
                 'reading_time' => 5,
             ],
             [
+                'slug' => 'laravel-performance-mistakes-nepal',
+                'title' => 'Common Laravel Performance Mistakes (And How to Fix Them)',
+                'excerpt' => 'The most common reasons a Laravel website feels slow — and practical, beginner-friendly fixes for each one.',
+                'image' => null,
+                'date' => 'June 29, 2026',
+                'reading_time' => 6,
+            ],
+            [
+                'slug' => 'wordpress-vs-laravel-nepal',
+                'title' => 'WordPress vs Laravel: Which Is Right for Your Business in Nepal?',
+                'excerpt' => "A practical, no-bias comparison of WordPress and Laravel for businesses in Nepal — when each one makes sense, and when it doesn't.",
+                'image' => null,
+                'date' => 'June 29, 2026',
+                'reading_time' => 5,
+            ],
+            [
+                'slug' => 'local-seo-small-business-nepal',
+                'title' => 'Local SEO for Small Businesses in Nepal: A Step-by-Step Guide',
+                'excerpt' => 'A practical, step-by-step local SEO guide for small businesses in Nepal — Google Business Profile, citations, reviews, and local content.',
+                'image' => null,
+                'date' => 'June 29, 2026',
+                'reading_time' => 6,
+            ],
+            [
+                'slug' => 'google-search-console-beginners-guide',
+                'title' => "How to Use Google Search Console: A Beginner's Guide",
+                'excerpt' => 'A beginner-friendly walkthrough of Google Search Console — what it tracks, the reports that actually matter, and how to use it to improve your SEO.',
+                'image' => null,
+                'date' => 'June 29, 2026',
+                'reading_time' => 5,
+            ],
+            [
+                'slug' => 'website-redesign-vs-rebuild',
+                'title' => 'Website Redesign vs Rebuilding From Scratch: How to Decide',
+                'excerpt' => 'How to decide whether your website needs a redesign or a full rebuild — the signs that point to each option.',
+                'image' => null,
+                'date' => 'June 29, 2026',
+                'reading_time' => 5,
+            ],
+            [
+                'slug' => 'www-vs-non-www-website',
+                'title' => 'WWW vs Non-WWW: Which Should You Use for Your Website?',
+                'excerpt' => 'A clear explanation of the www vs non-www debate, why it matters for SEO, and how to choose and stick with one consistently.',
+                'image' => null,
+                'date' => 'June 29, 2026',
+                'reading_time' => 3,
+            ],
+            [
+                'slug' => 'laravel-livewire-tutorial-beginners',
+                'title' => 'Laravel Livewire Tutorial for Beginners',
+                'excerpt' => 'A beginner-friendly introduction to Laravel Livewire — what it is, how it works, and a simple example to get you building dynamic UIs without writing JavaScript.',
+                'image' => null,
+                'date' => 'June 29, 2026',
+                'reading_time' => 7,
+            ],
+            [
+                'slug' => 'git-ignoring-gitignore-file-fix',
+                'title' => 'How to Fix Git Ignoring Your .gitignore File',
+                'excerpt' => 'A complete debugging guide for when Git keeps tracking files that should be ignored — the most common cause, and the exact commands to fix it.',
+                'image' => null,
+                'date' => 'June 29, 2026',
+                'reading_time' => 4,
+            ],
+            [
+                'slug' => 'google-analytics-4-setup-guide-nepal',
+                'title' => 'Google Analytics 4 Setup Guide for Nepali Websites',
+                'excerpt' => 'A clear, beginner-friendly walkthrough of setting up Google Analytics 4 on your website, and the reports that actually matter for a small business.',
+                'image' => null,
+                'date' => 'June 29, 2026',
+                'reading_time' => 6,
+            ],
+            [
+                'slug' => 'php-developer-career-nepal',
+                'title' => 'PHP Developer Career & Pay in Nepal: What Actually Affects It',
+                'excerpt' => "What actually influences a PHP developer's career growth and pay in Nepal — skills, frameworks, remote work, and how to position yourself for better opportunities.",
+                'image' => null,
+                'date' => 'June 29, 2026',
+                'reading_time' => 5,
+            ],
+            [
                 'slug' => 'top-10-it-companies-in-nepal',
                 'title' => 'Top 10 IT Companies in Nepal (2025): The Definitive Guide',
                 'excerpt' => "Nepal's IT industry crossed $1 billion in software exports in 2025. Here is your authoritative guide to the top 10 IT companies in Nepal — covering services, technologies, notable clients, and why Nepal is becoming Asia's next major tech hub.",
@@ -97,6 +177,56 @@ class BlogController extends Controller
     public function seoPricingPackages()
     {
         return $this->renderPost('seo-pricing-packages-in-nepal');
+    }
+
+    public function laravelPerformanceMistakes()
+    {
+        return $this->renderPost('laravel-performance-mistakes-nepal');
+    }
+
+    public function wordpressVsLaravel()
+    {
+        return $this->renderPost('wordpress-vs-laravel-nepal');
+    }
+
+    public function localSeoSmallBusiness()
+    {
+        return $this->renderPost('local-seo-small-business-nepal');
+    }
+
+    public function googleSearchConsoleGuide()
+    {
+        return $this->renderPost('google-search-console-beginners-guide');
+    }
+
+    public function websiteRedesignVsRebuild()
+    {
+        return $this->renderPost('website-redesign-vs-rebuild');
+    }
+
+    public function wwwVsNonWww()
+    {
+        return $this->renderPost('www-vs-non-www-website');
+    }
+
+    public function laravelLivewireTutorial()
+    {
+        return $this->renderPost('laravel-livewire-tutorial-beginners');
+    }
+
+    public function gitIgnoringGitignoreFix()
+    {
+        return $this->renderPost('git-ignoring-gitignore-file-fix');
+    }
+
+    public function googleAnalytics4Setup()
+    {
+        return $this->renderPost('google-analytics-4-setup-guide-nepal');
+    }
+
+    public function phpDeveloperCareer()
+    {
+        return $this->renderPost('php-developer-career-nepal');
     }
 
     private function renderPost(string $slug)
