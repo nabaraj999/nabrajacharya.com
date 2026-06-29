@@ -44,93 +44,59 @@ $breadcrumbSchema = [
 @endphp
 <script type="application/ld+json">{!! json_encode($aboutSchema) !!}</script>
 <script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Existing scripts...
-    });
-
-    // Certification Lightbox
-    function openCertLightbox(imgUrl, title, issuer) {
-        document.getElementById('lightboxImage').src = imgUrl;
-        document.getElementById('lightboxTitle').textContent = title;
-        document.getElementById('lightboxIssuer').textContent = issuer;
-        const modal = document.getElementById('certLightbox');
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeCertLightbox() {
-        const modal = document.getElementById('certLightbox');
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        document.body.style.overflow = 'auto';
-    }
-</script>
-@stack('scripts')
 @endsection
 
 @section('content')
 
 {{-- Page Hero --}}
-<section class="page-hero pt-24 pb-10 md:pt-32 md:pb-16 relative">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
-        <div class="section-tag">About</div>
-        <h1 class="font-display text-4xl md:text-5xl font-bold mt-2 mb-4">
+<section class="page-hero pt-32 pb-10 md:pt-40 md:pb-14">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <h1 class="font-display text-3xl md:text-5xl font-bold mb-4" style="color: var(--ink);">
             Full Stack <span class="gradient-text">Developer in Nepal</span>
         </h1>
-        <p class="text-slate-400 text-lg max-w-2xl mx-auto">
-            I am a web developer in Nepal building high-performance Laravel applications, business websites, and SEO-friendly digital experiences for local and global clients.
+        <p class="text-sm" style="color: var(--ink-faint);">
+            <a href="{{ route('home') }}" class="hover:underline">Home</a>
+            <span class="mx-1">&rsaquo;</span>
+            <span style="color: var(--accent);">About</span>
         </p>
     </div>
 </section>
 
-
 {{-- About Content --}}
-<section class="py-10 md:py-16 reveal">
+<section class="py-12 md:py-16 reveal">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="flex flex-col md:flex-row items-start gap-8 md:gap-14">
 
             {{-- Photo + current role card --}}
             <div class="md:w-2/5 flex flex-col items-center gap-6">
-                <div class="relative">
-                    <div class="w-64 md:w-72 h-64 md:h-72 rounded-2xl overflow-hidden border border-indigo-500/20 shadow-xl shadow-indigo-500/10">
-                        @if($personal && $personal->about_photo)
-                            <img src="{{ Storage::url($personal->about_photo) }}"
-                                 alt="{{ $personal->brand_name ?? 'Nabaraj Acharya' }} — Full Stack Developer & SEO Expert Nepal"
-                                 class="w-full h-full object-cover">
-                        @elseif($personal && $personal->logo_url)
-                            <img src="{{ Storage::url($personal->logo_url) }}"
-                                 alt="{{ $personal->brand_name ?? 'Nabaraj Acharya' }} — Full Stack Developer & SEO Expert Nepal"
-                                 class="w-full h-full object-cover">
-                        @else
-                            <div class="w-full h-full bg-gradient-to-br from-indigo-900 to-purple-900 flex items-center justify-center">
-                                <span class="text-slate-400 text-4xl font-display font-bold">NA</span>
-                            </div>
-                        @endif
-                    </div>
-                    <div class="absolute -top-2 -left-2 w-5 h-5 border-t-2 border-l-2 border-indigo-500 rounded-tl"></div>
-                    <div class="absolute -top-2 -right-2 w-5 h-5 border-t-2 border-r-2 border-cyan-500 rounded-tr"></div>
-                    <div class="absolute -bottom-2 -left-2 w-5 h-5 border-b-2 border-l-2 border-cyan-500 rounded-bl"></div>
-                    <div class="absolute -bottom-2 -right-2 w-5 h-5 border-b-2 border-r-2 border-indigo-500 rounded-br"></div>
+                <div class="hero-kk-photo-frame w-full" style="aspect-ratio: 4/5;">
+                    @if($personal && $personal->about_photo)
+                        <img src="{{ Storage::url($personal->about_photo) }}"
+                             alt="{{ $personal->brand_name ?? 'Nabaraj Acharya' }} — Full Stack Developer & SEO Expert Nepal">
+                    @elseif($personal && $personal->logo_url)
+                        <img src="{{ Storage::url($personal->logo_url) }}"
+                             alt="{{ $personal->brand_name ?? 'Nabaraj Acharya' }} — Full Stack Developer & SEO Expert Nepal">
+                    @else
+                        <div class="hero-kk-photo-placeholder">{{ Str::substr($personal->brand_name ?? 'NA', 0, 2) }}</div>
+                    @endif
                 </div>
 
                 {{-- Current employment card --}}
                 @if($personal && $personal->current_company)
-                <div class="w-full rounded-xl bg-emerald-500/8 border border-emerald-500/20 p-5">
+                <div class="w-full glass-card p-5">
                     <div class="flex items-center gap-2 mb-2">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0"></span>
-                        <span class="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Currently Employed</span>
+                        <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: #22c55e;"></span>
+                        <span class="text-xs font-bold uppercase tracking-wider" style="color: #16a34a;">Currently Employed</span>
                     </div>
-                    <p class="text-white font-semibold text-sm mb-1">{{ $personal->current_role }}</p>
+                    <p class="font-semibold text-sm mb-1" style="color: var(--ink);">{{ $personal->current_role }}</p>
                     @if($personal->current_company_url)
                         <a href="{{ $personal->current_company_url }}" target="_blank" rel="noopener noreferrer"
-                           class="text-cyan-400 text-sm hover:text-cyan-300 transition-colors">{{ $personal->current_company }} ↗</a>
+                           class="text-sm hover:underline" style="color: var(--accent);">{{ $personal->current_company }} ↗</a>
                     @else
-                        <p class="text-slate-400 text-sm">{{ $personal->current_company }}</p>
+                        <p class="text-sm" style="color: var(--ink-dim);">{{ $personal->current_company }}</p>
                     @endif
                     @if($personal->current_role_start)
-                        <p class="text-slate-500 text-xs mt-1">Since {{ \Carbon\Carbon::parse($personal->current_role_start)->format('F Y') }}</p>
+                        <p class="text-xs mt-1" style="color: var(--ink-faint);">Since {{ \Carbon\Carbon::parse($personal->current_role_start)->format('F Y') }}</p>
                     @endif
                 </div>
                 @endif
@@ -138,17 +104,17 @@ $breadcrumbSchema = [
                 {{-- Stats --}}
                 @if($personal)
                 <div class="w-full grid grid-cols-3 gap-3">
-                    <div class="text-center p-3 rounded-xl bg-slate-900/50 border border-slate-800">
-                        <div class="text-2xl font-display font-bold gradient-text">{{ $personal->years_experience ?? 0 }}+</div>
-                        <div class="text-slate-500 text-xs mt-0.5">Years</div>
+                    <div class="text-center p-3 glass-card">
+                        <div class="text-2xl font-display font-bold" style="color: var(--ink);">{{ $personal->years_experience ?? 0 }}+</div>
+                        <div class="text-xs mt-0.5" style="color: var(--ink-faint);">Years</div>
                     </div>
-                    <div class="text-center p-3 rounded-xl bg-slate-900/50 border border-slate-800">
-                        <div class="text-2xl font-display font-bold gradient-text">{{ $personal->completed_projects ?? 0 }}+</div>
-                        <div class="text-slate-500 text-xs mt-0.5">Projects</div>
+                    <div class="text-center p-3 glass-card">
+                        <div class="text-2xl font-display font-bold" style="color: var(--ink);">{{ $personal->completed_projects ?? 0 }}+</div>
+                        <div class="text-xs mt-0.5" style="color: var(--ink-faint);">Projects</div>
                     </div>
-                    <div class="text-center p-3 rounded-xl bg-slate-900/50 border border-slate-800">
-                        <div class="text-2xl font-display font-bold gradient-text">{{ $personal->happy_clients ?? 0 }}+</div>
-                        <div class="text-slate-500 text-xs mt-0.5">Clients</div>
+                    <div class="text-center p-3 glass-card">
+                        <div class="text-2xl font-display font-bold" style="color: var(--ink);">{{ $personal->happy_clients ?? 0 }}+</div>
+                        <div class="text-xs mt-0.5" style="color: var(--ink-faint);">Clients</div>
                     </div>
                 </div>
                 @endif
@@ -156,33 +122,60 @@ $breadcrumbSchema = [
 
             {{-- Bio + skills --}}
             <div class="md:w-3/5">
-                <h2 class="font-display text-2xl font-bold text-white mb-5">Hi, I'm <span class="gradient-text">{{ $personal->brand_name ?? 'Nabaraj Acharya' }}</span>, a Web Developer in Nepal</h2>
-                <div class="text-slate-300 leading-relaxed text-base prose prose-invert max-w-none mb-10">
+                <h2 class="font-display text-2xl font-bold mb-5" style="color: var(--ink);">Hi, I'm <span class="gradient-text">{{ $personal->brand_name ?? 'Nabaraj Acharya' }}</span>, a Web Developer in Nepal</h2>
+                <div class="leading-relaxed text-base prose max-w-none mb-10" style="color: var(--ink-dim);">
                     {!! $personal->about_description ?? '<p>I am a Full Stack Developer in Nepal focused on building scalable Laravel applications, custom business websites, and search-friendly digital platforms. As a web developer in Nepal, I help brands launch fast, modern, and conversion-focused experiences for users in Nepal and international markets.</p>' !!}
+                </div>
+
+                <h2 class="font-display text-2xl font-bold mb-6" style="color: var(--ink);">What Sets Me Apart</h2>
+                <div class="flex flex-col gap-4 mb-12">
+                    @foreach([
+                        ['Full-Stack + SEO in One', 'I don\'t just build websites — I make sure they can actually be found on Google once they\'re live.'],
+                        ['Laravel-Focused', 'Laravel and PHP are my core stack, so the code I write is clean, structured, and easy to maintain.'],
+                        ['Nepal-Based, Remote-Friendly', 'I work with clients across Nepal and abroad, communicating clearly across time zones.'],
+                    ] as [$title, $desc])
+                    <div class="flex gap-4">
+                        <span class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center" style="background: var(--accent-soft); color: var(--accent);">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        </span>
+                        <div>
+                            <h3 class="font-display text-base font-bold mb-1" style="color: var(--ink);">{{ $title }}</h3>
+                            <p class="text-sm leading-relaxed" style="color: var(--ink-dim);">{{ $desc }}</p>
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
 
                 {{-- Skills --}}
                 @if($skills->isNotEmpty())
-                <div class="mt-8 md:mt-12">
-                    <h3 class="font-display font-semibold text-white mb-4 md:mb-6">Technical Skills</h3>
-                    
+                <div>
+                    <h3 class="font-display text-2xl font-bold mb-6" style="color: var(--ink);">Technical Skills</h3>
+
                     @php
                         $groupedSkills = $skills->groupBy(fn($s) => $s->category ?: 'other');
+                        $aboutSkillIcons = [
+                            'php' => 'php', 'python' => 'python', 'java' => 'openjdk', 'javascript' => 'javascript',
+                            'github' => 'github', 'figma' => 'figma', 'laravel' => 'laravel', 'css' => 'css',
+                            'bootstrap' => 'bootstrap', 'html' => 'html5', 'tailwind css' => 'tailwindcss', 'filament' => 'filament',
+                        ];
+                        $aboutSkillIcon = fn ($name) => $aboutSkillIcons[strtolower(trim($name))] ?? null;
                     @endphp
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 skills-section">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         @foreach($groupedSkills as $category => $catSkills)
-                        <div class="p-5 rounded-xl bg-slate-900/40 border border-white/5">
-                            <h4 class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-4 flex items-center gap-2">
+                        <div class="glass-card p-5">
+                            <h4 class="text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2" style="color: var(--ink-faint);">
                                 {{ str($category)->headline() }}
-                                <span class="h-px flex-1 bg-slate-800"></span>
+                                <span class="h-px flex-1" style="background: var(--line);"></span>
                             </h4>
                             <div class="flex flex-wrap gap-2">
                                 @foreach($catSkills as $skill)
-                                <div class="px-3 py-1.5 rounded-lg bg-slate-800/50 border border-slate-700/50 flex items-center gap-2">
-                                    <span class="text-xs font-medium text-slate-300">{{ $skill->skill_name }}</span>
-                                    <span class="text-[9px] text-indigo-400 font-bold">{{ $skill->proficiency }}%</span>
-                                </div>
+                                <span class="skill-badge">
+                                    @if($slug = $aboutSkillIcon($skill->skill_name))
+                                    <img src="https://cdn.simpleicons.org/{{ $slug }}/5d6168" class="skill-badge-icon" alt="" onerror="this.remove()">
+                                    @endif
+                                    {{ $skill->skill_name }}
+                                </span>
                                 @endforeach
                             </div>
                         </div>
@@ -198,78 +191,28 @@ $breadcrumbSchema = [
 
 {{-- Work Experience Timeline --}}
 @if($experiences->isNotEmpty())
-<section class="py-10 md:py-16 reveal">
+<section class="py-12 md:py-16 reveal" style="background: var(--bg-soft);">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
-        <div class="section-tag">Career</div>
-        <h2 class="font-display text-3xl md:text-4xl font-bold text-center mb-10 md:mb-16">
-            Work <span class="gradient-text">Experience</span>
-        </h2>
+        <div class="text-center mb-14">
+            <p class="section-tag">Career</p>
+            <h2 class="kk-h2">Work Experience</h2>
+        </div>
 
-        <div class="relative pl-8 sm:pl-10">
-            <div class="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-indigo-500 via-cyan-500 to-transparent rounded-full"></div>
-
+        <div class="flex flex-col gap-5">
             @foreach($experiences as $exp)
-            <div class="relative mb-6 last:mb-0">
-                {{-- Timeline dot --}}
-                <div class="absolute -left-[33px] sm:-left-[45px] top-5 flex items-center justify-center">
-                    @if($exp->is_current)
-                    <span class="relative flex h-4 w-4">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-40"></span>
-                        <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-emerald-300"></span>
-                    </span>
-                    @else
-                    <span class="w-3.5 h-3.5 rounded-full bg-gradient-to-br from-indigo-500 to-cyan-500 shadow-md shadow-indigo-500/50"></span>
-                    @endif
-                </div>
-
-                <div class="glass-card p-6">
-                    <div class="flex flex-col sm:flex-row sm:items-start gap-4">
-                        {{-- Logo --}}
-                        @if($exp->company_logo)
-                        <img src="{{ asset('storage/'.$exp->company_logo) }}" alt="{{ $exp->company_name }}"
-                             class="w-12 h-12 rounded-xl object-contain border border-white/10 bg-white/5 p-1.5 flex-shrink-0">
-                        @else
-                        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center flex-shrink-0">
-                            <svg class="w-5 h-5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-                        </div>
-                        @endif
-
-                        <div class="flex-1">
-                            {{-- Date badge --}}
-                            <span class="inline-flex items-center gap-1.5 text-xs font-semibold {{ $exp->is_current ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/25' : 'text-indigo-400 bg-indigo-500/10 border-indigo-500/25' }} border px-3 py-1 rounded-full mb-3">
-                                {{ $exp->start_date->format('M Y') }} — {{ $exp->is_current ? 'Present' : ($exp->end_date ? $exp->end_date->format('M Y') : 'Present') }}
-                                @if($exp->is_current)
-                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                                @endif
-                            </span>
-
-                            <h3 class="font-display text-lg font-bold text-white mb-1">{{ $exp->position }}</h3>
-
-                            <div class="flex flex-wrap items-center gap-2 mb-3">
-                                @if($exp->company_url)
-                                <a href="{{ $exp->company_url }}" target="_blank" rel="noopener noreferrer"
-                                   class="text-cyan-400 text-sm font-semibold hover:text-cyan-300 transition-colors">{{ $exp->company_name }} ↗</a>
-                                @else
-                                <span class="text-cyan-400 text-sm font-semibold">{{ $exp->company_name }}</span>
-                                @endif
-
-                                @if($exp->employment_type)
-                                <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-slate-400">{{ $exp->employment_type }}</span>
-                                @endif
-
-                                @if($exp->location)
-                                <span class="text-xs text-slate-500 flex items-center gap-1">
-                                    <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
-                                    {{ $exp->location }}
-                                </span>
-                                @endif
-                            </div>
-
-                            @if($exp->description)
-                            <p class="text-slate-400 text-sm leading-relaxed">{{ $exp->description }}</p>
-                            @endif
-                        </div>
+            <div class="exp-kk-card glass-card">
+                <div class="exp-kk-date">{{ $exp->start_date->format('M Y') }} — {{ $exp->is_current ? 'Now' : ($exp->end_date ? $exp->end_date->format('M Y') : 'Now') }}</div>
+                <div class="exp-kk-body">
+                    <div class="flex items-center gap-3 flex-wrap mb-1.5">
+                        <h3>{{ $exp->position }}</h3>
+                        @if($exp->is_current)<span class="exp-kk-current">Current</span>@endif
                     </div>
+                    <p class="exp-kk-company">
+                        @if($exp->company_url)<a href="{{ $exp->company_url }}" target="_blank" rel="noopener noreferrer" class="hover:underline">{{ $exp->company_name }}</a>@else{{ $exp->company_name }}@endif
+                        @if($exp->employment_type) · {{ $exp->employment_type }} @endif
+                        @if($exp->location) · {{ $exp->location }} @endif
+                    </p>
+                    @if($exp->description)<p class="exp-kk-desc">{{ $exp->description }}</p>@endif
                 </div>
             </div>
             @endforeach
@@ -281,50 +224,28 @@ $breadcrumbSchema = [
 
 {{-- Certifications & Gallery --}}
 @if($certifications->isNotEmpty())
-<section class="py-10 md:py-16 reveal overflow-hidden">
+<section class="py-12 md:py-16 reveal overflow-hidden">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        <div class="section-tag">Gallery</div>
-        <h2 class="font-display text-3xl md:text-4xl font-bold text-center mb-10 md:mb-16">
-            Certifications & <span class="gradient-text">Achievements</span>
-        </h2>
+        <div class="text-center mb-14">
+            <p class="section-tag">Gallery</p>
+            <h2 class="kk-h2">Certifications &amp; Achievements</h2>
+        </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($certifications as $cert)
-            <div class="certification-card group relative h-72 rounded-2xl overflow-hidden glass-card cursor-pointer" 
+            <div class="cert-kk-card glass-card cursor-pointer"
                  onclick="openCertLightbox('{{ asset('storage/'.$cert->image) }}', '{{ $cert->title }}', '{{ $cert->issuer }}')">
-                {{-- Background Image --}}
-                @if($cert->image)
-                <div class="absolute inset-0 bg-slate-900 flex items-center justify-center p-4">
-                    <img src="{{ asset('storage/'.$cert->image) }}" alt="{{ $cert->title }}" 
-                         class="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-110">
+                <div class="cert-kk-img">
+                    @if($cert->image)
+                        <img src="{{ asset('storage/'.$cert->image) }}" alt="{{ $cert->title }}">
+                    @else
+                        <svg class="w-14 h-14" style="color: var(--ink-faint);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                    @endif
                 </div>
-                @else
-                <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/40 to-slate-900 flex items-center justify-center">
-                    <svg class="w-16 h-16 text-indigo-500/20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
-                </div>
-                @endif
-
-                {{-- Overlay --}}
-                <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent opacity-80 transition-opacity group-hover:opacity-90"></div>
-
-                {{-- Content --}}
-                <div class="absolute inset-0 p-6 flex flex-col justify-end transform transition-transform duration-300 group-hover:-translate-y-2">
-                    <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-2">{{ $cert->issuer }}</span>
-                    <h3 class="text-lg font-display font-bold text-white mb-3">{{ $cert->title }}</h3>
-                    
-                    <div class="flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <span class="text-xs text-slate-400">{{ $cert->issue_date->format('M Y') }}</span>
-                        <div class="flex gap-2">
-                             @if($cert->credential_url)
-                             <a href="{{ $cert->credential_url }}" target="_blank" onclick="event.stopPropagation()" class="p-2 rounded-lg bg-indigo-500/20 text-indigo-400 hover:bg-indigo-500 hover:text-white transition-all">
-                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                             </a>
-                             @endif
-                             <div class="p-2 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-all">
-                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
-                             </div>
-                        </div>
-                    </div>
+                <div class="p-5">
+                    <span class="text-xs font-bold uppercase tracking-widest" style="color: var(--accent);">{{ $cert->issuer }}</span>
+                    <h3 class="font-display text-base font-bold mt-1.5 mb-1" style="color: var(--ink);">{{ $cert->title }}</h3>
+                    <span class="text-xs" style="color: var(--ink-faint);">{{ $cert->issue_date->format('M Y') }}</span>
                 </div>
             </div>
             @endforeach
@@ -333,54 +254,62 @@ $breadcrumbSchema = [
 </section>
 
 {{-- Lightbox Modal --}}
-<div id="certLightbox" class="fixed inset-0 z-[10000] hidden items-center justify-center bg-black/95 backdrop-blur-md px-4 py-10" onclick="closeCertLightbox()">
-    <div class="relative w-full max-w-5xl max-h-full flex flex-col items-center animate-zoomIn" onclick="event.stopPropagation()">
-        <button onclick="closeCertLightbox()" class="absolute -top-12 right-0 text-white hover:text-indigo-400 transition-colors flex items-center gap-2 font-semibold">
+<div id="certLightbox" class="fixed inset-0 z-[10000] hidden items-center justify-center bg-black/90 backdrop-blur-md px-4 py-10" onclick="closeCertLightbox()">
+    <div class="relative w-full max-w-4xl max-h-full flex flex-col items-center animate-zoomIn" onclick="event.stopPropagation()">
+        <button onclick="closeCertLightbox()" class="absolute -top-12 right-0 text-white hover:text-red-300 transition-colors flex items-center gap-2 font-semibold">
             <span>Close</span> <span class="text-2xl">×</span>
         </button>
-        
-        <div class="w-full overflow-auto rounded-xl border border-white/10 shadow-2xl bg-slate-900/50">
+        <div class="w-full overflow-auto rounded-xl shadow-2xl" style="background: var(--bg);">
             <img id="lightboxImage" src="" alt="Certificate" class="w-full h-auto max-h-[80vh] object-contain mx-auto">
         </div>
-        
         <div class="mt-6 text-center">
             <h3 id="lightboxTitle" class="text-xl font-display font-bold text-white mb-1"></h3>
-            <p id="lightboxIssuer" class="text-indigo-400 font-semibold"></p>
+            <p id="lightboxIssuer" class="font-semibold" style="color: var(--accent);"></p>
         </div>
     </div>
 </div>
+<script>
+    function openCertLightbox(imgUrl, title, issuer) {
+        document.getElementById('lightboxImage').src = imgUrl;
+        document.getElementById('lightboxTitle').textContent = title;
+        document.getElementById('lightboxIssuer').textContent = issuer;
+        const modal = document.getElementById('certLightbox');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeCertLightbox() {
+        const modal = document.getElementById('certLightbox');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+    }
+</script>
 @endif
 
 
 {{-- Education Timeline --}}
 @if($education->isNotEmpty())
-<section class="py-10 md:py-16 reveal">
+<section class="py-12 md:py-16 reveal" style="background: var(--bg-soft);">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
-        <div class="section-tag">Background</div>
-        <h2 class="font-display text-3xl md:text-4xl font-bold text-center mb-10 md:mb-16">
-            Education & <span class="gradient-text">Academic Background</span>
-        </h2>
+        <div class="text-center mb-14">
+            <p class="section-tag">Background</p>
+            <h2 class="kk-h2">Education &amp; Academic Background</h2>
+        </div>
 
-        <div class="relative pl-8 sm:pl-10">
-            <div class="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-amber-500 via-orange-500 to-transparent rounded-full"></div>
+        <div class="flex flex-col gap-5">
             @foreach($education as $edu)
-            <div class="relative mb-10 last:mb-0">
-                <div class="absolute -left-[9px] top-6 w-3 h-3 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 shadow-lg shadow-amber-500/50"></div>
-                <div class="glass-card p-6 flex items-start gap-4">
-                    @if($edu->image_url)
-                        <img src="{{ Storage::url($edu->image_url) }}" alt="{{ $edu->institution }}"
-                             class="w-12 h-12 rounded-xl object-cover flex-shrink-0 border border-amber-500/20">
-                    @endif
-                    <div class="flex-1">
-                        <span class="inline-flex text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full mb-2">
-                            {{ $edu->start_year }} — {{ $edu->end_year ?? ($edu->status === 'in_progress' ? 'Present' : '') }}
-                        </span>
-                        <h3 class="font-display text-lg font-bold text-white mb-1">{{ $edu->degree }}</h3>
-                        <p class="text-amber-400 text-sm font-medium mb-2">{{ $edu->institution }}</p>
-                        @if($edu->description)
-                            <p class="text-slate-400 text-sm leading-relaxed">{{ $edu->description }}</p>
+            <div class="exp-kk-card glass-card">
+                <div class="exp-kk-date">{{ $edu->start_year }} — {{ $edu->end_year ?? ($edu->status === 'in_progress' ? 'Present' : '') }}</div>
+                <div class="exp-kk-body">
+                    <div class="flex items-center gap-3 mb-1.5">
+                        @if($edu->image_url)
+                        <img src="{{ Storage::url($edu->image_url) }}" alt="{{ $edu->institution }}" class="w-8 h-8 rounded-lg object-cover flex-shrink-0" style="border:1px solid var(--line);">
                         @endif
+                        <h3>{{ $edu->degree }}</h3>
                     </div>
+                    <p class="exp-kk-company">{{ $edu->institution }}</p>
+                    @if($edu->description)<p class="exp-kk-desc">{{ $edu->description }}</p>@endif
                 </div>
             </div>
             @endforeach
@@ -391,15 +320,32 @@ $breadcrumbSchema = [
 
 
 {{-- CTA --}}
-<section class="py-12 md:py-16 reveal">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
-        <h2 class="font-display text-3xl font-bold mb-4">Want to work with a <span class="gradient-text">Full Stack Developer in Nepal?</span></h2>
-        <p class="text-slate-400 mb-8 max-w-lg mx-auto">Let's discuss your project and see how I can help you build something great.</p>
-        <div class="flex flex-wrap gap-4 justify-center">
-            <a href="{{ route('contact') }}" class="btn-primary"><span>Contact Me</span></a>
-            <a href="{{ route('portfolio') }}" class="btn-outline">View Portfolio</a>
+<section class="py-12 md:py-20 reveal">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="cta-kk-banner text-center">
+            <p class="section-tag !justify-center">Let's talk</p>
+            <h2 class="font-display text-2xl md:text-4xl font-bold mb-4" style="color: var(--ink);">
+                Want to work with a <span class="gradient-text">Full Stack Developer in Nepal?</span>
+            </h2>
+            <p class="mb-8 max-w-lg mx-auto" style="color: var(--ink-dim);">Let's discuss your project and see how I can help you build something great.</p>
+            <div class="flex flex-wrap gap-4 justify-center">
+                <a href="{{ route('contact') }}" class="btn-primary" data-magnetic data-cursor="link"><span>Contact Me</span></a>
+                <a href="{{ route('portfolio') }}" class="btn-outline" data-magnetic data-cursor="link">View Portfolio</a>
+            </div>
         </div>
     </div>
 </section>
 
 @endsection
+
+@push('styles')
+<style>
+.cta-kk-banner { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 28px; padding: 48px 36px; box-shadow: 6px 7px 0 0 var(--accent); }
+@media (min-width: 768px) { .cta-kk-banner { padding: 64px 60px; } }
+.cert-kk-card { overflow: hidden; transition: all .3s ease; }
+.cert-kk-card:hover { transform: translateY(-3px); }
+.cert-kk-img { aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; background: var(--bg-soft); overflow: hidden; }
+.cert-kk-img img { width: 100%; height: 100%; object-fit: contain; padding: 12px; transition: transform .5s ease; }
+.cert-kk-card:hover .cert-kk-img img { transform: scale(1.05); }
+</style>
+@endpush

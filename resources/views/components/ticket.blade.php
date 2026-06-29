@@ -2,7 +2,7 @@
     {{-- Floating Button --}}
     <button id="support-button"
         class="fixed bottom-6 right-6 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-white z-[60] transition-all hover:scale-110"
-        style="background: linear-gradient(135deg, #6366f1, #a855f7); box-shadow: 0 8px 32px rgba(99,102,241,0.45);"
+        style="background: linear-gradient(135deg, #df1d35, #b8152a); box-shadow: 0 8px 32px rgba(223,29,53,0.45);"
         title="Support & Tickets">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -13,14 +13,14 @@
     {{-- Modal Overlay --}}
     <div id="support-modal-overlay" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[70] hidden items-center justify-center p-4">
         {{-- Modal Content --}}
-        <div id="support-modal-content" class="relative w-full max-w-md max-h-[90vh] overflow-hidden flex flex-col rounded-2xl border border-indigo-500/20 shadow-2xl animate-zoomIn"
+        <div id="support-modal-content" class="relative w-full max-w-md max-h-[90vh] overflow-hidden flex flex-col rounded-2xl border border-primary/20 shadow-2xl animate-zoomIn"
              style="background: rgba(10,13,26,0.97); backdrop-filter: blur(20px);">
 
             {{-- Header --}}
             <div class="flex items-center justify-between p-5 border-b border-white/8">
                 <div class="flex items-center gap-3">
                     <div class="w-8 h-8 rounded-lg flex items-center justify-center text-base"
-                         style="background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(168,85,247,0.2)); border: 1px solid rgba(99,102,241,0.3);">
+                         style="background: linear-gradient(135deg, rgba(223,29,53,0.2), rgba(255,138,61,0.18)); border: 1px solid rgba(223,29,53,0.3);">
                         💬
                     </div>
                     <div>
@@ -39,7 +39,7 @@
             {{-- Tabs --}}
             <div class="flex border-b border-white/8">
                 <button id="chat-tab"
-                    class="support-tab flex-1 py-3 px-4 text-center text-sm font-semibold transition-all border-b-2 border-indigo-500 text-indigo-400">
+                    class="support-tab flex-1 py-3 px-4 text-center text-sm font-semibold transition-all border-b-2 border-primary text-primary">
                     💬 Chat with AI
                 </button>
                 <button id="ticket-tab"
@@ -57,9 +57,9 @@
                     <div id="chat-messages" class="flex-1 space-y-3 mb-4 overflow-y-auto pr-1" style="max-height: 260px;">
                         <div class="flex items-start gap-2">
                             <div class="w-7 h-7 rounded-full flex items-center justify-center text-sm flex-shrink-0"
-                                 style="background: linear-gradient(135deg, #6366f1, #a855f7);">🤖</div>
+                                 style="background: linear-gradient(135deg, #df1d35, #b8152a);">🤖</div>
                             <div class="rounded-xl p-3 max-w-xs text-sm text-slate-200"
-                                 style="background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.2);">
+                                 style="background: rgba(223,29,53,0.12); border: 1px solid rgba(223,29,53,0.2);">
                                 Hi! I'm your AI assistant. Ask me about my services, skills, or how I can help your project. 👋
                             </div>
                         </div>
@@ -69,13 +69,13 @@
                     <div class="flex gap-2 mt-auto">
                         <textarea id="message-input"
                             class="flex-1 rounded-xl p-3 text-sm text-slate-200 placeholder-slate-600 resize-none transition-all outline-none"
-                            style="background: rgba(22,27,39,0.9); border: 1px solid rgba(99,102,241,0.2);"
+                            style="background: rgba(22,27,39,0.9); border: 1px solid rgba(223,29,53,0.2);"
                             placeholder="Type your question…" rows="2"
-                            onfocus="this.style.borderColor='rgba(99,102,241,0.5)'"
-                            onblur="this.style.borderColor='rgba(99,102,241,0.2)'"></textarea>
+                            onfocus="this.style.borderColor='rgba(223,29,53,0.5)'"
+                            onblur="this.style.borderColor='rgba(223,29,53,0.2)'"></textarea>
                         <button id="send-message"
                             class="px-4 py-2 rounded-xl text-white text-sm font-semibold self-end transition-all hover:opacity-90"
-                            style="background: linear-gradient(135deg, #6366f1, #a855f7);">
+                            style="background: linear-gradient(135deg, #df1d35, #b8152a);">
                             <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                                 <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/>
                             </svg>
@@ -85,7 +85,7 @@
 
                 {{-- Ticket Tab --}}
                 <div id="ticket-content" class="p-5 hidden">
-                    <div class="mb-5 p-4 rounded-xl" style="background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.15);">
+                    <div class="mb-5 p-4 rounded-xl" style="background: rgba(223,29,53,0.08); border: 1px solid rgba(223,29,53,0.15);">
                         <p class="text-sm text-slate-300 font-medium mb-1">🎫 Create a Support Ticket</p>
                         <p class="text-xs text-slate-500">Fill in the form below and I'll get back to you within 24 hours.</p>
                     </div>
@@ -96,45 +96,45 @@
                             <label class="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider">Full Name *</label>
                             <input type="text" name="name"
                                 class="w-full rounded-xl p-3 text-sm text-slate-200 placeholder-slate-600 outline-none transition-all"
-                                style="background: rgba(22,27,39,0.9); border: 1px solid rgba(99,102,241,0.2);"
+                                style="background: rgba(22,27,39,0.9); border: 1px solid rgba(223,29,53,0.2);"
                                 placeholder="Your name" required
-                                onfocus="this.style.borderColor='rgba(99,102,241,0.5)'"
-                                onblur="this.style.borderColor='rgba(99,102,241,0.2)'">
+                                onfocus="this.style.borderColor='rgba(223,29,53,0.5)'"
+                                onblur="this.style.borderColor='rgba(223,29,53,0.2)'">
                         </div>
 
                         <div>
                             <label class="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider">Email Address *</label>
                             <input type="email" name="email"
                                 class="w-full rounded-xl p-3 text-sm text-slate-200 placeholder-slate-600 outline-none transition-all"
-                                style="background: rgba(22,27,39,0.9); border: 1px solid rgba(99,102,241,0.2);"
+                                style="background: rgba(22,27,39,0.9); border: 1px solid rgba(223,29,53,0.2);"
                                 placeholder="your@email.com" required
-                                onfocus="this.style.borderColor='rgba(99,102,241,0.5)'"
-                                onblur="this.style.borderColor='rgba(99,102,241,0.2)'">
+                                onfocus="this.style.borderColor='rgba(223,29,53,0.5)'"
+                                onblur="this.style.borderColor='rgba(223,29,53,0.2)'">
                         </div>
 
                         <div>
                             <label class="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider">Phone</label>
                             <input type="tel" name="phone"
                                 class="w-full rounded-xl p-3 text-sm text-slate-200 placeholder-slate-600 outline-none transition-all"
-                                style="background: rgba(22,27,39,0.9); border: 1px solid rgba(99,102,241,0.2);"
+                                style="background: rgba(22,27,39,0.9); border: 1px solid rgba(223,29,53,0.2);"
                                 placeholder="+977 000 000 000"
-                                onfocus="this.style.borderColor='rgba(99,102,241,0.5)'"
-                                onblur="this.style.borderColor='rgba(99,102,241,0.2)'">
+                                onfocus="this.style.borderColor='rgba(223,29,53,0.5)'"
+                                onblur="this.style.borderColor='rgba(223,29,53,0.2)'">
                         </div>
 
                         <div>
                             <label class="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider">Describe your issue *</label>
                             <textarea name="issue" rows="4"
                                 class="w-full rounded-xl p-3 text-sm text-slate-200 placeholder-slate-600 resize-none outline-none transition-all"
-                                style="background: rgba(22,27,39,0.9); border: 1px solid rgba(99,102,241,0.2);"
+                                style="background: rgba(22,27,39,0.9); border: 1px solid rgba(223,29,53,0.2);"
                                 placeholder="Describe the problem or project you need help with…" required
-                                onfocus="this.style.borderColor='rgba(99,102,241,0.5)'"
-                                onblur="this.style.borderColor='rgba(99,102,241,0.2)'"></textarea>
+                                onfocus="this.style.borderColor='rgba(223,29,53,0.5)'"
+                                onblur="this.style.borderColor='rgba(223,29,53,0.2)'"></textarea>
                         </div>
 
                         <button type="submit" id="ticket-submit-btn"
                             class="w-full py-3 rounded-xl text-white font-bold text-sm transition-all hover:opacity-90 flex items-center justify-center gap-2"
-                            style="background: linear-gradient(135deg, #6366f1, #a855f7);">
+                            style="background: linear-gradient(135deg, #df1d35, #b8152a);">
                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
                             </svg>
@@ -181,8 +181,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function setActiveTab(activeTab, activeContent, inactiveTab, inactiveContent) {
         activeTab.classList.remove('border-transparent', 'text-slate-500');
-        activeTab.classList.add('border-indigo-500', 'text-indigo-400');
-        inactiveTab.classList.remove('border-indigo-500', 'text-indigo-400');
+        activeTab.classList.add('border-primary', 'text-primary');
+        inactiveTab.classList.remove('border-primary', 'text-primary');
         inactiveTab.classList.add('border-transparent', 'text-slate-500');
         activeContent.classList.remove('hidden');
         inactiveContent.classList.add('hidden');
@@ -197,13 +197,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (sender === 'user') {
             div.innerHTML = `
-                <div class="rounded-xl p-3 max-w-xs text-sm text-white" style="background:linear-gradient(135deg,#6366f1,#a855f7);">${text}</div>
+                <div class="rounded-xl p-3 max-w-xs text-sm text-white" style="background:linear-gradient(135deg,#df1d35,#b8152a);">${text}</div>
                 <div class="w-7 h-7 rounded-full bg-slate-700 flex items-center justify-center text-sm flex-shrink-0">👤</div>
             `;
         } else {
             div.innerHTML = `
-                <div class="w-7 h-7 rounded-full flex items-center justify-center text-sm flex-shrink-0" style="background:linear-gradient(135deg,#6366f1,#a855f7);">🤖</div>
-                <div class="rounded-xl p-3 max-w-xs text-sm text-slate-200" style="background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.2);">${text}</div>
+                <div class="w-7 h-7 rounded-full flex items-center justify-center text-sm flex-shrink-0" style="background:linear-gradient(135deg,#df1d35,#b8152a);">🤖</div>
+                <div class="rounded-xl p-3 max-w-xs text-sm text-slate-200" style="background:rgba(223,29,53,0.12);border:1px solid rgba(223,29,53,0.2);">${text}</div>
             `;
         }
         chatMessages.appendChild(div);
@@ -234,8 +234,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const typingDiv = document.createElement('div');
         typingDiv.className = 'flex items-start gap-2';
         typingDiv.innerHTML = `
-            <div class="w-7 h-7 rounded-full flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#6366f1,#a855f7);">🤖</div>
-            <div class="rounded-xl p-3 text-sm text-slate-400" style="background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.15);">typing…</div>
+            <div class="w-7 h-7 rounded-full flex items-center justify-center text-sm" style="background:linear-gradient(135deg,#df1d35,#b8152a);">🤖</div>
+            <div class="rounded-xl p-3 text-sm text-slate-400" style="background:rgba(223,29,53,0.08);border:1px solid rgba(223,29,53,0.15);">typing…</div>
         `;
         chatMessages.appendChild(typingDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
