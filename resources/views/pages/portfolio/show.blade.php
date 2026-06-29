@@ -52,6 +52,14 @@ $breadcrumbSchema = [
             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/12 border border-emerald-500/25 text-emerald-400">
                 {{ ucfirst(str_replace('_',' ',$project->status)) }}
             </span>
+            @php
+                $typeLabels = ['web_dev' => 'Web Development', 'seo' => 'SEO', 'design' => 'UI/UX Design'];
+                $typeColors = ['web_dev' => 'bg-indigo-500/12 border-indigo-500/25 text-indigo-400', 'seo' => 'bg-cyan-500/12 border-cyan-500/25 text-cyan-400', 'design' => 'bg-violet-500/12 border-violet-500/25 text-violet-400'];
+                $type = $project->type ?? 'web_dev';
+            @endphp
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border {{ $typeColors[$type] ?? $typeColors['web_dev'] }}">
+                {{ $typeLabels[$type] ?? 'Web Development' }}
+            </span>
         </div>
     </div>
 </div>
@@ -80,6 +88,17 @@ $breadcrumbSchema = [
 
         {{-- Sidebar --}}
         <div class="space-y-5">
+
+            {{-- SEO: Traffic Growth highlight --}}
+            @if(($project->type ?? '') === 'seo' && $project->traffic_growth)
+            <div class="glass-card p-5 border-cyan-500/30 bg-cyan-500/5">
+                <h3 class="font-display font-semibold text-cyan-400 mb-2 text-sm uppercase tracking-wider flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                    Traffic Growth
+                </h3>
+                <p class="text-white font-semibold text-lg leading-snug">{{ $project->traffic_growth }}</p>
+            </div>
+            @endif
 
             {{-- Technologies --}}
             @if($project->skills->isNotEmpty())

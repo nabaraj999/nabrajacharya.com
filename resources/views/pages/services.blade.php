@@ -1,16 +1,26 @@
 @extends('layouts.app')
 
-@section('title', $seo->meta_title ?? 'Web Development Services — Full Stack Developer Nepal | Nabaraj Acharya')
-@section('description', $seo->meta_description ?? 'Professional web development and SEO services by a Full Stack Developer and SEO Specialist in Nepal, including Khotang and Lalitpur.')
-@section('keywords', $seo->meta_keywords ?? 'web development services nepal, laravel developer nepal, full stack developer nepal, seo specialist in nepal, seo specialist in khotang, seo specialist in lalitpur, seo specalist in khotang, seo specalist in lalitpur')
+@php
+    $defaultTitle = 'Web Development in 2026 | SEO Service in Nepal | Nabaraj Acharya';
+    $defaultDescription = 'Explore web development in 2026 with modern Laravel, business websites, and SEO service in Nepal by Nabaraj Acharya for brands that want faster, search-friendly growth.';
+    $defaultKeywords = 'web development in 2026, seo service in nepal, web development nepal, website development nepal, laravel developer nepal, web developer nepal, technical seo nepal, digital marketing nepal';
+@endphp
+
+@section('title', $defaultTitle)
+@section('description', $defaultDescription)
+@section('keywords', $defaultKeywords)
 @section('canonical', route('services'))
+@section('og_title', $defaultTitle)
+@section('og_description', $defaultDescription)
+@section('twitter_title', $defaultTitle)
+@section('twitter_description', $defaultDescription)
 
 @section('schema')
 @php
     $servicesSchema = [
         '@context' => 'https://schema.org',
         '@type' => 'Service',
-        'name' => 'Web Development and SEO Services',
+        'name' => 'Web Development in 2026 and SEO Service in Nepal',
         'provider' => [
             '@type' => 'Person',
             'name' => $personal->brand_name ?? 'Nabaraj Acharya',
@@ -21,7 +31,8 @@
             ['@type' => 'City', 'name' => 'Kathmandu'],
         ],
         'url' => route('services'),
-        'description' => $seo->meta_description ?? 'Professional web development and SEO services in Nepal.',
+        'description' => $defaultDescription,
+        'serviceType' => ['Web Development', 'SEO Service'],
     ];
     $breadcrumbSchema = [
         '@context' => 'https://schema.org',
@@ -42,10 +53,10 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
         <div class="section-tag">Services</div>
         <h1 class="font-display text-4xl md:text-5xl font-bold mt-2 mb-4">
-            Web Development <span class="gradient-text">Services in Nepal</span>
+            Web Development <span class="gradient-text">in 2026</span>
         </h1>
         <p class="text-slate-400 text-lg max-w-2xl mx-auto">
-            End-to-end web development, Laravel applications, and SEO solutions by an SEO Specialist in Nepal serving Khotang and Lalitpur.
+            Modern web development in 2026 with Laravel applications, business websites, and SEO service in Nepal for companies that want better performance, visibility, and leads.
         </p>
     </div>
 </section>
@@ -91,10 +102,10 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="rounded-2xl bg-gradient-to-br from-indigo-600/15 to-cyan-600/10 border border-indigo-500/20 p-10 text-center">
             <h2 class="font-display text-2xl md:text-3xl font-bold mb-3">
-                Need a <span class="gradient-text">Laravel Developer in Nepal</span>?
+                Need <span class="gradient-text">Web Development in 2026</span>?
             </h2>
             <p class="text-slate-400 mb-7 max-w-lg mx-auto">
-                Let's talk about your project. I provide custom Laravel development and local SEO strategy as an SEO Specialist in Nepal, including campaigns for Khotang and Lalitpur.
+                Let's talk about your project. I provide custom Laravel builds, modern website development, and SEO service in Nepal to help businesses grow with stronger search visibility in 2026.
             </p>
             <a href="{{ route('contact') }}" class="btn-primary">
                 <span>Start a Project</span>

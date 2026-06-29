@@ -1,23 +1,36 @@
 @extends('layouts.app')
 
-@section('title', $seo->meta_title ?? 'About Nabaraj Acharya — Full Stack Developer & SEO Specialist in Nepal')
-@section('description', $seo->meta_description ?? 'Learn about Nabaraj Acharya, a Full Stack Developer and SEO Specialist in Nepal, with service focus in Khotang and Lalitpur.')
-@section('keywords', $seo->meta_keywords ?? 'full stack developer nepal, laravel developer nepal, about nabaraj acharya, seo specialist in nepal, seo specialist in khotang, seo specialist in lalitpur, seo specalist in khotang, seo specalist in lalitpur')
+@php
+    $defaultTitle = 'Full Stack Developer in Nepal | Web Developer in Nepal | Nabaraj Acharya';
+    $defaultDescription = 'About Nabaraj Acharya, a Full Stack Developer in Nepal and Web Developer in Nepal building Laravel, PHP, and SEO-driven websites for businesses in Nepal and beyond.';
+    $defaultKeywords = 'full stack developer in nepal, web developer in nepal, full stack developer nepal, laravel developer nepal, php developer nepal, nabaraj acharya, website developer in nepal, seo friendly web developer nepal';
+@endphp
+
+@section('title', $defaultTitle)
+@section('description', $defaultDescription)
+@section('keywords', $defaultKeywords)
 @section('canonical', route('about'))
+@section('og_title', $defaultTitle)
+@section('og_description', $defaultDescription)
+@section('twitter_title', $defaultTitle)
+@section('twitter_description', $defaultDescription)
 
 @section('schema')
 @php
 $aboutSchema = [
     '@context'    => 'https://schema.org',
     '@type'       => 'AboutPage',
-    'name'        => 'About Nabaraj Acharya — Full Stack Developer and SEO Specialist in Nepal',
+    'name'        => 'About Nabaraj Acharya — Full Stack Developer in Nepal',
+    'description' => $defaultDescription,
     'url'         => route('about'),
     'mainEntity'  => [
         '@type'    => 'Person',
         'name'     => 'Nabaraj Acharya',
-        'jobTitle' => 'Full Stack Developer & SEO Expert',
+        'jobTitle' => 'Full Stack Developer in Nepal',
+        'description' => 'Web Developer in Nepal focused on Laravel, PHP, modern websites, and technical SEO.',
         'url'      => 'https://nabrajacharya.com.np',
         'worksFor' => ['@type' => 'Organization', 'name' => $personal->current_company ?? 'TechAble Australia'],
+        'knowsAbout' => ['Laravel development', 'PHP development', 'full stack development', 'web development', 'technical SEO'],
     ],
 ];
 $breadcrumbSchema = [
@@ -64,10 +77,10 @@ $breadcrumbSchema = [
     <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
         <div class="section-tag">About</div>
         <h1 class="font-display text-4xl md:text-5xl font-bold mt-2 mb-4">
-            Full Stack Developer & <span class="gradient-text">SEO Specialist in Nepal</span>
+            Full Stack <span class="gradient-text">Developer in Nepal</span>
         </h1>
         <p class="text-slate-400 text-lg max-w-2xl mx-auto">
-            Building high-performance Laravel applications and driving organic growth — based in Nepal, working globally.
+            I am a web developer in Nepal building high-performance Laravel applications, business websites, and SEO-friendly digital experiences for local and global clients.
         </p>
     </div>
 </section>
@@ -143,9 +156,9 @@ $breadcrumbSchema = [
 
             {{-- Bio + skills --}}
             <div class="md:w-3/5">
-                <h2 class="font-display text-2xl font-bold text-white mb-5">Hi, I'm <span class="gradient-text">{{ $personal->brand_name ?? 'Nabaraj Acharya' }}</span></h2>
+                <h2 class="font-display text-2xl font-bold text-white mb-5">Hi, I'm <span class="gradient-text">{{ $personal->brand_name ?? 'Nabaraj Acharya' }}</span>, a Web Developer in Nepal</h2>
                 <div class="text-slate-300 leading-relaxed text-base prose prose-invert max-w-none mb-10">
-                    {!! $personal->about_description ?? '<p>Passionate Full Stack Developer & SEO Expert based in Nepal. I specialize in building scalable Laravel applications and crafting data-driven SEO strategies that drive real organic growth for businesses across Nepal and Australia.</p>' !!}
+                    {!! $personal->about_description ?? '<p>I am a Full Stack Developer in Nepal focused on building scalable Laravel applications, custom business websites, and search-friendly digital platforms. As a web developer in Nepal, I help brands launch fast, modern, and conversion-focused experiences for users in Nepal and international markets.</p>' !!}
                 </div>
 
                 {{-- Skills --}}

@@ -11,6 +11,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Str;
+use Filament\Schemas\Components\Utilities\Get;
 
 class ProjectForm
 {
@@ -57,6 +58,23 @@ class ProjectForm
                     ])
                     ->default('in_progress')
                     ->required(),
+                Select::make('type')
+                    ->label('Portfolio Type')
+                    ->options([
+                        'web_dev' => 'Web Development',
+                        'seo'     => 'SEO',
+                        'design'  => 'UI/UX Design',
+                    ])
+                    ->default('web_dev')
+                    ->live()
+                    ->required(),
+                TextInput::make('traffic_growth')
+                    ->label('Traffic Growth')
+                    ->placeholder('e.g. +320% organic traffic in 6 months')
+                    ->maxLength(100)
+                    ->nullable()
+                    ->visible(fn (Get $get): bool => $get('type') === 'seo')
+                    ->helperText('Summarise the organic traffic improvement achieved'),
 
                 RichEditor::make('description')
                     ->label('Description')

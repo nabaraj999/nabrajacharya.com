@@ -36,12 +36,26 @@
 </section>
 
 
+{{-- Filter by type --}}
+<div class="max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-2 md:pt-8">
+    <div class="flex flex-wrap gap-2 justify-center" id="type-filters">
+        <button data-type="all"
+                class="type-btn active skill-badge text-sm px-4 py-2 cursor-pointer">All</button>
+        <button data-type="web_dev"
+                class="type-btn skill-badge text-sm px-4 py-2 cursor-pointer">Web Development</button>
+        <button data-type="seo"
+                class="type-btn skill-badge text-sm px-4 py-2 cursor-pointer">SEO</button>
+        <button data-type="design"
+                class="type-btn skill-badge text-sm px-4 py-2 cursor-pointer">UI/UX Design</button>
+    </div>
+</div>
+
 {{-- Filter by skill --}}
 @if($skills->isNotEmpty())
-<div class="max-w-6xl mx-auto px-4 sm:px-6 py-6 md:py-8">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 md:py-6">
     <div class="flex flex-wrap gap-2 justify-center" id="skill-filters">
         <button data-filter="all"
-                class="filter-btn active skill-badge text-sm px-4 py-2 cursor-pointer">All</button>
+                class="filter-btn active skill-badge text-sm px-4 py-2 cursor-pointer">All Skills</button>
         @foreach($skills as $skill)
         <button data-filter="{{ $skill->id }}"
                 class="filter-btn skill-badge text-sm px-4 py-2 cursor-pointer">{{ $skill->skill_name }}</button>
@@ -59,7 +73,8 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
                 @foreach($projects as $project)
                 <article class="project-item group block rounded-2xl overflow-hidden border border-slate-800 bg-surface transition-all duration-300 hover:border-indigo-500/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/10"
-                         data-skills="{{ $project->skills->pluck('id')->join(',') }}">
+                         data-skills="{{ $project->skills->pluck('id')->join(',') }}"
+                         data-type="{{ $project->type ?? 'web_dev' }}">
                     <a href="{{ route('portfolio.show', $project) }}">
                         <div class="h-52 overflow-hidden bg-slate-900 relative"
                              style="{{ $project->image_url ? 'background-image:url('.asset('storage/'.$project->image_url).');background-size:cover;background-position:center;' : '' }}">
@@ -118,28 +133,45 @@
 
 @push('scripts')
 <script>
+    const typeBtns   = document.querySelectorAll('.type-btn');
     const filterBtns = document.querySelectorAll('.filter-btn');
     const items      = document.querySelectorAll('.project-item');
 
+    let activeType  = 'all';
+    let activeSkill = 'all';
+
+    function applyFilters() {
+        items.forEach(item => {
+            const typeMatch  = activeType  === 'all' || item.dataset.type  === activeType;
+            const skillIds   = item.dataset.skills ? item.dataset.skills.split(',') : [];
+            const skillMatch = activeSkill === 'all' || skillIds.includes(activeSkill);
+            item.style.display = (typeMatch && skillMatch) ? '' : 'none';
+        });
+    }
+
+    typeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            typeBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeType = btn.dataset.type;
+            activeSkill = 'all';
+            filterBtns.forEach(b => b.classList.remove('active'));
+            document.querySelector('.filter-btn[data-filter="all"]')?.classList.add('active');
+            applyFilters();
+        });
+    });
+
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active','border-indigo-400','text-indigo-300'));
-            btn.classList.add('active','border-indigo-400','text-indigo-300');
-
-            const filter = btn.dataset.filter;
-            items.forEach(item => {
-                if (filter === 'all') {
-                    item.style.display = '';
-                } else {
-                    const skillIds = item.dataset.skills ? item.dataset.skills.split(',') : [];
-                    item.style.display = skillIds.includes(filter) ? '' : 'none';
-                }
-            });
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeSkill = btn.dataset.filter;
+            applyFilters();
         });
     });
 </script>
 <style>
-    .filter-btn.active {
+    .type-btn.active, .filter-btn.active {
         background: rgba(99,102,241,0.25);
         border-color: rgba(99,102,241,0.6);
         color: #c7d2fe;

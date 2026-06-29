@@ -22,12 +22,15 @@ class Project extends Model
         'project_start_date',
         'completion_date',
         'status',
+        'type',
+        'traffic_growth',
     ];
 
     protected $casts = [
         'project_start_date' => 'date',
         'completion_date'    => 'date',
         'status'             => 'string',
+        'type'               => 'string',
     ];
 
     public function skills(): BelongsToMany
