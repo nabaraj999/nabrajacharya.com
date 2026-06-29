@@ -29,8 +29,11 @@ Route::get('/services/domain-hosting-setup', [ServicesController::class, 'domain
 Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio');
 Route::get('/portfolio/{slug}', [PortfolioController::class, 'show'])->name('portfolio.show');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
-Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
-Route::post('/blog/{slug}/comments', [BlogController::class, 'storeComment'])->name('blog.comments.store');
+Route::get('/blog/seo-checklist-2026-nepal-khotang-lalitpur', [BlogController::class, 'seoChecklist2026'])->name('blog.seo-checklist-2026-nepal-khotang-lalitpur');
+Route::get('/blog/top-10-it-companies-in-nepal', [BlogController::class, 'topItCompaniesNepal'])->name('blog.top-10-it-companies-in-nepal');
+Route::get('/blog/hire-laravel-developer-in-nepal', [BlogController::class, 'hireLaravelDeveloper'])->name('blog.hire-laravel-developer-in-nepal');
+Route::get('/blog/website-cost-in-nepal-2026', [BlogController::class, 'websiteCostInNepal'])->name('blog.website-cost-in-nepal-2026');
+Route::get('/blog/seo-pricing-packages-in-nepal', [BlogController::class, 'seoPricingPackages'])->name('blog.seo-pricing-packages-in-nepal');
 Route::get('/sitemap.xml', [BlogController::class, 'sitemap'])->name('sitemap');
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
 Route::get('/submit-testimonial', [TestimonialController::class, 'create'])->name('testimonial.create');

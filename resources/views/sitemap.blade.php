@@ -8,7 +8,7 @@
     </url>
     <url>
         <loc>{{ route('blog.index') }}</loc>
-        <lastmod>{{ optional($blogs->max('updated_at'))->toAtomString() ?? now()->toAtomString() }}</lastmod>
+        <lastmod>{{ now()->toAtomString() }}</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
@@ -42,10 +42,10 @@
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
-    @foreach($blogs as $blog)
+    @foreach($blogSlugs as $slug)
     <url>
-        <loc>{{ route('blog.show', $blog->slug) }}</loc>
-        <lastmod>{{ optional($blog->updated_at ?? $blog->published_at)->toAtomString() }}</lastmod>
+        <loc>{{ route('blog.' . $slug) }}</loc>
+        <lastmod>{{ now()->toAtomString() }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
