@@ -80,9 +80,12 @@ class BlogController extends Controller
             ->whereNotNull('slug')
             ->orderByDesc('updated_at')
             ->get(['slug', 'updated_at', 'completion_date']);
+        $services = \App\Models\Service::where('is_active', true)
+            ->whereNotNull('slug')
+            ->get(['slug', 'updated_at']);
 
         return response()
-            ->view('sitemap', compact('blogs', 'projects'))
+            ->view('sitemap', compact('blogs', 'projects', 'services'))
             ->header('Content-Type', 'application/xml');
     }
 }

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('title', 'Website Redesign & Revamp in Nepal | ' . ($personal->brand_name ?? 'Nabaraj Acharya'))
-@section('description', 'Modernizing outdated websites with improved UX, faster load times, and mobile-first layouts that convert better.')
-@section('keywords', 'website redesign nepal, website revamp nepal, website redesign kathmandu, nabaraj acharya')
+@section('description', 'Website redesign services in Nepal — modernizing outdated websites with improved UX, faster load times, and mobile-first layouts that convert better, for Lalitpur and Kathmandu businesses.')
+@section('keywords', 'website redesign, website redesign nepal, website revamp nepal, website redesign lalitpur, website redesign kathmandu, nabaraj acharya')
 @section('canonical', route('services.website-redesign-revamp'))
 
 @section('schema')

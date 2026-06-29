@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @php
-    $defaultTitle = 'Web Development in 2026 | SEO Service in Nepal | Nabaraj Acharya';
-    $defaultDescription = 'Explore web development in 2026 with modern Laravel, business websites, and SEO service in Nepal by Nabaraj Acharya for brands that want faster, search-friendly growth.';
-    $defaultKeywords = 'web development in 2026, seo service in nepal, web development nepal, website development nepal, laravel developer nepal, web developer nepal, technical seo nepal, digital marketing nepal';
+    $defaultTitle = 'Web Developer in Nepal | SEO Specialist in Nepal | Nabaraj Acharya';
+    $defaultDescription = 'Web development in Nepal, SEO specialist services, website redesign, and ecommerce website development in Nepal — by a Laravel developer based in Lalitpur serving Kathmandu and beyond.';
+    $defaultKeywords = 'web development nepal, web developer nepal, seo specialist in nepal, website redesign, ecommerce website development in nepal, website development lalitpur, laravel developer nepal, technical seo nepal, digital marketing nepal';
 @endphp
 
 @section('title', $defaultTitle)

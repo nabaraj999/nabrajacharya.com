@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'E-commerce Development in Nepal | ' . ($personal->brand_name ?? 'Nabaraj Acharya'))
-@section('description', 'Custom Laravel-based online stores with secure payment gateways, inventory management, and conversion-focused design.')
-@section('keywords', 'ecommerce development nepal, online store developer nepal, laravel ecommerce nepal, nabaraj acharya')
+@section('title', 'Ecommerce Website Development in Nepal | ' . ($personal->brand_name ?? 'Nabaraj Acharya'))
+@section('description', 'Ecommerce website development in Nepal — custom Laravel-based online stores with secure payment gateways, inventory management, and conversion-focused design for Lalitpur and Kathmandu businesses.')
+@section('keywords', 'ecommerce website development in nepal, ecommerce development nepal, online store developer nepal, laravel ecommerce nepal, ecommerce website lalitpur, nabaraj acharya')
 @section('canonical', route('services.e-commerce-development'))
 
 @section('schema')
@@ -28,7 +28,7 @@
 
 <section class="page-hero pt-32 pb-10 md:pt-40 md:pb-14">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-        <h1 class="font-display text-3xl md:text-5xl font-bold mb-4" style="color: var(--ink);">E-commerce Development</h1>
+        <h1 class="font-display text-3xl md:text-5xl font-bold mb-4" style="color: var(--ink);">Ecommerce Website Development in Nepal</h1>
         <p class="text-sm" style="color: var(--ink-faint);">
             <a href="{{ route('home') }}" class="hover:underline">Home</a><span class="mx-1">&rsaquo;</span>
             <a href="{{ route('services') }}" class="hover:underline">Services</a><span class="mx-1">&rsaquo;</span>
@@ -44,7 +44,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div class="lg:col-span-2">
                 <p class="text-base md:text-lg leading-relaxed mb-8" style="color: var(--ink-dim);">
-                    Custom online stores built on Laravel, with secure payment gateways, inventory management, and conversion-focused design — built around how you actually sell, not a one-size-fits-all template.
+                    I provide <strong style="color: var(--ink);">ecommerce website development in Nepal</strong> for businesses in Lalitpur, Kathmandu, and beyond — custom online stores built on Laravel, with secure payment gateways, inventory management, and conversion-focused design, built around how you actually sell, not a one-size-fits-all template.
                 </p>
 
                 @php $quickAnswer = 'E-commerce development is building an online store that lets customers browse, buy, and pay securely. I build custom Laravel-based e-commerce websites for businesses in Nepal with eSewa, Khalti, and Stripe integration, covering everything from product catalogues to order management.'; @endphp

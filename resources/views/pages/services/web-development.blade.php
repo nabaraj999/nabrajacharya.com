@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Web Development Services in Nepal | ' . ($personal->brand_name ?? 'Nabaraj Acharya'))
-@section('description', 'Custom Laravel and PHP web development for businesses in Nepal — responsive, fast, and SEO-friendly websites and web applications.')
-@section('keywords', 'web development nepal, laravel developer nepal, website development kathmandu, nabaraj acharya')
+@section('title', 'Web Development Nepal | Web Developer in Nepal | ' . ($personal->brand_name ?? 'Nabaraj Acharya'))
+@section('description', 'Web development in Nepal by a Laravel-focused web developer in Nepal — responsive, fast, SEO-friendly websites and web applications for Lalitpur, Kathmandu, and beyond.')
+@section('keywords', 'web development nepal, web developer nepal, web development in lalitpur, laravel developer nepal, website development kathmandu, nabaraj acharya')
 @section('canonical', route('services.web-development'))
 
 @section('schema')
@@ -28,7 +28,7 @@
 
 <section class="page-hero pt-32 pb-10 md:pt-40 md:pb-14">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-        <h1 class="font-display text-3xl md:text-5xl font-bold mb-4" style="color: var(--ink);">Web Development</h1>
+        <h1 class="font-display text-3xl md:text-5xl font-bold mb-4" style="color: var(--ink);">Web Development Nepal — Web Developer in Nepal</h1>
         <p class="text-sm" style="color: var(--ink-faint);">
             <a href="{{ route('home') }}" class="hover:underline">Home</a><span class="mx-1">&rsaquo;</span>
             <a href="{{ route('services') }}" class="hover:underline">Services</a><span class="mx-1">&rsaquo;</span>
@@ -43,8 +43,11 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div class="lg:col-span-2">
+                <p class="text-base md:text-lg leading-relaxed mb-4" style="color: var(--ink-dim);">
+                    I offer <strong style="color: var(--ink);">web development in Nepal</strong> as a Laravel-focused <strong style="color: var(--ink);">web developer in Nepal</strong>, based in Lalitpur and working with clients across Kathmandu and abroad. I design and build modern, responsive, and SEO-friendly websites using HTML, CSS, JavaScript, PHP, and Laravel.
+                </p>
                 <p class="text-base md:text-lg leading-relaxed mb-8" style="color: var(--ink-dim);">
-                    I design and build modern, responsive, and SEO-friendly websites using HTML, CSS, JavaScript, PHP, and Laravel. Whether you need a personal portfolio, a company website, or a dynamic web application, I focus on clean code, elegant UI/UX, and fast performance from the first line of code.
+                    Whether you need a personal portfolio, a company website, or a dynamic web application, I focus on clean code, elegant UI/UX, and fast performance from the first line of code.
                 </p>
 
                 @php $quickAnswer = 'Web development is the process of designing, building, and maintaining a website or web application, from the visual interface to the backend logic that powers it. I build custom websites and web apps in Nepal using Laravel and PHP, focused on performance and search visibility for clients in Kathmandu, Lalitpur, and beyond.'; @endphp
@@ -72,6 +75,44 @@
                     </div>
                     @endforeach
                 </div>
+
+                @php
+                    $packagesTitle = 'Web Development Engagement Options';
+                    $packages = [
+                        [
+                            'name' => 'Starter Website',
+                            'tagline' => 'Brochure or portfolio sites, up to 5 pages',
+                            'bullets' => [
+                                'Custom-designed, responsive layout',
+                                'Up to 5 pages of content',
+                                'Basic on-page SEO setup',
+                                'Contact form & Google Maps',
+                            ],
+                        ],
+                        [
+                            'name' => 'Business Website',
+                            'tagline' => 'Custom design, CMS, and SEO foundation',
+                            'featured' => true,
+                            'bullets' => [
+                                'Everything in Starter Website',
+                                'Up to 15 pages, admin-friendly CMS',
+                                'Technical SEO setup & schema markup',
+                                'Blog/news section included',
+                            ],
+                        ],
+                        [
+                            'name' => 'Web Application',
+                            'tagline' => 'Custom Laravel app with accounts & dashboard',
+                            'bullets' => [
+                                'Custom Laravel application',
+                                'User accounts & admin dashboard',
+                                'Database design & REST API',
+                                'Ongoing support available',
+                            ],
+                        ],
+                    ];
+                @endphp
+                @include('partials.services-packages')
 
                 @php
                     $tableTitle = "What Kind of Websites Do I Build?";

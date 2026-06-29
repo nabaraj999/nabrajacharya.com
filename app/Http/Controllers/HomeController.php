@@ -19,7 +19,7 @@ class HomeController extends Controller
     {
         $personal    = Personal::first();
         $seo         = Seo::where('page_name', 'home')->first();
-        $featured    = Project::where('status', 'completed')->with('skills')->latest()->take(6)->get();
+        $featured    = Project::where('status', 'completed')->with('skills')->latest()->take(4)->get();
         $services    = Service::where('is_active', true)->take(4)->get();
         $skills      = Skill::orderBy('proficiency', 'desc')->get();
         $experiences = Experience::where('is_active', true)->orderBy('sort_order')->orderByDesc('start_date')->get();

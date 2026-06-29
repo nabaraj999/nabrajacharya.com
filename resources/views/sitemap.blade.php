@@ -58,4 +58,12 @@
         <priority>0.8</priority>
     </url>
     @endforeach
+    @foreach($services as $service)
+    <url>
+        <loc>{{ route('services.' . $service->slug) }}</loc>
+        <lastmod>{{ optional($service->updated_at)->toAtomString() ?? now()->toAtomString() }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    @endforeach
 </urlset>
