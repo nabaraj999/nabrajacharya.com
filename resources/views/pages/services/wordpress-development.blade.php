@@ -68,7 +68,28 @@
                     @endforeach
                 </div>
 
+                @php
+                    $tableTitle = "What Kind of WordPress Sites Do I Build?";
+                    $tableRows = [
+                        ['Business & Brochure Sites', 'Small businesses needing a clean, fast online presence', 'Custom theme, Elementor/Gutenberg'],
+                        ['Blogs & Content Sites', 'Writers and publishers needing a strong CMS', 'WordPress, SEO plugins'],
+                        ['WooCommerce Stores', 'Small to mid-size online stores', 'WooCommerce, payment plugins'],
+                        ['Membership Sites', 'Sites with gated or paid content', 'WordPress, membership plugins'],
+                    ];
+                @endphp
+                @include('partials.services-table')
+
                 @include('partials.services-why-me')
+
+                @php
+                    $faqs = [
+                        ['Do you build with page builders or custom code?', "Depends on your needs — simple sites can use Elementor, but I write custom theme code when you need something page builders can't do cleanly."],
+                        ['Can you fix my existing WordPress site instead of rebuilding it?', 'Yes, that often falls under Website Support & Maintenance — many issues can be fixed without a full rebuild.'],
+                        ['Will my site be fast?', 'Yes — caching, image optimisation, and clean code are part of every WordPress build, not an afterthought.'],
+                        ['Do you provide ongoing WordPress updates?', 'Yes, through my Website Support & Maintenance service.'],
+                    ];
+                @endphp
+                @include('partials.services-faq')
 
                 <a href="{{ route('contact') }}" class="btn-primary" data-magnetic data-cursor="link">
                     Discuss Your Project

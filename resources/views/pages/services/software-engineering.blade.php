@@ -68,7 +68,28 @@
                     @endforeach
                 </div>
 
+                @php
+                    $tableTitle = "What Kind of Systems Do I Build?";
+                    $tableRows = [
+                        ['Business Dashboards', 'Teams needing visibility into their own data', 'Laravel, MySQL, reporting'],
+                        ['Workflow & Automation Tools', 'Companies replacing manual spreadsheets or processes', 'Laravel, queues, scheduled jobs'],
+                        ['Internal Admin Panels', 'Teams managing content, users, or operations', 'Laravel, Filament'],
+                        ['Multi-Tenant Systems', 'Products serving multiple clients from one codebase', 'Laravel, scoped database design'],
+                    ];
+                @endphp
+                @include('partials.services-table')
+
                 @include('partials.services-why-me')
+
+                @php
+                    $faqs = [
+                        ['What\'s the difference between this and "web development"?', 'Software engineering here focuses on backend systems and business logic — dashboards, automation, internal tools — rather than public-facing marketing sites.'],
+                        ['Can you take over an existing codebase?', 'Yes, I can review, document, and continue building on an existing Laravel/PHP codebase.'],
+                        ['Do you write tests for the code?', 'Yes, where it adds real value — particularly for business-critical logic.'],
+                        ['How do you handle scope changes mid-project?', 'We discuss the impact on timeline and cost before any change is implemented, so there are no surprises.'],
+                    ];
+                @endphp
+                @include('partials.services-faq')
 
                 <a href="{{ route('contact') }}" class="btn-primary" data-magnetic data-cursor="link">
                     Discuss Your Project

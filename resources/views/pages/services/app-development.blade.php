@@ -68,7 +68,28 @@
                     @endforeach
                 </div>
 
+                @php
+                    $tableTitle = "What Kind of Apps Do I Build?";
+                    $tableRows = [
+                        ['Android Apps', 'Businesses wanting a dedicated mobile presence', 'Android (Java/Kotlin), REST APIs'],
+                        ['Progressive Web Apps', 'Teams wanting an app-like experience without app stores', 'Laravel, JavaScript, responsive UI'],
+                        ['Internal Business Apps', 'Companies needing tools for staff or operations', 'Laravel, Vue.js/Alpine.js, MySQL'],
+                        ['API-Connected Apps', 'Apps that need to talk to an existing system', 'Laravel API, Sanctum/Passport'],
+                    ];
+                @endphp
+                @include('partials.services-table')
+
                 @include('partials.services-why-me')
+
+                @php
+                    $faqs = [
+                        ['Do you build apps for both Android and iOS?', 'My core focus is Android and web-based/progressive apps; for iOS I can scope the project together with the right specialist if needed.'],
+                        ['Will my app need a backend?', 'Most apps need one for data, accounts, and updates — I build that as a Laravel API alongside the app.'],
+                        ['Can you maintain the app after launch?', 'Yes, ongoing support is covered under my Website Support & Maintenance service, which also applies to apps.'],
+                        ['How much does an app cost?', "It depends on features and complexity. Share your requirements via the contact page and I'll give you a realistic estimate."],
+                    ];
+                @endphp
+                @include('partials.services-faq')
 
                 <a href="{{ route('contact') }}" class="btn-primary" data-magnetic data-cursor="link">
                     Discuss Your Project

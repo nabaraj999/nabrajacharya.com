@@ -68,7 +68,28 @@
                     @endforeach
                 </div>
 
+                @php
+                    $tableTitle = "What's Covered in an SEO Engagement?";
+                    $tableRows = [
+                        ['Technical SEO Audit', 'Sites with crawl errors, slow speed, or indexing issues', 'Core Web Vitals, structured data'],
+                        ['Keyword & Content Strategy', 'Businesses wanting to rank for specific search terms', 'Keyword research, content briefs'],
+                        ['On-Page Optimisation', 'Existing sites needing better titles, meta, structure', 'Meta tags, schema markup, internal linking'],
+                        ['Local SEO', 'Businesses targeting a specific city or region in Nepal', 'Google Business Profile, local citations'],
+                    ];
+                @endphp
+                @include('partials.services-table')
+
                 @include('partials.services-why-me')
+
+                @php
+                    $faqs = [
+                        ['How long does SEO take to show results?', 'Technical fixes can show impact within weeks, but meaningful ranking growth typically takes 3-6 months of consistent work.'],
+                        ['Do you guarantee #1 rankings?', "No one honestly can. I focus on sustainable, white-hat improvements that build long-term visibility instead of risky shortcuts."],
+                        ['Can you do SEO on a site you didn\'t build?', 'Yes, I regularly audit and improve websites built by other developers or agencies.'],
+                        ["What's included in social media marketing?", 'Setting up and connecting your social profiles to your site, and advising on a content approach that supports your SEO goals.'],
+                    ];
+                @endphp
+                @include('partials.services-faq')
 
                 <a href="{{ route('contact') }}" class="btn-primary" data-magnetic data-cursor="link">
                     Discuss Your Project

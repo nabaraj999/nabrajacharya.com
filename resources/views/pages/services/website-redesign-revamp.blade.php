@@ -68,7 +68,28 @@
                     @endforeach
                 </div>
 
+                @php
+                    $tableTitle = "Is a Redesign Right for You?";
+                    $tableRows = [
+                        ['Outdated Visual Design', 'Sites that look dated compared to competitors', 'Modern UI, updated branding'],
+                        ['Poor Mobile Experience', "Sites that don't work well on phones", 'Mobile-first rebuild'],
+                        ['Slow Load Times', 'Sites with heavy, unoptimised pages', 'Performance audit, asset optimisation'],
+                        ['Low Conversion Rates', 'Sites getting traffic but few enquiries or sales', 'UX audit, clearer calls-to-action'],
+                    ];
+                @endphp
+                @include('partials.services-table')
+
                 @include('partials.services-why-me')
+
+                @php
+                    $faqs = [
+                        ['Will I lose my current SEO rankings?', 'No — I preserve URLs, content, and SEO value wherever possible, and set up redirects where structure has to change.'],
+                        ['Do you redesign sites built on other platforms?', 'Yes, including WordPress, Wix, Squarespace, and custom-built sites.'],
+                        ['How much content can stay the same?', "As much as makes sense — a redesign is about improving structure and experience, not throwing away what already works."],
+                        ["Can you redesign just part of my site?", "Yes, for example just the homepage or a key landing page, if a full rebuild isn't needed."],
+                    ];
+                @endphp
+                @include('partials.services-faq')
 
                 <a href="{{ route('contact') }}" class="btn-primary" data-magnetic data-cursor="link">
                     Discuss Your Project

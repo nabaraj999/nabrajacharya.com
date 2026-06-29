@@ -68,7 +68,28 @@
                     @endforeach
                 </div>
 
+                @php
+                    $tableTitle = "What Does a Support Plan Cover?";
+                    $tableRows = [
+                        ['Security & Updates', 'Any live site that needs to stay safe', 'Framework/plugin updates, patches'],
+                        ['Bug Fixes', 'Sites with reported issues or broken features', 'Debugging, hotfixes'],
+                        ['Backups & Recovery', "Sites that can't afford to lose data", 'Scheduled backups, restore plans'],
+                        ['Performance Monitoring', 'Sites wanting to catch issues early', 'Uptime checks, error log review'],
+                    ];
+                @endphp
+                @include('partials.services-table')
+
                 @include('partials.services-why-me')
+
+                @php
+                    $faqs = [
+                        ['How quickly do you respond to issues?', 'Critical issues are prioritised and addressed as soon as possible; non-urgent requests are handled within a few business days.'],
+                        ["Do I need a support plan if my site rarely changes?", 'Yes — security patches and backups matter even for sites that don\'t change often, since vulnerabilities can still be exploited.'],
+                        ["Can you support a site you didn't build?", 'Yes, after a short review to understand the existing codebase.'],
+                        ["What's not included in maintenance?", 'Major new features or redesigns are scoped separately — maintenance covers keeping the existing site healthy.'],
+                    ];
+                @endphp
+                @include('partials.services-faq')
 
                 <a href="{{ route('contact') }}" class="btn-primary" data-magnetic data-cursor="link">
                     Discuss Your Project

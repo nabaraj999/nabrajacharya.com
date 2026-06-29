@@ -68,7 +68,28 @@
                     @endforeach
                 </div>
 
+                @php
+                    $tableTitle = "What's Involved in Getting Online?";
+                    $tableRows = [
+                        ['Domain Registration', "New businesses without a domain yet", 'Domain registrars, WHOIS setup'],
+                        ['Hosting Setup', 'Sites needing a server to live on', 'VPS/shared hosting configuration'],
+                        ['DNS Configuration', 'Connecting a domain to hosting and email', 'DNS records, nameservers'],
+                        ['SSL & Email', 'Making the site secure and email professional', 'SSL certificates, MX records'],
+                    ];
+                @endphp
+                @include('partials.services-table')
+
                 @include('partials.services-why-me')
+
+                @php
+                    $faqs = [
+                        ['Do I need to buy my own domain?', 'You can, or I can guide you through registering one — either way, you retain full ownership of your domain.'],
+                        ['What hosting do you recommend?', 'It depends on the site — a small business site has very different hosting needs than a high-traffic application. I size this to your project.'],
+                        ['Will my email work with my domain?', 'Yes, professional email (like you@yourdomain.com) is part of the setup.'],
+                        ['Can you move my site to a different host?', "Yes, that's covered under website migration work within this service."],
+                    ];
+                @endphp
+                @include('partials.services-faq')
 
                 <a href="{{ route('contact') }}" class="btn-primary" data-magnetic data-cursor="link">
                     Discuss Your Project

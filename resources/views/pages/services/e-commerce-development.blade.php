@@ -68,7 +68,28 @@
                     @endforeach
                 </div>
 
+                @php
+                    $tableTitle = "What Kind of Stores Do I Build?";
+                    $tableRows = [
+                        ['Small Online Stores', 'New businesses launching their first store', 'Laravel, eSewa/Khalti, basic catalogue'],
+                        ['Growing Product Catalogues', 'Stores with variants, categories, and stock tracking', 'Laravel, MySQL, inventory logic'],
+                        ['Subscription Stores', 'Businesses selling subscriptions or memberships', 'Laravel, recurring billing logic'],
+                        ['Multi-Vendor Marketplaces', 'Platforms hosting multiple sellers', 'Laravel, scoped permissions, payouts'],
+                    ];
+                @endphp
+                @include('partials.services-table')
+
                 @include('partials.services-why-me')
+
+                @php
+                    $faqs = [
+                        ['Which payment gateways do you support?', 'eSewa and Khalti for Nepal, plus Stripe and PayPal for international payments.'],
+                        ['Can you migrate my existing store to a new platform?', 'Yes, including products, customers, and order history where the source platform allows export.'],
+                        ['Will I be able to manage products myself?', 'Yes, you get an admin area to add, edit, and manage products without needing a developer.'],
+                        ['Do you handle shipping and tax setup?', 'Yes, shipping rules and tax calculation are configured as part of the build based on how you operate.'],
+                    ];
+                @endphp
+                @include('partials.services-faq')
 
                 <a href="{{ route('contact') }}" class="btn-primary" data-magnetic data-cursor="link">
                     Discuss Your Project

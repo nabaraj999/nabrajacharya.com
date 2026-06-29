@@ -68,7 +68,28 @@
                     @endforeach
                 </div>
 
+                @php
+                    $tableTitle = "What Kind of Websites Do I Build?";
+                    $tableRows = [
+                        ['Business Websites', 'Companies, agencies, consultancies needing an online presence', 'Laravel, Bootstrap, MySQL'],
+                        ['Portfolio & Personal Sites', 'Freelancers, professionals, creatives', 'Laravel, Tailwind CSS'],
+                        ['Custom Web Applications', 'Internal tools, dashboards, admin panels', 'Laravel, REST APIs, Alpine.js'],
+                        ['News & Content Sites', 'Blogs, media, content publishers', 'Laravel CMS, SEO architecture'],
+                    ];
+                @endphp
+                @include('partials.services-table')
+
                 @include('partials.services-why-me')
+
+                @php
+                    $faqs = [
+                        ['How long does a custom website take to build?', 'Most business websites take 2-4 weeks. Complex web applications can take 6-12 weeks depending on scope.'],
+                        ['Do you provide hosting and domain setup too?', "Yes, I can help with domain registration and hosting setup as a separate service, or just hand over a deployment-ready build if you already have hosting."],
+                        ['Will my website be mobile-friendly?', 'Every site I build is tested across phones, tablets, and desktops before launch.'],
+                        ['Can you redesign my existing website instead of building from scratch?', 'Yes, that falls under my Website Redesign & Revamp service — I can review your current site and suggest the best approach.'],
+                    ];
+                @endphp
+                @include('partials.services-faq')
 
                 <a href="{{ route('contact') }}" class="btn-primary" data-magnetic data-cursor="link">
                     Discuss Your Project

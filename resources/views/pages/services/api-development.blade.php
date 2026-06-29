@@ -68,7 +68,28 @@
                     @endforeach
                 </div>
 
+                @php
+                    $tableTitle = "What Kind of APIs Do I Build?";
+                    $tableRows = [
+                        ['Mobile App Backends', 'Apps needing accounts, data sync, and notifications', 'Laravel, Sanctum, REST'],
+                        ['Third-Party Integrations', 'Connecting your site to payment, SMS, or email providers', 'Laravel HTTP client, webhooks'],
+                        ['Public APIs', 'Letting partners or clients access your data securely', 'Laravel, API tokens, rate limiting'],
+                        ['Internal Microservices', 'Splitting a large system into manageable services', 'Laravel, queues, REST/JSON'],
+                    ];
+                @endphp
+                @include('partials.services-table')
+
                 @include('partials.services-why-me')
+
+                @php
+                    $faqs = [
+                        ['What authentication do you use for APIs?', 'Typically Laravel Sanctum for SPA/mobile apps, or Passport for more complex OAuth2 needs.'],
+                        ['Can you document the API for my team?', 'Yes, I provide clear endpoint documentation so your team or another developer can integrate without guesswork.'],
+                        ['Can you connect my API to an existing app?', 'Yes, whether the app already exists or is being built alongside the API.'],
+                        ['How do you handle API security?', 'Token-based auth, rate limiting, input validation, and HTTPS as standard practice on every API I build.'],
+                    ];
+                @endphp
+                @include('partials.services-faq')
 
                 <a href="{{ route('contact') }}" class="btn-primary" data-magnetic data-cursor="link">
                     Discuss Your Project
