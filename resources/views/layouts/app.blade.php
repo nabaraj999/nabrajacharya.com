@@ -285,6 +285,13 @@
             color: var(--ink-dim); transition: all 0.2s;
         }
         .skill-badge:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+        .skill-badge-icon { width: 14px; height: 14px; object-fit: contain; margin-right: 6px; flex-shrink: 0; }
+        .service-thumb { aspect-ratio: 16/10; overflow: hidden; background: var(--bg-soft); display: flex; align-items: center; justify-content: center; }
+        .service-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+        .glass-card:hover .service-thumb img { transform: scale(1.04); }
+        .service-thumb-placeholder { color: var(--ink-faint); }
+        .service-hero-img { aspect-ratio: 21/9; overflow: hidden; }
+        .service-hero-img img { width: 100%; height: 100%; object-fit: cover; }
         .form-input {
             width: 100%; padding: 14px 18px;
             background: var(--bg-soft); border: 1px solid var(--line);

@@ -164,10 +164,19 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             @foreach($services->take(4) as $i => $service)
-            <a href="{{ route('services.' . $service->slug) }}" class="service-kk-card glass-card block">
-                <span class="service-kk-num">{{ str_pad($i + 1, 2, '0', STR_PAD_LEFT) }}.</span>
-                <h3>{{ $service->service_name }}</h3>
-                <p>{{ Str::limit(strip_tags($service->description), 140) }}</p>
+            <a href="{{ route('services.' . $service->slug) }}" class="service-kk-card glass-card block" style="padding: 0;">
+                @if($service->photo)
+                <div class="service-thumb">
+                    <img src="{{ asset('storage/'.$service->photo) }}"
+                         alt="{{ $service->service_name }} in Nepal — {{ $personal->brand_name ?? 'Nabaraj Acharya' }}"
+                         loading="lazy">
+                </div>
+                @endif
+                <div class="p-8">
+                    <span class="service-kk-num">{{ str_pad($i + 1, 2, '0', STR_PAD_LEFT) }}.</span>
+                    <h3>{{ $service->service_name }}</h3>
+                    <p>{{ Str::limit(strip_tags($service->description), 140) }}</p>
+                </div>
             </a>
             @endforeach
         </div>

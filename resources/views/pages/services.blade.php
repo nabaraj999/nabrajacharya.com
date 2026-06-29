@@ -85,15 +85,28 @@
         @else
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 @foreach($services as $i => $service)
-                <a href="{{ route('services.' . $service->slug) }}" class="glass-card p-8 block">
-                    <span class="block font-display text-xl font-extrabold mb-3" style="color: var(--accent);">{{ str_pad($i + 1, 2, '0', STR_PAD_LEFT) }}.</span>
-                    <h2 class="font-display text-lg font-bold mb-2.5" style="color: var(--ink);">
-                        {{ $service->service_name }}
-                    </h2>
-                    <div class="text-sm leading-relaxed mb-4" style="color: var(--ink-dim);">
-                        {!! $service->description !!}
+                <a href="{{ route('services.' . $service->slug) }}" class="glass-card block overflow-hidden" style="padding: 0;">
+                    <div class="service-thumb">
+                        @if($service->photo)
+                        <img src="{{ asset('storage/'.$service->photo) }}"
+                             alt="{{ $service->service_name }} in Nepal — {{ $personal->brand_name ?? 'Nabaraj Acharya' }}"
+                             loading="lazy">
+                        @else
+                        <div class="service-thumb-placeholder">
+                            <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                        </div>
+                        @endif
                     </div>
-                    <span class="text-sm font-semibold" style="color: var(--accent);">Learn more &rarr;</span>
+                    <div class="p-8">
+                        <span class="block font-display text-xl font-extrabold mb-3" style="color: var(--accent);">{{ str_pad($i + 1, 2, '0', STR_PAD_LEFT) }}.</span>
+                        <h2 class="font-display text-lg font-bold mb-2.5" style="color: var(--ink);">
+                            {{ $service->service_name }}
+                        </h2>
+                        <div class="text-sm leading-relaxed mb-4" style="color: var(--ink-dim);">
+                            {!! $service->description !!}
+                        </div>
+                        <span class="text-sm font-semibold" style="color: var(--accent);">Learn more &rarr;</span>
+                    </div>
                 </a>
                 @endforeach
             </div>

@@ -71,8 +71,9 @@ class ServicesController extends Controller
     {
         $personal      = Personal::first();
         $seo           = Seo::where('page_name', 'services')->first();
+        $service       = Service::where('slug', $slug)->first();
         $otherServices = Service::where('is_active', true)->where('slug', '!=', $slug)->get();
 
-        return view('pages.services.' . $slug, compact('personal', 'seo', 'otherServices'));
+        return view('pages.services.' . $slug, compact('personal', 'seo', 'service', 'otherServices'));
     }
 }
