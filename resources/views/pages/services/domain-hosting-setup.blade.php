@@ -47,6 +47,9 @@
                     Getting your site online the right way the first time — domain registration, hosting setup, and DNS configuration, so email, SSL, and your website all work correctly from day one.
                 </p>
 
+                @php $quickAnswer = 'Domain and hosting setup is registering your website\'s address (the domain) and configuring the server it lives on (hosting), including DNS and SSL. I help businesses in Nepal get online correctly the first time, domain registration, hosting, DNS, and professional email, all configured properly.'; @endphp
+                @include('partials.services-quick-answer')
+
                 @if($personal && ($personal->years_experience || $personal->completed_projects))
                 <div class="flex flex-wrap gap-3 mb-12">
                     @if($personal->years_experience)<span class="skill-badge !text-sm !py-2 !px-4"><strong style="color:var(--ink);">{{ $personal->years_experience }}+</strong>&nbsp;years experience</span>@endif

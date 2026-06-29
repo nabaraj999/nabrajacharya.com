@@ -47,6 +47,9 @@
                     Custom WordPress builds and theme customisation for blogs, business sites, and small stores that need to launch fast — without sacrificing speed or clean code.
                 </p>
 
+                @php $quickAnswer = 'WordPress development is building or customising a website on the WordPress platform, the most widely used CMS in the world. I build custom WordPress themes, WooCommerce stores, and fast, SEO-ready WordPress sites for businesses that want an easy-to-manage website.'; @endphp
+                @include('partials.services-quick-answer')
+
                 @if($personal && ($personal->years_experience || $personal->completed_projects))
                 <div class="flex flex-wrap gap-3 mb-12">
                     @if($personal->years_experience)<span class="skill-badge !text-sm !py-2 !px-4"><strong style="color:var(--ink);">{{ $personal->years_experience }}+</strong>&nbsp;years experience</span>@endif

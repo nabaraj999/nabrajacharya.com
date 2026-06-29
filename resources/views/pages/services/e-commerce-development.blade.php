@@ -47,6 +47,9 @@
                     Custom online stores built on Laravel, with secure payment gateways, inventory management, and conversion-focused design — built around how you actually sell, not a one-size-fits-all template.
                 </p>
 
+                @php $quickAnswer = 'E-commerce development is building an online store that lets customers browse, buy, and pay securely. I build custom Laravel-based e-commerce websites for businesses in Nepal with eSewa, Khalti, and Stripe integration, covering everything from product catalogues to order management.'; @endphp
+                @include('partials.services-quick-answer')
+
                 @if($personal && ($personal->years_experience || $personal->completed_projects))
                 <div class="flex flex-wrap gap-3 mb-12">
                     @if($personal->years_experience)<span class="skill-badge !text-sm !py-2 !px-4"><strong style="color:var(--ink);">{{ $personal->years_experience }}+</strong>&nbsp;years experience</span>@endif

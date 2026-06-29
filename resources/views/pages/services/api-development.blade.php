@@ -47,6 +47,9 @@
                     Secure, well-documented REST APIs that connect your web and mobile apps with clean architecture and reliable data flow — whether you need a new API from scratch or one that connects to systems you already run.
                 </p>
 
+                @php $quickAnswer = 'An API (Application Programming Interface) lets two systems, like your website and a mobile app, or your site and a payment provider, exchange data securely. I build and document secure REST APIs using Laravel, Sanctum, and Passport for businesses that need their systems to talk to each other.'; @endphp
+                @include('partials.services-quick-answer')
+
                 @if($personal && ($personal->years_experience || $personal->completed_projects))
                 <div class="flex flex-wrap gap-3 mb-12">
                     @if($personal->years_experience)<span class="skill-badge !text-sm !py-2 !px-4"><strong style="color:var(--ink);">{{ $personal->years_experience }}+</strong>&nbsp;years experience</span>@endif

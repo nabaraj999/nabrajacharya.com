@@ -47,6 +47,9 @@
                     I design and build robust, well-architected software systems — clean backend logic, solid database design, and maintainable code structured to scale with your business, not just survive launch day.
                 </p>
 
+                @php $quickAnswer = 'Software engineering is the disciplined design and development of reliable, maintainable software systems, not just writing code, but architecting it to last. I build custom backend systems, dashboards, and business tools using Laravel with clean, scalable architecture.'; @endphp
+                @include('partials.services-quick-answer')
+
                 @if($personal && ($personal->years_experience || $personal->completed_projects))
                 <div class="flex flex-wrap gap-3 mb-12">
                     @if($personal->years_experience)<span class="skill-badge !text-sm !py-2 !px-4"><strong style="color:var(--ink);">{{ $personal->years_experience }}+</strong>&nbsp;years experience</span>@endif

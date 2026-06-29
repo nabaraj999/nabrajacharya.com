@@ -292,6 +292,9 @@
         .service-thumb-placeholder { color: var(--ink-faint); }
         .service-hero-img { aspect-ratio: 21/9; overflow: hidden; }
         .service-hero-img img { width: 100%; height: 100%; object-fit: cover; }
+        .quick-answer-box { background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 4px 14px 14px 4px; padding: 20px 24px; }
+        .quick-answer-label { font-family: 'Rajdhani', sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 8px; }
+        .quick-answer-text { color: var(--ink); font-weight: 500; line-height: 1.7; font-size: 0.95rem; }
         .form-input {
             width: 100%; padding: 14px 18px;
             background: var(--bg-soft); border: 1px solid var(--line);

@@ -47,6 +47,9 @@
                     I design and build modern, responsive, and SEO-friendly websites using HTML, CSS, JavaScript, PHP, and Laravel. Whether you need a personal portfolio, a company website, or a dynamic web application, I focus on clean code, elegant UI/UX, and fast performance from the first line of code.
                 </p>
 
+                @php $quickAnswer = 'Web development is the process of designing, building, and maintaining a website or web application, from the visual interface to the backend logic that powers it. I build custom websites and web apps in Nepal using Laravel and PHP, focused on performance and search visibility for clients in Kathmandu, Lalitpur, and beyond.'; @endphp
+                @include('partials.services-quick-answer')
+
                 @if($personal && ($personal->years_experience || $personal->completed_projects))
                 <div class="flex flex-wrap gap-3 mb-12">
                     @if($personal->years_experience)<span class="skill-badge !text-sm !py-2 !px-4"><strong style="color:var(--ink);">{{ $personal->years_experience }}+</strong>&nbsp;years experience</span>@endif

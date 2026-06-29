@@ -47,6 +47,9 @@
                     I offer Search Engine Optimization (SEO) and Social Media Marketing (SMM) services to help your business grow online, attract visitors, and turn them into loyal customers. Every site I build or audit gets the same attention to technical SEO that I'd want for my own.
                 </p>
 
+                @php $quickAnswer = 'SEO (Search Engine Optimization) is the practice of improving a website so it ranks higher in Google search results and attracts more organic traffic. As an SEO specialist in Nepal, I combine technical SEO, content strategy, and social media marketing, including Meta Ads and Google Ads (PPC), to grow visibility and leads.'; @endphp
+                @include('partials.services-quick-answer')
+
                 @if($personal && ($personal->years_experience || $personal->completed_projects))
                 <div class="flex flex-wrap gap-3 mb-12">
                     @if($personal->years_experience)<span class="skill-badge !text-sm !py-2 !px-4"><strong style="color:var(--ink);">{{ $personal->years_experience }}+</strong>&nbsp;years experience</span>@endif

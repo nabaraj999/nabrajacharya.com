@@ -47,6 +47,9 @@
                     Ongoing updates, security patches, and technical support to keep your website running smoothly after launch — so a small issue doesn't turn into downtime or a security problem.
                 </p>
 
+                @php $quickAnswer = 'Website maintenance is the ongoing work of keeping a live website secure, fast, and bug-free after launch, including updates, backups, and monitoring. I provide ongoing support for Laravel, WordPress, and custom-built websites so they stay reliable long after launch.'; @endphp
+                @include('partials.services-quick-answer')
+
                 @if($personal && ($personal->years_experience || $personal->completed_projects))
                 <div class="flex flex-wrap gap-3 mb-12">
                     @if($personal->years_experience)<span class="skill-badge !text-sm !py-2 !px-4"><strong style="color:var(--ink);">{{ $personal->years_experience }}+</strong>&nbsp;years experience</span>@endif

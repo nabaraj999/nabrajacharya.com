@@ -47,6 +47,9 @@
                     Modernising outdated websites with improved UX, faster load times, and mobile-first layouts that convert better — keeping the content and SEO value you've already built while fixing what's holding the site back.
                 </p>
 
+                @php $quickAnswer = 'A website redesign is the process of rebuilding an outdated site\'s design, structure, and performance while keeping the content and SEO value already built. I modernise slow, dated, or poorly converting websites in Nepal with mobile-first layouts and improved Core Web Vitals.'; @endphp
+                @include('partials.services-quick-answer')
+
                 @if($personal && ($personal->years_experience || $personal->completed_projects))
                 <div class="flex flex-wrap gap-3 mb-12">
                     @if($personal->years_experience)<span class="skill-badge !text-sm !py-2 !px-4"><strong style="color:var(--ink);">{{ $personal->years_experience }}+</strong>&nbsp;years experience</span>@endif

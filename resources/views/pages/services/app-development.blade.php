@@ -47,6 +47,9 @@
                     Bring your ideas to life with modern, fast, and user-friendly applications. I develop Android and web-based applications designed to solve real-world problems and enhance business productivity, backed by a Laravel API where one is needed.
                 </p>
 
+                @php $quickAnswer = 'App development is the process of building mobile or web-based applications that solve a specific problem for users or a business. I build Android and progressive web apps backed by a Laravel API, designed for real-world business use in Nepal and abroad.'; @endphp
+                @include('partials.services-quick-answer')
+
                 @if($personal && ($personal->years_experience || $personal->completed_projects))
                 <div class="flex flex-wrap gap-3 mb-12">
                     @if($personal->years_experience)<span class="skill-badge !text-sm !py-2 !px-4"><strong style="color:var(--ink);">{{ $personal->years_experience }}+</strong>&nbsp;years experience</span>@endif
