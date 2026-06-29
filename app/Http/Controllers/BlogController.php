@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Personal;
 use App\Models\Seo;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 
 class BlogController extends Controller
 {
@@ -22,7 +24,7 @@ class BlogController extends Controller
                 'excerpt' => 'A practical guide to hiring a Laravel developer in Nepal — what to look for, what to ask before you commit, and the red flags worth avoiding.',
                 'image' => null,
                 'date' => 'June 29, 2026',
-                'reading_time' => 6,
+                'reading_time' => 7,
             ],
             [
                 'slug' => 'website-cost-in-nepal-2026',
@@ -38,7 +40,7 @@ class BlogController extends Controller
                 'excerpt' => 'How SEO pricing actually works in Nepal — what affects cost, common package structures, and the red flags to avoid when comparing SEO quotes.',
                 'image' => null,
                 'date' => 'June 29, 2026',
-                'reading_time' => 5,
+                'reading_time' => 6,
             ],
             [
                 'slug' => 'laravel-performance-mistakes-nepal',
@@ -54,7 +56,7 @@ class BlogController extends Controller
                 'excerpt' => "A practical, no-bias comparison of WordPress and Laravel for businesses in Nepal — when each one makes sense, and when it doesn't.",
                 'image' => null,
                 'date' => 'June 29, 2026',
-                'reading_time' => 5,
+                'reading_time' => 6,
             ],
             [
                 'slug' => 'local-seo-small-business-nepal',
@@ -70,7 +72,7 @@ class BlogController extends Controller
                 'excerpt' => 'A beginner-friendly walkthrough of Google Search Console — what it tracks, the reports that actually matter, and how to use it to improve your SEO.',
                 'image' => null,
                 'date' => 'June 29, 2026',
-                'reading_time' => 5,
+                'reading_time' => 6,
             ],
             [
                 'slug' => 'website-redesign-vs-rebuild',
@@ -78,7 +80,7 @@ class BlogController extends Controller
                 'excerpt' => 'How to decide whether your website needs a redesign or a full rebuild — the signs that point to each option.',
                 'image' => null,
                 'date' => 'June 29, 2026',
-                'reading_time' => 5,
+                'reading_time' => 6,
             ],
             [
                 'slug' => 'www-vs-non-www-website',
@@ -86,7 +88,7 @@ class BlogController extends Controller
                 'excerpt' => 'A clear explanation of the www vs non-www debate, why it matters for SEO, and how to choose and stick with one consistently.',
                 'image' => null,
                 'date' => 'June 29, 2026',
-                'reading_time' => 3,
+                'reading_time' => 6,
             ],
             [
                 'slug' => 'laravel-livewire-tutorial-beginners',
@@ -94,7 +96,7 @@ class BlogController extends Controller
                 'excerpt' => 'A beginner-friendly introduction to Laravel Livewire — what it is, how it works, and a simple example to get you building dynamic UIs without writing JavaScript.',
                 'image' => null,
                 'date' => 'June 29, 2026',
-                'reading_time' => 7,
+                'reading_time' => 6,
             ],
             [
                 'slug' => 'git-ignoring-gitignore-file-fix',
@@ -102,7 +104,7 @@ class BlogController extends Controller
                 'excerpt' => 'A complete debugging guide for when Git keeps tracking files that should be ignored — the most common cause, and the exact commands to fix it.',
                 'image' => null,
                 'date' => 'June 29, 2026',
-                'reading_time' => 4,
+                'reading_time' => 6,
             ],
             [
                 'slug' => 'google-analytics-4-setup-guide-nepal',
@@ -118,7 +120,7 @@ class BlogController extends Controller
                 'excerpt' => "What actually influences a PHP developer's career growth and pay in Nepal — skills, frameworks, remote work, and how to position yourself for better opportunities.",
                 'image' => null,
                 'date' => 'June 29, 2026',
-                'reading_time' => 5,
+                'reading_time' => 6,
             ],
             [
                 'slug' => 'top-10-it-companies-in-nepal',
@@ -145,11 +147,21 @@ class BlogController extends Controller
         $seo = Seo::where('page_name', 'blog')->first();
         $search = trim((string) $request->query('q', ''));
 
-        $posts = collect(self::posts());
+        $allPosts = collect(self::posts());
         if ($search !== '') {
-            $posts = $posts->filter(fn ($p) => str_contains(strtolower($p['title']), strtolower($search))
+            $allPosts = $allPosts->filter(fn ($p) => str_contains(strtolower($p['title']), strtolower($search))
                 || str_contains(strtolower($p['excerpt']), strtolower($search)));
         }
+
+        $perPage = 5;
+        $currentPage = Paginator::resolveCurrentPage();
+        $posts = new LengthAwarePaginator(
+            $allPosts->forPage($currentPage, $perPage)->values(),
+            $allPosts->count(),
+            $perPage,
+            $currentPage,
+            ['path' => $request->url(), 'query' => $request->query()]
+        );
 
         return view('pages.blog.index', compact('personal', 'seo', 'posts', 'search'));
     }

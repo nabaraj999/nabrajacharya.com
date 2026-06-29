@@ -16,7 +16,7 @@
         'image' => 'https://picsum.photos/seed/hire-laravel-nepal/1200/630',
         'author' => ['@type' => 'Person', 'name' => $personal->brand_name ?? 'Nabaraj Acharya'],
         'mainEntityOfPage' => route('blog.hire-laravel-developer-in-nepal'),
-        'timeRequired' => 'PT8M',
+        'timeRequired' => 'PT7M',
     ];
     $faqSchema = [
         '@context' => 'https://schema.org', '@type' => 'FAQPage',
@@ -46,7 +46,7 @@
         <h1 class="font-display text-3xl md:text-5xl font-bold mb-4" style="color: var(--ink);">How to Hire a Laravel Developer in Nepal</h1>
         <div class="flex flex-wrap items-center justify-center gap-3 mb-4">
             <span class="skill-badge">2026 Guide</span>
-            <span class="skill-badge">8 min read</span>
+            <span class="skill-badge">7 min read</span>
         </div>
         <p class="text-sm" style="color: var(--ink-faint);">
             <a href="{{ route('home') }}" class="hover:underline">Home</a><span class="mx-1">&rsaquo;</span>

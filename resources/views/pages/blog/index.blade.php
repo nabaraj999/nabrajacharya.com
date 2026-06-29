@@ -19,7 +19,7 @@
         'description' => 'Laravel, SEO and web development insights by Nabaraj Acharya',
         'url' => route('blog.index'),
         'publisher' => ['@type' => 'Person', 'name' => $personal->brand_name ?? 'Nabaraj Acharya'],
-        'blogPost' => $posts->map(fn ($post) => [
+        'blogPost' => collect(\App\Http\Controllers\BlogController::posts())->map(fn ($post) => [
             '@type' => 'BlogPosting',
             'headline' => $post['title'],
             'url' => route('blog.' . $post['slug']),
@@ -60,7 +60,7 @@
             <div class="lg:col-span-2">
                 @if($search !== '')
                 <p class="text-sm mb-6" style="color: var(--ink-faint);">
-                    {{ $posts->count() }} result{{ $posts->count() === 1 ? '' : 's' }} for "<span style="color: var(--ink);">{{ $search }}</span>"
+                    {{ $posts->total() }} result{{ $posts->total() === 1 ? '' : 's' }} for "<span style="color: var(--ink);">{{ $search }}</span>"
                     — <a href="{{ route('blog.index') }}" class="hover:underline" style="color: var(--accent);">clear search</a>
                 </p>
                 @endif
@@ -96,6 +96,22 @@
                         </article>
                         @endforeach
                     </div>
+
+                    @if($posts->lastPage() > 1)
+                    <nav class="blog-pagination" aria-label="Blog pagination">
+                        <a href="{{ $posts->previousPageUrl() }}" class="blog-page-link blog-page-arrow {{ $posts->onFirstPage() ? 'is-disabled' : '' }}" aria-label="Previous page">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                        </a>
+
+                        @foreach($posts->getUrlRange(1, $posts->lastPage()) as $page => $url)
+                            <a href="{{ $url }}" class="blog-page-link {{ $page === $posts->currentPage() ? 'is-active' : '' }}">{{ $page }}</a>
+                        @endforeach
+
+                        <a href="{{ $posts->hasMorePages() ? $posts->nextPageUrl() : '#' }}" class="blog-page-link blog-page-arrow {{ $posts->hasMorePages() ? '' : 'is-disabled' }}" aria-label="Next page">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </a>
+                    </nav>
+                    @endif
                 @endif
             </div>
 
@@ -145,5 +161,17 @@
 .blog-side-thumb img { width: 100%; height: 100%; object-fit: cover; }
 .blog-side-title { font-size: 0.85rem; font-weight: 600; color: var(--ink-dim); line-height: 1.4; transition: color .2s ease; }
 .blog-side-item:hover .blog-side-title { color: var(--accent); }
+.blog-pagination { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 48px; flex-wrap: wrap; }
+.blog-page-link {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 40px; height: 40px; padding: 0 4px;
+    border-radius: 100px; border: 1.5px solid var(--line-strong);
+    font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.95rem;
+    color: var(--ink); background: transparent; transition: all 0.25s ease;
+}
+.blog-page-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+.blog-page-link.is-active { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 8px 20px rgba(223,29,53,0.25); }
+.blog-page-link.is-active:hover { transform: none; color: #fff; }
+.blog-page-link.is-disabled { opacity: 0.4; pointer-events: none; }
 </style>
 @endpush

@@ -16,7 +16,7 @@
         'image' => 'https://picsum.photos/seed/laravel-performance/1200/630',
         'author' => ['@type' => 'Person', 'name' => $personal->brand_name ?? 'Nabaraj Acharya'],
         'mainEntityOfPage' => route('blog.laravel-performance-mistakes-nepal'),
-        'timeRequired' => 'PT8M',
+        'timeRequired' => 'PT6M',
     ];
     $faqSchema = [
         '@context' => 'https://schema.org', '@type' => 'FAQPage',
@@ -45,7 +45,7 @@
         <h1 class="font-display text-3xl md:text-5xl font-bold mb-4" style="color: var(--ink);">Common Laravel Performance Mistakes</h1>
         <div class="flex flex-wrap items-center justify-center gap-3 mb-4">
             <span class="skill-badge">Technical Guide</span>
-            <span class="skill-badge">8 min read</span>
+            <span class="skill-badge">6 min read</span>
         </div>
         <p class="text-sm" style="color: var(--ink-faint);">
             <a href="{{ route('home') }}" class="hover:underline">Home</a><span class="mx-1">&rsaquo;</span>
@@ -81,7 +81,10 @@
             <p>As a database grows, queries that search or filter on columns without an index get progressively slower. This often doesn't show up in testing with a small amount of sample data, but becomes very noticeable once a site has real, growing data — which is exactly when it's hardest to diagnose without the right tools.</p>
 
             <h2>5. Loading More Than the Page Needs</h2>
-            <p>Loading entire tables of data when a page only needs a handful of records, or pulling in large JavaScript libraries for a single small feature, both add weight that slows down the page without adding real value to the visitor.</p>
+            <p>Loading entire tables of data when a page only needs a handful of records, or pulling in large JavaScript libraries for a single small feature, both add weight that slows down the page without adding real value to the visitor. Pagination, lazy loading, and only selecting the specific database columns a page actually uses are all simple ways to cut this excess weight.</p>
+
+            <h2>6. Not Using Queues for Slow Tasks</h2>
+            <p>Sending an email, generating a report, or processing an uploaded file can take a few seconds — long enough that making a visitor wait for it during a normal page request feels slow, even if the rest of the page is fast. Laravel's queue system lets these slower tasks run in the background while the visitor gets an immediate response, which makes the site feel significantly faster without actually making the underlying task quicker.</p>
 
             <h2>How to Actually Find the Problem: A Step-by-Step Approach</h2>
             <ol>
@@ -107,6 +110,9 @@
 
             <h2>When a Performance Problem Means a Bigger Architecture Issue</h2>
             <p>Most performance issues are isolated and fixable with the steps above. Occasionally, though, repeated performance problems point to a deeper architecture issue — a database structure that doesn't fit how the application actually uses data, for example. If the same type of problem keeps recurring across different parts of an application even after individual fixes, that's usually a sign the underlying structure needs a proper review rather than another quick patch.</p>
+
+            <h2>Caching: The Quiet Performance Multiplier</h2>
+            <p>Beyond fixing individual slow queries, properly configured caching often delivers the single biggest jump in perceived speed for the least ongoing effort — caching compiled configuration and routes in production, and caching expensive, repeatable data lookups so they aren't recalculated on every single request. It's easy to overlook during development, when traffic is low and the difference isn't noticeable, but the gap becomes very obvious once a site is handling real, concurrent production traffic.</p>
 
             <h2>Final Thoughts</h2>
             <p>Performance issues are almost always fixable without a rebuild — it's usually a handful of specific, identifiable problems rather than something fundamentally wrong with the application. If your site has been getting slower as it grows, this is exactly the kind of work I do under <a href="{{ route('services.software-engineering') }}">software engineering</a> and ongoing <a href="{{ route('services.website-support-maintenance') }}">website support</a>.</p>

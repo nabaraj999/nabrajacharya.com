@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Rubik:wght@400;500;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
 
     {{-- Per-page SEO --}}
@@ -143,7 +143,7 @@
             color: #fff; font-weight: 800; font-size: 1rem; display: flex; align-items: center; justify-content: center;
             flex-shrink: 0;
         }
-        .nav-logo-text { font-family: 'Rajdhani', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--ink); letter-spacing: -0.01em; }
+        .nav-logo-text { font-family: 'Dancing Script', cursive; font-weight: 700; font-size: 1.7rem; color: var(--ink); letter-spacing: 0; }
         .nav-logo-text .accent { color: var(--accent); }
         .nav-links-desktop { display: none; align-items: center; gap: 26px; }
         @media (min-width: 1024px) { .nav-links-desktop { display: flex; } }
@@ -329,9 +329,6 @@
 <header class="site-nav" id="siteNav">
     <div class="nav-inner">
         <a href="{{ route('home') }}" class="nav-logo" data-cursor="link">
-            <span class="nav-logo-mark">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-            </span>
             <span class="nav-logo-text">Tech<span class="accent">Nabu</span></span>
         </a>
 
@@ -459,8 +456,7 @@
         <div class="flex flex-col md:flex-row justify-between items-start gap-10 mb-14">
             <div class="max-w-xs">
                 <a href="{{ route('home') }}" class="nav-logo mb-4 inline-flex">
-                    <span class="nav-logo-mark">{{ Str::substr($personal->brand_name ?? 'NA', 0, 1) }}</span>
-                    <span class="nav-logo-text">{{ $personal->brand_name ?? 'Nabaraj Acharya' }}</span>
+                    <span class="nav-logo-text">Tech<span class="accent">Nabu</span></span>
                 </a>
                 <p class="text-sm leading-relaxed" style="color: var(--ink-dim);">
                     Full Stack Developer &amp; SEO Specialist building modern, fast, search-ready web experiences from Nepal.
