@@ -8,6 +8,30 @@
 @section('schema')
 @php
     $homeSchema = ['@context'=>'https://schema.org','@type'=>'WebSite','name'=>'Nabaraj Acharya — Full Stack Developer & SEO Specialist in Nepal','url'=>'https://nabrajacharya.com.np','description'=>'Portfolio of Nabaraj Acharya, Full Stack Developer and SEO Specialist in Nepal, Khotang, and Lalitpur'];
+    $orgSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'ProfessionalService',
+        'name' => 'TechNabu',
+        'alternateName' => $personal->brand_name ?? 'Nabaraj Acharya',
+        'url' => 'https://nabrajacharya.com.np',
+        'description' => 'TechNabu is the Laravel development and technical SEO practice of Nabaraj Acharya, building web applications and growing search visibility for businesses in Nepal and abroad.',
+        'founder' => ['@type' => 'Person', 'name' => $personal->brand_name ?? 'Nabaraj Acharya'],
+        'areaServed' => [
+            ['@type' => 'Country', 'name' => 'Nepal'],
+            ['@type' => 'City', 'name' => 'Kathmandu'],
+            ['@type' => 'City', 'name' => 'Lalitpur'],
+        ],
+        'address' => ['@type' => 'PostalAddress', 'addressCountry' => 'NP', 'addressLocality' => 'Lalitpur'],
+        'email' => $personal->email ?? null,
+        'telephone' => $personal->phone_number ?? null,
+        'sameAs' => array_filter([
+            $personal->facebook_url ?? '',
+            $personal->linkedin_url ?? '',
+            $personal->github_url ?? '',
+            $personal->instagram_url ?? '',
+        ]),
+        'serviceType' => $services->pluck('service_name')->values()->all(),
+    ];
     $breadcrumbSchema = [
         '@context' => 'https://schema.org',
         '@type' => 'BreadcrumbList',
@@ -17,6 +41,7 @@
     ];
 @endphp
 <script type="application/ld+json">{!! json_encode($homeSchema) !!}</script>
+<script type="application/ld+json">{!! json_encode($orgSchema) !!}</script>
 <script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
 @endsection
 

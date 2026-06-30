@@ -20,15 +20,17 @@
         'mainEntityOfPage' => route('blog.www-vs-non-www-website'),
         'timeRequired' => 'PT6M',
     ];
-    $faqSchema = [
-        '@context' => 'https://schema.org', '@type' => 'FAQPage',
-        'mainEntity' => [
-            ['@type' => 'Question', 'name' => 'Does www vs non-www affect SEO?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => "Not directly — Google treats both as valid. The real SEO risk is letting both versions exist without one redirecting to the other, which splits your site's signals between two addresses."]],
-            ['@type' => 'Question', 'name' => 'Which one should I choose?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Neither is objectively better. Pick whichever you prefer, set it up with a proper redirect from the other version, and keep it consistent everywhere your site is linked.']],
-            ['@type' => 'Question', 'name' => 'Can I switch later if I already picked one?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Yes, but it should be done carefully with a proper 301 redirect and updated in Google Search Console, since switching carelessly can temporarily affect rankings.']],
-            ['@type' => 'Question', 'name' => 'Does this affect email as well as the website?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'No, email configuration (MX records) is separate from the www vs non-www choice for your website and is not affected by this decision.']],
-            ['@type' => 'Question', 'name' => 'How do I check which version my site currently uses?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Type both versions into your browser address bar. Whichever one stays in the address bar after the page loads, without redirecting away, is your current primary version.']],
-        ],
+    $faqs = [
+        ['Does www vs non-www affect SEO?', "Not directly — Google treats both as valid. The real SEO risk is letting both versions exist without one redirecting to the other, which splits your site's signals between two addresses."],
+        ['Which one should I choose?', 'Neither is objectively better. Pick whichever you prefer, set it up with a proper redirect from the other version, and keep it consistent everywhere your site is linked.'],
+        ['Can I switch later if I already picked one?', 'Yes, but it should be done carefully with a proper 301 redirect and updated in Google Search Console, since switching carelessly can temporarily affect rankings.'],
+        ['Does this affect email as well as the website?', 'No, email configuration (MX records) is separate from the www vs non-www choice for your website and is not affected by this decision.'],
+        ['How do I check which version my site currently uses?', 'Type both versions into your browser address bar. Whichever one stays in the address bar after the page loads, without redirecting away, is your current primary version.'],
+        ['Is a 301 redirect the only correct way to handle this?', "Yes, a 301 (permanent) redirect is the correct method — it tells search engines the move is permanent and consolidates ranking signals onto the chosen version, unlike a temporary redirect."],
+        ['Will fixing this issue improve my rankings immediately?', "Not immediately, but it removes a quiet drag on your SEO over time by consolidating signals onto one address instead of splitting them between two."],
+        ['Does this same issue apply to HTTP vs HTTPS?', "Yes, the same principle applies — having both HTTP and HTTPS versions accessible without a redirect creates the same kind of duplicate-content and split-signal problem."],
+        ['Can I check this myself without technical help?', "Yes, simply typing both versions of your domain into a browser and observing what happens is something any website owner can do, even without technical knowledge."],
+        ['Who should I contact to fix this on my hosting?', "Your hosting provider's support team or your developer — be specific that you want a 301 redirect from one version to the other, not just both versions made to 'work'."],
     ];
     $breadcrumbSchema = ['@context' => 'https://schema.org', '@type' => 'BreadcrumbList', 'itemListElement' => [
         ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
@@ -37,7 +39,6 @@
     ]];
 @endphp
 <script type="application/ld+json">{!! json_encode($articleSchema) !!}</script>
-<script type="application/ld+json">{!! json_encode($faqSchema) !!}</script>
 <script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
 @endsection
 
@@ -114,19 +115,9 @@
 
             <h2>Final Thoughts</h2>
             <p>This is a small technical detail, but it's exactly the kind of thing that quietly undermines SEO if it's overlooked. It's one of the items I check as part of every <a href="{{ route('services.seo-social-media-marketing') }}">technical SEO audit</a> I run, alongside the other consistency issues mentioned above.</p>
-
-            <h2>FAQs</h2>
-            <h3>Does www vs non-www affect SEO?</h3>
-            <p>Not directly — Google treats both as valid. The real SEO risk is letting both versions exist without one redirecting to the other, which splits your site's signals between two addresses.</p>
-            <h3>Which one should I choose?</h3>
-            <p>Neither is objectively better. Pick whichever you prefer, set it up with a proper redirect from the other version, and keep it consistent everywhere your site is linked.</p>
-            <h3>Can I switch later if I already picked one?</h3>
-            <p>Yes, but it should be done carefully with a proper 301 redirect and updated in Google Search Console, since switching carelessly can temporarily affect rankings.</p>
-            <h3>Does this affect email as well as the website?</h3>
-            <p>No, email configuration (MX records) is separate from the www vs non-www choice for your website and is not affected by this decision.</p>
-            <h3>How do I check which version my site currently uses?</h3>
-            <p>Type both versions into your browser address bar. Whichever one stays in the address bar after the page loads, without redirecting away, is your current primary version.</p>
         </div>
+
+        @include('partials.services-faq', ['faqs' => $faqs])
 
         @if($otherPosts->isNotEmpty())
         <div class="mt-16 pt-10" style="border-top: 1px solid var(--line);">

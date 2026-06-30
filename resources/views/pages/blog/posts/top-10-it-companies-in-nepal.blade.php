@@ -22,15 +22,17 @@
         'mainEntityOfPage' => route('blog.top-10-it-companies-in-nepal'),
         'timeRequired' => 'PT15M',
     ];
-    $faqSchema = [
-        '@context' => 'https://schema.org', '@type' => 'FAQPage',
-        'mainEntity' => [
-            ['@type' => 'Question', 'name' => 'Which is the number one IT company in Nepal?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => "F1Soft International is widely regarded as Nepal's top IT company, best known for building the eSewa digital payments platform that helped pioneer fintech in the country."]],
-            ['@type' => 'Question', 'name' => 'What is the average salary at a top IT company in Nepal?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Entry-level software engineers at leading firms like Leapfrog, Deerwalk, or Cotiviti typically earn NPR 40,000–80,000 per month, while senior engineers with 5+ years of experience can command NPR 150,000–300,000 per month. Remote work for international clients can pay 3–5x more.']],
-            ['@type' => 'Question', 'name' => 'Which Nepali IT company is listed on NASDAQ?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => "Fusemachines became Nepal's first NASDAQ-listed technology company, putting Nepali-built AI products in front of global public markets."]],
-            ['@type' => 'Question', 'name' => 'Why are international companies outsourcing IT work to Nepal?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Nepal offers competitive costs without sacrificing quality, a young English-speaking workforce, a time zone that overlaps well with both Asian and Western working hours, and a maturing startup ecosystem backed by government digital initiatives.']],
-            ['@type' => 'Question', 'name' => "Is Nepal's IT industry a good place to build a tech career?", 'acceptedAnswer' => ['@type' => 'Answer', 'text' => "Yes. Nepal's IT sector crossed $1 billion in annual software exports in 2025, with strong demand for full-stack developers, AI/ML engineers, data scientists, DevOps engineers, and cybersecurity professionals — and increasingly, building a career here no longer requires emigrating."]],
-        ],
+    $faqs = [
+        ['Which is the number one IT company in Nepal?', "F1Soft International is widely regarded as Nepal's top IT company, best known for building the eSewa digital payments platform that helped pioneer fintech in the country."],
+        ['What is the average salary at a top IT company in Nepal?', 'Entry-level software engineers at leading firms like Leapfrog, Deerwalk, or Cotiviti typically earn NPR 40,000–80,000 per month, while senior engineers with 5+ years of experience can command NPR 150,000–300,000 per month. Remote work for international clients can pay 3–5x more.'],
+        ['Which Nepali IT company is listed on NASDAQ?', "Fusemachines became Nepal's first NASDAQ-listed technology company, putting Nepali-built AI products in front of global public markets."],
+        ['Why are international companies outsourcing IT work to Nepal?', 'Nepal offers competitive costs without sacrificing quality, a young English-speaking workforce, a time zone that overlaps well with both Asian and Western working hours, and a maturing startup ecosystem backed by government digital initiatives.'],
+        ["Is Nepal's IT industry a good place to build a tech career?", "Yes. Nepal's IT sector crossed $1 billion in annual software exports in 2025, with strong demand for full-stack developers, AI/ML engineers, data scientists, DevOps engineers, and cybersecurity professionals — and increasingly, building a career here no longer requires emigrating."],
+        ['Which Nepali IT company focuses on healthcare data?', "Cotiviti Nepal and Deerwalk Services both specialize in healthcare IT and data analytics, processing data for major US healthcare clients from their Kathmandu offices."],
+        ['Do Nepali IT companies work mainly with local clients or international ones?', "Most of the top companies on this list serve primarily international clients — the US, Europe, and Australia — which is a major driver behind Nepal's $1 billion software export figure."],
+        ['What programming languages and skills are most in demand at these companies?', "JavaScript/TypeScript, Python, PHP/Laravel, and cloud platforms like AWS are consistently in demand, alongside growing demand for AI/ML skills as companies like Fusemachines and CloudFactory expand."],
+        ['Is it hard to get hired at a top Nepali IT company?', "Competition is real but not insurmountable — a strong portfolio of real projects, solid fundamentals, and clear communication matter more than where you studied."],
+        ['How has Nepal\'s IT industry changed in the last decade?', "It has moved from primarily small outsourcing shops to a mix of outsourcing, product companies, and even a NASDAQ-listed company (Fusemachines) — a sign of growing maturity and ambition in the sector."],
     ];
     $breadcrumbSchema = ['@context' => 'https://schema.org', '@type' => 'BreadcrumbList', 'itemListElement' => [
         ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
@@ -39,7 +41,6 @@
     ]];
 @endphp
 <script type="application/ld+json">{!! json_encode($articleSchema) !!}</script>
-<script type="application/ld+json">{!! json_encode($faqSchema) !!}</script>
 <script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
 @endsection
 
@@ -439,27 +440,6 @@
 
 
 <!-- ═══════════════════════════════════════════════════════ -->
-<!--  FAQ SECTION                                            -->
-<!-- ═══════════════════════════════════════════════════════ -->
-<h2>FAQs</h2>
-
-<h3>Which is the number one IT company in Nepal?</h3>
-<p>F1Soft International is widely regarded as Nepal's top IT company, best known for building the eSewa digital payments platform that helped pioneer fintech in the country.</p>
-
-<h3>What is the average salary at a top IT company in Nepal?</h3>
-<p>Entry-level software engineers at leading firms like Leapfrog, Deerwalk, or Cotiviti typically earn NPR 40,000–80,000 per month, while senior engineers with 5+ years of experience can command NPR 150,000–300,000 per month. Remote work for international clients can pay 3–5× more.</p>
-
-<h3>Which Nepali IT company is listed on NASDAQ?</h3>
-<p>Fusemachines became Nepal's first NASDAQ-listed technology company, putting Nepali-built AI products in front of global public markets.</p>
-
-<h3>Why are international companies outsourcing IT work to Nepal?</h3>
-<p>Nepal offers competitive costs without sacrificing quality, a young English-speaking workforce, a time zone that overlaps well with both Asian and Western working hours, and a maturing startup ecosystem backed by government digital initiatives.</p>
-
-<h3>Is Nepal's IT industry a good place to build a tech career?</h3>
-<p>Yes. Nepal's IT sector crossed $1 billion in annual software exports in 2025, with strong demand for full-stack developers, AI/ML engineers, data scientists, DevOps engineers, and cybersecurity professionals — and increasingly, building a career here no longer requires emigrating.</p>
-
-
-<!-- ═══════════════════════════════════════════════════════ -->
 <!--  CLOSING CTA                                            -->
 <!-- ═══════════════════════════════════════════════════════ -->
 <h2>Final Thoughts</h2>
@@ -471,6 +451,8 @@
 <blockquote>As a web developer based in Nepal, I have watched this industry grow firsthand. The quality of talent, the ambition of founders, and the sophistication of the products being built here continue to surprise and inspire.</blockquote>
 
         </div>
+
+        @include('partials.services-faq', ['faqs' => $faqs])
 
         @if($otherPosts->isNotEmpty())
         <div class="mt-16 pt-10" style="border-top: 1px solid var(--line);">

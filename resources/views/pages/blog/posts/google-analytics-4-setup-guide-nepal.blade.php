@@ -20,16 +20,17 @@
         'mainEntityOfPage' => route('blog.google-analytics-4-setup-guide-nepal'),
         'timeRequired' => 'PT6M',
     ];
-    $faqSchema = [
-        '@context' => 'https://schema.org', '@type' => 'FAQPage',
-        'mainEntity' => [
-            ['@type' => 'Question', 'name' => 'Is Google Analytics 4 free?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Yes, the standard version of GA4 is free for any website owner to use.']],
-            ['@type' => 'Question', 'name' => 'What happened to Universal Analytics?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Universal Analytics, the previous version, stopped processing data in 2024. GA4 is now the only active version of Google Analytics.']],
-            ['@type' => 'Question', 'name' => 'Do I need coding knowledge to set up GA4?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Basic setup using Google Tag Manager or a plugin generally requires no coding. More advanced custom event tracking benefits from a developer\'s help.']],
-            ['@type' => 'Question', 'name' => 'How long does it take for data to start showing up?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Basic traffic data usually appears within minutes to hours of installing the tracking code correctly. Some reports take 24 to 48 hours to fully populate.']],
-            ['@type' => 'Question', 'name' => 'Does GA4 work with WordPress as well as custom-built sites?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Yes — WordPress has plugins that simplify GA4 installation, while custom-built sites typically install it through Google Tag Manager or a direct code snippet in the site\'s layout.']],
-            ['@type' => 'Question', 'name' => 'Can I see which specific products or pages perform best?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => "Yes, GA4's engagement and monetization reports break performance down by individual page or product, which is useful for deciding what to promote further and what might need improvement."]],
-        ],
+    $faqs = [
+        ['Is Google Analytics 4 free?', 'Yes, the standard version of GA4 is free for any website owner to use.'],
+        ['What happened to Universal Analytics?', 'Universal Analytics, the previous version, stopped processing data in 2024. GA4 is now the only active version of Google Analytics.'],
+        ['Do I need coding knowledge to set up GA4?', "Basic setup using Google Tag Manager or a plugin generally requires no coding. More advanced custom event tracking benefits from a developer's help."],
+        ['How long does it take for data to start showing up?', 'Basic traffic data usually appears within minutes to hours of installing the tracking code correctly. Some reports take 24 to 48 hours to fully populate.'],
+        ["Does GA4 work with WordPress as well as custom-built sites?", "Yes — WordPress has plugins that simplify GA4 installation, while custom-built sites typically install it through Google Tag Manager or a direct code snippet in the site's layout."],
+        ['Can I see which specific products or pages perform best?', "Yes, GA4's engagement and monetization reports break performance down by individual page or product, which is useful for deciding what to promote further and what might need improvement."],
+        ['Can GA4 track phone calls or WhatsApp clicks?', "Yes, both can be set up as custom events — a click-to-call link or a WhatsApp button click can be tracked as a key event just like a form submission."],
+        ['Is GA4 data accurate if I use an ad blocker myself when testing?', "No — ad blockers commonly block analytics scripts, so always test your own site's tracking in a private/incognito window without an ad blocker enabled to get an accurate read."],
+        ['Should I exclude my own visits from GA4 data?', "Yes, excluding internal traffic from your own team prevents your own testing and browsing from skewing the real visitor data."],
+        ['Can GA4 show me data from before I installed it?', "No, GA4 only collects data going forward from the moment the tracking code is correctly installed — it cannot retroactively show historical traffic."],
     ];
     $breadcrumbSchema = ['@context' => 'https://schema.org', '@type' => 'BreadcrumbList', 'itemListElement' => [
         ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
@@ -38,7 +39,6 @@
     ]];
 @endphp
 <script type="application/ld+json">{!! json_encode($articleSchema) !!}</script>
-<script type="application/ld+json">{!! json_encode($faqSchema) !!}</script>
 <script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
 @endsection
 
@@ -117,21 +117,9 @@
 
             <h2>Final Thoughts</h2>
             <p>Analytics only matters if you actually look at it and act on what you see. A correctly configured GA4 setup, checked regularly, takes the guesswork out of deciding what to improve next on your site. I set this up as part of every <a href="{{ route('services.seo-social-media-marketing') }}">SEO engagement</a> I run, so progress can actually be measured.</p>
-
-            <h2>FAQs</h2>
-            <h3>Is Google Analytics 4 free?</h3>
-            <p>Yes, the standard version of GA4 is free for any website owner to use.</p>
-            <h3>What happened to Universal Analytics?</h3>
-            <p>Universal Analytics, the previous version, stopped processing data in 2024. GA4 is now the only active version of Google Analytics.</p>
-            <h3>Do I need coding knowledge to set up GA4?</h3>
-            <p>Basic setup using Google Tag Manager or a plugin generally requires no coding. More advanced custom event tracking benefits from a developer's help.</p>
-            <h3>How long does it take for data to start showing up?</h3>
-            <p>Basic traffic data usually appears within minutes to hours of installing the tracking code correctly. Some reports take 24 to 48 hours to fully populate.</p>
-            <h3>Does GA4 work with WordPress as well as custom-built sites?</h3>
-            <p>Yes — WordPress has plugins that simplify GA4 installation, while custom-built sites typically install it through Google Tag Manager or a direct code snippet in the site's layout.</p>
-            <h3>Can I see which specific products or pages perform best?</h3>
-            <p>Yes, GA4's engagement and monetization reports break performance down by individual page or product, which is useful for deciding what to promote further and what might need improvement.</p>
         </div>
+
+        @include('partials.services-faq', ['faqs' => $faqs])
 
         @if($otherPosts->isNotEmpty())
         <div class="mt-16 pt-10" style="border-top: 1px solid var(--line);">

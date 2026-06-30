@@ -20,15 +20,17 @@
         'mainEntityOfPage' => route('blog.local-seo-small-business-nepal'),
         'timeRequired' => 'PT6M',
     ];
-    $faqSchema = [
-        '@context' => 'https://schema.org', '@type' => 'FAQPage',
-        'mainEntity' => [
-            ['@type' => 'Question', 'name' => 'Is Google Business Profile free?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Yes, creating and managing a Google Business Profile is completely free. It is one of the highest-value local SEO steps available to any small business.']],
-            ['@type' => 'Question', 'name' => 'How long does local SEO take to work?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Local SEO often moves faster than national SEO since the competition for a specific city or neighborhood is smaller, but it still typically takes a few months of consistent work to see solid results.']],
-            ['@type' => 'Question', 'name' => 'Do I need a physical address to rank locally?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => "It helps significantly for Google Business Profile and map-based results, but service-area businesses without a public storefront can still rank well with the right setup."]],
-            ['@type' => 'Question', 'name' => 'How many reviews do I need?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => "There's no fixed number, but a steady, ongoing stream of genuine reviews matters more than a one-time burst. Consistency signals an active, trustworthy business."]],
-            ['@type' => 'Question', 'name' => 'Can I do local SEO myself without hiring anyone?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => "Yes, the basics like Google Business Profile setup are very doable yourself. A professional becomes more valuable for technical site issues and ongoing strategy as competition increases."]],
-        ],
+    $faqs = [
+        ['Is Google Business Profile free?', 'Yes, creating and managing a Google Business Profile is completely free. It is one of the highest-value local SEO steps available to any small business.'],
+        ['How long does local SEO take to work?', 'Local SEO often moves faster than national SEO since the competition for a specific city or neighborhood is smaller, but it still typically takes a few months of consistent work to see solid results.'],
+        ['Do I need a physical address to rank locally?', "It helps significantly for Google Business Profile and map-based results, but service-area businesses without a public storefront can still rank well with the right setup."],
+        ['How many reviews do I need?', "There's no fixed number, but a steady, ongoing stream of genuine reviews matters more than a one-time burst. Consistency signals an active, trustworthy business."],
+        ['Can I do local SEO myself without hiring anyone?', "Yes, the basics like Google Business Profile setup are very doable yourself. A professional becomes more valuable for technical site issues and ongoing strategy as competition increases."],
+        ['What is the difference between local SEO and regular SEO?', "Local SEO specifically targets searches tied to a location — 'near me' searches, map results, local pack listings — while regular SEO targets broader, non-location-specific search terms. Most small businesses benefit most from local SEO first."],
+        ['Can I rank locally without a Google Business Profile?', "It's possible but much harder — Google Business Profile is the primary signal for map and local pack results, so skipping it means missing out on a large share of local search visibility."],
+        ['Does my website need to mention my city or area repeatedly to rank locally?', "No — natural mentions of your service area in genuinely useful content help, but repeating a city name unnaturally (keyword stuffing) can actually hurt rather than help your rankings."],
+        ['Should I respond to negative reviews?', "Yes, always respond professionally. A thoughtful response to a negative review often builds more trust with potential customers than having no negative reviews at all."],
+        ['How do I track if my local SEO is actually working?', "Track Google Business Profile insights alongside a simple log of calls, direction requests, or enquiries that mention finding you through search — this gives a clearer picture than rankings alone."],
     ];
     $breadcrumbSchema = ['@context' => 'https://schema.org', '@type' => 'BreadcrumbList', 'itemListElement' => [
         ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
@@ -37,7 +39,6 @@
     ]];
 @endphp
 <script type="application/ld+json">{!! json_encode($articleSchema) !!}</script>
-<script type="application/ld+json">{!! json_encode($faqSchema) !!}</script>
 <script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
 @endsection
 
@@ -113,19 +114,9 @@
 
             <h2>Final Thoughts</h2>
             <p>Local SEO rewards consistency more than any single big move — a complete profile, consistent details, and genuine reviews compound over time. If you want this set up properly for your business in Khotang, Lalitpur, or anywhere in Nepal, it's part of what I cover under <a href="{{ route('services.seo-social-media-marketing') }}">SEO &amp; Social Media Marketing</a>.</p>
-
-            <h2>FAQs</h2>
-            <h3>Is Google Business Profile free?</h3>
-            <p>Yes, creating and managing a Google Business Profile is completely free. It is one of the highest-value local SEO steps available to any small business.</p>
-            <h3>How long does local SEO take to work?</h3>
-            <p>Local SEO often moves faster than national SEO since the competition for a specific city or neighborhood is smaller, but it still typically takes a few months of consistent work to see solid results.</p>
-            <h3>Do I need a physical address to rank locally?</h3>
-            <p>It helps significantly for Google Business Profile and map-based results, but service-area businesses without a public storefront can still rank well with the right setup.</p>
-            <h3>How many reviews do I need?</h3>
-            <p>There's no fixed number, but a steady, ongoing stream of genuine reviews matters more than a one-time burst. Consistency signals an active, trustworthy business.</p>
-            <h3>Can I do local SEO myself without hiring anyone?</h3>
-            <p>Yes, the basics like Google Business Profile setup are very doable yourself. A professional becomes more valuable for technical site issues and ongoing strategy as competition increases.</p>
         </div>
+
+        @include('partials.services-faq', ['faqs' => $faqs])
 
         @if($otherPosts->isNotEmpty())
         <div class="mt-16 pt-10" style="border-top: 1px solid var(--line);">

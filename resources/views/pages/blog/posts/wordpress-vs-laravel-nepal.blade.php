@@ -20,15 +20,17 @@
         'mainEntityOfPage' => route('blog.wordpress-vs-laravel-nepal'),
         'timeRequired' => 'PT6M',
     ];
-    $faqSchema = [
-        '@context' => 'https://schema.org', '@type' => 'FAQPage',
-        'mainEntity' => [
-            ['@type' => 'Question', 'name' => 'Is WordPress or Laravel better for SEO?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Both can rank well. WordPress has more ready-made SEO plugins, while Laravel gives more control over exactly how pages are structured. The bigger SEO factor is usually how the site is built, not which platform it runs on.']],
-            ['@type' => 'Question', 'name' => 'Can I switch from WordPress to Laravel later?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => "Yes, this is a common migration as businesses outgrow what WordPress can comfortably handle. Content and SEO value can usually be preserved with careful planning and proper redirects."]],
-            ['@type' => 'Question', 'name' => 'Is Laravel more expensive than WordPress?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Often yes for an equivalent simple site, since Laravel sites are typically custom-built rather than assembled from existing themes and plugins. For more complex, custom functionality, the gap narrows or can reverse.']],
-            ['@type' => 'Question', 'name' => 'Is WordPress less secure than Laravel?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'WordPress security depends heavily on keeping the core, theme, and plugins updated, since its popularity makes it a common target. Laravel has a smaller attack surface by default, but still requires proper security practices either way.']],
-            ['@type' => 'Question', 'name' => 'Which platform is easier for a non-technical person to manage?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'WordPress is generally easier for non-technical content updates out of the box. A Laravel site can be built with an equally easy admin area, but that has to be designed in rather than coming free with the platform.']],
-        ],
+    $faqs = [
+        ['Is WordPress or Laravel better for SEO?', 'Both can rank well. WordPress has more ready-made SEO plugins, while Laravel gives more control over exactly how pages are structured. The bigger SEO factor is usually how the site is built, not which platform it runs on.'],
+        ['Can I switch from WordPress to Laravel later?', "Yes, this is a common migration as businesses outgrow what WordPress can comfortably handle. Content and SEO value can usually be preserved with careful planning and proper redirects."],
+        ['Is Laravel more expensive than WordPress?', 'Often yes for an equivalent simple site, since Laravel sites are typically custom-built rather than assembled from existing themes and plugins. For more complex, custom functionality, the gap narrows or can reverse.'],
+        ['Is WordPress less secure than Laravel?', 'WordPress security depends heavily on keeping the core, theme, and plugins updated, since its popularity makes it a common target. Laravel has a smaller attack surface by default, but still requires proper security practices either way.'],
+        ['Which platform is easier for a non-technical person to manage?', 'WordPress is generally easier for non-technical content updates out of the box. A Laravel site can be built with an equally easy admin area, but that has to be designed in rather than coming free with the platform.'],
+        ['Can WordPress handle an online store as well as Laravel?', "Yes, via WooCommerce, WordPress handles small to mid-size stores well. For highly custom checkout flows, complex inventory logic, or marketplace-style stores, Laravel offers more flexibility."],
+        ['Which platform loads faster, WordPress or Laravel?', "A well-optimized site on either platform can be fast. In practice, Laravel sites tend to have fewer third-party plugins adding overhead, but a poorly built Laravel app can be just as slow as an unoptimized WordPress site."],
+        ['Do I need a developer to maintain a WordPress site?', "Not strictly — many business owners manage day-to-day content themselves. A developer becomes valuable for plugin conflicts, security updates, custom features, or performance issues."],
+        ['Is it risky to build a business-critical application on WordPress?', "It can be, since WordPress was originally designed for content publishing, not complex business logic. Laravel is generally the safer choice for applications with custom workflows, accounts, or sensitive data."],
+        ['Can I get a WordPress site that performs as well as a custom Laravel build?', "With careful theme selection, caching, and minimal plugin bloat, a WordPress site can perform very well — though a purpose-built Laravel application still tends to have an edge for complex, data-heavy use cases."],
     ];
     $breadcrumbSchema = ['@context' => 'https://schema.org', '@type' => 'BreadcrumbList', 'itemListElement' => [
         ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
@@ -37,7 +39,6 @@
     ]];
 @endphp
 <script type="application/ld+json">{!! json_encode($articleSchema) !!}</script>
-<script type="application/ld+json">{!! json_encode($faqSchema) !!}</script>
 <script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
 @endsection
 
@@ -119,19 +120,9 @@
 
             <h2>My Honest Recommendation</h2>
             <p>If you're not sure which fits your project, describe what you're trying to build and I'll tell you honestly which platform makes more sense — even if that means recommending WordPress over my own primary stack. I cover both on my <a href="{{ route('services.wordpress-development') }}">WordPress development</a> and <a href="{{ route('services.web-development') }}">web development</a> service pages.</p>
-
-            <h2>FAQs</h2>
-            <h3>Is WordPress or Laravel better for SEO?</h3>
-            <p>Both can rank well. WordPress has more ready-made SEO plugins, while Laravel gives more control over exactly how pages are structured. The bigger SEO factor is usually how the site is built, not which platform it runs on.</p>
-            <h3>Can I switch from WordPress to Laravel later?</h3>
-            <p>Yes, this is a common migration as businesses outgrow what WordPress can comfortably handle. Content and SEO value can usually be preserved with careful planning and proper redirects.</p>
-            <h3>Is Laravel more expensive than WordPress?</h3>
-            <p>Often yes for an equivalent simple site, since Laravel sites are typically custom-built rather than assembled from existing themes and plugins. For more complex, custom functionality, the gap narrows or can reverse.</p>
-            <h3>Is WordPress less secure than Laravel?</h3>
-            <p>WordPress security depends heavily on keeping the core, theme, and plugins updated, since its popularity makes it a common target. Laravel has a smaller attack surface by default, but still requires proper security practices either way.</p>
-            <h3>Which platform is easier for a non-technical person to manage?</h3>
-            <p>WordPress is generally easier for non-technical content updates out of the box. A Laravel site can be built with an equally easy admin area, but that has to be designed in rather than coming free with the platform.</p>
         </div>
+
+        @include('partials.services-faq', ['faqs' => $faqs])
 
         @if($otherPosts->isNotEmpty())
         <div class="mt-16 pt-10" style="border-top: 1px solid var(--line);">

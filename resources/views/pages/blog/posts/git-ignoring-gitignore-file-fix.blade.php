@@ -20,16 +20,17 @@
         'mainEntityOfPage' => route('blog.git-ignoring-gitignore-file-fix'),
         'timeRequired' => 'PT6M',
     ];
-    $faqSchema = [
-        '@context' => 'https://schema.org', '@type' => 'FAQPage',
-        'mainEntity' => [
-            ['@type' => 'Question', 'name' => 'Why does .gitignore not work even though the file is listed in it?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'The most common reason is that the file was already committed to Git before it was added to .gitignore. Once Git is tracking a file, listing it in .gitignore does not automatically untrack it.']],
-            ['@type' => 'Question', 'name' => 'Is it safe to run git rm -r --cached .?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Yes — it only removes files from Git tracking, not from your actual disk. Your files stay exactly where they are; only the next commit reflects the updated tracking list.']],
-            ['@type' => 'Question', 'name' => 'Will this delete my files?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'No. This process only changes what Git tracks in version control. The files themselves remain untouched on your computer.']],
-            ['@type' => 'Question', 'name' => 'What if I only want to untrack files in one folder?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Run git rm -r --cached path/to/folder instead of targeting the whole repository with a dot, then commit as usual. This limits the change to just that folder.']],
-            ['@type' => 'Question', 'name' => 'Should I push this fix to a shared repository right away?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'It is worth letting your team know first, since this commit can show as a large set of changes in the history even though no file content actually changed. A short heads-up avoids confusion during code review.']],
-            ['@type' => 'Question', 'name' => "Does this work the same way for a brand-new file I haven't committed yet?", 'acceptedAnswer' => ['@type' => 'Answer', 'text' => "Yes, and in that case it's much simpler — a file that has never been committed only needs to match a correct .gitignore pattern, with no untracking step required at all."]],
-        ],
+    $faqs = [
+        ['Why does .gitignore not work even though the file is listed in it?', 'The most common reason is that the file was already committed to Git before it was added to .gitignore. Once Git is tracking a file, listing it in .gitignore does not automatically untrack it.'],
+        ['Is it safe to run git rm -r --cached .?', 'Yes — it only removes files from Git tracking, not from your actual disk. Your files stay exactly where they are; only the next commit reflects the updated tracking list.'],
+        ['Will this delete my files?', 'No. This process only changes what Git tracks in version control. The files themselves remain untouched on your computer.'],
+        ['What if I only want to untrack files in one folder?', 'Run git rm -r --cached path/to/folder instead of targeting the whole repository with a dot, then commit as usual. This limits the change to just that folder.'],
+        ['Should I push this fix to a shared repository right away?', 'It is worth letting your team know first, since this commit can show as a large set of changes in the history even though no file content actually changed. A short heads-up avoids confusion during code review.'],
+        ["Does this work the same way for a brand-new file I haven't committed yet?", "Yes, and in that case it's much simpler — a file that has never been committed only needs to match a correct .gitignore pattern, with no untracking step required at all."],
+        ['Why is my .env file still being tracked even though it is in .gitignore?', "Same root cause — if .env was committed even once before being added to .gitignore, Git keeps tracking it. Untrack it immediately with git rm --cached .env, and rotate any credentials it contained as a precaution."],
+        ['Does git rm -r --cached . affect my remote repository immediately?', "No, it only changes your local working tree's tracking status. Nothing affects the remote repository until you commit and push the change."],
+        ['Can I undo this fix if something goes wrong?', "Yes, since the untracking step only happens locally until you commit and push. If you haven't pushed yet, you can reset to the previous commit to undo it."],
+        ['Why does my global .gitignore not seem to apply to this project?', "A project-level .gitignore takes precedence for that repository; check that the file pattern isn't being overridden or duplicated incorrectly between your global and project-level files."],
     ];
     $breadcrumbSchema = ['@context' => 'https://schema.org', '@type' => 'BreadcrumbList', 'itemListElement' => [
         ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
@@ -38,7 +39,6 @@
     ]];
 @endphp
 <script type="application/ld+json">{!! json_encode($articleSchema) !!}</script>
-<script type="application/ld+json">{!! json_encode($faqSchema) !!}</script>
 <script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
 @endsection
 
@@ -121,21 +121,9 @@ git commit -m "Stop tracking file"</code></pre>
 
             <h2>Final Thoughts</h2>
             <p>This is one of those issues that looks confusing the first time and completely obvious afterward. Once you know Git only respects .gitignore for files it isn't tracking yet, the fix is quick and safe to run any time. It's a small detail, but getting repository hygiene right early on saves real headaches later in a project's life.</p>
-
-            <h2>FAQs</h2>
-            <h3>Why does .gitignore not work even though the file is listed in it?</h3>
-            <p>The most common reason is that the file was already committed to Git before it was added to .gitignore. Once Git is tracking a file, listing it in .gitignore does not automatically untrack it.</p>
-            <h3>Is it safe to run git rm -r --cached .?</h3>
-            <p>Yes — it only removes files from Git tracking, not from your actual disk. Your files stay exactly where they are; only the next commit reflects the updated tracking list.</p>
-            <h3>Will this delete my files?</h3>
-            <p>No. This process only changes what Git tracks in version control. The files themselves remain untouched on your computer.</p>
-            <h3>What if I only want to untrack files in one folder?</h3>
-            <p>Run git rm -r --cached path/to/folder instead of targeting the whole repository with a dot, then commit as usual. This limits the change to just that folder.</p>
-            <h3>Should I push this fix to a shared repository right away?</h3>
-            <p>It is worth letting your team know first, since this commit can show as a large set of changes in the history even though no file content actually changed. A short heads-up avoids confusion during code review.</p>
-            <h3>Does this work the same way for a brand-new file I haven't committed yet?</h3>
-            <p>Yes, and in that case it's much simpler — a file that has never been committed only needs to match a correct .gitignore pattern, with no untracking step required at all.</p>
         </div>
+
+        @include('partials.services-faq', ['faqs' => $faqs])
 
         @if($otherPosts->isNotEmpty())
         <div class="mt-16 pt-10" style="border-top: 1px solid var(--line);">

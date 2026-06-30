@@ -20,15 +20,17 @@
         'mainEntityOfPage' => route('blog.google-search-console-beginners-guide'),
         'timeRequired' => 'PT6M',
     ];
-    $faqSchema = [
-        '@context' => 'https://schema.org', '@type' => 'FAQPage',
-        'mainEntity' => [
-            ['@type' => 'Question', 'name' => 'Is Google Search Console free?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Yes, it is completely free and available to any website owner who can verify ownership of the site.']],
-            ['@type' => 'Question', 'name' => 'How long until Search Console shows data?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Search performance data typically starts appearing within a few days, though it can take a few weeks to build up a useful amount of data for a new site.']],
-            ['@type' => 'Question', 'name' => 'Do I need Search Console if I already have Google Analytics?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Yes — they show different things. Analytics focuses on visitor behavior once they arrive at your site; Search Console focuses specifically on how your site appears and performs in Google Search.']],
-            ['@type' => 'Question', 'name' => 'What should I do if I see indexing errors?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Check the specific reason Google gives for each error, fix the underlying issue on the page, then use the URL inspection tool to request re-indexing once it is resolved.']],
-            ['@type' => 'Question', 'name' => 'Can Search Console tell me why my rankings dropped?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'It can point you toward clues — like a drop in impressions for specific pages or new indexing issues — but it will not give you a single definitive reason. It is a diagnostic starting point, not a complete explanation on its own.']],
-        ],
+    $faqs = [
+        ['Is Google Search Console free?', 'Yes, it is completely free and available to any website owner who can verify ownership of the site.'],
+        ['How long until Search Console shows data?', 'Search performance data typically starts appearing within a few days, though it can take a few weeks to build up a useful amount of data for a new site.'],
+        ['Do I need Search Console if I already have Google Analytics?', 'Yes — they show different things. Analytics focuses on visitor behavior once they arrive at your site; Search Console focuses specifically on how your site appears and performs in Google Search.'],
+        ['What should I do if I see indexing errors?', 'Check the specific reason Google gives for each error, fix the underlying issue on the page, then use the URL inspection tool to request re-indexing once it is resolved.'],
+        ['Can Search Console tell me why my rankings dropped?', 'It can point you toward clues — like a drop in impressions for specific pages or new indexing issues — but it will not give you a single definitive reason. It is a diagnostic starting point, not a complete explanation on its own.'],
+        ['How often should I check Search Console?', "Once a month using a simple checklist is enough for most small businesses — checking daily usually just reacts to normal short-term fluctuations that aren't meaningful."],
+        ['What does it mean if a page is "Crawled - currently not indexed"?', "It means Google has seen the page but chose not to add it to the index, often due to thin or duplicate content. Improving the page's content quality and requesting re-indexing usually resolves this."],
+        ['Can I use Search Console for more than one website?', "Yes, you can add and manage multiple properties (websites) under a single Google Search Console account at no extra cost."],
+        ["Does Search Console show my competitors' data?", "No, it only shows data for properties you've verified ownership of. It can't show you competitor search performance directly."],
+        ['Is a high number of impressions but low clicks a bad sign?', "It usually means your page is appearing in search but the title or description isn't compelling enough to earn the click — a strong signal to improve your meta title and description for that page."],
     ];
     $breadcrumbSchema = ['@context' => 'https://schema.org', '@type' => 'BreadcrumbList', 'itemListElement' => [
         ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
@@ -37,7 +39,6 @@
     ]];
 @endphp
 <script type="application/ld+json">{!! json_encode($articleSchema) !!}</script>
-<script type="application/ld+json">{!! json_encode($faqSchema) !!}</script>
 <script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
 @endsection
 
@@ -118,19 +119,9 @@
 
             <h2>Mobile Usability: One More Report Worth Knowing</h2>
             <p>Search Console also flags mobile usability problems — text too small to read, clickable elements placed too close together, content wider than the screen. Since most search traffic now arrives on mobile devices, issues here have an outsized effect on both rankings and how visitors experience your site once they land on it.</p>
-
-            <h2>FAQs</h2>
-            <h3>Is Google Search Console free?</h3>
-            <p>Yes, it is completely free and available to any website owner who can verify ownership of the site.</p>
-            <h3>How long until Search Console shows data?</h3>
-            <p>Search performance data typically starts appearing within a few days, though it can take a few weeks to build up a useful amount of data for a new site.</p>
-            <h3>Do I need Search Console if I already have Google Analytics?</h3>
-            <p>Yes — they show different things. Analytics focuses on visitor behavior once they arrive at your site; Search Console focuses specifically on how your site appears and performs in Google Search.</p>
-            <h3>What should I do if I see indexing errors?</h3>
-            <p>Check the specific reason Google gives for each error, fix the underlying issue on the page, then use the URL inspection tool to request re-indexing once it is resolved.</p>
-            <h3>Can Search Console tell me why my rankings dropped?</h3>
-            <p>It can point you toward clues — like a drop in impressions for specific pages or new indexing issues — but it will not give you a single definitive reason. It is a diagnostic starting point, not a complete explanation on its own.</p>
         </div>
+
+        @include('partials.services-faq', ['faqs' => $faqs])
 
         @if($otherPosts->isNotEmpty())
         <div class="mt-16 pt-10" style="border-top: 1px solid var(--line);">

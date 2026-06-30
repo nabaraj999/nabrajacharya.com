@@ -119,19 +119,9 @@
 
             <h2>How to Get an Accurate Quote</h2>
             <p>The most useful thing you can do before requesting a quote is have a clear picture of your goals — more traffic, more local enquiries, better rankings for specific terms — since that shapes which package actually makes sense. I offer a free consultation before quoting on any SEO work; you can reach out through my <a href="{{ route('contact') }}">contact page</a>.</p>
-
-            <h2>FAQs</h2>
-            <h3>Is SEO a one-time cost?</h3>
-            <p>No. SEO is ongoing — search engines reward consistency, and competitors keep publishing content too, so rankings need to be maintained, not just achieved once.</p>
-            <h3>Why do SEO quotes vary so much between providers?</h3>
-            <p>Scope is the biggest factor — a basic technical audit costs far less than an ongoing package that includes content marketing and paid ads management. Experience level and reporting transparency also affect price.</p>
-            <h3>Should I be suspicious of a guaranteed #1 ranking?</h3>
-            <p>Yes. No one can honestly guarantee a specific Google ranking, since search algorithms and competition are outside any one person's control. Be cautious of anyone who promises this.</p>
-            <h3>How do I know if an SEO package is actually worth the price?</h3>
-            <p>Ask exactly what is included each month, how progress will be reported, and whether the work is specific to your site or a generic template applied to every client.</p>
-            <h3>Can I do basic SEO myself before hiring someone?</h3>
-            <p>Yes — setting up Google Business Profile and Search Console, and writing clear page titles, are reasonable starting points. A professional becomes more valuable for technical fixes and ongoing strategy.</p>
         </div>
+
+        @include('partials.services-faq', ['faqs' => $faqs])
 
         @if($otherPosts->isNotEmpty())
         <div class="mt-16 pt-10" style="border-top: 1px solid var(--line);">

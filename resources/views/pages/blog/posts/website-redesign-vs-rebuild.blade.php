@@ -18,15 +18,17 @@
         'mainEntityOfPage' => route('blog.website-redesign-vs-rebuild'),
         'timeRequired' => 'PT6M',
     ];
-    $faqSchema = [
-        '@context' => 'https://schema.org', '@type' => 'FAQPage',
-        'mainEntity' => [
-            ['@type' => 'Question', 'name' => 'Will a redesign affect my SEO rankings?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'It can, if URLs change without proper redirects. A well-planned redesign preserves existing SEO value; a careless one can lose it.']],
-            ['@type' => 'Question', 'name' => 'Is a rebuild always more expensive than a redesign?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Usually yes, since a rebuild involves more development work from the ground up. But if your current platform is fundamentally limiting you, a redesign on top of it can end up costing more in the long run than rebuilding properly once.']],
-            ['@type' => 'Question', 'name' => 'How do I know which one my site needs?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'If your platform and structure are sound and the issues are mostly visual or content-related, a redesign is usually enough. If the underlying platform itself is the limitation, a rebuild is the better long-term choice.']],
-            ['@type' => 'Question', 'name' => 'How long does a typical redesign take?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'A focused redesign of an existing site commonly takes three to six weeks, depending on how many pages and how much content needs to be reviewed and migrated.']],
-            ['@type' => 'Question', 'name' => 'Can I redesign my site without losing my existing content?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Yes — preserving existing content and SEO value is usually a primary goal of a redesign, not something sacrificed for a new look.']],
-        ],
+    $faqs = [
+        ['Will a redesign affect my SEO rankings?', 'It can, if URLs change without proper redirects. A well-planned redesign preserves existing SEO value; a careless one can lose it.'],
+        ['Is a rebuild always more expensive than a redesign?', 'Usually yes, since a rebuild involves more development work from the ground up. But if your current platform is fundamentally limiting you, a redesign on top of it can end up costing more in the long run than rebuilding properly once.'],
+        ['How do I know which one my site needs?', 'If your platform and structure are sound and the issues are mostly visual or content-related, a redesign is usually enough. If the underlying platform itself is the limitation, a rebuild is the better long-term choice.'],
+        ['How long does a typical redesign take?', 'A focused redesign of an existing site commonly takes three to six weeks, depending on how many pages and how much content needs to be reviewed and migrated.'],
+        ['Can I redesign my site without losing my existing content?', 'Yes — preserving existing content and SEO value is usually a primary goal of a redesign, not something sacrificed for a new look.'],
+        ['How long does a full rebuild typically take?', "A rebuild generally takes longer than a redesign — often 6-12 weeks depending on complexity, since the technical foundation, content migration, and redirects all need to be planned and tested carefully."],
+        ['Can I do a partial rebuild instead of redesigning or rebuilding everything?', "Yes, a phased approach is sometimes the right call — fixing the most urgent technical issues first while planning a fuller change later, as long as the phased work doesn't create rework down the line."],
+        ['What happens to my old URLs during a rebuild?', "Proper redirects should be set up from every old URL to its new equivalent — this is the single most important step to avoid losing search rankings during a platform change."],
+        ['Should I rebuild if my site was built by a developer I can no longer reach?', "This is one of the clearest signs a rebuild is the safer path — an undocumented, unmaintainable codebase makes even small future changes risky and expensive."],
+        ['Is it possible to redesign and add new features at the same time?', "Yes, a redesign is a natural opportunity to add features like a blog, better contact forms, or improved navigation, as long as the underlying platform can support them without needing a rebuild."],
     ];
     $breadcrumbSchema = ['@context' => 'https://schema.org', '@type' => 'BreadcrumbList', 'itemListElement' => [
         ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
@@ -35,7 +37,6 @@
     ]];
 @endphp
 <script type="application/ld+json">{!! json_encode($articleSchema) !!}</script>
-<script type="application/ld+json">{!! json_encode($faqSchema) !!}</script>
 <script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
 @endsection
 
@@ -116,19 +117,9 @@
 
             <h2>One Question Worth Asking Before Either Path</h2>
             <p>Whoever you ask to evaluate your site — whether that's me or another developer — a useful question to ask directly is: "If this were your own business, would you redesign or rebuild?" A straight answer to that question, with reasoning attached, tends to reveal more than a generic sales pitch toward whichever service is more profitable to sell.</p>
-
-            <h2>FAQs</h2>
-            <h3>Will a redesign affect my SEO rankings?</h3>
-            <p>It can, if URLs change without proper redirects. A well-planned redesign preserves existing SEO value; a careless one can lose it.</p>
-            <h3>Is a rebuild always more expensive than a redesign?</h3>
-            <p>Usually yes, since a rebuild involves more development work from the ground up. But if your current platform is fundamentally limiting you, a redesign on top of it can end up costing more in the long run than rebuilding properly once.</p>
-            <h3>How do I know which one my site needs?</h3>
-            <p>If your platform and structure are sound and the issues are mostly visual or content-related, a redesign is usually enough. If the underlying platform itself is the limitation, a rebuild is the better long-term choice.</p>
-            <h3>How long does a typical redesign take?</h3>
-            <p>A focused redesign of an existing site commonly takes three to six weeks, depending on how many pages and how much content needs to be reviewed and migrated.</p>
-            <h3>Can I redesign my site without losing my existing content?</h3>
-            <p>Yes — preserving existing content and SEO value is usually a primary goal of a redesign, not something sacrificed for a new look.</p>
         </div>
+
+        @include('partials.services-faq', ['faqs' => $faqs])
 
         @if($otherPosts->isNotEmpty())
         <div class="mt-16 pt-10" style="border-top: 1px solid var(--line);">

@@ -20,15 +20,17 @@
         'mainEntityOfPage' => route('blog.laravel-performance-mistakes-nepal'),
         'timeRequired' => 'PT6M',
     ];
-    $faqSchema = [
-        '@context' => 'https://schema.org', '@type' => 'FAQPage',
-        'mainEntity' => [
-            ['@type' => 'Question', 'name' => 'Why is my Laravel website slow?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'The most common causes are unoptimized database queries (the N+1 problem), missing caching, and unoptimized images. Most slow Laravel sites have one or more of these issues.']],
-            ['@type' => 'Question', 'name' => 'Does Laravel itself cause slow websites?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => "No. Laravel is built for performance when used correctly. Slowness almost always comes from how the application code, database queries, and server are configured, not the framework itself."]],
-            ['@type' => 'Question', 'name' => 'How do I know what is making my site slow?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => "Laravel has built-in tools like Laravel Debugbar and Telescope that show exactly which queries and processes are taking the most time on each page load."]],
-            ['@type' => 'Question', 'name' => 'Can hosting also cause performance issues?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Yes — underpowered shared hosting or a server in a distant region from your visitors can add noticeable delay regardless of how well the application code is written.']],
-            ['@type' => 'Question', 'name' => 'Will fixing performance issues affect my SEO?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Yes, positively. Page speed is part of Google\'s Core Web Vitals, which factor into search rankings, so performance fixes often improve both user experience and SEO together.']],
-        ],
+    $faqs = [
+        ['Why is my Laravel website slow?', 'The most common causes are unoptimized database queries (the N+1 problem), missing caching, and unoptimized images. Most slow Laravel sites have one or more of these issues.'],
+        ['Does Laravel itself cause slow websites?', "No. Laravel is built for performance when used correctly. Slowness almost always comes from how the application code, database queries, and server are configured, not the framework itself."],
+        ['How do I know what is making my site slow?', "Laravel has built-in tools like Laravel Debugbar and Telescope that show exactly which queries and processes are taking the most time on each page load."],
+        ['Can hosting also cause performance issues?', 'Yes — underpowered shared hosting or a server in a distant region from your visitors can add noticeable delay regardless of how well the application code is written.'],
+        ['Will fixing performance issues affect my SEO?', "Yes, positively. Page speed is part of Google's Core Web Vitals, which factor into search rankings, so performance fixes often improve both user experience and SEO together."],
+        ['How often should I run a performance audit on my Laravel site?', "Every few months, or right after adding a major feature, is a reasonable cadence — performance tends to degrade gradually as a site grows rather than break suddenly."],
+        ['Can I fix N+1 query problems without rewriting my whole app?', "Yes, in most cases eager loading with Laravel's with() method can be added incrementally to existing queries without restructuring the application."],
+        ['Does adding more server resources fix a slow Laravel app?', "It can mask the symptom temporarily, but if the root cause is inefficient queries or missing caching, scaling up hosting just delays the problem rather than solving it."],
+        ['What is the easiest performance win for a small site?', "Image optimization is usually the fastest, lowest-effort win — compressing and properly sizing images often produces a noticeable speed improvement with minimal code changes."],
+        ["Should I use Redis or just Laravel's default file cache?", "File caching works fine for small sites, but Redis becomes worthwhile once you have meaningful traffic, since it's significantly faster and handles concurrent requests more efficiently."],
     ];
     $breadcrumbSchema = ['@context' => 'https://schema.org', '@type' => 'BreadcrumbList', 'itemListElement' => [
         ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
@@ -37,7 +39,6 @@
     ]];
 @endphp
 <script type="application/ld+json">{!! json_encode($articleSchema) !!}</script>
-<script type="application/ld+json">{!! json_encode($faqSchema) !!}</script>
 <script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
 @endsection
 
@@ -118,19 +119,9 @@
 
             <h2>Final Thoughts</h2>
             <p>Performance issues are almost always fixable without a rebuild — it's usually a handful of specific, identifiable problems rather than something fundamentally wrong with the application. If your site has been getting slower as it grows, this is exactly the kind of work I do under <a href="{{ route('services.software-engineering') }}">software engineering</a> and ongoing <a href="{{ route('services.website-support-maintenance') }}">website support</a>.</p>
-
-            <h2>FAQs</h2>
-            <h3>Why is my Laravel website slow?</h3>
-            <p>The most common causes are unoptimized database queries (the N+1 problem), missing caching, and unoptimized images. Most slow Laravel sites have one or more of these issues.</p>
-            <h3>Does Laravel itself cause slow websites?</h3>
-            <p>No. Laravel is built for performance when used correctly. Slowness almost always comes from how the application code, database queries, and server are configured, not the framework itself.</p>
-            <h3>How do I know what is making my site slow?</h3>
-            <p>Laravel has built-in tools like Laravel Debugbar and Telescope that show exactly which queries and processes are taking the most time on each page load.</p>
-            <h3>Can hosting also cause performance issues?</h3>
-            <p>Yes — underpowered shared hosting or a server in a distant region from your visitors can add noticeable delay regardless of how well the application code is written.</p>
-            <h3>Will fixing performance issues affect my SEO?</h3>
-            <p>Yes, positively. Page speed is part of Google's Core Web Vitals, which factor into search rankings, so performance fixes often improve both user experience and SEO together.</p>
         </div>
+
+        @include('partials.services-faq', ['faqs' => $faqs])
 
         @if($otherPosts->isNotEmpty())
         <div class="mt-16 pt-10" style="border-top: 1px solid var(--line);">

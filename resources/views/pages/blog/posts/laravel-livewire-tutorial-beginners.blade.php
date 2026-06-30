@@ -20,16 +20,17 @@
         'mainEntityOfPage' => route('blog.laravel-livewire-tutorial-beginners'),
         'timeRequired' => 'PT6M',
     ];
-    $faqSchema = [
-        '@context' => 'https://schema.org', '@type' => 'FAQPage',
-        'mainEntity' => [
-            ['@type' => 'Question', 'name' => 'Do I need to know JavaScript to use Livewire?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'No — that is the main appeal of Livewire. You write the interactive logic in PHP, and Livewire handles updating the page for you.']],
-            ['@type' => 'Question', 'name' => 'Is Livewire a replacement for Vue or React?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => "Not exactly. Livewire is great for most CRUD-heavy business applications. For highly complex, app-like interfaces, a dedicated JavaScript framework can still make more sense."]],
-            ['@type' => 'Question', 'name' => 'Is Livewire slower than a JavaScript framework?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => "There is some network overhead since it talks to the server more often, but for most business applications the difference is not noticeable, and the development speed gain is significant."]],
-            ['@type' => 'Question', 'name' => 'Does Livewire work with Tailwind and Alpine.js?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => "Yes, the three are commonly used together. Livewire handles server-driven state, while Alpine handles small client-side touches like toggling a dropdown, without needing a full framework for either job."]],
-            ['@type' => 'Question', 'name' => 'Can I use Livewire in an existing Laravel project?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => "Yes, it installs as a regular Composer package and can be added to an existing project incrementally, component by component, without rewriting what already works."]],
-            ['@type' => 'Question', 'name' => 'How do Livewire components talk to each other?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => "Components can communicate through Livewire's built-in event system, where one component dispatches an event and another listens for it, without either needing direct knowledge of the other's internal structure."]],
-        ],
+    $faqs = [
+        ['Do I need to know JavaScript to use Livewire?', 'No — that is the main appeal of Livewire. You write the interactive logic in PHP, and Livewire handles updating the page for you.'],
+        ['Is Livewire a replacement for Vue or React?', "Not exactly. Livewire is great for most CRUD-heavy business applications. For highly complex, app-like interfaces, a dedicated JavaScript framework can still make more sense."],
+        ['Is Livewire slower than a JavaScript framework?', "There is some network overhead since it talks to the server more often, but for most business applications the difference is not noticeable, and the development speed gain is significant."],
+        ['Does Livewire work with Tailwind and Alpine.js?', "Yes, the three are commonly used together. Livewire handles server-driven state, while Alpine handles small client-side touches like toggling a dropdown, without needing a full framework for either job."],
+        ['Can I use Livewire in an existing Laravel project?', "Yes, it installs as a regular Composer package and can be added to an existing project incrementally, component by component, without rewriting what already works."],
+        ["How do Livewire components talk to each other?", "Components can communicate through Livewire's built-in event system, where one component dispatches an event and another listens for it, without either needing direct knowledge of the other's internal structure."],
+        ['Does Livewire require a build step like webpack or Vite?', "No build step is required to use Livewire's core functionality — components work directly with Blade and PHP, which is part of why it's approachable for backend-focused developers."],
+        ['Can Livewire handle file uploads?', "Yes, Livewire has built-in support for file uploads, including validation and temporary storage, without needing a separate JavaScript upload library."],
+        ['Is Livewire suitable for a public-facing marketing website?', "It can be, but it's most valuable for interactive, data-driven features like dashboards and forms — a simple marketing page usually doesn't need it."],
+        ['What version of Laravel do I need to use Livewire?', "Livewire works with modern Laravel versions; checking the current Livewire documentation for exact compatibility is worthwhile before starting a new project."],
     ];
     $breadcrumbSchema = ['@context' => 'https://schema.org', '@type' => 'BreadcrumbList', 'itemListElement' => [
         ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
@@ -38,7 +39,6 @@
     ]];
 @endphp
 <script type="application/ld+json">{!! json_encode($articleSchema) !!}</script>
-<script type="application/ld+json">{!! json_encode($faqSchema) !!}</script>
 <script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
 @endsection
 
@@ -135,21 +135,9 @@ class Counter extends Component
 
             <h2>Final Thoughts</h2>
             <p>Livewire is one of the more practical additions to the Laravel ecosystem in recent years — it lets a backend-focused developer build genuinely interactive features without becoming a JavaScript specialist first. It's part of the toolkit I use on relevant projects under <a href="{{ route('services.web-development') }}">web development</a> and <a href="{{ route('services.software-engineering') }}">software engineering</a>.</p>
-
-            <h2>FAQs</h2>
-            <h3>Do I need to know JavaScript to use Livewire?</h3>
-            <p>No — that is the main appeal of Livewire. You write the interactive logic in PHP, and Livewire handles updating the page for you.</p>
-            <h3>Is Livewire a replacement for Vue or React?</h3>
-            <p>Not exactly. Livewire is great for most CRUD-heavy business applications. For highly complex, app-like interfaces, a dedicated JavaScript framework can still make more sense.</p>
-            <h3>Is Livewire slower than a JavaScript framework?</h3>
-            <p>There is some network overhead since it talks to the server more often, but for most business applications the difference is not noticeable, and the development speed gain is significant.</p>
-            <h3>Does Livewire work with Tailwind and Alpine.js?</h3>
-            <p>Yes, the three are commonly used together. Livewire handles server-driven state, while Alpine handles small client-side touches like toggling a dropdown, without needing a full framework for either job.</p>
-            <h3>Can I use Livewire in an existing Laravel project?</h3>
-            <p>Yes, it installs as a regular Composer package and can be added to an existing project incrementally, component by component, without rewriting what already works.</p>
-            <h3>How do Livewire components talk to each other?</h3>
-            <p>Components can communicate through Livewire's built-in event system, where one component dispatches an event and another listens for it, without either needing direct knowledge of the other's internal structure.</p>
         </div>
+
+        @include('partials.services-faq', ['faqs' => $faqs])
 
         @if($otherPosts->isNotEmpty())
         <div class="mt-16 pt-10" style="border-top: 1px solid var(--line);">
