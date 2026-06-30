@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $seo->meta_title ?? 'Blog — Laravel, SEO & Web Development Insights | SEO Specialist in Nepal')
+@section('title', $seo->meta_title ?? 'TechNabu Blog | Laravel & SEO Insights')
 @section('description', $seo->meta_description ?? 'Read practical Laravel and SEO insights from an SEO Specialist in Nepal, with local strategy notes for Khotang and Lalitpur.')
 @section('keywords', $seo->meta_keywords ?? 'laravel blog nepal, seo blog nepal, seo specialist in nepal, seo specialist in khotang, seo specialist in lalitpur, seo specalist in khotang, seo specalist in lalitpur')
 @section('canonical', route('blog.index'))
@@ -9,6 +9,12 @@
 @section('twitter_title', $seo->twitter_title ?? 'TechNabu Blog | Laravel, SEO and Web Growth Insights')
 @section('twitter_description', $seo->twitter_description ?? 'Explore practical Laravel tutorials, SEO strategies, and growth notes from real-world client work in Nepal.')
 @section('og_type', 'blog')
+@php $blogOgPost = collect(\App\Http\Controllers\BlogController::posts())->first(fn ($p) => $p['image']); @endphp
+@if($blogOgPost)
+@section('og_image', asset('storage/'.$blogOgPost['image']))
+@section('twitter_image', asset('storage/'.$blogOgPost['image']))
+@section('og_image_alt', 'TechNabu Blog — Laravel & SEO Insights')
+@endif
 
 @section('schema')
 <script type="application/ld+json">

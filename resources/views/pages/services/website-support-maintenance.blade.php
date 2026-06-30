@@ -4,6 +4,11 @@
 @section('description', 'Ongoing updates, security patches, and technical support to keep your website running smoothly after launch.')
 @section('keywords', 'website maintenance nepal, website support nepal, laravel maintenance nepal, nabaraj acharya')
 @section('canonical', route('services.website-support-maintenance'))
+@if($service->photo)
+@section('og_image', asset('storage/'.$service->photo))
+@section('twitter_image', asset('storage/'.$service->photo))
+@section('og_image_alt', $service->service_name . ' in Nepal — ' . ($personal->brand_name ?? 'Nabaraj Acharya'))
+@endif
 
 @section('schema')
 @php

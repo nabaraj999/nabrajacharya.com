@@ -1,9 +1,15 @@
 @extends('layouts.app')
 
-@section('title', $seo->meta_title ?? 'Gallery — Selected Works & Visual Snapshots | Nabaraj Acharya')
+@section('title', $seo->meta_title ?? 'Gallery — Selected Works | Nabaraj Acharya')
 @section('description', $seo->meta_description ?? 'Explore project visuals and creative snapshots by a Full Stack Developer and SEO Specialist in Nepal, serving Khotang and Lalitpur.')
 @section('keywords', $seo->meta_keywords ?? 'gallery web projects nepal, design gallery, project visuals, seo specialist in nepal, seo specialist in khotang, seo specialist in lalitpur, seo specalist in khotang, seo specalist in lalitpur')
 @section('canonical', route('gallery.index'))
+@php $galleryOgItem = $galleryItems->first(fn ($g) => $g->image_path); @endphp
+@if($galleryOgItem)
+@section('og_image', asset('storage/'.$galleryOgItem->image_path))
+@section('twitter_image', asset('storage/'.$galleryOgItem->image_path))
+@section('og_image_alt', 'Gallery — Selected Works by Nabaraj Acharya')
+@endif
 
 @section('schema')
 @php

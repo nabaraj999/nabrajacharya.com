@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @php
-    $defaultTitle = 'Web Developer in Nepal | SEO Specialist in Nepal | Nabaraj Acharya';
+    $defaultTitle = 'Web Development & SEO Services in Nepal';
     $defaultDescription = 'Web development in Nepal, SEO specialist services, website redesign, and ecommerce website development in Nepal — by a Laravel developer based in Lalitpur serving Kathmandu and beyond.';
     $defaultKeywords = 'web development nepal, web developer nepal, seo specialist in nepal, website redesign, ecommerce website development in nepal, website development lalitpur, laravel developer nepal, technical seo nepal, digital marketing nepal';
+    $servicesOgImage = $services->first(fn ($s) => $s->photo);
 @endphp
 
 @section('title', $defaultTitle)
@@ -14,6 +15,11 @@
 @section('og_description', $defaultDescription)
 @section('twitter_title', $defaultTitle)
 @section('twitter_description', $defaultDescription)
+@if($servicesOgImage)
+@section('og_image', asset('storage/'.$servicesOgImage->photo))
+@section('twitter_image', asset('storage/'.$servicesOgImage->photo))
+@section('og_image_alt', 'Web Development & SEO Services in Nepal')
+@endif
 
 @section('schema')
 @php
@@ -78,6 +84,16 @@
     </div>
 </section>
 
+{{-- Quick Answer (AEO / GEO) --}}
+<section class="pt-6 reveal">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        @php
+            $quickAnswer = 'TechNabu offers web development, WordPress development, e-commerce development, API and app development, software engineering, website redesigns, domain and hosting setup, ongoing website support, and SEO & social media marketing — all delivered by ' . ($personal->brand_name ?? 'Nabaraj Acharya') . ', a Full Stack Developer and SEO Specialist based in Lalitpur, Nepal.';
+        @endphp
+        @include('partials.services-quick-answer')
+    </div>
+</section>
+
 <section class="py-12 md:py-16 reveal">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
         @if($services->isEmpty())
@@ -111,6 +127,27 @@
                 @endforeach
             </div>
         @endif
+    </div>
+</section>
+
+{{-- FAQ (AEO / GEO) --}}
+<section class="py-12 md:py-16 reveal">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-10">
+            <p class="section-tag">Common Questions</p>
+            <h2 class="kk-h2">Services FAQ</h2>
+        </div>
+        @php
+            $faqs = [
+                ['What services does TechNabu offer?', 'Web development, WordPress development, e-commerce development, API and app development, software engineering, website redesigns, domain and hosting setup, ongoing website support, and SEO & social media marketing.'],
+                ['Which service is right for a small business just getting started?', 'Web Development covers most new business sites; if you already have a site that needs to look more current, Website Redesign & Revamp is usually the better starting point.'],
+                ['Do you offer SEO alongside development, or only one or the other?', 'Both — every development project includes on-page SEO fundamentals, and SEO & Social Media Marketing is also available as a standalone, ongoing service.'],
+                ['How do I know which service fits my project?', "Describe what you're trying to build or fix on the contact page, and I'll point you to the right service — or a combination of a few — based on your actual situation."],
+                ['Do you work with WordPress as well as Laravel?', 'Yes, both are covered — Laravel for custom applications, WordPress for content-driven sites and stores that benefit from its ecosystem.'],
+                ['Can these services be combined into one project?', 'Yes, most real projects combine more than one service — for example, a website redesign with ongoing SEO, or a new build with a support plan attached.'],
+            ];
+        @endphp
+        @include('partials.services-faq')
     </div>
 </section>
 

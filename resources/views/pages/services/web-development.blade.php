@@ -4,6 +4,11 @@
 @section('description', 'Web development in Nepal by a Laravel-focused web developer in Nepal — responsive, fast, SEO-friendly websites and web applications for Lalitpur, Kathmandu, and beyond.')
 @section('keywords', 'web development nepal, web developer nepal, web development in lalitpur, laravel developer nepal, website development kathmandu, nabaraj acharya')
 @section('canonical', route('services.web-development'))
+@if($service->photo)
+@section('og_image', asset('storage/'.$service->photo))
+@section('twitter_image', asset('storage/'.$service->photo))
+@section('og_image_alt', $service->service_name . ' in Nepal — ' . ($personal->brand_name ?? 'Nabaraj Acharya'))
+@endif
 
 @section('schema')
 @php

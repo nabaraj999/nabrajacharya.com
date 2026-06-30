@@ -1,9 +1,15 @@
 @extends('layouts.app')
 
-@section('title', $seo->meta_title ?? 'Portfolio — Full Stack Developer Nepal | Laravel Projects | Nabaraj Acharya')
+@section('title', $seo->meta_title ?? 'Portfolio — Full Stack Developer Nepal')
 @section('description', $seo->meta_description ?? 'Explore the web development portfolio of Nabaraj Acharya — Full Stack Developer Nepal. Laravel applications, custom web apps, and SEO-optimised projects.')
 @section('keywords', $seo->meta_keywords ?? 'portfolio full stack developer nepal, laravel projects nepal, web development portfolio nepal, nabaraj acharya projects')
 @section('canonical', route('portfolio'))
+@php $portfolioOgProject = $projects->first(fn ($p) => $p->image_url); @endphp
+@if($portfolioOgProject)
+@section('og_image', asset('storage/'.$portfolioOgProject->image_url))
+@section('twitter_image', asset('storage/'.$portfolioOgProject->image_url))
+@section('og_image_alt', 'Portfolio — Full Stack Developer Nepal')
+@endif
 
 @section('schema')
 @php
@@ -41,6 +47,16 @@
         <p class="text-base leading-relaxed" style="color: var(--ink-dim);">
             Laravel applications, custom web solutions, and SEO-focused projects built for businesses in Nepal and Australia.
         </p>
+    </div>
+</section>
+
+{{-- Quick Answer (AEO / GEO) --}}
+<section class="pt-6 reveal">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        @php
+            $quickAnswer = ($personal->brand_name ?? 'Nabaraj Acharya') . ' has completed ' . ($personal->completed_projects ?? '30') . '+ projects, including business websites, e-commerce stores, custom Laravel applications, and SEO engagements, for clients in Nepal and Australia.';
+        @endphp
+        @include('partials.services-quick-answer')
     </div>
 </section>
 
@@ -126,6 +142,26 @@
                 @endforeach
             </div>
         @endif
+    </div>
+</section>
+
+{{-- FAQ (AEO / GEO) --}}
+<section class="py-12 md:py-16 reveal">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-10">
+            <p class="section-tag">Common Questions</p>
+            <h2 class="kk-h2">Portfolio FAQ</h2>
+        </div>
+        @php
+            $faqs = [
+                ['What types of projects are in this portfolio?', 'Business websites, e-commerce stores, custom Laravel web applications, and SEO engagements — filterable above by type and by skill.'],
+                ['Are these projects for real clients?', 'Yes, each project reflects real client needs and the practical solutions built to address them, not demo or placeholder work.'],
+                ['Can I see a live link for a project?', "Most listings include a live link where the project is still publicly accessible — click into a project's detail page to check."],
+                ['Do you take on projects similar to these?', 'Yes — if a project here is close to what you need, mention it on the contact page and I can scope something similar.'],
+                ['Why don\'t all projects show traffic or SEO results?', 'Detailed traffic growth figures are shown for SEO-type projects where that data is the relevant outcome; development-focused projects highlight functionality and technical scope instead.'],
+            ];
+        @endphp
+        @include('partials.services-faq')
     </div>
 </section>
 

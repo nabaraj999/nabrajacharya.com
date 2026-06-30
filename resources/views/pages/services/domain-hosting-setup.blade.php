@@ -4,6 +4,11 @@
 @section('description', 'Getting your site online the right way the first time — domain registration, hosting setup, and DNS configuration.')
 @section('keywords', 'domain registration nepal, web hosting setup nepal, dns configuration nepal, nabaraj acharya')
 @section('canonical', route('services.domain-hosting-setup'))
+@if($service->photo)
+@section('og_image', asset('storage/'.$service->photo))
+@section('twitter_image', asset('storage/'.$service->photo))
+@section('og_image_alt', $service->service_name . ' in Nepal — ' . ($personal->brand_name ?? 'Nabaraj Acharya'))
+@endif
 
 @section('schema')
 @php

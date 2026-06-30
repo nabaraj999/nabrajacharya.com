@@ -4,6 +4,11 @@
 @section('description', 'Robust, well-architected custom software systems — clean backend logic, solid database design, and maintainable code built to scale.')
 @section('keywords', 'software engineer nepal, custom software development nepal, backend developer nepal, nabaraj acharya')
 @section('canonical', route('services.software-engineering'))
+@if($service->photo)
+@section('og_image', asset('storage/'.$service->photo))
+@section('twitter_image', asset('storage/'.$service->photo))
+@section('og_image_alt', $service->service_name . ' in Nepal — ' . ($personal->brand_name ?? 'Nabaraj Acharya'))
+@endif
 
 @section('schema')
 @php

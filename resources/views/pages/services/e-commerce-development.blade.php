@@ -4,6 +4,11 @@
 @section('description', 'Ecommerce website development in Nepal — custom Laravel-based online stores with secure payment gateways, inventory management, and conversion-focused design for Lalitpur and Kathmandu businesses.')
 @section('keywords', 'ecommerce website development in nepal, ecommerce development nepal, online store developer nepal, laravel ecommerce nepal, ecommerce website lalitpur, nabaraj acharya')
 @section('canonical', route('services.e-commerce-development'))
+@if($service->photo)
+@section('og_image', asset('storage/'.$service->photo))
+@section('twitter_image', asset('storage/'.$service->photo))
+@section('og_image_alt', $service->service_name . ' in Nepal — ' . ($personal->brand_name ?? 'Nabaraj Acharya'))
+@endif
 
 @section('schema')
 @php

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @php
-    $defaultTitle = 'Full Stack Developer in Nepal | Web Developer in Nepal | Nabaraj Acharya';
+    $defaultTitle = 'About Nabaraj Acharya — Full Stack Developer Nepal';
     $defaultDescription = 'About Nabaraj Acharya, a Full Stack Developer in Nepal and Web Developer in Nepal building Laravel, PHP, and SEO-driven websites for businesses in Nepal and beyond.';
     $defaultKeywords = 'full stack developer in nepal, web developer in nepal, full stack developer nepal, laravel developer nepal, php developer nepal, nabaraj acharya, website developer in nepal, seo friendly web developer nepal';
 @endphp
@@ -14,6 +14,12 @@
 @section('og_description', $defaultDescription)
 @section('twitter_title', $defaultTitle)
 @section('twitter_description', $defaultDescription)
+@php $aboutImage = $personal->about_photo ?? $personal->logo_url ?? null; @endphp
+@if($aboutImage)
+@section('og_image', Storage::url($aboutImage))
+@section('twitter_image', Storage::url($aboutImage))
+@section('og_image_alt', ($personal->brand_name ?? 'Nabaraj Acharya') . ' — Full Stack Developer Nepal')
+@endif
 
 @section('schema')
 @php
@@ -29,10 +35,12 @@ $aboutSchema = [
         'jobTitle' => 'Full Stack Developer in Nepal',
         'description' => 'Web Developer in Nepal focused on Laravel, PHP, modern websites, and technical SEO.',
         'url'      => 'https://nabrajacharya.com.np',
-        'worksFor' => ['@type' => 'Organization', 'name' => $personal->current_company ?? 'TechAble Australia'],
         'knowsAbout' => ['Laravel development', 'PHP development', 'full stack development', 'web development', 'technical SEO'],
     ],
 ];
+if ($personal && $personal->current_company) {
+    $aboutSchema['mainEntity']['worksFor'] = ['@type' => 'Organization', 'name' => $personal->current_company, 'url' => $personal->current_company_url ?? ''];
+}
 $breadcrumbSchema = [
     '@context' => 'https://schema.org',
     '@type' => 'BreadcrumbList',
@@ -59,6 +67,16 @@ $breadcrumbSchema = [
             <span class="mx-1">&rsaquo;</span>
             <span style="color: var(--accent);">About</span>
         </p>
+    </div>
+</section>
+
+{{-- Quick Answer (AEO / GEO) --}}
+<section class="pt-10 reveal">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        @php
+            $quickAnswer = ($personal->brand_name ?? 'Nabaraj Acharya') . ' is a Full Stack Developer and SEO Specialist based in Lalitpur, Nepal, trading as TechNabu, with ' . ($personal->years_experience ?? '3') . '+ years of experience building Laravel applications and growing search visibility for businesses in Nepal and abroad.';
+        @endphp
+        @include('partials.services-quick-answer')
     </div>
 </section>
 
@@ -318,6 +336,28 @@ $breadcrumbSchema = [
 </section>
 @endif
 
+
+{{-- FAQ (AEO / GEO) --}}
+<section class="py-12 md:py-16 reveal">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-10">
+            <p class="section-tag">Common Questions</p>
+            <h2 class="kk-h2">About Nabaraj Acharya</h2>
+        </div>
+        @php
+            $faqs = [
+                ['What does Nabaraj Acharya do?', 'He is a Full Stack Developer and SEO Specialist based in Lalitpur, Nepal, building Laravel web applications and providing technical SEO services for businesses in Nepal and abroad, trading as TechNabu.'],
+                ['How many years of experience does he have?', ($personal->years_experience ?? '3') . '+ years of professional experience, with ' . ($personal->completed_projects ?? '30') . '+ completed projects for ' . ($personal->happy_clients ?? '10') . '+ clients.'],
+                ['What technologies does he specialize in?', 'Laravel, PHP, MySQL, Tailwind CSS, and Alpine.js for development, alongside technical SEO, Google Search Console, and Google Analytics 4 for search growth.'],
+                ['Is he available for freelance or contract work?', 'Yes — freelance projects, consulting, and ongoing support engagements are all available; see the contact page to discuss a project.'],
+                ['Does he work with clients outside Nepal?', 'Yes, alongside clients across Nepal he works with international clients, including businesses in Australia.'],
+                ['What kind of projects has he worked on?', 'Business websites, custom Laravel web applications, e-commerce stores, and SEO engagements — examples are documented on the portfolio page.'],
+                ['Does he offer both development and SEO under one engagement?', 'Yes — combining Laravel development with technical SEO is a core part of how he works, so search visibility is built in from the start rather than added later.'],
+            ];
+        @endphp
+        @include('partials.services-faq')
+    </div>
+</section>
 
 {{-- CTA --}}
 <section class="py-12 md:py-20 reveal">

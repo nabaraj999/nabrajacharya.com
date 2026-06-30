@@ -4,6 +4,11 @@
 @section('description', 'Secure, well-documented REST API development connecting your web and mobile apps with clean architecture and reliable data flow.')
 @section('keywords', 'api development nepal, rest api developer nepal, laravel api nepal, nabaraj acharya')
 @section('canonical', route('services.api-development'))
+@if($service->photo)
+@section('og_image', asset('storage/'.$service->photo))
+@section('twitter_image', asset('storage/'.$service->photo))
+@section('og_image_alt', $service->service_name . ' in Nepal — ' . ($personal->brand_name ?? 'Nabaraj Acharya'))
+@endif
 
 @section('schema')
 @php

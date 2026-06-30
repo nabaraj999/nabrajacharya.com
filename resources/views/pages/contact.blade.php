@@ -1,9 +1,15 @@
 @extends('layouts.app')
 
-@section('title', $seo->meta_title ?? 'Hire a Full Stack Developer Nepal — Contact Nabaraj Acharya')
+@section('title', $seo->meta_title ?? 'Contact Nabaraj Acharya — Hire a Developer in Nepal')
 @section('description', $seo->meta_description ?? 'Contact Nabaraj Acharya, Full Stack Developer and SEO Specialist in Nepal. Available for Laravel development and SEO consulting in Khotang and Lalitpur.')
 @section('keywords', $seo->meta_keywords ?? 'hire full stack developer nepal, contact laravel developer nepal, seo specialist in nepal, seo specialist in khotang, seo specialist in lalitpur, seo specalist in khotang, seo specalist in lalitpur')
 @section('canonical', route('contact'))
+@php $contactImage = $personal->about_photo ?? $personal->profile_photo ?? $personal->logo_url ?? null; @endphp
+@if($contactImage)
+@section('og_image', Storage::url($contactImage))
+@section('twitter_image', Storage::url($contactImage))
+@section('og_image_alt', 'Contact ' . ($personal->brand_name ?? 'Nabaraj Acharya'))
+@endif
 
 @section('schema')
 @php

@@ -4,6 +4,11 @@
 @section('description', 'SEO specialist in Nepal offering technical SEO, on-page optimization, Meta Ads, Google Ads (PPC), and content marketing for businesses in Kathmandu, Lalitpur, and beyond.')
 @section('keywords', 'seo specialist in nepal, seo expert nepal, seo company in nepal, social media marketing nepal, ppc ads nepal, meta ads nepal, content marketing nepal, nabaraj acharya')
 @section('canonical', route('services.seo-social-media-marketing'))
+@if($service->photo)
+@section('og_image', asset('storage/'.$service->photo))
+@section('twitter_image', asset('storage/'.$service->photo))
+@section('og_image_alt', $service->service_name . ' in Nepal — ' . ($personal->brand_name ?? 'Nabaraj Acharya'))
+@endif
 
 @section('schema')
 @php

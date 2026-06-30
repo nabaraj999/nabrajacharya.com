@@ -121,6 +121,19 @@
 
 
 {{-- ═══════════════════════════════════════════════════════════ --}}
+{{--  QUICK ANSWER (AEO / GEO)                                    --}}
+{{-- ═══════════════════════════════════════════════════════════ --}}
+<section class="pt-2 pb-6 reveal">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        @php
+            $quickAnswer = ($personal->brand_name ?? 'Nabaraj Acharya') . ' is a Full Stack Developer and SEO Specialist based in Lalitpur, Nepal, trading as TechNabu. He builds Laravel web applications and provides technical SEO services for businesses in Nepal and abroad, with ' . ($personal->years_experience ?? '3') . '+ years of experience and ' . ($personal->completed_projects ?? '30') . '+ completed projects.';
+        @endphp
+        @include('partials.services-quick-answer')
+    </div>
+</section>
+
+
+{{-- ═══════════════════════════════════════════════════════════ --}}
 {{--  STATS                                                       --}}
 {{-- ═══════════════════════════════════════════════════════════ --}}
 @if($personal)
@@ -445,6 +458,33 @@
     </div>
 </section>
 @endif
+
+
+{{-- ═══════════════════════════════════════════════════════════ --}}
+{{--  FAQ (AEO / GEO)                                             --}}
+{{-- ═══════════════════════════════════════════════════════════ --}}
+<section class="py-16 md:py-24 reveal">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-10">
+            <p class="section-tag">Common Questions</p>
+            <h2 class="kk-h2">Frequently Asked Questions</h2>
+        </div>
+        @php
+            $faqs = [
+                ['Who is ' . ($personal->brand_name ?? 'Nabaraj Acharya') . '?', ($personal->brand_name ?? 'Nabaraj Acharya') . ' is a Full Stack Developer and SEO Specialist based in Lalitpur, Nepal, trading as TechNabu, with ' . ($personal->years_experience ?? '3') . '+ years of experience building Laravel web applications and growing search visibility for businesses.'],
+                ['What services does TechNabu offer?', 'TechNabu offers web development, WordPress development, e-commerce development, API and app development, software engineering, website redesigns, domain and hosting setup, ongoing website support, and SEO & social media marketing.'],
+                ['Where is Nabaraj Acharya based, and does he work with clients outside Nepal?', 'He is based in Lalitpur, Nepal, and works with clients across Nepal as well as international clients, including businesses in Australia.'],
+                ['What technologies does he specialize in?', 'Laravel, PHP, MySQL, Tailwind CSS, and Alpine.js for development, alongside technical SEO, Google Search Console, and Google Analytics 4 for search growth.'],
+                ['How much does it cost to hire a full stack developer in Nepal?', "It depends on project scope — a simple brochure site costs far less than a custom Laravel application. Pricing is quoted per project after understanding requirements; see the website cost guide on the blog for a detailed breakdown."],
+                ['Does TechNabu provide SEO services as well as development?', 'Yes — technical SEO, on-page optimization, local SEO, and social media marketing are offered alongside development, since search visibility and a well-built site go hand in hand.'],
+                ['How many projects has he completed?', ($personal->completed_projects ?? '30') . '+ projects completed for ' . ($personal->happy_clients ?? '10') . '+ clients, spanning business websites, e-commerce stores, custom web applications, and SEO engagements.'],
+                ['How can I contact Nabaraj Acharya for a project?', 'Through the contact page on this site, or by email — every project starts with a free initial conversation to understand requirements before any quote is given.'],
+                ['What makes TechNabu different from other developers in Nepal?', 'A combination of hands-on Laravel development and technical SEO expertise in one person — most sites are built without search visibility in mind, while every TechNabu build includes SEO fundamentals from day one.'],
+            ];
+        @endphp
+        @include('partials.services-faq')
+    </div>
+</section>
 
 
 {{-- ═══════════════════════════════════════════════════════════ --}}

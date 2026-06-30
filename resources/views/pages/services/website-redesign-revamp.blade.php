@@ -4,6 +4,11 @@
 @section('description', 'Website redesign services in Nepal — modernizing outdated websites with improved UX, faster load times, and mobile-first layouts that convert better, for Lalitpur and Kathmandu businesses.')
 @section('keywords', 'website redesign, website redesign nepal, website revamp nepal, website redesign lalitpur, website redesign kathmandu, nabaraj acharya')
 @section('canonical', route('services.website-redesign-revamp'))
+@if($service->photo)
+@section('og_image', asset('storage/'.$service->photo))
+@section('twitter_image', asset('storage/'.$service->photo))
+@section('og_image_alt', $service->service_name . ' in Nepal — ' . ($personal->brand_name ?? 'Nabaraj Acharya'))
+@endif
 
 @section('schema')
 @php

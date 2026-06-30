@@ -4,6 +4,11 @@
 @section('description', 'Modern, fast, and user-friendly mobile and web-based application development for businesses in Nepal.')
 @section('keywords', 'app development nepal, mobile app developer nepal, android app development nepal, nabaraj acharya')
 @section('canonical', route('services.app-development'))
+@if($service->photo)
+@section('og_image', asset('storage/'.$service->photo))
+@section('twitter_image', asset('storage/'.$service->photo))
+@section('og_image_alt', $service->service_name . ' in Nepal — ' . ($personal->brand_name ?? 'Nabaraj Acharya'))
+@endif
 
 @section('schema')
 @php
