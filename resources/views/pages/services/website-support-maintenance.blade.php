@@ -92,6 +92,14 @@
                         ["Do I need a support plan if my site rarely changes?", 'Yes — security patches and backups matter even for sites that don\'t change often, since vulnerabilities can still be exploited.'],
                         ["Can you support a site you didn't build?", 'Yes, after a short review to understand the existing codebase.'],
                         ["What's not included in maintenance?", 'Major new features or redesigns are scoped separately — maintenance covers keeping the existing site healthy.'],
+                        ['What happens if my site goes down?', "Downtime is treated as a priority issue — I investigate the cause (hosting, plugin conflict, server error) and work to restore the site as quickly as possible."],
+                        ['Do you monitor my site, or do I need to report issues myself?', "Support plans include periodic health checks and monitoring, but you're also welcome to report anything you notice — the faster an issue is flagged, the faster it gets fixed."],
+                        ['Can you add small content or design changes under a support plan?', "Yes, minor content updates, small design tweaks, and bug fixes are typically covered under ongoing support — larger features are scoped as separate work."],
+                        ['Do you support WordPress sites as well as Laravel?', "Yes, I provide maintenance for WordPress sites, custom Laravel applications, and other PHP-based websites."],
+                        ['How are backups stored, and can I access them?', "Backups are stored securely and on a regular schedule; copies can be made available to you on request so you're never locked out of your own data."],
+                        ['Is there a minimum commitment for a support plan?', "Plans are typically structured monthly, and I'll discuss the right commitment level based on how actively your site needs attention."],
+                        ['What if I just need a one-off fix, not ongoing support?', "One-off fixes are possible too — not every issue requires a monthly plan, and I can quote a fixed price for a single fix if that's all you need."],
+                        ['Will you alert me before making any changes to my live site?', "Yes, except for urgent security patches, I confirm with you before making changes that could affect how your site looks or functions."],
                     ];
                 @endphp
                 @include('partials.services-faq')

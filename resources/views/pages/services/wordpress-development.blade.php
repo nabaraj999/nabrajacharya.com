@@ -92,6 +92,14 @@
                         ['Can you fix my existing WordPress site instead of rebuilding it?', 'Yes, that often falls under Website Support & Maintenance — many issues can be fixed without a full rebuild.'],
                         ['Will my site be fast?', 'Yes — caching, image optimisation, and clean code are part of every WordPress build, not an afterthought.'],
                         ['Do you provide ongoing WordPress updates?', 'Yes, through my Website Support & Maintenance service.'],
+                        ['How much does a WordPress website cost in Nepal?', "Basic WordPress sites typically cost NPR 20,000-50,000, custom designs run NPR 80,000-2,00,000, and WooCommerce stores range from NPR 1,50,000-5,00,000+ depending on complexity."],
+                        ['How long does it take to build a WordPress site?', "A standard business site usually takes 1-3 weeks. A custom-themed site or WooCommerce store can take 3-6 weeks depending on scope."],
+                        ['Is WordPress good for e-commerce in Nepal?', "Yes, WooCommerce is a solid choice for small to mid-size stores and supports local payment gateways like eSewa and Khalti through available plugins."],
+                        ['What is the difference between WordPress theme setup and custom development?', "Theme setup configures an existing pre-built theme with your branding and content — faster and cheaper. Custom development builds a theme from scratch around your exact design, which costs more but gives you full control."],
+                        ['How do I find a good WordPress developer in Nepal?', "Look for someone who shows real, live project examples, understands both design and performance, and is transparent about ongoing costs like hosting, plugins, and maintenance."],
+                        ['What payment gateways work with WooCommerce in Nepal?', "eSewa and Khalti both have WooCommerce plugins available, alongside international options like Stripe and PayPal for businesses serving customers abroad."],
+                        ['Will I be locked into using you for every future change?', "No — WordPress is widely supported, so any competent WordPress developer can pick up the site later. I also make sure you have full access to your own hosting and admin panel."],
+                        ['Can you migrate my WordPress site to better hosting?', "Yes, WordPress migrations — including database, files, and DNS updates — are something I handle regularly, with minimal downtime."],
                     ];
                 @endphp
                 @include('partials.services-faq')

@@ -5,7 +5,9 @@
 @section('keywords', 'seo pricing nepal, seo packages nepal, seo cost nepal, seo specialist in nepal, nabaraj acharya')
 @section('canonical', route('blog.seo-pricing-packages-in-nepal'))
 @section('og_type', 'article')
-@section('og_image', 'https://picsum.photos/seed/seo-pricing-nepal/1200/630')
+@section('og_image', asset('storage/blogs/seo-pricing-packages-nepal.webp'))
+@section('twitter_image', asset('storage/blogs/seo-pricing-packages-nepal.webp'))
+@section('og_image_alt', 'SEO pricing and packages in Nepal')
 
 @section('schema')
 @php
@@ -13,20 +15,22 @@
         '@context' => 'https://schema.org', '@type' => 'BlogPosting',
         'headline' => 'SEO Pricing & Packages in Nepal Explained',
         'description' => 'How SEO pricing actually works in Nepal, and what to look for when comparing packages.',
-        'image' => 'https://picsum.photos/seed/seo-pricing-nepal/1200/630',
+        'image' => asset('storage/blogs/seo-pricing-packages-nepal.webp'),
         'author' => ['@type' => 'Person', 'name' => $personal->brand_name ?? 'Nabaraj Acharya'],
         'mainEntityOfPage' => route('blog.seo-pricing-packages-in-nepal'),
         'timeRequired' => 'PT6M',
     ];
-    $faqSchema = [
-        '@context' => 'https://schema.org', '@type' => 'FAQPage',
-        'mainEntity' => [
-            ['@type' => 'Question', 'name' => 'Is SEO a one-time cost?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => "No. SEO is ongoing — search engines reward consistency, and competitors keep publishing content too, so rankings need to be maintained, not just achieved once."]],
-            ['@type' => 'Question', 'name' => 'Why do SEO quotes vary so much between providers?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Scope is the biggest factor — a basic technical audit costs far less than an ongoing package that includes content marketing and paid ads management. Experience level and reporting transparency also affect price.']],
-            ['@type' => 'Question', 'name' => 'Should I be suspicious of a guaranteed #1 ranking?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => "Yes. No one can honestly guarantee a specific Google ranking, since search algorithms and competition are outside any one person's control. Be cautious of anyone who promises this."]],
-            ['@type' => 'Question', 'name' => 'How do I know if an SEO package is actually worth the price?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Ask exactly what is included each month, how progress will be reported, and whether the work is specific to your site or a generic template applied to every client.']],
-            ['@type' => 'Question', 'name' => 'Can I do basic SEO myself before hiring someone?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Yes — setting up Google Business Profile and Search Console, and writing clear page titles, are reasonable starting points. A professional becomes more valuable for technical fixes and ongoing strategy.']],
-        ],
+    $faqs = [
+        ['Is SEO a one-time cost?', "No. SEO is ongoing — search engines reward consistency, and competitors keep publishing content too, so rankings need to be maintained, not just achieved once."],
+        ['Why do SEO quotes vary so much between providers?', 'Scope is the biggest factor — a basic technical audit costs far less than an ongoing package that includes content marketing and paid ads management. Experience level and reporting transparency also affect price.'],
+        ['Should I be suspicious of a guaranteed #1 ranking?', "Yes. No one can honestly guarantee a specific Google ranking, since search algorithms and competition are outside any one person's control. Be cautious of anyone who promises this."],
+        ['How do I know if an SEO package is actually worth the price?', 'Ask exactly what is included each month, how progress will be reported, and whether the work is specific to your site or a generic template applied to every client.'],
+        ['Can I do basic SEO myself before hiring someone?', 'Yes — setting up Google Business Profile and Search Console, and writing clear page titles, are reasonable starting points. A professional becomes more valuable for technical fixes and ongoing strategy.'],
+        ['What is a realistic monthly budget for SEO in Nepal?', "Budgets vary widely with scope and competition — a starter technical package costs less than a full package that layers in content marketing and paid ads. The right number depends on what's included and your growth goals."],
+        ['Should I choose the cheapest SEO package available?', "Not automatically — a very low price often means limited scope, like only basic technical fixes with no ongoing content or reporting. Compare what's actually delivered, not just the monthly number."],
+        ['Can I switch SEO providers without losing my progress?', "Generally yes, since SEO work like content, technical fixes, and backlinks live on your own site and stay in place. Make sure you retain access to your Google Search Console and Analytics accounts regardless of who manages them."],
+        ['Do SEO packages include website redesign work?', "Not usually — SEO packages focus on optimizing the existing site for search. Significant design or structural changes are typically scoped as a separate website redesign project."],
+        ['How do I compare an SEO package against running paid ads instead?', "SEO builds long-term, free organic traffic but takes months to show results. Paid ads (Google Ads, Meta Ads) deliver faster visibility but stop the moment you stop paying — many businesses benefit from running both together."],
     ];
     $breadcrumbSchema = ['@context' => 'https://schema.org', '@type' => 'BreadcrumbList', 'itemListElement' => [
         ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
@@ -35,7 +39,6 @@
     ]];
 @endphp
 <script type="application/ld+json">{!! json_encode($articleSchema) !!}</script>
-<script type="application/ld+json">{!! json_encode($faqSchema) !!}</script>
 <script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
 @endsection
 
@@ -58,7 +61,7 @@
 <section class="py-10 md:py-14 reveal">
     <div class="max-w-3xl mx-auto px-4 sm:px-6">
         <div class="mb-10 rounded-2xl overflow-hidden glass-card" style="padding:0;">
-            <img src="https://picsum.photos/seed/seo-pricing-nepal/1200/630" alt="SEO pricing and packages in Nepal" class="w-full h-auto object-cover" loading="lazy">
+            <img src="{{ asset('storage/blogs/seo-pricing-packages-nepal.webp') }}" alt="SEO pricing and packages in Nepal" class="w-full h-auto object-cover" loading="lazy">
         </div>
 
         <p class="text-lg leading-relaxed mb-8" style="color: var(--ink); border-left: 4px solid var(--accent); padding-left: 16px;">

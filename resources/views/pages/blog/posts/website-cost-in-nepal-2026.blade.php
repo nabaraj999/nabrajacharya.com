@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'How Much Does a Website Cost in Nepal? (2026 Guide) | TechNabu Blog')
+@section('title', 'How Much Does a Website Cost in Nepal? (2026 Guide)')
 @section('description', 'A clear breakdown of what actually affects website cost in Nepal — site type, design complexity, integrations, SEO, and ongoing maintenance — so you can budget realistically.')
 @section('keywords', 'website cost in nepal, web development cost nepal, website price nepal, web developer nepal, nabaraj acharya')
 @section('canonical', route('blog.website-cost-in-nepal-2026'))
 @section('og_type', 'article')
-@section('og_image', 'https://picsum.photos/seed/website-cost-nepal/1200/630')
+@section('og_image', asset('storage/blogs/website-cost-in-nepal.webp'))
+@section('twitter_image', asset('storage/blogs/website-cost-in-nepal.webp'))
+@section('og_image_alt', 'Website cost planning in Nepal')
 
 @section('schema')
 @php
@@ -13,20 +15,22 @@
         '@context' => 'https://schema.org', '@type' => 'BlogPosting',
         'headline' => 'How Much Does a Website Cost in Nepal? (2026 Guide)',
         'description' => 'A clear breakdown of what affects website cost in Nepal so you can budget realistically.',
-        'image' => 'https://picsum.photos/seed/website-cost-nepal/1200/630',
+        'image' => asset('storage/blogs/website-cost-in-nepal.webp'),
         'author' => ['@type' => 'Person', 'name' => $personal->brand_name ?? 'Nabaraj Acharya'],
         'mainEntityOfPage' => route('blog.website-cost-in-nepal-2026'),
         'timeRequired' => 'PT5M',
     ];
-    $faqSchema = [
-        '@context' => 'https://schema.org', '@type' => 'FAQPage',
-        'mainEntity' => [
-            ['@type' => 'Question', 'name' => 'What is the cheapest type of website to build?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'A small, brochure-style site with a handful of pages and no custom functionality is typically the most affordable option, since it requires the least custom development time.']],
-            ['@type' => 'Question', 'name' => 'Does the cost include hosting and a domain?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Usually not by default — domain registration and hosting are ongoing costs separate from the one-time build cost, though a developer can help you set both up correctly.']],
-            ['@type' => 'Question', 'name' => 'Why do two developers quote such different prices for the same project?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Differences usually come down to experience, whether the build uses custom code versus a theme, and whether ongoing support is included. The cheapest quote is not always the best value once you account for what is actually delivered.']],
-            ['@type' => 'Question', 'name' => 'Can I build a website in stages to spread out the cost?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Yes. Many businesses launch with a core set of pages and add features like an online store or a booking system later once the budget allows, as long as the initial build is planned to support that growth.']],
-            ['@type' => 'Question', 'name' => 'Is a more expensive website always better?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Not necessarily — price should match what you actually need. Paying for custom features or capacity you will not use does not add value, while underpaying for a project that needs real custom work usually leads to problems later.']],
-        ],
+    $faqs = [
+        ['What is the cheapest type of website to build?', 'A small, brochure-style site with a handful of pages and no custom functionality is typically the most affordable option, since it requires the least custom development time.'],
+        ['Does the cost include hosting and a domain?', 'Usually not by default — domain registration and hosting are ongoing costs separate from the one-time build cost, though a developer can help you set both up correctly.'],
+        ['Why do two developers quote such different prices for the same project?', 'Differences usually come down to experience, whether the build uses custom code versus a theme, and whether ongoing support is included. The cheapest quote is not always the best value once you account for what is actually delivered.'],
+        ['Can I build a website in stages to spread out the cost?', 'Yes. Many businesses launch with a core set of pages and add features like an online store or a booking system later once the budget allows, as long as the initial build is planned to support that growth.'],
+        ['Is a more expensive website always better?', 'Not necessarily — price should match what you actually need. Paying for custom features or capacity you will not use does not add value, while underpaying for a project that needs real custom work usually leads to problems later.'],
+        ['How much does a basic business website cost in Nepal?', 'A brochure-style site with a handful of pages and basic on-page SEO is typically the most affordable tier — the exact figure depends on design complexity and how many pages you need.'],
+        ['Do I need to pay for SEO separately, or is it included?', "Basic on-page SEO is usually included in a properly built site from the start. Ongoing SEO work — content, link building, monthly optimisation — is typically a separate, recurring service."],
+        ['Will I get a fixed price, or does the cost change as the project goes on?', "A clear written quote should reflect a fixed price for the agreed scope. Costs only change if you add new requirements mid-project, which should always be discussed and agreed before any extra work begins."],
+        ['Is it cheaper to use a website builder instead of hiring a developer?', "DIY builders can be cheaper upfront, but they often cost more in the long run through limited customisation, weaker SEO foundations, and the eventual need to rebuild on a more capable platform as the business grows."],
+        ['What ongoing costs should I budget for after the website is built?', "Domain renewal, hosting, and optional maintenance or SEO services are the main recurring costs — these are typically far smaller than the initial build cost but should still be planned for annually."],
     ];
     $breadcrumbSchema = ['@context' => 'https://schema.org', '@type' => 'BreadcrumbList', 'itemListElement' => [
         ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
@@ -35,7 +39,6 @@
     ]];
 @endphp
 <script type="application/ld+json">{!! json_encode($articleSchema) !!}</script>
-<script type="application/ld+json">{!! json_encode($faqSchema) !!}</script>
 <script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
 @endsection
 
@@ -58,7 +61,7 @@
 <section class="py-10 md:py-14 reveal">
     <div class="max-w-3xl mx-auto px-4 sm:px-6">
         <div class="mb-10 rounded-2xl overflow-hidden glass-card" style="padding:0;">
-            <img src="https://picsum.photos/seed/website-cost-nepal/1200/630" alt="Website cost planning in Nepal" class="w-full h-auto object-cover" loading="lazy">
+            <img src="{{ asset('storage/blogs/website-cost-in-nepal.webp') }}" alt="Website cost planning in Nepal" class="w-full h-auto object-cover" loading="lazy">
         </div>
 
         <p class="text-lg leading-relaxed mb-8" style="color: var(--ink); border-left: 4px solid var(--accent); padding-left: 16px;">
@@ -108,19 +111,9 @@
 
             <h2>Getting an Accurate Quote</h2>
             <p>The most reliable way to get a number you can actually budget around is to describe what you need as specifically as possible — the type of site, any integrations, and whether you'll need ongoing support — and ask for a quote based on that. Avoid asking "how much for a website" with no other detail; the more specific your description, the more comparable and accurate the quotes you receive will be. I offer a free initial conversation before quoting on any project; you can reach out through my <a href="{{ route('contact') }}">contact page</a>.</p>
-
-            <h2>FAQs</h2>
-            <h3>What is the cheapest type of website to build?</h3>
-            <p>A small, brochure-style site with a handful of pages and no custom functionality is typically the most affordable option, since it requires the least custom development time.</p>
-            <h3>Does the cost include hosting and a domain?</h3>
-            <p>Usually not by default — domain registration and hosting are ongoing costs separate from the one-time build cost, though a developer can help you set both up correctly.</p>
-            <h3>Why do two developers quote such different prices for the same project?</h3>
-            <p>Differences usually come down to experience, whether the build uses custom code versus a theme, and whether ongoing support is included. The cheapest quote is not always the best value once you account for what is actually delivered.</p>
-            <h3>Can I build a website in stages to spread out the cost?</h3>
-            <p>Yes. Many businesses launch with a core set of pages and add features like an online store or a booking system later once the budget allows, as long as the initial build is planned to support that growth.</p>
-            <h3>Is a more expensive website always better?</h3>
-            <p>Not necessarily — price should match what you actually need. Paying for custom features or capacity you will not use does not add value, while underpaying for a project that needs real custom work usually leads to problems later.</p>
         </div>
+
+        @include('partials.services-faq', ['faqs' => $faqs])
 
         @if($otherPosts->isNotEmpty())
         <div class="mt-16 pt-10" style="border-top: 1px solid var(--line);">

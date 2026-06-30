@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Complete SEO Checklist 2026 for Businesses in Nepal, Khotang & Lalitpur | TechNabu Blog')
+@section('title', 'SEO Checklist 2026 for Nepal, Khotang & Lalitpur')
 @section('description', 'A practical SEO checklist covering on-page, technical, local SEO, and E-E-A-T standards for businesses in Nepal, Khotang, and Lalitpur.')
 @section('keywords', 'laravel blog, seo insights, web development article')
 @section('canonical', route('blog.seo-checklist-2026-nepal-khotang-lalitpur'))
@@ -21,6 +21,14 @@
         'image' => asset('storage/blogs/01KPX7CND1HGP7CATP8AJTHC64.jpg'),
         'timeRequired' => 'PT2M',
     ];
+    $faqSchema = [
+        '@context' => 'https://schema.org', '@type' => 'FAQPage',
+        'mainEntity' => [
+            ['@type' => 'Question', 'name' => 'How long does SEO take to show results?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Most websites see meaningful movement in 8 to 16 weeks, depending on competition and site quality.']],
+            ['@type' => 'Question', 'name' => 'Can local businesses in Khotang and Lalitpur rank quickly?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Yes, with strong local pages, Google Business optimization, and focused content, smaller local markets can rank faster than national terms.']],
+            ['@type' => 'Question', 'name' => 'What is the most important first step?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Start with intent-driven keyword research and a technically healthy website.']],
+        ],
+    ];
     $breadcrumbSchema = ['@context' => 'https://schema.org', '@type' => 'BreadcrumbList', 'itemListElement' => [
         ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
         ['@type' => 'ListItem', 'position' => 2, 'name' => 'Blog', 'item' => route('blog.index')],
@@ -28,6 +36,7 @@
     ]];
 @endphp
 <script type="application/ld+json">{!! json_encode($articleSchema) !!}</script>
+<script type="application/ld+json">{!! json_encode($faqSchema) !!}</script>
 <script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
 @endsection
 

@@ -5,7 +5,9 @@
 @section('keywords', 'laravel livewire tutorial, laravel developer nepal, livewire beginners guide, nabaraj acharya')
 @section('canonical', route('blog.laravel-livewire-tutorial-beginners'))
 @section('og_type', 'article')
-@section('og_image', 'https://picsum.photos/seed/laravel-livewire-tutorial/1200/630')
+@section('og_image', asset('storage/blogs/laravel-livewire-tutorial.webp'))
+@section('twitter_image', asset('storage/blogs/laravel-livewire-tutorial.webp'))
+@section('og_image_alt', 'Laravel Livewire tutorial for beginners')
 
 @section('schema')
 @php
@@ -13,7 +15,7 @@
         '@context' => 'https://schema.org', '@type' => 'BlogPosting',
         'headline' => 'Laravel Livewire Tutorial for Beginners',
         'description' => 'A beginner-friendly introduction to Laravel Livewire with a simple working example.',
-        'image' => 'https://picsum.photos/seed/laravel-livewire-tutorial/1200/630',
+        'image' => asset('storage/blogs/laravel-livewire-tutorial.webp'),
         'author' => ['@type' => 'Person', 'name' => $personal->brand_name ?? 'Nabaraj Acharya'],
         'mainEntityOfPage' => route('blog.laravel-livewire-tutorial-beginners'),
         'timeRequired' => 'PT6M',
@@ -59,7 +61,7 @@
 <section class="py-10 md:py-14 reveal">
     <div class="max-w-3xl mx-auto px-4 sm:px-6">
         <div class="mb-10 rounded-2xl overflow-hidden glass-card" style="padding:0;">
-            <img src="https://picsum.photos/seed/laravel-livewire-tutorial/1200/630" alt="Laravel Livewire tutorial for beginners" class="w-full h-auto object-cover" loading="lazy">
+            <img src="{{ asset('storage/blogs/laravel-livewire-tutorial.webp') }}" alt="Laravel Livewire tutorial for beginners" class="w-full h-auto object-cover" loading="lazy">
         </div>
 
         <p class="text-lg leading-relaxed mb-8" style="color: var(--ink); border-left: 4px solid var(--accent); padding-left: 16px;">

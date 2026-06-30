@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Google Analytics 4 Setup Guide for Nepali Websites | TechNabu Blog')
+@section('title', 'Google Analytics 4 Setup Guide for Nepali Websites')
 @section('description', 'A clear, beginner-friendly walkthrough of setting up Google Analytics 4 on your website, and the reports that actually matter for a small business.')
 @section('keywords', 'google analytics 4 setup nepal, ga4 tutorial, web analytics nepal, seo specialist in nepal, nabaraj acharya')
 @section('canonical', route('blog.google-analytics-4-setup-guide-nepal'))
 @section('og_type', 'article')
-@section('og_image', 'https://picsum.photos/seed/ga4-setup-nepal/1200/630')
+@section('og_image', asset('storage/blogs/google-analytics-4-setup-nepal.webp'))
+@section('twitter_image', asset('storage/blogs/google-analytics-4-setup-nepal.webp'))
+@section('og_image_alt', 'Google Analytics 4 setup guide')
 
 @section('schema')
 @php
@@ -13,7 +15,7 @@
         '@context' => 'https://schema.org', '@type' => 'BlogPosting',
         'headline' => 'Google Analytics 4 Setup Guide for Nepali Websites',
         'description' => 'A beginner-friendly walkthrough of setting up Google Analytics 4.',
-        'image' => 'https://picsum.photos/seed/ga4-setup-nepal/1200/630',
+        'image' => asset('storage/blogs/google-analytics-4-setup-nepal.webp'),
         'author' => ['@type' => 'Person', 'name' => $personal->brand_name ?? 'Nabaraj Acharya'],
         'mainEntityOfPage' => route('blog.google-analytics-4-setup-guide-nepal'),
         'timeRequired' => 'PT6M',
@@ -59,7 +61,7 @@
 <section class="py-10 md:py-14 reveal">
     <div class="max-w-3xl mx-auto px-4 sm:px-6">
         <div class="mb-10 rounded-2xl overflow-hidden glass-card" style="padding:0;">
-            <img src="https://picsum.photos/seed/ga4-setup-nepal/1200/630" alt="Google Analytics 4 setup guide" class="w-full h-auto object-cover" loading="lazy">
+            <img src="{{ asset('storage/blogs/google-analytics-4-setup-nepal.webp') }}" alt="Google Analytics 4 setup guide" class="w-full h-auto object-cover" loading="lazy">
         </div>
 
         <p class="text-lg leading-relaxed mb-8" style="color: var(--ink); border-left: 4px solid var(--accent); padding-left: 16px;">

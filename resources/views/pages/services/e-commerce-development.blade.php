@@ -92,6 +92,14 @@
                         ['Can you migrate my existing store to a new platform?', 'Yes, including products, customers, and order history where the source platform allows export.'],
                         ['Will I be able to manage products myself?', 'Yes, you get an admin area to add, edit, and manage products without needing a developer.'],
                         ['Do you handle shipping and tax setup?', 'Yes, shipping rules and tax calculation are configured as part of the build based on how you operate.'],
+                        ['How long does it take to build an online store?', 'A store with a standard product catalogue typically takes 4-6 weeks. Stores with custom features like subscriptions or multi-vendor support can take 8-12 weeks.'],
+                        ['Can the store handle a large number of products?', "Yes, the Laravel and MySQL foundation is built to scale — stores with thousands of products and variants run smoothly when the database and search are structured correctly from the start."],
+                        ['Do you build mobile-friendly checkout flows?', "Yes, every checkout I build is tested across phones and tablets, since a large share of online shopping in Nepal happens on mobile."],
+                        ['Can customers track their orders after purchase?', "Yes, customer accounts can include order history and status tracking, so buyers can see exactly where their order is without contacting you directly."],
+                        ['What happens if a payment fails or is interrupted?', "Payment gateway integrations are built with proper webhook handling so failed or interrupted payments are detected and don't leave orders in a broken state."],
+                        ['Can I run discounts, coupons, or sales on my store?', "Yes, discount codes, percentage-off sales, and promotional pricing can be built into the store's checkout logic."],
+                        ['Do you provide SEO for product pages?', "Yes, product and category pages are built with clean URLs, structured data, and on-page SEO basics so your products are discoverable in search results."],
+                        ['Can the store integrate with my existing inventory or accounting system?', "Yes, if you already use a system with an API or export capability, I can build integrations to keep stock and sales data in sync."],
                     ];
                 @endphp
                 @include('partials.services-faq')

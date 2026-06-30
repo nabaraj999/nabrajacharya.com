@@ -92,6 +92,14 @@
                         ['Do you redesign sites built on other platforms?', 'Yes, including WordPress, Wix, Squarespace, and custom-built sites.'],
                         ['How much content can stay the same?', "As much as makes sense — a redesign is about improving structure and experience, not throwing away what already works."],
                         ["Can you redesign just part of my site?", "Yes, for example just the homepage or a key landing page, if a full rebuild isn't needed."],
+                        ['How do I know if I need a redesign or a full rebuild?', "If the underlying platform is solid but the design and UX feel dated, a redesign is usually enough. If the codebase itself is fragile, insecure, or impossible to extend, a rebuild is the better long-term choice."],
+                        ['How long does a website redesign take?', "Most redesigns take 3-6 weeks depending on the number of pages and how much structural change is needed underneath."],
+                        ['Will the redesigned site still work with my existing CMS or hosting?', "In most cases yes — a redesign typically focuses on the front-end experience while keeping the existing platform, unless the platform itself is part of the problem."],
+                        ['What if I just want a faster site without changing the design?', "That's possible too — performance work like image optimization, caching, and code cleanup can often be done without a full visual redesign."],
+                        ['Can you keep my existing branding during the redesign?', "Yes, a redesign typically refreshes layout, UX, and performance while keeping your existing brand identity — colors, logo, and tone — recognizable to returning visitors."],
+                        ['Do you provide a before-and-after comparison of site performance?', "Yes, I can show Core Web Vitals and load time comparisons before and after the redesign so you can see the measurable impact."],
+                        ['Will old links to my website still work after the redesign?', "Yes, I set up proper redirects for any URLs that change, so existing links, bookmarks, and search engine rankings aren't broken."],
+                        ["Can the redesign include new features I didn't have before?", "Yes, a redesign is a good opportunity to add features like a blog, contact forms, or e-commerce that the original site lacked."],
                     ];
                 @endphp
                 @include('partials.services-faq')

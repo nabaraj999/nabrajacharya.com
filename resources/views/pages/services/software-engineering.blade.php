@@ -88,10 +88,18 @@
 
                 @php
                     $faqs = [
-                        ['What\'s the difference between this and "web development"?', 'Software engineering here focuses on backend systems and business logic — dashboards, automation, internal tools — rather than public-facing marketing sites.'],
+                        ["What's the difference between this and \"web development\"?", 'Software engineering here focuses on backend systems and business logic — dashboards, automation, internal tools — rather than public-facing marketing sites.'],
                         ['Can you take over an existing codebase?', 'Yes, I can review, document, and continue building on an existing Laravel/PHP codebase.'],
                         ['Do you write tests for the code?', 'Yes, where it adds real value — particularly for business-critical logic.'],
                         ['How do you handle scope changes mid-project?', 'We discuss the impact on timeline and cost before any change is implemented, so there are no surprises.'],
+                        ['Can you document an existing system that has no documentation?', "Yes, I regularly review undocumented codebases and produce clear technical documentation covering architecture, data flow, and key business logic."],
+                        ['What if my team needs to maintain the system after you build it?', "I write code with future maintainers in mind — clear structure, naming, and comments where logic isn't obvious — and can provide a handover walkthrough for your team."],
+                        ['Do you only work with Laravel, or other backend frameworks too?', "Laravel and PHP are my core focus, where I can move fastest and guarantee quality. For projects requiring a different stack, we can discuss whether it's the right fit."],
+                        ['Can you integrate with our existing database instead of building a new one?', "Yes, I can work with an existing database schema, though I'll flag any structural issues that could cause problems as the system grows."],
+                        ['How do you ensure the system can handle business growth?', "Through deliberate architecture decisions early on — proper indexing, queue-based processing for heavy tasks, and avoiding tightly-coupled code that becomes expensive to change later."],
+                        ['What does the development process look like?', "Typically: requirements and data modeling first, then iterative development with regular check-ins, followed by testing and a staged rollout rather than a single risky launch."],
+                        ['Can you build automation to replace manual spreadsheet work?', "Yes, this is one of the most common requests — replacing error-prone manual processes with a proper system that handles calculations, approvals, and reporting automatically."],
+                        ['Is the source code mine after the project is complete?', "Yes, you own the full source code and have complete access to the repository once the engagement is complete."],
                     ];
                 @endphp
                 @include('partials.services-faq')

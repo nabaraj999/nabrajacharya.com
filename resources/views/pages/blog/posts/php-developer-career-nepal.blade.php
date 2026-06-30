@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'PHP Developer Career & Pay in Nepal: What Actually Affects It | TechNabu Blog')
+@section('title', 'PHP Developer Career & Pay in Nepal: Key Factors')
 @section('description', 'What actually influences a PHP developer\'s career growth and pay in Nepal — skills, frameworks, remote work, and how to position yourself for better opportunities.')
 @section('keywords', 'php developer nepal, php developer career, laravel developer nepal, web developer nepal, nabaraj acharya')
 @section('canonical', route('blog.php-developer-career-nepal'))
 @section('og_type', 'article')
-@section('og_image', 'https://picsum.photos/seed/php-developer-career-nepal/1200/630')
+@section('og_image', asset('storage/blogs/php-developer-career-pay-nepal.webp'))
+@section('twitter_image', asset('storage/blogs/php-developer-career-pay-nepal.webp'))
+@section('og_image_alt', 'PHP developer career and pay in Nepal')
 
 @section('schema')
 @php
@@ -13,21 +15,22 @@
         '@context' => 'https://schema.org', '@type' => 'BlogPosting',
         'headline' => 'PHP Developer Career & Pay in Nepal: What Actually Affects It',
         'description' => 'What influences a PHP developer\'s career growth and pay in Nepal.',
-        'image' => 'https://picsum.photos/seed/php-developer-career-nepal/1200/630',
+        'image' => asset('storage/blogs/php-developer-career-pay-nepal.webp'),
         'author' => ['@type' => 'Person', 'name' => $personal->brand_name ?? 'Nabaraj Acharya'],
         'mainEntityOfPage' => route('blog.php-developer-career-nepal'),
         'timeRequired' => 'PT6M',
     ];
-    $faqSchema = [
-        '@context' => 'https://schema.org', '@type' => 'FAQPage',
-        'mainEntity' => [
-            ['@type' => 'Question', 'name' => 'Is PHP still worth learning in 2026?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Yes. PHP, especially with Laravel, still powers a huge share of the web and remains in steady demand, particularly for business applications and content-driven sites.']],
-            ['@type' => 'Question', 'name' => 'Does working remotely for international clients pay better?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'It often does, since pay can be benchmarked against international rates rather than purely local ones — though it usually requires strong communication skills and a portfolio that can be evaluated remotely.']],
-            ['@type' => 'Question', 'name' => 'Is Laravel knowledge enough, or do I need other skills too?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => "Laravel is a strong foundation, but pairing it with database design, basic SEO knowledge, and clear communication makes a developer noticeably more valuable than Laravel skills alone."]],
-            ['@type' => 'Question', 'name' => 'How important is a portfolio compared to certificates?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'For most clients and employers, a portfolio of real, working projects carries far more weight than certificates. Certificates can support a CV, but they rarely replace evidence of actual delivered work.']],
-            ['@type' => 'Question', 'name' => 'Should a junior PHP developer specialize early or stay general?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Building broad fundamentals first — PHP basics, databases, one framework reasonably well — tends to serve a junior developer better than specializing narrowly before those fundamentals are solid.']],
-            ['@type' => 'Question', 'name' => "Does contributing to open source help a PHP developer's career?", 'acceptedAnswer' => ['@type' => 'Answer', 'text' => "It can, mainly as another form of visible, verifiable work. It matters less than a strong personal portfolio for most freelance or client-facing roles, but it can stand out for roles at larger, more engineering-focused companies."]],
-        ],
+    $faqs = [
+        ['Is PHP still worth learning in 2026?', 'Yes. PHP, especially with Laravel, still powers a huge share of the web and remains in steady demand, particularly for business applications and content-driven sites.'],
+        ['Does working remotely for international clients pay better?', 'It often does, since pay can be benchmarked against international rates rather than purely local ones — though it usually requires strong communication skills and a portfolio that can be evaluated remotely.'],
+        ['Is Laravel knowledge enough, or do I need other skills too?', "Laravel is a strong foundation, but pairing it with database design, basic SEO knowledge, and clear communication makes a developer noticeably more valuable than Laravel skills alone."],
+        ['How important is a portfolio compared to certificates?', 'For most clients and employers, a portfolio of real, working projects carries far more weight than certificates. Certificates can support a CV, but they rarely replace evidence of actual delivered work.'],
+        ['Should a junior PHP developer specialize early or stay general?', 'Building broad fundamentals first — PHP basics, databases, one framework reasonably well — tends to serve a junior developer better than specializing narrowly before those fundamentals are solid.'],
+        ["Does contributing to open source help a PHP developer's career?", "It can, mainly as another form of visible, verifiable work. It matters less than a strong personal portfolio for most freelance or client-facing roles, but it can stand out for roles at larger, more engineering-focused companies."],
+        ["How does Nepal's PHP developer market compare to other countries in the region?", "Nepal offers competitive rates with a growing pool of skilled developers, which is part of why international clients increasingly outsource PHP and Laravel work here — though standing out still depends on the depth and visibility factors covered above."],
+        ["What's a realistic timeline to go from junior to senior PHP developer?", "It varies, but consistently shipping real projects and deepening framework knowledge typically moves a developer from junior to mid-level in 2-3 years, and toward senior in 4-6, depending on the variety and complexity of work taken on."],
+        ['Do certifications from Laravel or PHP courses actually help?', "They can support a CV but rarely move the needle on their own — clients and employers consistently weigh a working portfolio far more heavily than a certificate when making hiring or contracting decisions."],
+        ['Is it better to work for a Nepali company or freelance for international clients?', "Neither is universally better — local companies often provide stability and structured growth, while international freelance work can pay more but requires stronger self-management and communication. Many developers do both at different career stages."],
     ];
     $breadcrumbSchema = ['@context' => 'https://schema.org', '@type' => 'BreadcrumbList', 'itemListElement' => [
         ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
@@ -36,7 +39,6 @@
     ]];
 @endphp
 <script type="application/ld+json">{!! json_encode($articleSchema) !!}</script>
-<script type="application/ld+json">{!! json_encode($faqSchema) !!}</script>
 <script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
 @endsection
 
@@ -59,7 +61,7 @@
 <section class="py-10 md:py-14 reveal">
     <div class="max-w-3xl mx-auto px-4 sm:px-6">
         <div class="mb-10 rounded-2xl overflow-hidden glass-card" style="padding:0;">
-            <img src="https://picsum.photos/seed/php-developer-career-nepal/1200/630" alt="PHP developer career and pay in Nepal" class="w-full h-auto object-cover" loading="lazy">
+            <img src="{{ asset('storage/blogs/php-developer-career-pay-nepal.webp') }}" alt="PHP developer career and pay in Nepal" class="w-full h-auto object-cover" loading="lazy">
         </div>
 
         <p class="text-lg leading-relaxed mb-8" style="color: var(--ink); border-left: 4px solid var(--accent); padding-left: 16px;">
@@ -108,21 +110,9 @@
 
             <h2>Final Thoughts</h2>
             <p>Pay follows value, and value in this field comes from depth, communication, and a track record you can actually show — not just years of experience as a number. If you're earlier in your career, focusing on these areas tends to matter more than chasing the newest framework or tool.</p>
-
-            <h2>FAQs</h2>
-            <h3>Is PHP still worth learning in 2026?</h3>
-            <p>Yes. PHP, especially with Laravel, still powers a huge share of the web and remains in steady demand, particularly for business applications and content-driven sites.</p>
-            <h3>Does working remotely for international clients pay better?</h3>
-            <p>It often does, since pay can be benchmarked against international rates rather than purely local ones — though it usually requires strong communication skills and a portfolio that can be evaluated remotely.</p>
-            <h3>Is Laravel knowledge enough, or do I need other skills too?</h3>
-            <p>Laravel is a strong foundation, but pairing it with database design, basic SEO knowledge, and clear communication makes a developer noticeably more valuable than Laravel skills alone.</p>
-            <h3>How important is a portfolio compared to certificates?</h3>
-            <p>For most clients and employers, a portfolio of real, working projects carries far more weight than certificates. Certificates can support a CV, but they rarely replace evidence of actual delivered work.</p>
-            <h3>Should a junior PHP developer specialize early or stay general?</h3>
-            <p>Building broad fundamentals first — PHP basics, databases, one framework reasonably well — tends to serve a junior developer better than specializing narrowly before those fundamentals are solid.</p>
-            <h3>Does contributing to open source help a PHP developer's career?</h3>
-            <p>It can, mainly as another form of visible, verifiable work. It matters less than a strong personal portfolio for most freelance or client-facing roles, but it can stand out for roles at larger, more engineering-focused companies.</p>
         </div>
+
+        @include('partials.services-faq', ['faqs' => $faqs])
 
         @if($otherPosts->isNotEmpty())
         <div class="mt-16 pt-10" style="border-top: 1px solid var(--line);">

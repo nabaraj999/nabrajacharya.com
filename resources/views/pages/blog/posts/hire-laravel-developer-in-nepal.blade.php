@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'How to Hire a Laravel Developer in Nepal (2026 Guide) | TechNabu Blog')
+@section('title', 'How to Hire a Laravel Developer in Nepal (2026 Guide)')
 @section('description', 'A practical guide to hiring a Laravel developer in Nepal — what to look for, what to ask before you commit, a step-by-step hiring process, and the red flags worth avoiding.')
 @section('keywords', 'hire laravel developer nepal, laravel developer nepal, web developer nepal, laravel developer in lalitpur, nabaraj acharya')
 @section('canonical', route('blog.hire-laravel-developer-in-nepal'))
 @section('og_type', 'article')
-@section('og_image', 'https://picsum.photos/seed/hire-laravel-nepal/1200/630')
+@section('og_image', asset('storage/blogs/hire-laravel-developer-nepal.webp'))
+@section('twitter_image', asset('storage/blogs/hire-laravel-developer-nepal.webp'))
+@section('og_image_alt', 'Hiring a Laravel developer in Nepal')
 
 @section('schema')
 @php
@@ -13,21 +15,22 @@
         '@context' => 'https://schema.org', '@type' => 'BlogPosting',
         'headline' => 'How to Hire a Laravel Developer in Nepal (2026 Guide)',
         'description' => 'A practical guide to hiring a Laravel developer in Nepal — what to look for, what to ask, and red flags to avoid.',
-        'image' => 'https://picsum.photos/seed/hire-laravel-nepal/1200/630',
+        'image' => asset('storage/blogs/hire-laravel-developer-nepal.webp'),
         'author' => ['@type' => 'Person', 'name' => $personal->brand_name ?? 'Nabaraj Acharya'],
         'mainEntityOfPage' => route('blog.hire-laravel-developer-in-nepal'),
         'timeRequired' => 'PT7M',
     ];
-    $faqSchema = [
-        '@context' => 'https://schema.org', '@type' => 'FAQPage',
-        'mainEntity' => [
-            ['@type' => 'Question', 'name' => 'How much does a Laravel developer in Nepal charge?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'It depends heavily on project scope — a simple business site costs far less than a custom web application with user accounts and an API. Most developers price per project after understanding requirements rather than quoting a flat hourly rate.']],
-            ['@type' => 'Question', 'name' => 'Should I hire a freelancer or an agency?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'A freelancer is usually more cost-effective and gives you direct access to the person writing your code. An agency can offer more bandwidth for very large projects, but often at a higher cost and with less direct communication.']],
-            ['@type' => 'Question', 'name' => 'Can a Laravel developer also help with SEO?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => "Some can. It's worth asking directly, since a developer who understands technical SEO can build search-friendly architecture into the site from day one instead of retrofitting it later."]],
-            ['@type' => 'Question', 'name' => 'How long does it take to hire the right developer?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Budget at least one to two weeks if you want to properly compare a few candidates — reviewing past work, having a discovery call, and getting a written quote all take time worth not rushing.']],
-            ['@type' => 'Question', 'name' => 'Should I ask for a written contract?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Yes, always. Even a simple written agreement covering scope, price, timeline, and what happens with revisions protects both you and the developer.']],
-            ['@type' => 'Question', 'name' => 'What if I don\'t have a detailed brief yet?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'That is normal. A good developer will help you turn a rough idea into a clear scope during the discovery conversation rather than expecting you to arrive with a finished specification.']],
-        ],
+    $faqs = [
+        ['How much does a Laravel developer in Nepal charge?', 'It depends heavily on project scope — a simple business site costs far less than a custom web application with user accounts and an API. Most developers price per project after understanding requirements rather than quoting a flat hourly rate.'],
+        ['Should I hire a freelancer or an agency?', 'A freelancer is usually more cost-effective and gives you direct access to the person writing your code. An agency can offer more bandwidth for very large projects, but often at a higher cost and with less direct communication.'],
+        ['Can a Laravel developer also help with SEO?', "Some can. It's worth asking directly, since a developer who understands technical SEO can build search-friendly architecture into the site from day one instead of retrofitting it later."],
+        ['How long does it take to hire the right developer?', 'Budget at least one to two weeks if you want to properly compare a few candidates — reviewing past work, having a discovery call, and getting a written quote all take time worth not rushing.'],
+        ['Should I ask for a written contract?', 'Yes, always. Even a simple written agreement covering scope, price, timeline, and what happens with revisions protects both you and the developer.'],
+        ["What if I don't have a detailed brief yet?", 'That is normal. A good developer will help you turn a rough idea into a clear scope during the discovery conversation rather than expecting you to arrive with a finished specification.'],
+        ['How do I verify a developer\'s past work is actually theirs?', "Ask specific questions about decisions made on a project — architecture choices, why a feature was built a certain way. Someone who actually did the work can answer in detail; someone padding a portfolio usually can't."],
+        ['What payment structure should I expect?', "Staged payments tied to milestones are standard and protect both sides — for example, a deposit to start, a payment at a working prototype, and a final payment at launch, rather than 100% upfront."],
+        ['Can a Laravel developer help if my project uses a different framework already?', "Many Laravel developers can review and work with other PHP-based codebases, though a full migration to Laravel may be worth discussing if the current platform is limiting your growth."],
+        ['What happens if the developer becomes unavailable mid-project?', "This is exactly why a written contract and staged milestones matter — clear documentation of what's been delivered makes it far easier for another developer to pick up the work if needed."],
     ];
     $breadcrumbSchema = ['@context' => 'https://schema.org', '@type' => 'BreadcrumbList', 'itemListElement' => [
         ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
@@ -36,7 +39,6 @@
     ]];
 @endphp
 <script type="application/ld+json">{!! json_encode($articleSchema) !!}</script>
-<script type="application/ld+json">{!! json_encode($faqSchema) !!}</script>
 <script type="application/ld+json">{!! json_encode($breadcrumbSchema) !!}</script>
 @endsection
 
@@ -59,7 +61,7 @@
 <section class="py-10 md:py-14 reveal">
     <div class="max-w-3xl mx-auto px-4 sm:px-6">
         <div class="mb-10 rounded-2xl overflow-hidden glass-card" style="padding:0;">
-            <img src="https://picsum.photos/seed/hire-laravel-nepal/1200/630" alt="Hiring a Laravel developer in Nepal" class="w-full h-auto object-cover" loading="lazy">
+            <img src="{{ asset('storage/blogs/hire-laravel-developer-nepal.webp') }}" alt="Hiring a Laravel developer in Nepal" class="w-full h-auto object-cover" loading="lazy">
         </div>
 
         <p class="text-lg leading-relaxed mb-8" style="color: var(--ink); border-left: 4px solid var(--accent); padding-left: 16px;">
@@ -134,21 +136,9 @@
 
             <h2>Final Thoughts</h2>
             <p>The cheapest quote and the best long-term value are rarely the same thing. Focus on real experience, clear communication, and a developer who thinks about SEO and maintainability from day one — not just whoever responds fastest or quotes lowest. If you're evaluating options for a Laravel project, my <a href="{{ route('services.web-development') }}">web development service page</a> covers how I approach exactly this, and you're welcome to use this guide as a checklist when comparing anyone you talk to.</p>
-
-            <h2>FAQs</h2>
-            <h3>How much does a Laravel developer in Nepal charge?</h3>
-            <p>It depends heavily on project scope — a simple business site costs far less than a custom web application with user accounts and an API. Most developers price per project after understanding requirements rather than quoting a flat hourly rate.</p>
-            <h3>Should I hire a freelancer or an agency?</h3>
-            <p>A freelancer is usually more cost-effective and gives you direct access to the person writing your code. An agency can offer more bandwidth for very large projects, but often at a higher cost and with less direct communication.</p>
-            <h3>Can a Laravel developer also help with SEO?</h3>
-            <p>Some can. It's worth asking directly, since a developer who understands technical SEO can build search-friendly architecture into the site from day one instead of retrofitting it later.</p>
-            <h3>How long does it take to hire the right developer?</h3>
-            <p>Budget at least one to two weeks if you want to properly compare a few candidates — reviewing past work, having a discovery call, and getting a written quote all take time worth not rushing.</p>
-            <h3>Should I ask for a written contract?</h3>
-            <p>Yes, always. Even a simple written agreement covering scope, price, timeline, and what happens with revisions protects both you and the developer.</p>
-            <h3>What if I don't have a detailed brief yet?</h3>
-            <p>That is normal. A good developer will help you turn a rough idea into a clear scope during the discovery conversation rather than expecting you to arrive with a finished specification.</p>
         </div>
+
+        @include('partials.services-faq', ['faqs' => $faqs])
 
         @if($otherPosts->isNotEmpty())
         <div class="mt-16 pt-10" style="border-top: 1px solid var(--line);">

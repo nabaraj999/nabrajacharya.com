@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Common Laravel Performance Mistakes (And How to Fix Them) | TechNabu Blog')
+@section('title', 'Common Laravel Performance Mistakes (And How to Fix Them)')
 @section('description', 'The most common reasons a Laravel website feels slow — a step-by-step checklist of practical, beginner-friendly fixes for each one.')
 @section('keywords', 'laravel performance, laravel developer nepal, website speed nepal, laravel optimization, nabaraj acharya')
 @section('canonical', route('blog.laravel-performance-mistakes-nepal'))
 @section('og_type', 'article')
-@section('og_image', 'https://picsum.photos/seed/laravel-performance/1200/630')
+@section('og_image', asset('storage/blogs/laravel-performance-mistakes.webp'))
+@section('twitter_image', asset('storage/blogs/laravel-performance-mistakes.webp'))
+@section('og_image_alt', 'Laravel performance optimization')
 
 @section('schema')
 @php
@@ -13,7 +15,7 @@
         '@context' => 'https://schema.org', '@type' => 'BlogPosting',
         'headline' => 'Common Laravel Performance Mistakes (And How to Fix Them)',
         'description' => 'The most common reasons a Laravel website feels slow, and practical fixes for each.',
-        'image' => 'https://picsum.photos/seed/laravel-performance/1200/630',
+        'image' => asset('storage/blogs/laravel-performance-mistakes.webp'),
         'author' => ['@type' => 'Person', 'name' => $personal->brand_name ?? 'Nabaraj Acharya'],
         'mainEntityOfPage' => route('blog.laravel-performance-mistakes-nepal'),
         'timeRequired' => 'PT6M',
@@ -58,7 +60,7 @@
 <section class="py-10 md:py-14 reveal">
     <div class="max-w-3xl mx-auto px-4 sm:px-6">
         <div class="mb-10 rounded-2xl overflow-hidden glass-card" style="padding:0;">
-            <img src="https://picsum.photos/seed/laravel-performance/1200/630" alt="Laravel performance optimization" class="w-full h-auto object-cover" loading="lazy">
+            <img src="{{ asset('storage/blogs/laravel-performance-mistakes.webp') }}" alt="Laravel performance optimization" class="w-full h-auto object-cover" loading="lazy">
         </div>
 
         <p class="text-lg leading-relaxed mb-8" style="color: var(--ink); border-left: 4px solid var(--accent); padding-left: 16px;">

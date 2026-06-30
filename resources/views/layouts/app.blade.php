@@ -305,6 +305,22 @@
         .form-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
         .page-hero { background: var(--bg-soft); border-bottom: 1px solid var(--line); }
 
+        /* ── FAQ accordion ── */
+        .faq-accordion { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+        .faq-item { border-bottom: 1px solid var(--line); }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item:nth-child(even) { background: var(--bg-soft); }
+        .faq-item:nth-child(odd) { background: var(--bg); }
+        .faq-q-btn { width: 100%; display: flex; align-items: center; gap: 16px; padding: 18px 22px; text-align: left; cursor: pointer; background: none; border: none; font: inherit; }
+        .faq-number { width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'Rajdhani', sans-serif; }
+        .faq-q-text { flex: 1; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 1rem; color: var(--ink); transition: color .2s ease; }
+        .faq-item.is-open .faq-q-text { color: var(--accent); }
+        .faq-chevron { flex-shrink: 0; transition: transform .25s ease; color: var(--ink-faint); }
+        .faq-item.is-open .faq-chevron { transform: rotate(180deg); color: var(--accent); }
+        .faq-a-wrap { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+        .faq-item.is-open .faq-a-wrap { max-height: 600px; }
+        .faq-a-inner { padding: 0 22px 20px 68px; color: var(--ink-dim); font-size: 0.92rem; line-height: 1.75; }
+
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: var(--bg-soft); }
         ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
@@ -598,6 +614,18 @@
         });
     }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
     document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+    // ── FAQ accordion ──
+    document.querySelectorAll('.faq-accordion').forEach(acc => {
+        acc.querySelectorAll('.faq-q-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                const wasOpen = item.classList.contains('is-open');
+                acc.querySelectorAll('.faq-item').forEach(i => i.classList.remove('is-open'));
+                if (!wasOpen) item.classList.add('is-open');
+            });
+        });
+    });
 
     // ── Magnetic buttons ──
     document.querySelectorAll('[data-magnetic]').forEach(el => {

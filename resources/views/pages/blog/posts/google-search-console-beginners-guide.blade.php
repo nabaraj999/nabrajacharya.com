@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'How to Use Google Search Console: A Beginner\'s Guide | TechNabu Blog')
+@section('title', 'How to Use Google Search Console: A Beginner\'s Guide')
 @section('description', 'A beginner-friendly, step-by-step walkthrough of Google Search Console — setup, the reports that actually matter, a monthly checklist, and how to use it to improve your SEO.')
 @section('keywords', 'google search console guide, seo nepal, technical seo nepal, nabaraj acharya')
 @section('canonical', route('blog.google-search-console-beginners-guide'))
 @section('og_type', 'article')
-@section('og_image', 'https://picsum.photos/seed/search-console-guide/1200/630')
+@section('og_image', asset('storage/blogs/google-search-console-guide.webp'))
+@section('twitter_image', asset('storage/blogs/google-search-console-guide.webp'))
+@section('og_image_alt', 'Google Search Console guide')
 
 @section('schema')
 @php
@@ -13,7 +15,7 @@
         '@context' => 'https://schema.org', '@type' => 'BlogPosting',
         'headline' => "How to Use Google Search Console: A Beginner's Guide",
         'description' => 'A beginner-friendly walkthrough of Google Search Console.',
-        'image' => 'https://picsum.photos/seed/search-console-guide/1200/630',
+        'image' => asset('storage/blogs/google-search-console-guide.webp'),
         'author' => ['@type' => 'Person', 'name' => $personal->brand_name ?? 'Nabaraj Acharya'],
         'mainEntityOfPage' => route('blog.google-search-console-beginners-guide'),
         'timeRequired' => 'PT6M',
@@ -58,7 +60,7 @@
 <section class="py-10 md:py-14 reveal">
     <div class="max-w-3xl mx-auto px-4 sm:px-6">
         <div class="mb-10 rounded-2xl overflow-hidden glass-card" style="padding:0;">
-            <img src="https://picsum.photos/seed/search-console-guide/1200/630" alt="Google Search Console guide" class="w-full h-auto object-cover" loading="lazy">
+            <img src="{{ asset('storage/blogs/google-search-console-guide.webp') }}" alt="Google Search Console guide" class="w-full h-auto object-cover" loading="lazy">
         </div>
 
         <p class="text-lg leading-relaxed mb-8" style="color: var(--ink); border-left: 4px solid var(--accent); padding-left: 16px;">

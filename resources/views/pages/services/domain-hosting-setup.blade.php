@@ -92,6 +92,14 @@
                         ['What hosting do you recommend?', 'It depends on the site — a small business site has very different hosting needs than a high-traffic application. I size this to your project.'],
                         ['Will my email work with my domain?', 'Yes, professional email (like you@yourdomain.com) is part of the setup.'],
                         ['Can you move my site to a different host?', "Yes, that's covered under website migration work within this service."],
+                        ['How long does domain and hosting setup take?', "Domain registration and basic hosting setup can usually be completed within 1-2 business days, though DNS changes can take up to 24-48 hours to fully propagate worldwide."],
+                        ['What is the difference between shared hosting and a VPS?', "Shared hosting is cheaper and fine for small sites with moderate traffic, but you share server resources with other sites. A VPS gives you dedicated resources, better performance, and more control — recommended for business-critical or high-traffic sites."],
+                        ['Do I own my domain, or do you?', "You always own the domain — it's registered under your name and contact details. I configure it for you, but ownership and renewal control stay entirely with you."],
+                        ["What happens if I don't renew my domain or hosting?", "If a domain expires, your site and email stop working, and after a grace period the domain can become available for anyone else to register. I can help set up renewal reminders so this doesn't happen."],
+                        ['Can you set up a subdomain for a specific part of my site?', "Yes, subdomains (like shop.yoursite.com or blog.yoursite.com) are straightforward to configure as part of DNS setup."],
+                        ['Is SSL really necessary for a small business website?', "Yes — without SSL, browsers flag your site as 'not secure,' which damages trust, and Google also factors HTTPS into search rankings. It's included as standard in every setup I do."],
+                        ['Can you help if my current hosting is already causing problems?', "Yes, I can audit your current hosting setup, identify what's causing slowdowns or downtime, and migrate you to a more reliable host if needed."],
+                        ['Do you handle hosting renewals and ongoing management?', "Initial setup is a one-time service, but ongoing hosting management and renewals can be covered under my Website Support & Maintenance plans if you'd prefer not to manage it yourself."],
                     ];
                 @endphp
                 @include('partials.services-faq')

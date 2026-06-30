@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'WordPress vs Laravel: Which Is Right for Your Business in Nepal? | TechNabu Blog')
+@section('title', 'WordPress vs Laravel for Your Business in Nepal')
 @section('description', 'A practical, no-bias comparison of WordPress and Laravel for businesses in Nepal — a decision checklist, when each one makes sense, and when it doesn\'t.')
 @section('keywords', 'wordpress vs laravel, web developer nepal, wordpress developer nepal, laravel developer nepal, nabaraj acharya')
 @section('canonical', route('blog.wordpress-vs-laravel-nepal'))
 @section('og_type', 'article')
-@section('og_image', 'https://picsum.photos/seed/wordpress-vs-laravel/1200/630')
+@section('og_image', asset('storage/blogs/wordpress-vs-laravel-nepal.webp'))
+@section('twitter_image', asset('storage/blogs/wordpress-vs-laravel-nepal.webp'))
+@section('og_image_alt', 'WordPress vs Laravel comparison')
 
 @section('schema')
 @php
@@ -13,7 +15,7 @@
         '@context' => 'https://schema.org', '@type' => 'BlogPosting',
         'headline' => 'WordPress vs Laravel: Which Is Right for Your Business in Nepal?',
         'description' => 'A practical comparison of WordPress and Laravel for businesses in Nepal.',
-        'image' => 'https://picsum.photos/seed/wordpress-vs-laravel/1200/630',
+        'image' => asset('storage/blogs/wordpress-vs-laravel-nepal.webp'),
         'author' => ['@type' => 'Person', 'name' => $personal->brand_name ?? 'Nabaraj Acharya'],
         'mainEntityOfPage' => route('blog.wordpress-vs-laravel-nepal'),
         'timeRequired' => 'PT6M',
@@ -58,7 +60,7 @@
 <section class="py-10 md:py-14 reveal">
     <div class="max-w-3xl mx-auto px-4 sm:px-6">
         <div class="mb-10 rounded-2xl overflow-hidden glass-card" style="padding:0;">
-            <img src="https://picsum.photos/seed/wordpress-vs-laravel/1200/630" alt="WordPress vs Laravel comparison" class="w-full h-auto object-cover" loading="lazy">
+            <img src="{{ asset('storage/blogs/wordpress-vs-laravel-nepal.webp') }}" alt="WordPress vs Laravel comparison" class="w-full h-auto object-cover" loading="lazy">
         </div>
 
         <p class="text-lg leading-relaxed mb-8" style="color: var(--ink); border-left: 4px solid var(--accent); padding-left: 16px;">

@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Local SEO for Small Businesses in Nepal: A Step-by-Step Guide | TechNabu Blog')
+@section('title', 'Local SEO for Small Businesses in Nepal: Step-by-Step')
 @section('description', 'A practical, step-by-step local SEO guide and checklist for small businesses in Nepal — Google Business Profile, citations, reviews, and local content.')
 @section('keywords', 'local seo nepal, seo specialist in nepal, google business profile nepal, local seo lalitpur, nabaraj acharya')
 @section('canonical', route('blog.local-seo-small-business-nepal'))
 @section('og_type', 'article')
-@section('og_image', 'https://picsum.photos/seed/local-seo-nepal/1200/630')
+@section('og_image', asset('storage/blogs/local-seo-small-business-nepal.webp'))
+@section('twitter_image', asset('storage/blogs/local-seo-small-business-nepal.webp'))
+@section('og_image_alt', 'Local SEO for small businesses in Nepal')
 
 @section('schema')
 @php
@@ -13,7 +15,7 @@
         '@context' => 'https://schema.org', '@type' => 'BlogPosting',
         'headline' => 'Local SEO for Small Businesses in Nepal: A Step-by-Step Guide',
         'description' => 'A step-by-step local SEO guide for small businesses in Nepal.',
-        'image' => 'https://picsum.photos/seed/local-seo-nepal/1200/630',
+        'image' => asset('storage/blogs/local-seo-small-business-nepal.webp'),
         'author' => ['@type' => 'Person', 'name' => $personal->brand_name ?? 'Nabaraj Acharya'],
         'mainEntityOfPage' => route('blog.local-seo-small-business-nepal'),
         'timeRequired' => 'PT6M',
@@ -58,7 +60,7 @@
 <section class="py-10 md:py-14 reveal">
     <div class="max-w-3xl mx-auto px-4 sm:px-6">
         <div class="mb-10 rounded-2xl overflow-hidden glass-card" style="padding:0;">
-            <img src="https://picsum.photos/seed/local-seo-nepal/1200/630" alt="Local SEO for small businesses in Nepal" class="w-full h-auto object-cover" loading="lazy">
+            <img src="{{ asset('storage/blogs/local-seo-small-business-nepal.webp') }}" alt="Local SEO for small businesses in Nepal" class="w-full h-auto object-cover" loading="lazy">
         </div>
 
         <p class="text-lg leading-relaxed mb-8" style="color: var(--ink); border-left: 4px solid var(--accent); padding-left: 16px;">

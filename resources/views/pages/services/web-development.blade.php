@@ -133,6 +133,14 @@
                         ['Do you provide hosting and domain setup too?', "Yes, I can help with domain registration and hosting setup as a separate service, or just hand over a deployment-ready build if you already have hosting."],
                         ['Will my website be mobile-friendly?', 'Every site I build is tested across phones, tablets, and desktops before launch.'],
                         ['Can you redesign my existing website instead of building from scratch?', 'Yes, that falls under my Website Redesign & Revamp service — I can review your current site and suggest the best approach.'],
+                        ['What technologies do you use to build websites?', 'I build primarily with Laravel, PHP, MySQL, Tailwind CSS, and Alpine.js — a stack that is fast, secure, and easy to maintain long-term.'],
+                        ['Do I need to provide content and images, or can you help with that?', "You can provide your own content, or I can help structure and write placeholder copy you can refine later. I'll guide you on what's needed for each page."],
+                        ['Will my website rank on Google?', "Every site I build follows on-page SEO best practices from the start — clean URLs, proper headings, fast load times, and schema markup — which gives you a strong technical foundation to rank on."],
+                        ['Can you build an e-commerce store as part of this service?', "Yes, smaller stores can be built under Web Development, but larger catalogs or complex checkout flows are better suited to my dedicated E-Commerce Development service."],
+                        ['Do you offer ongoing support after the website launches?', "Yes, I offer maintenance and support plans for bug fixes, updates, and small content changes after launch — see the Website Support & Maintenance service for details."],
+                        ['How much does a custom website cost?', "Pricing depends on scope — a Starter Website costs less than a full Business Website or custom Web Application. I'll give you a clear quote after understanding your requirements."],
+                        ["Will I be able to update the website myself after it's built?", "Yes, business and application builds include an admin-friendly CMS so you can update text, images, and basic content without needing a developer for every change."],
+                        ['What if I need extra features later, like a booking system or a member area?', "Laravel applications are built to scale, so new features like bookings, member areas, or integrations can usually be added later without rebuilding the site from scratch."],
                     ];
                 @endphp
                 @include('partials.services-faq')

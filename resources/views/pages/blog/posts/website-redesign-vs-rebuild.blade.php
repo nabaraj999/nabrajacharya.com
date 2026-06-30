@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Website Redesign vs Rebuilding From Scratch: How to Decide | TechNabu Blog')
+@section('title', 'Website Redesign vs Rebuild: How to Decide')
 @section('description', 'How to decide whether your website needs a redesign or a full rebuild — a decision checklist and the signs that point to each option.')
 @section('keywords', 'website redesign, website redesign nepal, website rebuild, nabaraj acharya')
 @section('canonical', route('blog.website-redesign-vs-rebuild'))

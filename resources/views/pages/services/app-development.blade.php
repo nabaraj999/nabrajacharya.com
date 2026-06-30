@@ -92,6 +92,14 @@
                         ['Will my app need a backend?', 'Most apps need one for data, accounts, and updates — I build that as a Laravel API alongside the app.'],
                         ['Can you maintain the app after launch?', 'Yes, ongoing support is covered under my Website Support & Maintenance service, which also applies to apps.'],
                         ['How much does an app cost?', "It depends on features and complexity. Share your requirements via the contact page and I'll give you a realistic estimate."],
+                        ['What is a progressive web app, and is it cheaper than a native app?', "A progressive web app (PWA) runs in the browser but feels like a native app — installable, works offline, sends notifications. It's usually faster and cheaper to build than a native Android app since there's one codebase instead of separate native builds."],
+                        ['Can users install the app without the Play Store?', "Progressive web apps can be installed directly from the browser without going through the Play Store. Native Android apps typically need Play Store distribution, though direct APK installs are also possible."],
+                        ['How long does app development take?', "A simple app with core features typically takes 4-8 weeks. Apps with more complex functionality, integrations, or custom UI can take 10-16 weeks."],
+                        ['Will the app work without an internet connection?', "Progressive web apps can cache content for limited offline use. Full offline functionality depends on what the app needs to do — this is something we'd plan for during scoping if it matters for your use case."],
+                        ['Can you add push notifications to my app?', "Yes, push notifications can be added to both Android apps and progressive web apps to re-engage users with updates, reminders, or offers."],
+                        ['Do you handle Play Store submission?', "Yes, I can handle the Play Store listing and submission process for Android apps, including store assets like screenshots and descriptions."],
+                        ['Can my app integrate with payment gateways like eSewa or Khalti?', "Yes, I integrate local payment gateways like eSewa and Khalti, as well as international options like Stripe, directly into the app's backend API."],
+                        ['What happens if I want to add new features after the app launches?', "Since the app is backed by a structured Laravel API, new features can usually be added in future phases without needing to rebuild the existing app from scratch."],
                     ];
                 @endphp
                 @include('partials.services-faq')

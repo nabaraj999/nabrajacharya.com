@@ -163,6 +163,12 @@
                         ['What\'s the difference between SEO and PPC ads?', 'SEO grows free, organic traffic over time. PPC (Google Ads) and Meta Ads get you visibility immediately, but stop once you stop paying. Most businesses benefit from both.'],
                         ['Do you write the content for content marketing?', 'Yes, I can write blog posts and articles aligned to your SEO keywords, or work from a strategy you provide.'],
                         ['Which package should I start with?', "If you're just establishing search presence, Starter SEO is the right entry point. If you already have a site getting some traffic and want to grow faster, Growth SEO + Ads is usually the better fit."],
+                        ['Do you manage social media posting too, or just ads?', "This service focuses on Meta Ads and Google Ads management rather than day-to-day organic posting. I can advise on content strategy that supports both ads and SEO."],
+                        ['How much should I budget for ad spend?', "Ad spend is separate from my management fee and depends on your goals and market — I'll help you set a realistic starting budget for Meta Ads or Google Ads based on your industry and competition."],
+                        ['Will SEO work still help if I stop running paid ads?', "Yes — SEO builds lasting organic visibility that continues working even after paid campaigns end, unlike ads which stop generating traffic the moment you stop paying."],
+                        ['Can you target a specific city like Lalitpur or Khotang?', "Yes, local SEO and geo-targeted ad campaigns can be focused on specific cities or regions, which is especially effective for service-based businesses with a local customer base."],
+                        ['How do you measure SEO success?', "Through organic traffic growth, keyword ranking improvements, and most importantly, conversions and leads — rankings alone don't matter if they're not translating into business results."],
+                        ['What information do you need from me to get started?', "Access to your website, Google Search Console and Analytics if they exist, and a clear picture of who your ideal customer is — from there I can build a tailored strategy."],
                     ];
                 @endphp
                 @include('partials.services-faq')

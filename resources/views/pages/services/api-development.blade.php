@@ -92,6 +92,14 @@
                         ['Can you document the API for my team?', 'Yes, I provide clear endpoint documentation so your team or another developer can integrate without guesswork.'],
                         ['Can you connect my API to an existing app?', 'Yes, whether the app already exists or is being built alongside the API.'],
                         ['How do you handle API security?', 'Token-based auth, rate limiting, input validation, and HTTPS as standard practice on every API I build.'],
+                        ['Do you build REST APIs only, or GraphQL too?', "I primarily build REST APIs, since they're simpler to document, debug, and integrate for most business use cases. GraphQL can be discussed if your project specifically calls for it."],
+                        ['Can you version my API as it grows?', "Yes, I structure endpoints so new versions (v1, v2, etc.) can be introduced without breaking existing client apps that depend on the older version."],
+                        ['What format does the API return data in?', "JSON, the standard format for REST APIs, with consistent response structures and clear error messages so client apps can handle them predictably."],
+                        ['Can you integrate payment gateways into my API?', "Yes, I've integrated payment providers like eSewa, Khalti, and Stripe into Laravel APIs, including webhook handling for payment confirmations."],
+                        ['Do you provide a Postman collection or similar testing tool?', "Yes, I can provide a Postman collection alongside written documentation so your team can test every endpoint without writing code first."],
+                        ['How do you handle rate limiting and abuse prevention?', "Laravel's built-in throttle middleware limits requests per user or IP, and I configure sensible limits based on your expected traffic to prevent abuse without blocking real users."],
+                        ['Can the API support both a web app and a mobile app at the same time?', "Yes, a well-designed REST API is client-agnostic — the same endpoints can serve your website, a mobile app, and third-party integrations simultaneously."],
+                        ['What happens if my API needs change after launch?', "Since the API is documented and versioned, new endpoints or fields can usually be added without disrupting existing integrations already in production."],
                     ];
                 @endphp
                 @include('partials.services-faq')

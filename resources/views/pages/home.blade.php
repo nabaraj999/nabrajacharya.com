@@ -395,10 +395,10 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             @foreach($blogs as $blog)
-            <a href="{{ route('blog.' . $blog->slug) }}" class="blog-kk-card">
+            <a href="{{ route('blog.' . $blog['slug']) }}" class="blog-kk-card">
                 <div class="blog-kk-img">
-                    @if($blog->featured_image)
-                    <img src="{{ asset('storage/'.$blog->featured_image) }}" alt="{{ $blog->title }}">
+                    @if($blog['image'])
+                    <img src="{{ asset('storage/'.$blog['image']) }}" alt="{{ $blog['title'] }}">
                     @else
                     <div class="blog-kk-placeholder">Blog</div>
                     @endif
@@ -406,9 +406,9 @@
                 <div class="p-6">
                     <div class="blog-kk-meta">
                         <span><svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>{{ $personal->brand_name ?? 'Admin' }}</span>
-                        <span><svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>{{ $blog->published_at?->format('M d, Y') }}</span>
+                        <span><svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>{{ $blog['date'] }}</span>
                     </div>
-                    <h3 class="blog-kk-title">{{ $blog->title }}</h3>
+                    <h3 class="blog-kk-title">{{ $blog['title'] }}</h3>
                 </div>
             </a>
             @endforeach

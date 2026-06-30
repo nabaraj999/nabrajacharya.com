@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'WWW vs Non-WWW: Which Should You Use for Your Website? | TechNabu Blog')
+@section('title', 'WWW vs Non-WWW: Which Should You Use?')
 @section('description', 'A clear explanation of the www vs non-www debate, why it matters for SEO, a step-by-step fix, and how to choose and stick with one consistently.')
 @section('keywords', 'www vs non-www, technical seo, website canonical, seo specialist in nepal, nabaraj acharya')
 @section('canonical', route('blog.www-vs-non-www-website'))
 @section('og_type', 'article')
-@section('og_image', 'https://picsum.photos/seed/www-non-www/1200/630')
+@section('og_image', asset('storage/blogs/www-vs-non-www-website.webp'))
+@section('twitter_image', asset('storage/blogs/www-vs-non-www-website.webp'))
+@section('og_image_alt', 'WWW vs non-WWW website setup')
 
 @section('schema')
 @php
@@ -13,7 +15,7 @@
         '@context' => 'https://schema.org', '@type' => 'BlogPosting',
         'headline' => 'WWW vs Non-WWW: Which Should You Use for Your Website?',
         'description' => 'A clear explanation of the www vs non-www debate and why it matters for SEO.',
-        'image' => 'https://picsum.photos/seed/www-non-www/1200/630',
+        'image' => asset('storage/blogs/www-vs-non-www-website.webp'),
         'author' => ['@type' => 'Person', 'name' => $personal->brand_name ?? 'Nabaraj Acharya'],
         'mainEntityOfPage' => route('blog.www-vs-non-www-website'),
         'timeRequired' => 'PT6M',
@@ -58,7 +60,7 @@
 <section class="py-10 md:py-14 reveal">
     <div class="max-w-3xl mx-auto px-4 sm:px-6">
         <div class="mb-10 rounded-2xl overflow-hidden glass-card" style="padding:0;">
-            <img src="https://picsum.photos/seed/www-non-www/1200/630" alt="WWW vs non-WWW website setup" class="w-full h-auto object-cover" loading="lazy">
+            <img src="{{ asset('storage/blogs/www-vs-non-www-website.webp') }}" alt="WWW vs non-WWW website setup" class="w-full h-auto object-cover" loading="lazy">
         </div>
 
         <p class="text-lg leading-relaxed mb-8" style="color: var(--ink); border-left: 4px solid var(--accent); padding-left: 16px;">
