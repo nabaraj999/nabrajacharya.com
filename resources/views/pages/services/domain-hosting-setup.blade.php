@@ -79,6 +79,50 @@
                 </div>
 
                 @php
+                    $packagesTitle = 'Setup Packages';
+                    $packages = [
+                        [
+                            'name' => 'Domain + Shared Hosting',
+                            'tagline' => 'Simple sites on shared hosting',
+                            'price' => 'NPR 5,000 – 10,000',
+                            'priceNote' => 'one-time setup fee, excl. domain/hosting purchase',
+                            'bullets' => [
+                                'Domain registration guidance',
+                                'Shared hosting setup',
+                                'DNS configuration',
+                                'SSL certificate & professional email',
+                            ],
+                        ],
+                        [
+                            'name' => 'VPS Setup & Configuration',
+                            'tagline' => 'For sites that need dedicated resources',
+                            'price' => 'NPR 15,000 – 30,000',
+                            'priceNote' => 'one-time',
+                            'featured' => true,
+                            'bullets' => [
+                                'Everything in Domain + Shared Hosting',
+                                'VPS provisioning & server configuration',
+                                'Firewall & basic security hardening',
+                                'Deployment setup for your app',
+                            ],
+                        ],
+                        [
+                            'name' => 'Full Migration + Setup',
+                            'tagline' => 'Moving an existing site to better hosting',
+                            'price' => 'NPR 25,000 – 50,000',
+                            'priceNote' => 'one-time',
+                            'bullets' => [
+                                'Everything in VPS Setup',
+                                'Migration from your current host',
+                                'DNS cutover with minimal downtime',
+                                'Post-migration verification',
+                            ],
+                        ],
+                    ];
+                @endphp
+                @include('partials.services-packages')
+
+                @php
                     $tableTitle = "What's Involved in Getting Online?";
                     $tableRows = [
                         ['Domain Registration', "New businesses without a domain yet", 'Domain registrars, WHOIS setup'],

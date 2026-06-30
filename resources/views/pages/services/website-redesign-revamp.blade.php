@@ -79,6 +79,50 @@
                 </div>
 
                 @php
+                    $packagesTitle = 'Redesign Engagement Options';
+                    $packages = [
+                        [
+                            'name' => 'Visual Refresh',
+                            'tagline' => 'Updated look, same structure and platform',
+                            'price' => 'NPR 40,000 – 80,000',
+                            'priceNote' => 'one-time',
+                            'bullets' => [
+                                'Visual redesign of existing pages',
+                                'Mobile-first layout fixes',
+                                'Basic performance cleanup',
+                                'Content carried over as-is',
+                            ],
+                        ],
+                        [
+                            'name' => 'Full Redesign',
+                            'tagline' => 'UX audit, visual refresh, and SEO preservation',
+                            'price' => 'NPR 90,000 – 1,80,000',
+                            'priceNote' => 'one-time',
+                            'featured' => true,
+                            'bullets' => [
+                                'Everything in Visual Refresh',
+                                'UX audit & restructured navigation',
+                                'SEO value preserved with redirects',
+                                'Core Web Vitals optimisation',
+                            ],
+                        ],
+                        [
+                            'name' => 'Redesign + Replatform',
+                            'tagline' => 'New design on a new technical foundation',
+                            'price' => 'NPR 2,00,000+',
+                            'priceNote' => 'one-time, scoped per project',
+                            'bullets' => [
+                                'Everything in Full Redesign',
+                                'Migration to a new platform if needed',
+                                'Full content & URL migration plan',
+                                'Post-launch monitoring',
+                            ],
+                        ],
+                    ];
+                @endphp
+                @include('partials.services-packages')
+
+                @php
                     $tableTitle = "Is a Redesign Right for You?";
                     $tableRows = [
                         ['Outdated Visual Design', 'Sites that look dated compared to competitors', 'Modern UI, updated branding'],

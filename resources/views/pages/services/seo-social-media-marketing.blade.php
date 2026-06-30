@@ -99,6 +99,8 @@
                         [
                             'name' => 'Starter SEO',
                             'tagline' => 'For new or small sites establishing search presence',
+                            'price' => 'NPR 15,000',
+                            'priceNote' => 'per month',
                             'bullets' => [
                                 'Technical SEO audit & fixes',
                                 'On-page optimisation (up to 10 pages)',
@@ -109,6 +111,8 @@
                         [
                             'name' => 'Growth SEO + Ads',
                             'tagline' => 'For businesses ready to scale traffic and leads',
+                            'price' => 'NPR 30,000',
+                            'priceNote' => 'per month + ad spend',
                             'featured' => true,
                             'bullets' => [
                                 'Everything in Starter SEO',
@@ -120,6 +124,8 @@
                         [
                             'name' => 'Authority SEO + Marketing',
                             'tagline' => 'Full SEO, paid ads, and content engine',
+                            'price' => 'NPR 50,000+',
+                            'priceNote' => 'per month + ad spend',
                             'bullets' => [
                                 'Everything in Growth SEO + Ads',
                                 'Google Ads (PPC) campaign management',

@@ -79,6 +79,50 @@
                 </div>
 
                 @php
+                    $packagesTitle = 'WordPress Packages';
+                    $packages = [
+                        [
+                            'name' => 'Basic WordPress Site',
+                            'tagline' => 'Pre-built theme, configured for your brand',
+                            'price' => 'NPR 20,000 – 50,000',
+                            'priceNote' => 'one-time',
+                            'bullets' => [
+                                'Theme setup & customisation',
+                                'Up to 5 pages of content',
+                                'Basic on-page SEO setup',
+                                'Contact form & Google Maps',
+                            ],
+                        ],
+                        [
+                            'name' => 'Custom WordPress Design',
+                            'tagline' => 'Theme built from scratch around your brand',
+                            'price' => 'NPR 80,000 – 2,00,000',
+                            'priceNote' => 'one-time',
+                            'featured' => true,
+                            'bullets' => [
+                                'Fully custom theme development',
+                                'Up to 15 pages, blog/news section',
+                                'Speed & SEO optimisation',
+                                'Plugin setup & customisation',
+                            ],
+                        ],
+                        [
+                            'name' => 'WooCommerce Store',
+                            'tagline' => 'Full online store on WordPress',
+                            'price' => 'NPR 1,50,000+',
+                            'priceNote' => 'one-time, scoped per project',
+                            'bullets' => [
+                                'WooCommerce setup & configuration',
+                                'Payment gateways (eSewa, Khalti, cards)',
+                                'Product catalogue & inventory setup',
+                                'Order management & shipping rules',
+                            ],
+                        ],
+                    ];
+                @endphp
+                @include('partials.services-packages')
+
+                @php
                     $tableTitle = "What Kind of WordPress Sites Do I Build?";
                     $tableRows = [
                         ['Business & Brochure Sites', 'Small businesses needing a clean, fast online presence', 'Custom theme, Elementor/Gutenberg'],

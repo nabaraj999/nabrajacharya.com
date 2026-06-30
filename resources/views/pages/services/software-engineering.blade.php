@@ -79,6 +79,50 @@
                 </div>
 
                 @php
+                    $packagesTitle = 'Software Engineering Packages';
+                    $packages = [
+                        [
+                            'name' => 'Internal Tool / Dashboard',
+                            'tagline' => 'A focused dashboard or reporting tool',
+                            'price' => 'NPR 1,00,000 – 2,00,000',
+                            'priceNote' => 'one-time',
+                            'bullets' => [
+                                'Custom dashboard built around your data',
+                                'Admin panel with role-based access',
+                                'Database design',
+                                'Basic reporting & exports',
+                            ],
+                        ],
+                        [
+                            'name' => 'Workflow Automation System',
+                            'tagline' => 'Replace manual processes with a real system',
+                            'price' => 'NPR 2,00,000 – 4,00,000',
+                            'priceNote' => 'one-time',
+                            'featured' => true,
+                            'bullets' => [
+                                'Everything in Internal Tool / Dashboard',
+                                'Automated workflows & scheduled jobs',
+                                'Notifications & approval flows',
+                                'Integration with existing systems',
+                            ],
+                        ],
+                        [
+                            'name' => 'Multi-Tenant Platform',
+                            'tagline' => 'A product serving multiple clients from one codebase',
+                            'price' => 'NPR 4,50,000+',
+                            'priceNote' => 'one-time, scoped per project',
+                            'bullets' => [
+                                'Everything in Workflow Automation System',
+                                'Scoped, multi-tenant database design',
+                                'Per-client configuration & permissions',
+                                'Ongoing support available',
+                            ],
+                        ],
+                    ];
+                @endphp
+                @include('partials.services-packages')
+
+                @php
                     $tableTitle = "What Kind of Systems Do I Build?";
                     $tableRows = [
                         ['Business Dashboards', 'Teams needing visibility into their own data', 'Laravel, MySQL, reporting'],

@@ -79,6 +79,50 @@
                 </div>
 
                 @php
+                    $packagesTitle = 'API Development Packages';
+                    $packages = [
+                        [
+                            'name' => 'Single Integration',
+                            'tagline' => 'One focused API, e.g. payment or SMS integration',
+                            'price' => 'NPR 40,000 – 80,000',
+                            'priceNote' => 'one-time',
+                            'bullets' => [
+                                'A handful of well-documented endpoints',
+                                'Token-based authentication',
+                                'Input validation & error handling',
+                                'Basic API documentation',
+                            ],
+                        ],
+                        [
+                            'name' => 'Multi-Endpoint API',
+                            'tagline' => 'Backend for a mobile app or multi-feature system',
+                            'price' => 'NPR 90,000 – 1,80,000',
+                            'priceNote' => 'one-time',
+                            'featured' => true,
+                            'bullets' => [
+                                'Full set of RESTful endpoints',
+                                'Sanctum or Passport authentication',
+                                'Rate limiting & versioning',
+                                'Postman collection + documentation',
+                            ],
+                        ],
+                        [
+                            'name' => 'Enterprise API Platform',
+                            'tagline' => 'Public APIs, microservices, or partner integrations',
+                            'price' => 'NPR 2,00,000+',
+                            'priceNote' => 'one-time, scoped per project',
+                            'bullets' => [
+                                'Everything in Multi-Endpoint API',
+                                'Webhook handling & queued jobs',
+                                'Multiple client app support',
+                                'Ongoing API support available',
+                            ],
+                        ],
+                    ];
+                @endphp
+                @include('partials.services-packages')
+
+                @php
                     $tableTitle = "What Kind of APIs Do I Build?";
                     $tableRows = [
                         ['Mobile App Backends', 'Apps needing accounts, data sync, and notifications', 'Laravel, Sanctum, REST'],

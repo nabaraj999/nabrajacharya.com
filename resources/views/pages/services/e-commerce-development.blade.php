@@ -79,6 +79,50 @@
                 </div>
 
                 @php
+                    $packagesTitle = 'E-Commerce Engagement Options';
+                    $packages = [
+                        [
+                            'name' => 'Starter Store',
+                            'tagline' => 'Small catalogue, single payment gateway',
+                            'price' => 'NPR 80,000 – 1,50,000',
+                            'priceNote' => 'one-time',
+                            'bullets' => [
+                                'Up to 50 products, custom design',
+                                'One payment gateway (eSewa or Khalti)',
+                                'Cart & checkout flow',
+                                'Basic order management',
+                            ],
+                        ],
+                        [
+                            'name' => 'Growth Store',
+                            'tagline' => 'Full catalogue, multiple gateways, inventory',
+                            'price' => 'NPR 1,50,000 – 3,00,000',
+                            'priceNote' => 'one-time',
+                            'featured' => true,
+                            'bullets' => [
+                                'Everything in Starter Store',
+                                'Unlimited products with variants',
+                                'Multiple payment gateways',
+                                'Inventory & stock tracking',
+                            ],
+                        ],
+                        [
+                            'name' => 'Enterprise Store',
+                            'tagline' => 'Multi-vendor, subscriptions, custom logic',
+                            'price' => 'NPR 3,50,000+',
+                            'priceNote' => 'one-time, scoped per project',
+                            'bullets' => [
+                                'Everything in Growth Store',
+                                'Multi-vendor or subscription billing',
+                                'Custom checkout & pricing logic',
+                                'Priority support during launch',
+                            ],
+                        ],
+                    ];
+                @endphp
+                @include('partials.services-packages')
+
+                @php
                     $tableTitle = "What Kind of Stores Do I Build?";
                     $tableRows = [
                         ['Small Online Stores', 'New businesses launching their first store', 'Laravel, eSewa/Khalti, basic catalogue'],

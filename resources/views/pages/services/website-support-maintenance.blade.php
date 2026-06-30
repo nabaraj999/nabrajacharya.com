@@ -79,6 +79,50 @@
                 </div>
 
                 @php
+                    $packagesTitle = 'Monthly Support Plans';
+                    $packages = [
+                        [
+                            'name' => 'Basic Care',
+                            'tagline' => 'For low-traffic sites that rarely change',
+                            'price' => 'NPR 5,000',
+                            'priceNote' => 'per month',
+                            'bullets' => [
+                                'Security patches & updates',
+                                'Monthly health check',
+                                'Scheduled backups',
+                                'Email support',
+                            ],
+                        ],
+                        [
+                            'name' => 'Standard Care',
+                            'tagline' => 'For active business sites',
+                            'price' => 'NPR 10,000',
+                            'priceNote' => 'per month',
+                            'featured' => true,
+                            'bullets' => [
+                                'Everything in Basic Care',
+                                'Minor content & design updates',
+                                'Faster response on reported issues',
+                                'Quarterly performance review',
+                            ],
+                        ],
+                        [
+                            'name' => 'Priority Care',
+                            'tagline' => 'For business-critical sites and applications',
+                            'price' => 'NPR 20,000',
+                            'priceNote' => 'per month',
+                            'bullets' => [
+                                'Everything in Standard Care',
+                                'Priority response for urgent issues',
+                                'Proactive monitoring',
+                                'Direct line for quick questions',
+                            ],
+                        ],
+                    ];
+                @endphp
+                @include('partials.services-packages')
+
+                @php
                     $tableTitle = "What Does a Support Plan Cover?";
                     $tableRows = [
                         ['Security & Updates', 'Any live site that needs to stay safe', 'Framework/plugin updates, patches'],

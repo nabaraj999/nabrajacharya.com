@@ -79,6 +79,50 @@
                 </div>
 
                 @php
+                    $packagesTitle = 'App Development Packages';
+                    $packages = [
+                        [
+                            'name' => 'Progressive Web App',
+                            'tagline' => 'Installable, app-like experience in the browser',
+                            'price' => 'NPR 1,00,000 – 2,00,000',
+                            'priceNote' => 'one-time',
+                            'bullets' => [
+                                'Installable PWA with offline support',
+                                'Push notifications',
+                                'API-backed data layer',
+                                'Works across devices without app stores',
+                            ],
+                        ],
+                        [
+                            'name' => 'Android App + API',
+                            'tagline' => 'Native Android app backed by a Laravel API',
+                            'price' => 'NPR 2,00,000 – 4,00,000',
+                            'priceNote' => 'one-time',
+                            'featured' => true,
+                            'bullets' => [
+                                'Native Android application',
+                                'Laravel API backend',
+                                'User accounts & data sync',
+                                'Play Store submission support',
+                            ],
+                        ],
+                        [
+                            'name' => 'Full Business App Suite',
+                            'tagline' => 'App + admin dashboard + integrations',
+                            'price' => 'NPR 4,50,000+',
+                            'priceNote' => 'one-time, scoped per project',
+                            'bullets' => [
+                                'Everything in Android App + API',
+                                'Admin dashboard & reporting',
+                                'Payment gateway integration',
+                                'Ongoing support available',
+                            ],
+                        ],
+                    ];
+                @endphp
+                @include('partials.services-packages')
+
+                @php
                     $tableTitle = "What Kind of Apps Do I Build?";
                     $tableRows = [
                         ['Android Apps', 'Businesses wanting a dedicated mobile presence', 'Android (Java/Kotlin), REST APIs'],

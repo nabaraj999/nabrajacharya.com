@@ -87,6 +87,8 @@
                         [
                             'name' => 'Starter Website',
                             'tagline' => 'Brochure or portfolio sites, up to 5 pages',
+                            'price' => 'NPR 25,000 – 50,000',
+                            'priceNote' => 'one-time',
                             'bullets' => [
                                 'Custom-designed, responsive layout',
                                 'Up to 5 pages of content',
@@ -97,6 +99,8 @@
                         [
                             'name' => 'Business Website',
                             'tagline' => 'Custom design, CMS, and SEO foundation',
+                            'price' => 'NPR 60,000 – 1,20,000',
+                            'priceNote' => 'one-time',
                             'featured' => true,
                             'bullets' => [
                                 'Everything in Starter Website',
@@ -108,6 +112,8 @@
                         [
                             'name' => 'Web Application',
                             'tagline' => 'Custom Laravel app with accounts & dashboard',
+                            'price' => 'NPR 1,50,000+',
+                            'priceNote' => 'one-time, scoped per project',
                             'bullets' => [
                                 'Custom Laravel application',
                                 'User accounts & admin dashboard',
