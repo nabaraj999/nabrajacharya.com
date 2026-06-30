@@ -74,7 +74,7 @@ $breadcrumbSchema = [
 <section class="pt-10 reveal">
     <div class="max-w-3xl mx-auto px-4 sm:px-6">
         @php
-            $quickAnswer = ($personal->brand_name ?? 'Nabaraj Acharya') . ' is a Full Stack Developer and SEO Specialist based in Lalitpur, Nepal, trading as TechNabu, with ' . ($personal->years_experience ?? '3') . '+ years of experience building Laravel applications and growing search visibility for businesses in Nepal and abroad.';
+            $quickAnswer = ($personal->brand_name ?? 'Nabaraj Acharya') . ' combines hands-on Laravel development with technical SEO — a deliberate combination, since a well-built site that nobody can find on Google still isn\'t doing its job. He works full-stack rather than handing off design, development, and search visibility to three different people.';
         @endphp
         @include('partials.services-quick-answer')
     </div>
@@ -346,13 +346,13 @@ $breadcrumbSchema = [
         </div>
         @php
             $faqs = [
-                ['What does Nabaraj Acharya do?', 'He is a Full Stack Developer and SEO Specialist based in Lalitpur, Nepal, building Laravel web applications and providing technical SEO services for businesses in Nepal and abroad, trading as TechNabu.'],
                 ['How many years of experience does he have?', ($personal->years_experience ?? '3') . '+ years of professional experience, with ' . ($personal->completed_projects ?? '30') . '+ completed projects for ' . ($personal->happy_clients ?? '10') . '+ clients.'],
-                ['What technologies does he specialize in?', 'Laravel, PHP, MySQL, Tailwind CSS, and Alpine.js for development, alongside technical SEO, Google Search Console, and Google Analytics 4 for search growth.'],
+                ['Why does he combine web development with SEO instead of focusing on just one?', "Most developers stop once a site is live, and most SEO specialists never touch code — that gap is exactly where sites quietly underperform. Handling both means search visibility gets built in from the architecture stage, not bolted on after launch."],
                 ['Is he available for freelance or contract work?', 'Yes — freelance projects, consulting, and ongoing support engagements are all available; see the contact page to discuss a project.'],
-                ['Does he work with clients outside Nepal?', 'Yes, alongside clients across Nepal he works with international clients, including businesses in Australia.'],
-                ['What kind of projects has he worked on?', 'Business websites, custom Laravel web applications, e-commerce stores, and SEO engagements — examples are documented on the portfolio page.'],
-                ['Does he offer both development and SEO under one engagement?', 'Yes — combining Laravel development with technical SEO is a core part of how he works, so search visibility is built in from the start rather than added later.'],
+                ['Does he work solo, or does he have a team?', "He works as an independent practice under the TechNabu name, which means you talk directly to the person doing the work rather than going through account managers or junior staff."],
+                ['What size of business does he typically work with?', 'Mostly small to mid-sized businesses, startups, and individual professionals — the kind of clients who need senior-level attention but don\'t need (or want to pay for) a full agency.'],
+                ['What\'s the best way to start working with him?', "Reach out through the contact page with a rough description of what you're trying to build or fix — a free initial conversation comes before any quote, so there's no pressure in just asking."],
+                ['Does he take on small or one-off jobs, or only large projects?', "Both — a single fix, a small redesign, and a full custom application are all in scope. Project size mainly determines timeline and price, not whether the work gets taken on."],
             ];
         @endphp
         @include('partials.services-faq')

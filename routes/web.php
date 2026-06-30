@@ -5,6 +5,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LegalController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\ProjectController;
@@ -50,6 +51,8 @@ Route::get('/submit-testimonial', [TestimonialController::class, 'create'])->nam
 Route::post('/submit-testimonial', [TestimonialController::class, 'store'])->name('testimonial.store');
 Route::get('/contact',   [ContactController::class, 'index'])->name('contact');
 Route::post('/contact',  [ContactController::class, 'store'])->name('contact.store');
+Route::get('/privacy-policy',    [LegalController::class, 'privacy'])->name('privacy-policy');
+Route::get('/terms-conditions',  [LegalController::class, 'terms'])->name('terms-conditions');
 
 Route::post('/tickets',  [TicketController::class, 'store'])->name('tickets.store');
 

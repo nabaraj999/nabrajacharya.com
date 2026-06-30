@@ -520,7 +520,11 @@
 
         <div class="pt-6 border-t flex flex-col md:flex-row justify-between items-center gap-3" style="border-color: var(--line);">
             <p class="text-sm" style="color: var(--ink-faint);">© {{ date('Y') }} {{ $personal->brand_name ?? 'Nabaraj Acharya' }}. All rights reserved.</p>
-            <p class="text-sm" style="color: var(--ink-faint);">Full Stack Developer · SEO Specialist · Nepal</p>
+            <div class="flex items-center gap-5">
+                <a href="{{ route('privacy-policy') }}" class="text-sm transition-colors" style="color: var(--ink-faint);" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--ink-faint)'">Privacy Policy</a>
+                <a href="{{ route('terms-conditions') }}" class="text-sm transition-colors" style="color: var(--ink-faint);" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--ink-faint)'">Terms &amp; Conditions</a>
+                <p class="text-sm hidden md:block" style="color: var(--ink-faint);">Full Stack Developer · SEO Specialist · Nepal</p>
+            </div>
         </div>
     </div>
 </footer>

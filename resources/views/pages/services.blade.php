@@ -139,7 +139,7 @@
         </div>
         @php
             $faqs = [
-                ['What services does TechNabu offer?', 'Web development, WordPress development, e-commerce development, API and app development, software engineering, website redesigns, domain and hosting setup, ongoing website support, and SEO & social media marketing.'],
+                ['How is pricing structured across these services?', 'Each service page shows starting price tiers in NPR for typical scopes — most one-time builds range from roughly NPR 20,000 for a basic site to several lakh for a custom application, while SEO and support run as monthly plans. Final cost always depends on your exact requirements.'],
                 ['Which service is right for a small business just getting started?', 'Web Development covers most new business sites; if you already have a site that needs to look more current, Website Redesign & Revamp is usually the better starting point.'],
                 ['Do you offer SEO alongside development, or only one or the other?', 'Both — every development project includes on-page SEO fundamentals, and SEO & Social Media Marketing is also available as a standalone, ongoing service.'],
                 ['How do I know which service fits my project?', "Describe what you're trying to build or fix on the contact page, and I'll point you to the right service — or a combination of a few — based on your actual situation."],
